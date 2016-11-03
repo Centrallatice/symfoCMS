@@ -10,4 +10,8 @@ namespace ArticleBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllOrdered($col,$sens)
+    {
+        return $this->findBy(array(), array($col => $sens));
+    }
 }

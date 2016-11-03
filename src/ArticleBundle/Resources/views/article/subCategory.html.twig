@@ -1,0 +1,27 @@
+{% for category in Parent.getCategoryEnfants() %}
+    {% if category.depth==Depth %}
+        <tr id="cat-{{category.id}}">
+            <td><input class="set_selection" type="checkbox" name="selected_category[]" value="{{category.id}}"></td>
+            <td><a href="{{ path('admin_category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
+            <td>{% for i in 1..Depth %}-{% endfor%}{{ category.nom }}</td>
+            <td>{% if category.getCategoryParente() != null %}{{ category.getCategoryParente().getNom() }}{% endif %}</td>
+            <td>{{ category.auteur }}</td>
+            <td>{{ category.dateCreation| date('d/m/Y H:i') }}</td>
+            <td class="text-center {% if category.isActive %}bg-success{% else %}bg-danger{% endif %}">
+                {% if category.isActive %}Publié{% else %}Non publié{% endif %}</td>
+            <td class="text-right">
+                <div class="input-group-btn input-group-sm">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Actions
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ path('admin_category_show', { 'id': category.id }) }}"><i class="fa fa-search"></i> Voir</a>
+                        <a class="dropdown-item" href="#" onclick="deleteAjaxCategory({{category.id}},'{{ path('category_ajax_delete', { 'id': category.id }) }}',true)"><i class="fa fa-remove"></i> Supprimer</a>
+                        <a class="dropdown-item" href="{{ path('admin_category_edit', { 'id': category.id }) }}"><i class="fa fa-cog"></i> Modifier</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% include 'ArticleBundle:article:subCategory.html.twig' with {'Parent': category,'Depth':Depth+1} %}
+     {% endif %}
+{% endfor %}

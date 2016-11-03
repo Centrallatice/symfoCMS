@@ -35,6 +35,15 @@ class Category
     protected $categoryParente;
     
     /**
+     * @ORM\ManyToMany(targetEntity="ArticleBundle\Entity\Category", cascade={"remove"})
+     * @ORM\JoinTable(name="category_categories",
+     *      joinColumns={@ORM\JoinColumn(name="parent_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="child_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    protected $categoryEnfants;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="auteur", type="string", length=255)
@@ -54,6 +63,13 @@ class Category
      * @ORM\Column(name="isActive", type="boolean")
      */
     private $isActive;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="depth", type="integer")
+     */
+    private $depth;
 
 
     /**
@@ -164,6 +180,7 @@ class Category
     
     public function __construct() {
         $this->setDateCreation(new \DateTime());
+        $this->setDepth(0);
     }
 
     /**
@@ -188,5 +205,63 @@ class Category
     public function getCategoryParente()
     {
         return $this->categoryParente;
+    }
+
+    /**
+     * Set depth
+     *
+     * @param integer $depth
+     *
+     * @return Category
+     */
+    public function setDepth($depth)
+    {
+        $this->depth = $depth;
+
+        return $this;
+    }
+
+    /**
+     * Get depth
+     *
+     * @return integer
+     */
+    public function getDepth()
+    {
+        return $this->depth;
+    }
+
+    /**
+     * Add categoryEnfant
+     *
+     * @param \ArticleBundle\Entity\Category $categoryEnfant
+     *
+     * @return Category
+     */
+    public function addCategoryEnfant(\ArticleBundle\Entity\Category $categoryEnfant)
+    {
+        $this->categoryEnfants[] = $categoryEnfant;
+
+        return $this;
+    }
+
+    /**
+     * Remove categoryEnfant
+     *
+     * @param \ArticleBundle\Entity\Category $categoryEnfant
+     */
+    public function removeCategoryEnfant(\ArticleBundle\Entity\Category $categoryEnfant)
+    {
+        $this->categoryEnfants->removeElement($categoryEnfant);
+    }
+
+    /**
+     * Get categoryEnfants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategoryEnfants()
+    {
+        return $this->categoryEnfants;
     }
 }

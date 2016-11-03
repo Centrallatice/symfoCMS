@@ -1,3 +1,6 @@
+.form-control {
+    padding: .5rem .75rem .2rem;
+}
 div.form-control-sm input.form-control,div.form-control-sm select.form-control:not([size]):not([multiple]) {
     height: 1.8125rem;
 }

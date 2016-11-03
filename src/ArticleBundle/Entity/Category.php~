@@ -35,6 +35,15 @@ class Category
     protected $categoryParente;
     
     /**
+     * @ORM\ManyToMany(targetEntity="ArticleBundle\Entity\Category")
+     * @ORM\JoinTable(name="category_categories",
+     *      joinColumns={@ORM\JoinColumn(name="parent_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="child_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    protected $categoryEnfants;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="auteur", type="string", length=255)
@@ -54,6 +63,13 @@ class Category
      * @ORM\Column(name="isActive", type="boolean")
      */
     private $isActive;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="depth", type="integer")
+     */
+    private $depth;
 
 
     /**
@@ -164,5 +180,54 @@ class Category
     
     public function __construct() {
         $this->setDateCreation(new \DateTime());
+        $this->setDepth(0);
+    }
+
+    /**
+     * Set categoryParente
+     *
+     * @param \ArticleBundle\Entity\Category $categoryParente
+     *
+     * @return Category
+     */
+    public function setCategoryParente(\ArticleBundle\Entity\Category $categoryParente = null)
+    {
+        $this->categoryParente = $categoryParente;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryParente
+     *
+     * @return \ArticleBundle\Entity\Category
+     */
+    public function getCategoryParente()
+    {
+        return $this->categoryParente;
+    }
+
+    /**
+     * Set depth
+     *
+     * @param integer $depth
+     *
+     * @return Category
+     */
+    public function setDepth($depth)
+    {
+        $this->depth = $depth;
+
+        return $this;
+    }
+
+    /**
+     * Get depth
+     *
+     * @return integer
+     */
+    public function getDepth()
+    {
+        return $this->depth;
     }
 }

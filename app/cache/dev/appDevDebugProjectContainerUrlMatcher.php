@@ -310,6 +310,31 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 }
                 not_admin_category_delete:
 
+                if (0 === strpos($pathinfo, '/admin/category/Ajax')) {
+                    // category_ajax_delete
+                    if (preg_match('#^/admin/category/Ajax/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_category_ajax_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'category_ajax_delete')), array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::deleteAjaxAction',));
+                    }
+                    not_category_ajax_delete:
+
+                    // category_ajax_change_state
+                    if ($pathinfo === '/admin/category/Ajax/ChangeState') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_category_ajax_change_state;
+                        }
+
+                        return array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::changeStateAjaxAction',  '_route' => 'category_ajax_change_state',);
+                    }
+                    not_category_ajax_change_state:
+
+                }
+
             }
 
         }

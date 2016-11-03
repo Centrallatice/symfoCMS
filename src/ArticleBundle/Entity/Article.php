@@ -175,29 +175,7 @@ class Article
         return $this->etat;
     }
 
-    /**
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return Article
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
+   
 
     /**
      * Set contenu
@@ -249,5 +227,29 @@ class Article
     public function getResume()
     {
         return $this->resume;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \ArticleBundle\Entity\Category $category
+     *
+     * @return Article
+     */
+    public function setCategory(\ArticleBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \ArticleBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

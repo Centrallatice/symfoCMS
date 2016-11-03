@@ -1,48 +1,52 @@
 {% extends "::admin.html.twig" %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/themes/admin/generator.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+{% endblock %}
+{% block breadcrumb %} <a href="{{ path('page_list') }}">Pages</a> /  Détail de la page " <strong>{{ page.titre }}</strong>"{% endblock %}
 {% block body %}
-    <h1>Page</h1>
+    <div class="row">
+        <div class="col-xs-12">
+            <a role="button" class="btn btn-primary pull-right" href="{{ path('page_list') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-xs-12">
+            <h1>{{ page.titre }}</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ page.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ page.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ page.description }}</td>
-            </tr>
-            <tr>
-                <th>Keywords</th>
-                <td>{{ page.keywords }}</td>
-            </tr>
-            <tr>
-                <th>Auteur</th>
-                <td>{{ page.auteur }}</td>
-            </tr>
-            <tr>
-                <th>Creationdate</th>
-                <td>{% if page.creationDate %}{{ page.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('page_list') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('page_edit', { 'id': page.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <table class="table table-active">
+                <tbody>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ page.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mots-clés</th>
+                        <td>{{ page.keywords }}</td>
+                    </tr>
+                    <tr>
+                        <th>Auteur</th>
+                        <td>{{ page.auteur }}</td>
+                    </tr>
+                    <tr>
+                        <th>Créée le</th>
+                        <td>{% if page.creationDate %}{{ page.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-xs-12">
+            <center>
+                <div class="form-inline">
+                    {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger" value="Supprimer cette page">
+                    {{ form_end(delete_form) }}
+                </div><a href="{{ path('page_edit', { 'id': page.id }) }}" class="btn btn-primary"><i class="fa fa-cog"></i> Modifier</a>
+            </center>
+    </div>
+    </div>
 {% endblock %}

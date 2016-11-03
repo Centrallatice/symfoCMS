@@ -7,6 +7,7 @@ use PageBundle\Entity\Row;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class PageController extends Controller
@@ -42,8 +43,16 @@ class PageController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $page->setAuteur($user->getUsername());
             $em = $this->getDoctrine()->getManager();
+            if($page->getIsHomepage()):
+                $pages = $em->getRepository('PageBundle:Page')->findAll();
+                foreach($pages as $p):
+                    $p->setIsHomepage(false);
+                    $em->persist($p);
+                endforeach;
+            endif;
+            
             $em->persist($page);
-            $em->flush($page);
+            $em->flush();
             $this->addFlash('success', 'Votre page a bien été créé, vous pouvez a présent la personnaliser');
             return $this->redirectToRoute('page_edit', array('id' => $page->getId()));
         }
@@ -108,14 +117,82 @@ class PageController extends Controller
     {
         $form = $this->createDeleteForm($page);
         $form->handleRequest($request);
-
+        
+        $isHomePage = $page->getIsHomepage();
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            foreach($page->getRows() as $r):
+                $page->removeRow($r);
+                $em->persist($page);
+                $em->flush($page);
+                foreach($r->getCols() as $c):
+                    $r->removeCol($c);
+                    $em->flush($r);
+                    $em->remove($c);
+                    $em->flush($c);
+                endforeach;
+                $em->remove($r);
+                $em->flush($r);
+            endforeach;
             $em->remove($page);
             $em->flush($page);
+            
+            if($isHomePage):
+                $firstPage = $em->getRepository('PageBundle:Page')->findAll();
+                if(count($firstPage)>0):
+                    $firstPage[0]->setIsHomepage(true);
+                    $em->persist($firstPage[0]);
+                    $em->flush($firstPage[0]);
+                endif;
+            endif;
         }
 
-        return $this->redirectToRoute('page_index');
+        return $this->redirectToRoute('page_list');
+    }
+    /**
+     * Deletes a page entity.
+     *
+     * @Route("/Ajax/{id}", name="page_ajax_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAjaxAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $page = $em->getRepository('PageBundle:Page')->find($request->get("idPage"));
+        
+        if ($page!==null) {
+            $isHomePage = $page->getIsHomepage();
+            foreach($page->getRows() as $r):
+                $page->removeRow($r);
+                $em->persist($page);
+                $em->flush($page);
+                foreach($r->getCols() as $c):
+                    $r->removeCol($c);
+                    $em->flush($r);
+                    $em->remove($c);
+                    $em->flush($c);
+                endforeach;
+                $em->remove($r);
+                $em->flush($r);
+            endforeach;
+            
+            $em->remove($page);
+            $em->flush($page);
+            
+            if($isHomePage):
+                $firstPage = $em->getRepository('PageBundle:Page')->findAll();
+                if(count($firstPage)>0):
+                    $firstPage[0]->setIsHomepage(true);
+                    $em->remove($firstPage[0]);
+                    $em->flush($firstPage[0]);
+                endif;
+            endif;
+            
+            return new JsonResponse(array("success"=>true));
+        }
+
+        return new JsonResponse(array("success"=>false));
     }
 
     /**

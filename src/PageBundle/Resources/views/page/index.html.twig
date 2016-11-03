@@ -14,26 +14,37 @@
     <hr />
     <div class="row">
         <div class="col-xs-12">
-            <table class="table table-responsive table-striped table-bordered">
-                <thead>
+            <table class="table table-striped table-bordered table-sm">
+                <thead class="thead-inverse">
                     <tr>
                         <th>Id</th>
                         <th>Titre</th>
                         <th>Description</th>
                         <th>Créé le</th>
-                        <th>Actions</th>
+                        <th>Page d'accueil</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for page in pages %}
-                        <tr>
+                        <tr id="page-{{page.id}}">
                             <td><a href="{{ path('page_show', { 'id': page.id }) }}">{{ page.id }}</a></td>
                             <td>{{ page.titre }}</td>
                             <td>{{ page.description }}</td>
-                            <td>{% if page.creationDate %}{{ page.creationDate|date('d-m-Y H:i') }}{% endif %}</td>
-                            <td>
-                                <a role="button" class="btn btn-danger" href="{{ path('page_delete', { 'id': page.id }) }}"><i class="fa fa-remove"></i> Supprimer</a>
-                                <a role="button" class="btn btn-primary" href="{{ path('page_edit', { 'id': page.id }) }}"><i class="fa fa-cog"></i> Modifier</a>    
+                            <td class="text-right">{% if page.creationDate %}{{ page.creationDate|date('d/m/Y H:i') }}{% endif %}</td>
+                            <td>{% if page.isHomePage %}<center><i class="fa-2x fa fa-home"></i></center>{% endif %}</td>
+                            <td class="text-right">
+                               <div class="input-group-btn">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Actions
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ path('page_show', { 'id': page.id }) }}"><i class="fa fa-search"></i> Voir</a>
+                                        <a class="dropdown-item" href="#" onclick="deleteAjaxPage({{page.id}},'{{ path('page_ajax_delete', { 'id': page.id }) }}')"><i class="fa fa-remove"></i> Supprimer</a>
+                                        <a class="dropdown-item" href="{{ path('page_edit', { 'id': page.id }) }}"><i class="fa fa-cog"></i> Modifier</a>
+                                        
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     {% endfor %}
@@ -41,4 +52,9 @@
             </table>
         </div>       
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'>
+    </script><script type='text/javascript' src='{{asset('js/admin/page/generator.js')}}'></script>
 {% endblock %}

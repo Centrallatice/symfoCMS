@@ -6,7 +6,7 @@ use ArticleBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 /**
  * Article controller.
  *
@@ -18,16 +18,49 @@ class ArticleController extends Controller
      * Lists all article entities.
      *
      * @Route("/", name="admin_article_index")
-     * @Method("GET")
+     * @Method({"GET","POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $data = array();
         $em = $this->getDoctrine()->getManager();
-
-        $articles = $em->getRepository('ArticleBundle:Article')->findAll();
-
+        
+        $categories = $em->getRepository('ArticleBundle:Category')->findAll();
+        $catArray = array();
+        foreach($categories as $c):
+            $catArray[$c->getID()]=$c->getNom();
+        endforeach;
+        
+        $form = $this->createFormBuilder($data)
+                ->add('category', 'choice',array(
+                    'choices' => $catArray,
+                    'placeholder' => '-- Toutes les catégories --',
+                    'empty_data'  => null,
+                    'required' => false,
+                    'label' => false
+                 ))
+                ->getForm();
+        
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            $data = $form->getData();
+            if(!is_null($data['category'])):
+                $catChoisie = $em->getRepository('ArticleBundle:Category')->find($data['category']);
+                if($catChoisie!=null):
+                    $articles = $em->getRepository('ArticleBundle:Article')->findBy(array("category"=>$catChoisie));
+                endif;
+            else:
+                $articles = $em->getRepository('ArticleBundle:Article')->findAll();
+            endif;
+        }
+        else{
+            $articles = $em->getRepository('ArticleBundle:Article')->findAll();
+        }
+        
+        
         return $this->render('ArticleBundle:Article:index.html.twig', array(
             'articles' => $articles,
+            'form_category' => $form->createView()
         ));
     }
 
@@ -49,8 +82,8 @@ class ArticleController extends Controller
             $article->setAuteur($u->getUsername());
             $em->persist($article);
             $em->flush($article);
-
-            return $this->redirectToRoute('admin_article_list', array('id' => $article->getId()));
+            $this->addFlash('success', 'Votre article a bien été créé');
+            return $this->redirectToRoute('admin_article_index', array('id' => $article->getId()));
         }
 
         return $this->render('ArticleBundle:Article:new.html.twig', array(
@@ -119,7 +152,26 @@ class ArticleController extends Controller
 
         return $this->redirectToRoute('admin_article_index');
     }
+    
+    /**
+     * Deletes a page entity.
+     *
+     * @Route("/Ajax/{id}", name="article_ajax_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAjaxAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('ArticleBundle:Article')->find($request->get("idArticle"));
+        if ($article!==null) {
+            $em->remove($article);
+            $em->flush();
+            return new JsonResponse(array("success"=>true));
+        }
 
+        return new JsonResponse(array("success"=>false));
+    }
+    
     /**
      * Creates a form to delete a article entity.
      *

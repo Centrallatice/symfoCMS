@@ -180,8 +180,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             if (0 === strpos($pathinfo, '/admin/article')) {
                 // admin_article_index
                 if (rtrim($pathinfo, '/') === '/admin/article') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                         goto not_admin_article_index;
                     }
 
@@ -236,6 +236,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_article_delete')), array (  '_controller' => 'ArticleBundle\\Controller\\ArticleController::deleteAction',));
                 }
                 not_admin_article_delete:
+
+                // article_ajax_delete
+                if (0 === strpos($pathinfo, '/admin/article/Ajax') && preg_match('#^/admin/article/Ajax/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_article_ajax_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'article_ajax_delete')), array (  '_controller' => 'ArticleBundle\\Controller\\ArticleController::deleteAjaxAction',));
+                }
+                not_article_ajax_delete:
 
             }
 
@@ -472,6 +483,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'page_delete')), array (  '_controller' => 'PageBundle\\Controller\\PageController::deleteAction',));
             }
             not_page_delete:
+
+            // page_ajax_delete
+            if (0 === strpos($pathinfo, '/admin/page/Ajax') && preg_match('#^/admin/page/Ajax/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_page_ajax_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'page_ajax_delete')), array (  '_controller' => 'PageBundle\\Controller\\PageController::deleteAjaxAction',));
+            }
+            not_page_ajax_delete:
 
             if (0 === strpos($pathinfo, '/admin/page/row')) {
                 // row_index

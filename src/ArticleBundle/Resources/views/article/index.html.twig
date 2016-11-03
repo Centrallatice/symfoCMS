@@ -4,42 +4,72 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 {% endblock %}
+{% block breadcrumb %} <a href="{{ path('admin_article_index') }}">Articles</a> /  Mes articles{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-lg-8">
+            {{ form_start(form_category) }}
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">
+                        Filtrer par catégorie :
+                    </span>
+                    {{ form_widget(form_category,{ 'attr': {'class': 'form-control form-control-sm'} }) }}
+                    <span class="input-group-addon">
+                        <input class='btn btn-success btn-sm' type="submit" value="Enregister" />
+                    </span>
+                </div>
+            {{ form_end(form_category) }}
+        </div>
+        <div class="col-lg-4">
             <a role="button" class="btn btn-success pull-right" href="{{ path('admin_article_new') }}"><i class="fa fa-plus"></i> Créer un article</a>
         </div>
     </div>
+    
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <hr />
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+           {{ flash_message }}
+       </div>
+    {% endfor %}    
+    <hr />       
     <div class="row">
         <div class="col-xs-12">
-            <table class='table table-responsive'>
-                <thead>
+            <table class="table table-striped table-bordered table-sm">
+                <thead class="thead-inverse">
                     <tr>
-                        <th>Id</th>
+                        <th class="text-right">#</th>
                         <th>Titre</th>
-                        <th>Datecreation</th>
+                        <th>Créé le</th>
                         <th>Auteur</th>
                         <th>Catégorie</th>
                         <th>Etat</th>
-                        <th>Actions</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for article in articles %}
-                    <tr>
-                        <td><a href="{{ path('admin_article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                    <tr id="art-{{article.id}}">
+                        <td class="text-right"><a href="{{ path('admin_article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
                         <td>{{ article.titre }}</td>
-                        <td>{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        <td class="text-right">{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H:i:s') }}{% endif %}</td>
                         <td>{{ article.auteur }}</td>
                         <td>{% if article.category != null %}{{article.category.nom}}{% else %}Non catégorisé{% endif %}</td>
-                        <td>{% if article.etat %}<span class="tag tag-success">Publié</span>{% else %}<span class="tag tag-danger">Dépublié</span>{% endif %}</td>
-                        <td>
-                            
-                            <a role="button" href="{{ path('admin_article_show', { 'id': article.id }) }}" class="btn btn-info"><i class="fa fa-search"></i> Afficher</a>
-                               
-                                    <a role="button" href="{{ path('admin_article_edit', { 'id': article.id }) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier</a>
-                                
-                            
+                        <td class="text-center {% if article.etat %}bg-success{% else %}bg-danger{% endif %}">
+                            {% if article.etat %}Publié{% else %}Non publié{% endif %}</td>
+                        <td class="text-right">
+                            <div class="input-group-btn input-group-sm">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Actions
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('admin_article_show', { 'id': article.id }) }}"><i class="fa fa-search"></i> Voir</a>
+                                    <a class="dropdown-item" href="#" onclick="deleteAjaxArticle({{article.id}},'{{ path('article_ajax_delete', { 'id': article.id }) }}')"><i class="fa fa-remove"></i> Supprimer</a>
+                                    <a class="dropdown-item" href="{{ path('admin_article_edit', { 'id': article.id }) }}"><i class="fa fa-cog"></i> Modifier</a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 {% endfor %}
@@ -47,4 +77,9 @@
             </table>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'>
+    </script><script type='text/javascript' src='{{asset('js/admin/article/generator.js')}}'></script>
 {% endblock %}

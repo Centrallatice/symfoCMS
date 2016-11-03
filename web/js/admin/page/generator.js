@@ -153,3 +153,30 @@ function deleteRow(idPage,idRow,url){
         }
     });
 }
+function deleteAjaxPage(idPage,url){
+    bootbox.confirm({
+        title : "Confirmation de la suppression",
+        message : "Êtes-vous sûr de vouloir supprimer cette page ?",
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Annuler'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Supprimer la page'
+            }
+        },
+        callback: function(result){ 
+            if(result){
+                $.ajax({
+                    type: "DELETE",
+                    url: url,
+                    data: {idPage:idPage},
+                    dataType: "JSON",
+                    success: function (data) {
+                        if(data.success) $('tr#page-'+idPage).remove();
+                    }
+                });
+            }
+        }
+    });
+}

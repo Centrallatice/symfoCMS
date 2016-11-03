@@ -11,6 +11,15 @@ body,.btn{
 .text-center{
     text-align:center;
 }
+.text-right{
+    text-align:right;
+}
+.text-left{
+    text-align:left;
+}
+.form-inline,.form-inline form{
+    display: inline;
+}
 ol.breadcrumb li i{
     font-size: 14px;
 }

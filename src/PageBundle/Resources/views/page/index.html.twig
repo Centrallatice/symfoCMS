@@ -1,0 +1,44 @@
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/themes/admin/generator.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
+{% endblock %}
+{% block breadcrumb %} <a href="{{ path('page_list') }}">Pages</a> /  Mes pages{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <a role="button" class="btn btn-success pull-right" href="{{ path('page_new') }}"><i class="fa fa-plus"></i> Créer une nouvelle page</a>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-responsive table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Créé le</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for page in pages %}
+                        <tr>
+                            <td><a href="{{ path('page_show', { 'id': page.id }) }}">{{ page.id }}</a></td>
+                            <td>{{ page.titre }}</td>
+                            <td>{{ page.description }}</td>
+                            <td>{% if page.creationDate %}{{ page.creationDate|date('d-m-Y H:i') }}{% endif %}</td>
+                            <td>
+                                <a role="button" class="btn btn-danger" href="{{ path('page_delete', { 'id': page.id }) }}"><i class="fa fa-remove"></i> Supprimer</a>
+                                <a role="button" class="btn btn-primary" href="{{ path('page_edit', { 'id': page.id }) }}"><i class="fa fa-cog"></i> Modifier</a>    
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>       
+    </div>
+{% endblock %}

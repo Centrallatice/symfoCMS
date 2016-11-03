@@ -1,0 +1,47 @@
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/themes/admin/generator.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+{% endblock %}
+{% block breadcrumb %} <a href="{{ path('page_list') }}">Pages</a> /  Modifier une page{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <a role="button" class="btn btn-primary pull-right" href="{{ path('page_list') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
+        </div>
+    </div>
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+           {{ flash_message }}
+       </div>
+    {% endfor %}    
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-tabs" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#seo" role="tab">Titre / Description</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#ihm" role="tab">Mise en page</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="seo" role="tabpanel">{% include "@PageViews/page/tabs/seo.html.twig" %}</div>
+                <div class="tab-pane fade" id="ihm" role="tabpanel">{% include "@PageViews/page/tabs/ihm.html.twig" %}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'></script>
+    <script type='text/javascript' src='{{asset('js/vendor/froala/froala.min.js')}}'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js'></script>
+    <script type='text/javascript' src='{{asset('js/admin/page/generator.js')}}'></script>
+{% endblock %}

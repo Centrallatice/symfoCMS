@@ -1,0 +1,15 @@
+<form method="post" role="form" action="{{path('row_ajax_edit',{id:row.getID()})}}">
+    <div class="modal-body">
+        {{ form_row(edit_form.titreAdmin) }}
+        {{ form_row(edit_form.titreClient) }}
+        {{ form_row(edit_form.enteteType) }}
+        {{ form_row(edit_form.disposition) }}
+        {{ form_row(edit_form.cssClass) }}
+        {{ form_row(edit_form.cssId) }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary" id="btn-valid-update-row">Enregistrer</button>
+    </div>
+    {{ form_end(edit_form) }}
+</form>

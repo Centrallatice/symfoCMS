@@ -1,0 +1,58 @@
+{% extends '::admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}{% endblock %}
+{% block breadcrumb %} <a href="{{ path('admin_article_index') }}">Article</a> /  Créer un article{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group pull-right" role="group">
+                <a role="button" class="btn btn-info" href="{{ path('admin_article_edit', { 'id': article.id }) }}"><i class="fa fa-edit"></i> Éditer</a>
+                <a role="button" class="btn btn-warning" href="{{ path('admin_article_index') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ article.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ article.titre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Datecreation</th>
+                        <td>{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Auteur</th>
+                        <td>{{ article.auteur }}</td>
+                    </tr>
+                    <tr>
+                        <th>Résumé</th>
+                        <td>{{ article.resume}}</td>
+                    </tr>
+                    <tr>
+                        <th>Contenu</th>
+                        <td>{{ article.contenu|raw}}</td>
+                    </tr>
+                    <tr>
+                        <th>Etat</th>
+                        <td>{% if article.etat %}<span class="tag tag-success">Publié</span>{% else %}<span class="tag tag-danger">Dépublié</span>{% endif %}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            {{ form_start(delete_form) }}
+                <button type="submit" class="btn btn-danger"><i class="fa fa-remove"></i> Supprimer</button>
+            {{ form_end(delete_form) }}
+         </div>
+    </div>
+{% endblock %}

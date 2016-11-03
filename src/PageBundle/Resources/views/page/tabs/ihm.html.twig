@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button id="add-row" class="btn btn-success pull-right" data-toggle="modal" data-target="#modalAddRow">
+            <i class="fa fa-plus"></i> Ajouter une nouvelle ligne
+        </button>
+    </div>
+</div>
+<hr />
+<div class="containerPageCreation">
+    
+    {% if page.getRows()|length == 0 %}
+        <div class="alert alert-warning alert-dismissible fade in norowcreated" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            Vous n'avez pas encore créé de ligne
+        </div>
+    {% else %}
+        {% for r in page.getRows() %}
+            <div id="newRow-{{r.getId()}}" class="row demoRow">
+                <div class="col-xs-12 col-remove">
+                    <span class="titleAdminRow">{{r.getTitreAdmin|raw|slice(0,50)}}</span>
+                    <a onclick="getModalEdit({{r.getId()}},'{{path('row_ajax_edit',{id:r.getId()})}}','modalEditRow')" class="add-addon" id="editRow" title="Modifier"><i class="fa fa-cog fa-opaciteme"></i></a>
+                    <a onclick="deleteRow({{page.getId()}},{{r.getId()}},'{{path('row_ajax_delete',{id:r.getId()})}}')" class="add-addon" id="deleteRow" title="Supprimer"><i class="fa fa-remove fa-opaciteme"></i></a>
+                </div>
+                {% for c in r.getCols() %}
+                    <div class="demoCol {{c.getCssClass()}}">
+                        <div class="column ui-sortable" onclick="getModalEdit({{r.getId()}},'{{path('col_ajax_edit',{id:c.getId()})}}','modalEditCol')">      
+                            <span class="titleAdminCell">{{c.getTitreAdmin|raw|slice(0,20)}}</span>
+                        </div>
+                        <div class="col-settings">
+                            <a class="add-addon" onclick="getModalEdit({{r.getId()}},'{{path('col_ajax_edit',{id:c.getId()})}}','modalEditCol')"><i class="fa fa-edit"></i> Editer</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% include "@PageViews/page/modal/modalAddRow.html.twig" %}
+{% include "@PageViews/page/modal/modalEditCol.html.twig" %}
+{% include "@PageViews/page/modal/modalEditRow.html.twig" %}

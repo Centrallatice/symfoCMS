@@ -1,0 +1,72 @@
+.demoRow{
+    margin: 10px 0;
+    background: #f2f2f2;
+    border-radius: 2px;
+    padding: 50px 5px 10px 0;
+}
+.demoRow span.titleAdminRow{
+    position: absolute;
+    left: 15px;
+    top: -45px;
+    font-size: 12px;
+}
+.demoRow .column.ui-sortable span.titleAdminCell{
+    font-size: 12px;
+    font-style: italic;
+    
+}
+.col-remove a#deleteRow{
+    right: 0px;
+    top: -50px;
+    position: absolute;
+}
+.col-remove a#editRow{
+    right: 15px;
+    top: -50px;
+    position: absolute;
+}
+.col-remove .fa-cog{
+    color:navy;
+    cursor: pointer;
+}
+.col-remove .fa-remove{
+    color:red;
+    cursor: pointer;
+}
+.demoRow .demoCol{
+    min-height: 40px;
+    text-align: center;
+}
+.demoRow .demoCol .column {
+    background: #fff;
+    min-height: 70px;
+    text-align: left;
+    padding:5px 10px;
+}
+
+.demoRow .demoCol .col-settings {
+    display: block;
+    width: 100%;
+    padding: 0 0 0 30px;
+    text-align: left;
+    position: absolute;
+    top: -25px;
+    right: 15px;
+    z-index: 1;
+}
+.col-settings a.add-addon {
+    color: #449d44;
+}
+.col-settings a {
+    padding: 2px 5px;
+    display: inline-block;
+    color: #333;
+    margin-left: 3px;
+    cursor:pointer;
+    float:right;
+    font-size: 12px;
+}
+.demoRow .demoCol .column:hover{
+    border:1px solid #04c6f7;
+    cursor:pointer;
+}

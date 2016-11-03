@@ -1,0 +1,43 @@
+{% extends "::admin.html.twig" %}
+
+{% block body %}
+    <h1>Cols list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cssclass</th>
+                <th>Cssid</th>
+                <th>Htmlcontent</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for col in cols %}
+            <tr>
+                <td><a href="{{ path('col_show', { 'id': col.id }) }}">{{ col.id }}</a></td>
+                <td>{{ col.cssClass }}</td>
+                <td>{{ col.cssId }}</td>
+                <td>{{ col.htmlContent }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('col_show', { 'id': col.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('col_edit', { 'id': col.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('col_new') }}">Create a new col</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+<form method="post" role="form" action="{{path('col_edit',{id:col.getID()})}}">
+    <div class="modal-body">
+        {{ form_row(edit_form.titreAdmin) }}
+        {{ form_row(edit_form.titreClient) }}
+        {{ form_row(edit_form.enteteType) }}
+        {{ form_row(edit_form.cssClass) }}
+        {{ form_row(edit_form.cssId) }}
+        {{ form_row(edit_form.htmlContent) }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    {{ form_end(edit_form) }}
+</form>

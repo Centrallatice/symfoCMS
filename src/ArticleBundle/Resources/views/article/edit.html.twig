@@ -1,0 +1,32 @@
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+{% endblock %}
+{% block breadcrumb %} <a href="{{ path('admin_article_index') }}">Article</a> /  Modification d'un article{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <a role="button" class="btn btn-primary pull-right" href="{{ path('admin_article_index') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">    
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <div class='text-center'>
+                    <input class='btn btn-success' type="submit" value="Enregister" />
+                </div>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'></script>
+    <script type='text/javascript' src='{{asset('js/vendor/froala/froala.min.js')}}'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js'></script>
+    <script type='text/javascript' src='{{asset('js/admin/article/init.js')}}'></script>
+{% endblock %}

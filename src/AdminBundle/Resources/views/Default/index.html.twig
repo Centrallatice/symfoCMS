@@ -1,0 +1,13 @@
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% include "@AdminViews/Home/topStat.html.twig" %}
+    {% include "@AdminViews/Home/mainStat.html.twig" %}
+    {% include "@AdminViews/Home/bottomStat.html.twig" %}
+{% endblock %}
+{% block javascripts %}            
+    {{ parent() }}
+    <script src="{{ asset('js/themes/admin/morris/morris-data.js') }}"></script>
+{% endblock %}

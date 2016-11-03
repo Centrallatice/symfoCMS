@@ -1,0 +1,50 @@
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <a role="button" class="btn btn-success pull-right" href="{{ path('admin_article_new') }}"><i class="fa fa-plus"></i> Créer un article</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class='table table-responsive'>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Datecreation</th>
+                        <th>Auteur</th>
+                        <th>Catégorie</th>
+                        <th>Etat</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td><a href="{{ path('admin_article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                        <td>{{ article.titre }}</td>
+                        <td>{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        <td>{{ article.auteur }}</td>
+                        <td>{% if article.category != null %}{{article.category.nom}}{% else %}Non catégorisé{% endif %}</td>
+                        <td>{% if article.etat %}<span class="tag tag-success">Publié</span>{% else %}<span class="tag tag-danger">Dépublié</span>{% endif %}</td>
+                        <td>
+                            
+                            <a role="button" href="{{ path('admin_article_show', { 'id': article.id }) }}" class="btn btn-info"><i class="fa fa-search"></i> Afficher</a>
+                               
+                                    <a role="button" href="{{ path('admin_article_edit', { 'id': article.id }) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier</a>
+                                
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

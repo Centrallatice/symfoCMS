@@ -48,11 +48,7 @@ h1.page-header{
 .bg-inverse {
     background-color: #282b30!important;
 }
-@media(min-width:768px) {
-    body {
-        margin-top: 50px;
-    }
-}
+
 
 #wrapper {
     padding-left: 0;
@@ -71,16 +67,6 @@ body.logged #page-wrapper{
 .huge {
     font-size: 50px;
     line-height: normal;
-}
-
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 225px;
-    }
-
-    #page-wrapper {
-        padding: 10px;
-    }
 }
 
 /* Top Navigation */
@@ -190,37 +176,38 @@ ul.alert-dropdown {
     width: 185px;
 }
 
+.tagify-container {
+    background-color: #fff;
+    padding: 0px 3px;
+    min-height: 30px;
+    overflow: auto;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: rgba(0,0,0,0.075) 0 1px 1px inset;
+    box-shadow: rgba(0,0,0,0.075) 0 1px 1px inset;
+}
+.tagify-container>span {
+    display: inline-block;
+    padding: 2px 5px;
+    margin: 3px;
+    border-radius: 2px;
+    border: 1px solid #00aff0;
+    background-color: #3ecbff;
+    color: #fff;
+}
+.tagify-container>input {
+    /*margin-top: 2px;*/
+    border: 0 none;
+    width: 200px;
+    /*height: auto;*/
+/*    -webkit-box-shadow: none;
+    box-shadow: none;*/
+}
 /* Side Navigation */
 .side-nav li.bordered-bottom{
     border-bottom: 2px solid #282b30;
 }
-@media(min-width:768px) {
-    .side-nav {
-        position: fixed;
-        top: 50px;
-        left: 225px;
-        width: 225px;
-        margin-left: -225px;
-        border: none;
-        border-radius: 0;
-        overflow-y: auto;
-        background-color: #363A41;
-        bottom: 0;
-        overflow-x: hidden;
-        padding-bottom: 40px;
-    }
-
-    .side-nav>li>a {
-        width: 225px;
-    }
-
-    .side-nav li a:hover,
-    .side-nav li a:focus {
-        outline: none;
-        background-color: #282b30 !important;
-    }
-}
-
 
 .side-nav>li {
     border: none;
@@ -385,4 +372,41 @@ ul.alert-dropdown {
 
 .bg-white {
     background: #fff;
+}
+
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+    .side-nav {
+        position: fixed;
+        top: 50px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: #363A41;
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+
+    .side-nav>li>a {
+        width: 225px;
+    }
+
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+        outline: none;
+        background-color: #282b30 !important;
+    }
 }

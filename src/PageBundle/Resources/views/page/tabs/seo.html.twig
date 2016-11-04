@@ -1,4 +1,20 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+    {{ form_label(form.titre) }}
+    {{ form_errors(form.titre) }}
+    {{ form_widget(form.titre) }}
+    
+    {{ form_label(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_widget(form.description) }}
+    
+    {{ form_label(form.keywords) }}
+    {{ form_errors(form.keywords) }}
+    <div class="tagify-container">
+        {{ form_widget(form.keywords) }}
+    </div>
+    {{ form_label(form.isHomepage) }}
+    {{ form_errors(form.isHomepage) }}
+    {{ form_widget(form.isHomepage) }}
     <input type="submit" class="btn btn-success" value="Enregistrer" />
 {{ form_end(form) }}

@@ -1,4 +1,8 @@
-
+$(document).ready(function(){
+   $('#pagebundle_page_keywords').keypress(function( event ) {
+        console.log(event.keyCode);
+   });
+});
 
 $('#modalAddRow').on('shown.bs.modal', function () {        
     $('#modalAddRow form').on('submit',function (event) {

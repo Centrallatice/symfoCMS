@@ -97,6 +97,7 @@ class PageController extends Controller
         
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Votre page a bien été modifié');
             return $this->redirectToRoute('page_edit', array('id' => $page->getId()));
         }
 

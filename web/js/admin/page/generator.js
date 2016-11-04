@@ -100,7 +100,7 @@ function addNewRowHTML(idPage,idRow,cols,title){
     
     
     var myDivRemove = $('<div></div>');
-    myDivRemove.addClass("col-xs-12").addClass("col-remove");
+    myDivRemove.addClass("col s12 m12 l12").addClass("col-remove");
     
     var spanTitle = $("<span></span>");
     $(spanTitle).html(title);

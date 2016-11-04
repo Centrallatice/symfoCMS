@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 {% endblock %}
-{% block breadcrumb %} <a href="{{ path('page_list') }}">Pages</a> /  Modifier une page{% endblock %}
+{% block breadcrumb %} <a class="breadcrumb" href="{{ path('page_list') }}">Pages</a> /  Modifier une page{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-xs-12">
-            <a role="button" class="btn btn-primary pull-right" href="{{ path('page_list') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
+        <div class="col s12 m12 l12">
+            <a role="button" class="blue btn pull-right" href="{{ path('page_list') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
         </div>
     </div>
     {% for flash_message in app.session.flashBag.get('success') %}
@@ -23,19 +23,17 @@
     {% endfor %}    
     <hr />      
     <div class="row">
-        <div class="col-xs-12">
-            <ul class="nav nav-pills nav-tabs" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#seo" role="tab">Titre / Description</a>
+        <div class="col s12 m12 l12">
+            <ul class="tabs">
+                <li class="tab col s3">
+                  <a class="active" href="#seo">Titre / Description</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#ihm" role="tab">Mise en page</a>
+                <li class="tab col s3">
+                  <a href="#ihm">Mise en page</a>
                 </li>
             </ul>
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="seo" role="tabpanel">{% include "@PageViews/page/tabs/seo.html.twig" %}</div>
-                <div class="tab-pane fade" id="ihm" role="tabpanel">{% include "@PageViews/page/tabs/ihm.html.twig" %}</div>
-            </div>
+            <div class="col s12" id="seo">{% include "@PageViews/page/tabs/seo.html.twig" %}</div>
+            <div class="col s12" id="ihm">{% include "@PageViews/page/tabs/ihm.html.twig" %}</div>
         </div>
     </div>
 {% endblock %}

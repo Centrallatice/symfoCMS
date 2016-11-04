@@ -4,10 +4,10 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 {% endblock %}
-{% block breadcrumb %} <a href="{{ path('admin_category_index') }}">Catégorie </a> /  Créer une catégorie{% endblock %}
+{% block breadcrumb %} <a class="breadcrumb" href="{{ path('admin_category_index') }}">Catégorie </a> /  Créer une catégorie{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col s12 m12 l12">
             <a role="button" class="btn btn-primary pull-right" href="{{ path('admin_category_index') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
        </div>
     </div> 
@@ -23,10 +23,10 @@
     {% endfor %}
     <hr />
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col s12 m12 l12">
             {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <input type="submit" class="btn btn-success" value="Enregistrer" />
+                <input type="submit" class="btn green" value="Enregistrer" />
             {{ form_end(form) }}
         </div>
     </div>        

@@ -1,10 +1,10 @@
 {% extends '::admin.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}{% endblock %}
-{% block breadcrumb %} <a href="{{ path('admin_article_index') }}">Article</a> /  Créer un article{% endblock %}
+{% block breadcrumb %} <a class="breadcrumb" href="{{ path('admin_article_index') }}">Article</a> /  Créer un article{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col s12 m12 l12">
             <div class="btn-group pull-right" role="group">
                 <a role="button" class="btn btn-info" href="{{ path('admin_article_edit', { 'id': article.id }) }}"><i class="fa fa-edit"></i> Éditer</a>
                 <a role="button" class="btn btn-warning" href="{{ path('admin_article_index') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col s12 m12 l12">
             <table class="table">
                 <tbody>
                     <tr>
@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col s12 m12 l12">
              <div class="form-inline">
                                 {{ form_start(delete_form) }}
                                     <input type="submit" class="btn btn-danger" value="Supprimer cet article">

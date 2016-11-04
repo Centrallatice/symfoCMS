@@ -55,7 +55,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form:
-        resources: ['bootstrap_3_layout.html.twig'] 
+        resources: ['materialize_layout.html.twig'] 
     paths:
         '%kernel.root_dir%/../src/AdminBundle/Resources/views': AdminViews
         '%kernel.root_dir%/../src/PageBundle/Resources/views': PageViews

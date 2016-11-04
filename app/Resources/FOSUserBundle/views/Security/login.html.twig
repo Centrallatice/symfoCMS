@@ -7,8 +7,8 @@
 {% block bodyclass %}hold-transition login-page{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 animated fadeIn logocontainer">
-            <div class="login-title col-xs-12">
+        <div class="col s12 m12 l12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 animated fadeIn logocontainer">
+            <div class="login-title col s12 m12 l12">
                 Administration du site : {{siteName}}
             </div>
             
@@ -17,10 +17,10 @@
             {% else %}
                 <span class="actionName reversed animated bounceInDown">Connexion</span>
                 <!-- /.login-logo -->
-                <div class="col-xs-12 nopadding">
+                <div class="col s12 m12 l12 nopadding">
                   <form action="{{ path("fos_user_security_check") }}" method="post">
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                        <div class="col-xs-12 login-box-body">
+                        <div class="col s12 m12 l12 login-box-body">
                             <div class="form-group has-feedback">
                                 <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control input-medium" required="required" placeholder="{{ 'security.login.username'|trans }}"/>
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -30,10 +30,10 @@
                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                             </div>
                         </div>
-                        <div class="col-xs-12">        
+                        <div class="col s12 m12 l12">        
                             {% if error %}
                                 <div class="row animated rubberBand">
-                                    <div class="col-xs-12">
+                                    <div class="col s12 m12 l12">
                                         <p class="alert-danger alert">
                                             {{ error.messageKey|trans(error.messageData, 'security') }}
                                         </p>
@@ -42,7 +42,7 @@
                             {% endif %}
                         </div>
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col s12 m12 l12">
                                 <div class="col-xs-4">
                                     <button type="submit" class="btn btn-primary btn-block btn-flat" id="_submit" name="_submit"/>{{ 'security.login.submit'|trans }}</button>
                                 </div>

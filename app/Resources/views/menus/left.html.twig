@@ -1,0 +1,63 @@
+<ul class="collapsible side-nav fixed" data-collapsible="accordion" id="nav-mobile" style="transform: translateX(0px);">
+    
+    <li class="logo">
+        <a id="logo-container" class="brand-logo "><i class="fa fa-edge fa-4x redme"></i></a>
+    </li>
+    <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+     </li>
+    <li>
+        <div class="collapsible-header">
+            <a href="{{path('admin_default_index')}}"><i class="fa fa-fw fa-home"></i> Accueil</a>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['page_new','page_list','page_edit'] %}active{% endif %}">
+            <i class="fa fa-fw fa-files-o"></i> Pages
+        </div>
+        <div class="collapsible-body" {% if app.request.get('_route') in ['page_new','page_list','page_edit'] %}style="display:block"{% endif %}>
+            <ul>
+                <li class="{% if app.request.get('_route') == 'page_new' %}active{% endif%}">
+                <a href="{{path('page_new')}}">Créer une page </a>
+                </li>
+                <li class="{% if app.request.get('_route') == 'page_list' %}active{% endif%}">
+                    <a href="{{path('page_list')}}">Gérer les pages</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['admin_article_new','admin_article_index'] %}active{% endif %}">
+            <i class="fa fa-fw fa-files-o"></i> Articles
+        </div>
+        <div {% if app.request.get('_route') in ['admin_article_new','admin_article_index'] %}style='display:block'{% endif %} class="collapsible-body">
+            <ul>
+                <li class="{% if app.request.get('_route') == 'admin_article_new' %}active{% endif%}">
+                    <a href="{{path('admin_article_new')}}">Créer un article</a>
+                </li>
+                <li class="{% if app.request.get('_route') == 'admin_article_index' %}active{% endif%}">
+                    <a href="{{path('admin_article_index')}}">Gérer les articles</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['admin_category_new','admin_category_index'] %}active{% endif %}">
+            <i class="fa fa-fw fa-folder-open-o"></i> Catégories
+        </div>
+        <div {% if app.request.get('_route') in ['admin_category_new','admin_category_index'] %}style='display:block'{% endif %} class="collapsible-body">
+            <ul>
+                <li class="{% if app.request.get('_route') == 'admin_category_new' %}active{% endif%}">
+                    <a href="{{path('admin_category_new')}}">Créer une catégorie</a>
+                </li>
+                <li class="{% if app.request.get('_route') == 'admin_category_index' %}active{% endif%}">
+                    <a href="{{path('admin_category_index')}}">Gérer une catégorie</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    
+</ul>

@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-xs-12">
-        <button id="add-row" class="btn btn-success pull-right" data-toggle="modal" data-target="#modalAddRow">
+    <div class="col s12 m12 l12">
+        <button id="add-row" class="btn green pull-right" data-toggle="modal" data-target="#modalAddRow">
             <i class="fa fa-plus"></i> Ajouter une nouvelle ligne
         </button>
     </div>
@@ -18,7 +18,7 @@
     {% else %}
         {% for r in page.getRows() %}
             <div id="newRow-{{r.getId()}}" class="row demoRow">
-                <div class="col-xs-12 col-remove">
+                <div class="col s12 m12 l12 col-remove">
                     <span class="titleAdminRow">{{r.getTitreAdmin|raw|slice(0,50)}}</span>
                     <a onclick="getModalEdit({{r.getId()}},'{{path('row_ajax_edit',{id:r.getId()})}}','modalEditRow')" class="add-addon" id="editRow" title="Modifier"><i class="fa fa-cog fa-opaciteme"></i></a>
                     <a onclick="deleteRow({{page.getId()}},{{r.getId()}},'{{path('row_ajax_delete',{id:r.getId()})}}')" class="add-addon" id="deleteRow" title="Supprimer"><i class="fa fa-remove fa-opaciteme"></i></a>

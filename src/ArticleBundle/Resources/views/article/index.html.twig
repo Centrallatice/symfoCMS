@@ -4,24 +4,23 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 {% endblock %}
-{% block breadcrumb %} <a href="{{ path('admin_article_index') }}">Articles</a> /  Mes articles{% endblock %}
+{% block breadcrumb %} <a class="breadcrumb" href="{{ path('admin_article_index') }}">Articles</a> /  Mes articles{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col l8">
             {{ form_start(form_category) }}
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon">
-                        Filtrer par catégorie :
-                    </span>
+                <div class="row valign-wrapper">
+                    <div class="col l7 valign">
                     {{ form_widget(form_category,{ 'attr': {'class': 'form-control form-control-sm'} }) }}
-                    <span class="input-group-addon">
-                        <input class='btn btn-success btn-sm' type="submit" value="Enregister" />
-                    </span>
+                    </div>
+                    <div class="col l5 valign">
+                        <button class='btn green btn-sm' type="submit"><i class="fa fa-filter"></i></button>
+                    </div>
                 </div>
             {{ form_end(form_category) }}
         </div>
-        <div class="col-lg-4">
-            <a role="button" class="btn btn-success pull-right" href="{{ path('admin_article_new') }}"><i class="fa fa-plus"></i> Créer un article</a>
+        <div class="col l4">
+            <a role="button" class="btn green pull-right" href="{{ path('admin_article_new') }}"><i class="fa fa-plus"></i> Créer un article</a>
         </div>
     </div>
     
@@ -36,7 +35,7 @@
     {% endfor %}    
     <hr />       
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col s12 m12 l12">
             <table class="table table-striped table-bordered table-sm">
                 <thead class="thead-inverse">
                     <tr>
@@ -60,16 +59,12 @@
                         <td class="text-center {% if article.etat %}bg-success{% else %}bg-danger{% endif %}">
                             {% if article.etat %}Publié{% else %}Non publié{% endif %}</td>
                         <td class="text-right">
-                            <div class="input-group-btn input-group-sm">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Actions
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ path('admin_article_show', { 'id': article.id }) }}"><i class="fa fa-search"></i> Voir</a>
-                                    <a class="dropdown-item" href="#" onclick="deleteAjaxArticle({{article.id}},'{{ path('article_ajax_delete', { 'id': article.id }) }}')"><i class="fa fa-remove"></i> Supprimer</a>
-                                    <a class="dropdown-item" href="{{ path('admin_article_edit', { 'id': article.id }) }}"><i class="fa fa-cog"></i> Modifier</a>
-                                </div>
-                            </div>
+                            <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue' href='#' data-activates='dropdown-action-{{article.id}}'>Actions</a>
+                            <ul id='dropdown-action-{{article.id}}' class='dropdown-content'>
+                                <li><a class="action-blue" href="{{ path('admin_article_show', { 'id': article.id }) }}"><i class="fa fa-search"></i> Voir</a></li>
+                                <li><a class="action-purple" href="{{ path('admin_article_edit', { 'id': article.id }) }}"><i class="fa fa-cog"></i> Modifier</a></li>
+                                <li><a class="action-red" href="#" onclick="deleteAjaxArticle({{article.id}},'{{ path('article_ajax_delete', { 'id': article.id }) }}')"><i class="fa fa-remove"></i> Supprimer</a></li>
+                            </ul>
                         </td>
                     </tr>
                 {% endfor %}

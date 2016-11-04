@@ -2,19 +2,19 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
-{% block breadcrumb %} <a href="{{ path('admin_article_index') }}">Catégorie</a> /  Modification d'une catégorie{% endblock %}
+{% block breadcrumb %} <a class="breadcrumb" href="{{ path('admin_article_index') }}">Catégorie</a> /  Modification d'une catégorie{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col s12 m12 l12">
             <a role="button" class="btn btn-primary pull-right" href="{{ path('admin_category_index') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
         </div>
     </div>
     {% include "::formback.html.twig" with {"form":edit_form} %}
      <div class="row">
-        <div class="col-xs-12">    
+        <div class="col s12 m12 l12">    
             {{ form_start(edit_form) }}
                 {{ form_widget(edit_form) }}
-                <input class='btn btn-success pull-right' type="submit" value="Enregister" />
+                <input class='btn green pull-right' type="submit" value="Enregister" />
             {{ form_end(edit_form) }}
         </div>
     </div>

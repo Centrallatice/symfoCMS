@@ -23,48 +23,48 @@ class __TwigTemplate_388d64e0cfec539c4cbe82c17f14b3e96f42946215e9d298c0c84f1dc99
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c62c8aba56e2e007d3c21749400e86eb93b9fa27040b1dd915f229150709213e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c62c8aba56e2e007d3c21749400e86eb93b9fa27040b1dd915f229150709213e->enter($__internal_c62c8aba56e2e007d3c21749400e86eb93b9fa27040b1dd915f229150709213e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "ArticleBundle:article:show.html.twig"));
+        $__internal_7ac89369fbf4763e7b0373e621af086a6ca8a9f64808eb3d8ce2038abc0a5d8d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7ac89369fbf4763e7b0373e621af086a6ca8a9f64808eb3d8ce2038abc0a5d8d->enter($__internal_7ac89369fbf4763e7b0373e621af086a6ca8a9f64808eb3d8ce2038abc0a5d8d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "ArticleBundle:article:show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_c62c8aba56e2e007d3c21749400e86eb93b9fa27040b1dd915f229150709213e->leave($__internal_c62c8aba56e2e007d3c21749400e86eb93b9fa27040b1dd915f229150709213e_prof);
+        $__internal_7ac89369fbf4763e7b0373e621af086a6ca8a9f64808eb3d8ce2038abc0a5d8d->leave($__internal_7ac89369fbf4763e7b0373e621af086a6ca8a9f64808eb3d8ce2038abc0a5d8d_prof);
 
     }
 
     // line 2
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_e09fed6531246e5fc556002e897da4e3a78128133dafc51bf46d158b2495238b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e09fed6531246e5fc556002e897da4e3a78128133dafc51bf46d158b2495238b->enter($__internal_e09fed6531246e5fc556002e897da4e3a78128133dafc51bf46d158b2495238b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "ArticleBundle:article:show.html.twig"));
+        $__internal_1cd1660e92be99123fe1aaa158ecada2c31e1f56afd5a63a0873149151ea1a58 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1cd1660e92be99123fe1aaa158ecada2c31e1f56afd5a63a0873149151ea1a58->enter($__internal_1cd1660e92be99123fe1aaa158ecada2c31e1f56afd5a63a0873149151ea1a58_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "ArticleBundle:article:show.html.twig"));
 
         // line 3
         echo "    ";
         $this->displayParentBlock("stylesheets", $context, $blocks);
         
-        $__internal_e09fed6531246e5fc556002e897da4e3a78128133dafc51bf46d158b2495238b->leave($__internal_e09fed6531246e5fc556002e897da4e3a78128133dafc51bf46d158b2495238b_prof);
+        $__internal_1cd1660e92be99123fe1aaa158ecada2c31e1f56afd5a63a0873149151ea1a58->leave($__internal_1cd1660e92be99123fe1aaa158ecada2c31e1f56afd5a63a0873149151ea1a58_prof);
 
     }
 
     // line 4
     public function block_breadcrumb($context, array $blocks = array())
     {
-        $__internal_b1259c34940b8941163a0a9222e320432d90b5700cea9f9eeece888849b327fe = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b1259c34940b8941163a0a9222e320432d90b5700cea9f9eeece888849b327fe->enter($__internal_b1259c34940b8941163a0a9222e320432d90b5700cea9f9eeece888849b327fe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "ArticleBundle:article:show.html.twig"));
+        $__internal_17418649c7ea635274a455f4e436e95589dc3ffad14993d205b823c34daf20e2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_17418649c7ea635274a455f4e436e95589dc3ffad14993d205b823c34daf20e2->enter($__internal_17418649c7ea635274a455f4e436e95589dc3ffad14993d205b823c34daf20e2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "ArticleBundle:article:show.html.twig"));
 
         echo " <a href=\"";
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_article_index");
         echo "\">Article</a> /  Créer un article";
         
-        $__internal_b1259c34940b8941163a0a9222e320432d90b5700cea9f9eeece888849b327fe->leave($__internal_b1259c34940b8941163a0a9222e320432d90b5700cea9f9eeece888849b327fe_prof);
+        $__internal_17418649c7ea635274a455f4e436e95589dc3ffad14993d205b823c34daf20e2->leave($__internal_17418649c7ea635274a455f4e436e95589dc3ffad14993d205b823c34daf20e2_prof);
 
     }
 
     // line 5
     public function block_body($context, array $blocks = array())
     {
-        $__internal_5c29aeda71d61d5b85c72462b9edbded6bd47b897a6bdbf7f3cb360be853c8df = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5c29aeda71d61d5b85c72462b9edbded6bd47b897a6bdbf7f3cb360be853c8df->enter($__internal_5c29aeda71d61d5b85c72462b9edbded6bd47b897a6bdbf7f3cb360be853c8df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "ArticleBundle:article:show.html.twig"));
+        $__internal_19b8642fda7203bf1a7e850af30e06cf3b446ec4582d9e369d7a2a5e7134d916 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_19b8642fda7203bf1a7e850af30e06cf3b446ec4582d9e369d7a2a5e7134d916->enter($__internal_19b8642fda7203bf1a7e850af30e06cf3b446ec4582d9e369d7a2a5e7134d916_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "ArticleBundle:article:show.html.twig"));
 
         // line 6
         echo "    <div class=\"row\">
@@ -130,37 +130,72 @@ class __TwigTemplate_388d64e0cfec539c4cbe82c17f14b3e96f42946215e9d298c0c84f1dc99
         echo "</td>
                     </tr>
                     <tr>
+                        <th>Mots-clés</th>
+                        <td>
+                            ";
+        // line 45
+        if ((twig_length_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "getKeywords", array(), "method")) > 0)) {
+            // line 46
+            echo "                                <ul>
+                                    ";
+            // line 47
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "getKeywords", array(), "method"));
+            foreach ($context['_seq'] as $context["_key"] => $context["k"]) {
+                // line 48
+                echo "                                        <li>";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["k"], "value", array()), "html", null, true);
+                echo "</li>
+                                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['k'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 50
+            echo "                                </ul>
+                            ";
+        }
+        // line 52
+        echo "                        </td>
+                    </tr>
+                    <tr>
                         <th>Etat</th>
                         <td>";
-        // line 44
+        // line 56
         if ($this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "etat", array())) {
             echo "<span class=\"tag tag-success\">Publié</span>";
         } else {
             echo "<span class=\"tag tag-danger\">Dépublié</span>";
         }
         echo "</td>
-                        
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <div class=\"row\">
-        <div class=\"col-xs-12 text-center\">
-            ";
-        // line 53
+        <div class=\"col-xs-12\">
+             <div class=\"form-inline\">
+                                ";
+        // line 65
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_start');
         echo "
-                <button type=\"submit\" class=\"btn btn-danger\"><i class=\"fa fa-remove\"></i> Supprimer</button>
-            ";
-        // line 55
+                                    <input type=\"submit\" class=\"btn btn-danger\" value=\"Supprimer cet article\">
+                                ";
+        // line 67
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_end');
         echo "
+                            </div><a href=\"";
+        // line 68
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_article_edit", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
+        echo "\" class=\"btn btn-primary\"><i class=\"fa fa-cog\"></i> Modifier</a>
+
+                
          </div>
     </div>
 ";
         
-        $__internal_5c29aeda71d61d5b85c72462b9edbded6bd47b897a6bdbf7f3cb360be853c8df->leave($__internal_5c29aeda71d61d5b85c72462b9edbded6bd47b897a6bdbf7f3cb360be853c8df_prof);
+        $__internal_19b8642fda7203bf1a7e850af30e06cf3b446ec4582d9e369d7a2a5e7134d916->leave($__internal_19b8642fda7203bf1a7e850af30e06cf3b446ec4582d9e369d7a2a5e7134d916_prof);
 
     }
 
@@ -176,7 +211,7 @@ class __TwigTemplate_388d64e0cfec539c4cbe82c17f14b3e96f42946215e9d298c0c84f1dc99
 
     public function getDebugInfo()
     {
-        return array (  157 => 55,  152 => 53,  136 => 44,  129 => 40,  122 => 36,  115 => 32,  106 => 28,  99 => 24,  92 => 20,  79 => 10,  75 => 9,  70 => 6,  64 => 5,  50 => 4,  42 => 3,  36 => 2,  11 => 1,);
+        return array (  190 => 68,  186 => 67,  181 => 65,  165 => 56,  159 => 52,  155 => 50,  146 => 48,  142 => 47,  139 => 46,  137 => 45,  129 => 40,  122 => 36,  115 => 32,  106 => 28,  99 => 24,  92 => 20,  79 => 10,  75 => 9,  70 => 6,  64 => 5,  50 => 4,  42 => 3,  36 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -231,19 +266,34 @@ class __TwigTemplate_388d64e0cfec539c4cbe82c17f14b3e96f42946215e9d298c0c84f1dc99
                         <td>{{ article.contenu|raw}}</td>
                     </tr>
                     <tr>
+                        <th>Mots-clés</th>
+                        <td>
+                            {% if article.getKeywords()|length >0 %}
+                                <ul>
+                                    {% for k in article.getKeywords() %}
+                                        <li>{{k.value}}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Etat</th>
                         <td>{% if article.etat %}<span class=\"tag tag-success\">Publié</span>{% else %}<span class=\"tag tag-danger\">Dépublié</span>{% endif %}</td>
-                        
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <div class=\"row\">
-        <div class=\"col-xs-12 text-center\">
-            {{ form_start(delete_form) }}
-                <button type=\"submit\" class=\"btn btn-danger\"><i class=\"fa fa-remove\"></i> Supprimer</button>
-            {{ form_end(delete_form) }}
+        <div class=\"col-xs-12\">
+             <div class=\"form-inline\">
+                                {{ form_start(delete_form) }}
+                                    <input type=\"submit\" class=\"btn btn-danger\" value=\"Supprimer cet article\">
+                                {{ form_end(delete_form) }}
+                            </div><a href=\"{{ path('admin_article_edit', { 'id': article.id }) }}\" class=\"btn btn-primary\"><i class=\"fa fa-cog\"></i> Modifier</a>
+
+                
          </div>
     </div>
 {% endblock %}

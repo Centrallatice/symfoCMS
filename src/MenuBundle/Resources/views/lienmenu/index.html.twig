@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lienmenus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Idlink</th>
+                <th>Targettype</th>
+                <th>Titleattribute</th>
+                <th>Cssclass</th>
+                <th>Imglink</th>
+                <th>Imgtypelink</th>
+                <th>Etat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lienMenu in lienMenus %}
+            <tr>
+                <td><a href="{{ path('lienmenu_show', { 'id': lienMenu.id }) }}">{{ lienMenu.id }}</a></td>
+                <td>{{ lienMenu.type }}</td>
+                <td>{{ lienMenu.idLink }}</td>
+                <td>{{ lienMenu.targetType }}</td>
+                <td>{{ lienMenu.titleAttribute }}</td>
+                <td>{{ lienMenu.cssClass }}</td>
+                <td>{{ lienMenu.imgLink }}</td>
+                <td>{{ lienMenu.imgTypeLink }}</td>
+                <td>{% if lienMenu.etat %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('lienmenu_show', { 'id': lienMenu.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('lienmenu_edit', { 'id': lienMenu.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lienmenu_new') }}">Create a new lienMenu</a>
+        </li>
+    </ul>
+{% endblock %}

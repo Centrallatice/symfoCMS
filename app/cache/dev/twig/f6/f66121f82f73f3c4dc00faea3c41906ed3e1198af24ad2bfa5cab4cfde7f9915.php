@@ -15,8 +15,8 @@ class __TwigTemplate_0c4e7f6352c5b67077dfb3658bac2e564280b22b31bad008dffbf7c97e4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c37554af92ac9ad8a8cc0ab779c25548027d81136845f8fc5ecc909bdbf49643 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c37554af92ac9ad8a8cc0ab779c25548027d81136845f8fc5ecc909bdbf49643->enter($__internal_c37554af92ac9ad8a8cc0ab779c25548027d81136845f8fc5ecc909bdbf49643_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PageBundle:col:edit.html.twig"));
+        $__internal_ca721b1bf83f099f6e8c18dbb6a854875bda8b374650ea4bf24f0a455489c7b4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ca721b1bf83f099f6e8c18dbb6a854875bda8b374650ea4bf24f0a455489c7b4->enter($__internal_ca721b1bf83f099f6e8c18dbb6a854875bda8b374650ea4bf24f0a455489c7b4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PageBundle:col:edit.html.twig"));
 
         // line 1
         echo "<form method=\"post\" role=\"form\" action=\"";
@@ -59,7 +59,7 @@ class __TwigTemplate_0c4e7f6352c5b67077dfb3658bac2e564280b22b31bad008dffbf7c97e4
 </form>
 ";
         
-        $__internal_c37554af92ac9ad8a8cc0ab779c25548027d81136845f8fc5ecc909bdbf49643->leave($__internal_c37554af92ac9ad8a8cc0ab779c25548027d81136845f8fc5ecc909bdbf49643_prof);
+        $__internal_ca721b1bf83f099f6e8c18dbb6a854875bda8b374650ea4bf24f0a455489c7b4->leave($__internal_ca721b1bf83f099f6e8c18dbb6a854875bda8b374650ea4bf24f0a455489c7b4_prof);
 
     }
 

@@ -10,7 +10,10 @@ class __TwigTemplate_2052980789bbf4979ab704a733f78d20c34e97f58002fae6bdbf4b0db7e
         // line 1
         $this->parent = $this->loadTemplate("::admin.html.twig", "@Article/category/index.html.twig", 1);
         $this->blocks = array(
+            'stylesheets' => array($this, 'block_stylesheets'),
+            'breadcrumb' => array($this, 'block_breadcrumb'),
             'body' => array($this, 'block_body'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -21,106 +24,283 @@ class __TwigTemplate_2052980789bbf4979ab704a733f78d20c34e97f58002fae6bdbf4b0db7e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d45f196576972d9c2f5a0c6efe3db47cc98686ce615706146021792e533a7ef0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d45f196576972d9c2f5a0c6efe3db47cc98686ce615706146021792e533a7ef0->enter($__internal_d45f196576972d9c2f5a0c6efe3db47cc98686ce615706146021792e533a7ef0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Article/category/index.html.twig"));
+        $__internal_5fae380d30331c98120831dc823bef3798c90afaf68a320edd3ade13ed3b88e6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_5fae380d30331c98120831dc823bef3798c90afaf68a320edd3ade13ed3b88e6->enter($__internal_5fae380d30331c98120831dc823bef3798c90afaf68a320edd3ade13ed3b88e6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Article/category/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_d45f196576972d9c2f5a0c6efe3db47cc98686ce615706146021792e533a7ef0->leave($__internal_d45f196576972d9c2f5a0c6efe3db47cc98686ce615706146021792e533a7ef0_prof);
+        $__internal_5fae380d30331c98120831dc823bef3798c90afaf68a320edd3ade13ed3b88e6->leave($__internal_5fae380d30331c98120831dc823bef3798c90afaf68a320edd3ade13ed3b88e6_prof);
 
     }
 
-    // line 3
+    // line 2
+    public function block_stylesheets($context, array $blocks = array())
+    {
+        $__internal_27dbfc67bad378b389f134554bfc4f332e802fc30757c2582a6336463629c3ca = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_27dbfc67bad378b389f134554bfc4f332e802fc30757c2582a6336463629c3ca->enter($__internal_27dbfc67bad378b389f134554bfc4f332e802fc30757c2582a6336463629c3ca_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/index.html.twig"));
+
+        // line 3
+        echo "    ";
+        $this->displayParentBlock("stylesheets", $context, $blocks);
+        echo "
+    <link rel=\"stylesheet\" href=\"";
+        // line 4
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/vendor/froala/froala.min.css"), "html", null, true);
+        echo "\">
+    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css\">
+";
+        
+        $__internal_27dbfc67bad378b389f134554bfc4f332e802fc30757c2582a6336463629c3ca->leave($__internal_27dbfc67bad378b389f134554bfc4f332e802fc30757c2582a6336463629c3ca_prof);
+
+    }
+
+    // line 7
+    public function block_breadcrumb($context, array $blocks = array())
+    {
+        $__internal_b7cfc4e32a25e7df7081706b58357141550b4dfc7c24dcb8d60333aa6fef5a2a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b7cfc4e32a25e7df7081706b58357141550b4dfc7c24dcb8d60333aa6fef5a2a->enter($__internal_b7cfc4e32a25e7df7081706b58357141550b4dfc7c24dcb8d60333aa6fef5a2a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/index.html.twig"));
+
+        echo " <a href=\"";
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_index");
+        echo "\">Catégories</a> /  Mes catégories";
+        
+        $__internal_b7cfc4e32a25e7df7081706b58357141550b4dfc7c24dcb8d60333aa6fef5a2a->leave($__internal_b7cfc4e32a25e7df7081706b58357141550b4dfc7c24dcb8d60333aa6fef5a2a_prof);
+
+    }
+
+    // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_35a5743148f88a27a3f2e3c1f089828e1e18ee7ccbd592f8d11be5613a0bec24 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_35a5743148f88a27a3f2e3c1f089828e1e18ee7ccbd592f8d11be5613a0bec24->enter($__internal_35a5743148f88a27a3f2e3c1f089828e1e18ee7ccbd592f8d11be5613a0bec24_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/index.html.twig"));
+        $__internal_3d16deefb227bc75f89cd095f8e0de97a6df35c9f4177adb889925afa2079e77 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_3d16deefb227bc75f89cd095f8e0de97a6df35c9f4177adb889925afa2079e77->enter($__internal_3d16deefb227bc75f89cd095f8e0de97a6df35c9f4177adb889925afa2079e77_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/index.html.twig"));
 
-        // line 4
-        echo "    <h1>Categories list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Auteur</th>
-                <th>Datecreation</th>
-                <th>Isactive</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        ";
-        // line 18
+        // line 9
+        echo "    <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <a role=\"button\" class=\"btn btn-success pull-right\" href=\"";
+        // line 11
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_new");
+        echo "\"><i class=\"fa fa-plus\"></i> Créer une nouvelle catégorie</a>
+        </div>
+    </div>
+    ";
+        // line 14
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashBag", array()), "get", array(0 => "success"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["flash_message"]) {
+            // line 15
+            echo "        <hr />
+        <div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">
+            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                <span aria-hidden=\"true\">&times;</span>
+            </button>
+           ";
+            // line 20
+            echo twig_escape_filter($this->env, $context["flash_message"], "html", null, true);
+            echo "
+       </div>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flash_message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 22
+        echo "    
+    <hr />      
+    
+    <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <table class=\"table table-striped table-bordered table-sm\">
+                <thead class=\"thead-inverse\">
+                    <tr>
+                        <th><input type=\"checkbox\" name=\"selected_category_master\" onclick=\"checkUncheckAll()\"></th>
+                        <th class=\"text-right\">#</th>
+                        <th>Nom</th>
+                        <th>Parent</th>
+                        <th>Auteur</th>
+                        <th>Créée le</th>
+                        <th>Etat</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                ";
+        // line 41
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : $this->getContext($context, "categories")));
+        $context['loop'] = array(
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        );
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
         foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-            // line 19
-            echo "            <tr>
-                <td><a href=\"";
-            // line 20
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_show", array("id" => $this->getAttribute($context["category"], "id", array()))), "html", null, true);
-            echo "\">";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "id", array()), "html", null, true);
-            echo "</a></td>
-                <td>";
-            // line 21
-            echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "nom", array()), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 22
-            echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "auteur", array()), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 23
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["category"], "dateCreation", array()), "d/m/Y h:i"), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 24
-            if ($this->getAttribute($context["category"], "isActive", array())) {
-                echo "Yes";
-            } else {
-                echo "No";
+            // line 42
+            echo "                    ";
+            if (($this->getAttribute($context["category"], "depth", array()) == 0)) {
+                // line 43
+                echo "                        <tr id=\"cat-";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "id", array()), "html", null, true);
+                echo "\">
+                            <td><input class=\"set_selection\" type=\"checkbox\" name=\"selected_category[]\" value=\"";
+                // line 44
+                echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "id", array()), "html", null, true);
+                echo "\"></td>
+                            <td><a href=\"";
+                // line 45
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_show", array("id" => $this->getAttribute($context["category"], "id", array()))), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "id", array()), "html", null, true);
+                echo "</a></td>
+                            <td>";
+                // line 46
+                echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "nom", array()), "html", null, true);
+                echo "</td>
+                            <td>";
+                // line 47
+                if (($this->getAttribute($context["category"], "getCategoryParente", array(), "method") != null)) {
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["category"], "getCategoryParente", array(), "method"), "getNom", array(), "method"), "html", null, true);
+                }
+                echo "</td>
+                            <td>";
+                // line 48
+                echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "auteur", array()), "html", null, true);
+                echo "</td>
+                            <td>";
+                // line 49
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["category"], "dateCreation", array()), "d/m/Y H:i"), "html", null, true);
+                echo "</td>
+                            <td class=\"text-center ";
+                // line 50
+                if ($this->getAttribute($context["category"], "isActive", array())) {
+                    echo "bg-success";
+                } else {
+                    echo "bg-danger";
+                }
+                echo "\">
+                                ";
+                // line 51
+                if ($this->getAttribute($context["category"], "isActive", array())) {
+                    echo "Publié";
+                } else {
+                    echo "Non publié";
+                }
+                echo "</td>
+                            <td class=\"text-right\">
+                                <div class=\"input-group-btn input-group-sm\">
+                                    <button type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                          Actions
+                                    </button>
+                                    <div class=\"dropdown-menu\">
+                                        <a class=\"dropdown-item\" href=\"";
+                // line 58
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_show", array("id" => $this->getAttribute($context["category"], "id", array()))), "html", null, true);
+                echo "\"><i class=\"fa fa-search\"></i> Voir</a>
+                                        <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteAjaxCategory(";
+                // line 59
+                echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "id", array()), "html", null, true);
+                echo ",'";
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("category_ajax_delete", array("id" => $this->getAttribute($context["category"], "id", array()))), "html", null, true);
+                echo "',true)\"><i class=\"fa fa-remove\"></i> Supprimer</a>
+                                        <a class=\"dropdown-item\" href=\"";
+                // line 60
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_edit", array("id" => $this->getAttribute($context["category"], "id", array()))), "html", null, true);
+                echo "\"><i class=\"fa fa-cog\"></i> Modifier</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        ";
+                // line 65
+                if ((twig_length_filter($this->env, $this->getAttribute($context["category"], "getCategoryEnfants", array(), "method")) > 0)) {
+                    // line 66
+                    echo "                            ";
+                    $this->loadTemplate("ArticleBundle:article:subCategory.html.twig", "@Article/category/index.html.twig", 66)->display(array_merge($context, array("Parent" => $context["category"], "Depth" => 1)));
+                    // line 67
+                    echo "                        ";
+                }
+                // line 68
+                echo "                    ";
             }
-            echo "</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href=\"";
-            // line 28
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_show", array("id" => $this->getAttribute($context["category"], "id", array()))), "html", null, true);
-            echo "\">show</a>
-                        </li>
-                        <li>
-                            <a href=\"";
-            // line 31
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_edit", array("id" => $this->getAttribute($context["category"], "id", array()))), "html", null, true);
-            echo "\">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        ";
+            // line 69
+            echo "                ";
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['length'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 37
-        echo "        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href=\"";
-        // line 42
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_new");
-        echo "\">Create a new category</a>
-        </li>
-    </ul>
+        // line 70
+        echo "                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan=\"10\">
+                            <div class=\"input-group-btn input-group-sm\">
+                                <button type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                      Pour la sélection
+                                </button>
+                                <div class=\"dropdown-menu\">
+                                    <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteAjaxCategories('";
+        // line 79
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("category_ajax_delete", array("id" => 0));
+        echo "')\"><i class=\"fa fa-remove\"></i> Supprimer la sélection</a>
+                                    <a class=\"dropdown-item\" href=\"#\" onclick=\"changeStateAjaxCategories('";
+        // line 80
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("category_ajax_change_state");
+        echo "',true)\"><i class=\"fa fa-power-off greenme\"></i> Activer la sélection</a>
+                                    <a class=\"dropdown-item\" href=\"#\" onclick=\"changeStateAjaxCategories('";
+        // line 81
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("category_ajax_change_state");
+        echo "',false)\"><i class=\"fa fa-power-off redme\"></i> Désactiver la sélection</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    
 ";
         
-        $__internal_35a5743148f88a27a3f2e3c1f089828e1e18ee7ccbd592f8d11be5613a0bec24->leave($__internal_35a5743148f88a27a3f2e3c1f089828e1e18ee7ccbd592f8d11be5613a0bec24_prof);
+        $__internal_3d16deefb227bc75f89cd095f8e0de97a6df35c9f4177adb889925afa2079e77->leave($__internal_3d16deefb227bc75f89cd095f8e0de97a6df35c9f4177adb889925afa2079e77_prof);
+
+    }
+
+    // line 92
+    public function block_javascripts($context, array $blocks = array())
+    {
+        $__internal_d402fd8ba77e3412ec9d9e6e488343644dd9b288f7048379ceab3371fd547440 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d402fd8ba77e3412ec9d9e6e488343644dd9b288f7048379ceab3371fd547440->enter($__internal_d402fd8ba77e3412ec9d9e6e488343644dd9b288f7048379ceab3371fd547440_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/index.html.twig"));
+
+        // line 93
+        echo "    ";
+        $this->displayParentBlock("javascripts", $context, $blocks);
+        echo "
+    <script type='text/javascript' src='";
+        // line 94
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/vendor/bootbox/bootbox.min.js"), "html", null, true);
+        echo "'>
+    </script><script type='text/javascript' src='";
+        // line 95
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/admin/category/generator.js"), "html", null, true);
+        echo "'></script>
+";
+        
+        $__internal_d402fd8ba77e3412ec9d9e6e488343644dd9b288f7048379ceab3371fd547440->leave($__internal_d402fd8ba77e3412ec9d9e6e488343644dd9b288f7048379ceab3371fd547440_prof);
 
     }
 
@@ -136,7 +316,7 @@ class __TwigTemplate_2052980789bbf4979ab704a733f78d20c34e97f58002fae6bdbf4b0db7e
 
     public function getDebugInfo()
     {
-        return array (  117 => 42,  110 => 37,  98 => 31,  92 => 28,  81 => 24,  77 => 23,  73 => 22,  69 => 21,  63 => 20,  60 => 19,  56 => 18,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  299 => 95,  295 => 94,  290 => 93,  284 => 92,  266 => 81,  262 => 80,  258 => 79,  247 => 70,  233 => 69,  230 => 68,  227 => 67,  224 => 66,  222 => 65,  214 => 60,  208 => 59,  204 => 58,  190 => 51,  182 => 50,  178 => 49,  174 => 48,  168 => 47,  164 => 46,  158 => 45,  154 => 44,  149 => 43,  146 => 42,  129 => 41,  108 => 22,  99 => 20,  92 => 15,  88 => 14,  82 => 11,  78 => 9,  72 => 8,  58 => 7,  48 => 4,  43 => 3,  37 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -149,51 +329,101 @@ class __TwigTemplate_2052980789bbf4979ab704a733f78d20c34e97f58002fae6bdbf4b0db7e
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% extends '::admin.html.twig' %}
-
-{% block body %}
-    <h1>Categories list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Auteur</th>
-                <th>Datecreation</th>
-                <th>Isactive</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td><a href=\"{{ path('admin_category_show', { 'id': category.id }) }}\">{{ category.id }}</a></td>
-                <td>{{ category.nom }}</td>
-                <td>{{ category.auteur }}</td>
-                <td>{{ category.dateCreation| date('d/m/Y h:i') }}</td>
-                <td>{% if category.isActive %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href=\"{{ path('admin_category_show', { 'id': category.id }) }}\">show</a>
-                        </li>
-                        <li>
-                            <a href=\"{{ path('admin_category_edit', { 'id': category.id }) }}\">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href=\"{{ path('admin_category_new') }}\">Create a new category</a>
-        </li>
-    </ul>
+        return new Twig_Source("{% extends \"::admin.html.twig\" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel=\"stylesheet\" href=\"{{ asset('css/vendor/froala/froala.min.css') }}\">
+    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css\">
 {% endblock %}
-", "@Article/category/index.html.twig", "C:\\Users\\sylvain.dupont\\Desktop\\Projets Web\\symfoCMS\\src\\ArticleBundle\\Resources\\views\\category\\index.html.twig");
+{% block breadcrumb %} <a href=\"{{ path('admin_category_index') }}\">Catégories</a> /  Mes catégories{% endblock %}
+{% block body %}
+    <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <a role=\"button\" class=\"btn btn-success pull-right\" href=\"{{ path('admin_category_new') }}\"><i class=\"fa fa-plus\"></i> Créer une nouvelle catégorie</a>
+        </div>
+    </div>
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <hr />
+        <div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">
+            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                <span aria-hidden=\"true\">&times;</span>
+            </button>
+           {{ flash_message }}
+       </div>
+    {% endfor %}    
+    <hr />      
+    
+    <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <table class=\"table table-striped table-bordered table-sm\">
+                <thead class=\"thead-inverse\">
+                    <tr>
+                        <th><input type=\"checkbox\" name=\"selected_category_master\" onclick=\"checkUncheckAll()\"></th>
+                        <th class=\"text-right\">#</th>
+                        <th>Nom</th>
+                        <th>Parent</th>
+                        <th>Auteur</th>
+                        <th>Créée le</th>
+                        <th>Etat</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for category in categories %}
+                    {% if category.depth==0 %}
+                        <tr id=\"cat-{{category.id}}\">
+                            <td><input class=\"set_selection\" type=\"checkbox\" name=\"selected_category[]\" value=\"{{category.id}}\"></td>
+                            <td><a href=\"{{ path('admin_category_show', { 'id': category.id }) }}\">{{ category.id }}</a></td>
+                            <td>{{ category.nom }}</td>
+                            <td>{% if category.getCategoryParente() != null %}{{ category.getCategoryParente().getNom() }}{% endif %}</td>
+                            <td>{{ category.auteur }}</td>
+                            <td>{{ category.dateCreation| date('d/m/Y H:i') }}</td>
+                            <td class=\"text-center {% if category.isActive %}bg-success{% else %}bg-danger{% endif %}\">
+                                {% if category.isActive %}Publié{% else %}Non publié{% endif %}</td>
+                            <td class=\"text-right\">
+                                <div class=\"input-group-btn input-group-sm\">
+                                    <button type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                          Actions
+                                    </button>
+                                    <div class=\"dropdown-menu\">
+                                        <a class=\"dropdown-item\" href=\"{{ path('admin_category_show', { 'id': category.id }) }}\"><i class=\"fa fa-search\"></i> Voir</a>
+                                        <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteAjaxCategory({{category.id}},'{{ path('category_ajax_delete', { 'id': category.id }) }}',true)\"><i class=\"fa fa-remove\"></i> Supprimer</a>
+                                        <a class=\"dropdown-item\" href=\"{{ path('admin_category_edit', { 'id': category.id }) }}\"><i class=\"fa fa-cog\"></i> Modifier</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% if category.getCategoryEnfants()|length>0%}
+                            {% include 'ArticleBundle:article:subCategory.html.twig' with {'Parent': category,'Depth':1} %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan=\"10\">
+                            <div class=\"input-group-btn input-group-sm\">
+                                <button type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                      Pour la sélection
+                                </button>
+                                <div class=\"dropdown-menu\">
+                                    <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteAjaxCategories('{{path('category_ajax_delete', { 'id': 0 })}}')\"><i class=\"fa fa-remove\"></i> Supprimer la sélection</a>
+                                    <a class=\"dropdown-item\" href=\"#\" onclick=\"changeStateAjaxCategories('{{path('category_ajax_change_state')}}',true)\"><i class=\"fa fa-power-off greenme\"></i> Activer la sélection</a>
+                                    <a class=\"dropdown-item\" href=\"#\" onclick=\"changeStateAjaxCategories('{{path('category_ajax_change_state')}}',false)\"><i class=\"fa fa-power-off redme\"></i> Désactiver la sélection</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'>
+    </script><script type='text/javascript' src='{{asset('js/admin/category/generator.js')}}'></script>
+{% endblock %}", "@Article/category/index.html.twig", "C:\\Users\\sylvain.dupont\\Desktop\\Projets Web\\symfoCMS\\src\\ArticleBundle\\Resources\\views\\category\\index.html.twig");
     }
 }

@@ -102,7 +102,7 @@ class CategoryController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Votre catégorie a bien été modifié');
             return $this->redirectToRoute('admin_category_edit', array('id' => $category->getId()));
         }
 

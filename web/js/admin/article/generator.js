@@ -1,3 +1,5 @@
+
+
 function deleteAjaxArticle(idArticle,url){
     bootbox.confirm({
         title : "Confirmation de la suppression",

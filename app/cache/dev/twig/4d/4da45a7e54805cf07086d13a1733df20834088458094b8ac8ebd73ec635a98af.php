@@ -21,20 +21,20 @@ class __TwigTemplate_e385b85ff9fbddc4f3acf7b0f301169db0cf237ae89a52a84216f7358cc
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9e70799af1f039b0c958dea3998478ddeb196aeadeb7104af9b42d9d86f7acd9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9e70799af1f039b0c958dea3998478ddeb196aeadeb7104af9b42d9d86f7acd9->enter($__internal_9e70799af1f039b0c958dea3998478ddeb196aeadeb7104af9b42d9d86f7acd9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Article/category/show.html.twig"));
+        $__internal_79d024da62bb38c25de9a07f12c2a3a6743e1179fffc9e160135ef997a3a1c89 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_79d024da62bb38c25de9a07f12c2a3a6743e1179fffc9e160135ef997a3a1c89->enter($__internal_79d024da62bb38c25de9a07f12c2a3a6743e1179fffc9e160135ef997a3a1c89_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Article/category/show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9e70799af1f039b0c958dea3998478ddeb196aeadeb7104af9b42d9d86f7acd9->leave($__internal_9e70799af1f039b0c958dea3998478ddeb196aeadeb7104af9b42d9d86f7acd9_prof);
+        $__internal_79d024da62bb38c25de9a07f12c2a3a6743e1179fffc9e160135ef997a3a1c89->leave($__internal_79d024da62bb38c25de9a07f12c2a3a6743e1179fffc9e160135ef997a3a1c89_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_a73d11f19391bccd6f7b20691e4de69a2ed8534663c37a0828fc978a3de40feb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a73d11f19391bccd6f7b20691e4de69a2ed8534663c37a0828fc978a3de40feb->enter($__internal_a73d11f19391bccd6f7b20691e4de69a2ed8534663c37a0828fc978a3de40feb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/show.html.twig"));
+        $__internal_df72300648d701834d46785fb29809aebb9b01dfbd4b58a6dd34095925de2948 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_df72300648d701834d46785fb29809aebb9b01dfbd4b58a6dd34095925de2948->enter($__internal_df72300648d701834d46785fb29809aebb9b01dfbd4b58a6dd34095925de2948_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/show.html.twig"));
 
         // line 4
         echo "    <h1>Category</h1>
@@ -66,7 +66,7 @@ class __TwigTemplate_e385b85ff9fbddc4f3acf7b0f301169db0cf237ae89a52a84216f7358cc
                 <th>Datecreation</th>
                 <td>";
         // line 22
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "dateCreation", array()), "d/m/Y h:i"), "html", null, true);
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "dateCreation", array()), "d/m/Y H:i"), "html", null, true);
         echo "</td>
             </tr>
             <tr>
@@ -110,7 +110,7 @@ class __TwigTemplate_e385b85ff9fbddc4f3acf7b0f301169db0cf237ae89a52a84216f7358cc
     </ul>
 ";
         
-        $__internal_a73d11f19391bccd6f7b20691e4de69a2ed8534663c37a0828fc978a3de40feb->leave($__internal_a73d11f19391bccd6f7b20691e4de69a2ed8534663c37a0828fc978a3de40feb_prof);
+        $__internal_df72300648d701834d46785fb29809aebb9b01dfbd4b58a6dd34095925de2948->leave($__internal_df72300648d701834d46785fb29809aebb9b01dfbd4b58a6dd34095925de2948_prof);
 
     }
 
@@ -160,7 +160,7 @@ class __TwigTemplate_e385b85ff9fbddc4f3acf7b0f301169db0cf237ae89a52a84216f7358cc
             </tr>
             <tr>
                 <th>Datecreation</th>
-                <td>{{ category.dateCreation | date('d/m/Y h:i') }}</td>
+                <td>{{ category.dateCreation | date('d/m/Y H:i') }}</td>
             </tr>
             <tr>
                 <th>Isactive</th>

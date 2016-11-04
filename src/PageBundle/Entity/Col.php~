@@ -242,4 +242,28 @@ class Col
     {
         return $this->modules;
     }
+
+    /**
+     * Set enteteType
+     *
+     * @param string $enteteType
+     *
+     * @return Col
+     */
+    public function setEnteteType($enteteType)
+    {
+        $this->enteteType = $enteteType;
+
+        return $this;
+    }
+
+    /**
+     * Get enteteType
+     *
+     * @return string
+     */
+    public function getEnteteType()
+    {
+        return $this->enteteType;
+    }
 }

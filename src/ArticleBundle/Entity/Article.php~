@@ -68,7 +68,11 @@ class Article
     */
     private $category;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="PageBundle\Entity\keyWordsArticle",mappedBy="associationId", cascade={"remove"})
+    */
+    
+    private $keywords;
     /**
      * Get id
      *

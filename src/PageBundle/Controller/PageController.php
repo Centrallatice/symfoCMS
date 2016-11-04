@@ -36,13 +36,30 @@ class PageController extends Controller
     public function newAction(Request $request)
     {
         $page = new Page();
+        $user = $this->getUser();
         $form = $this->createForm('PageBundle\Form\PageType', $page);
         $form->handleRequest($request);
-        $user = $this->getUser();
         
-        if ($form->isSubmitted() && $form->isValid()) {
-            $page->setAuteur($user->getUsername());
+        
+        if ($form->isValid() && $form->isSubmitted()) {
+            $keyWords = explode(";",$request->get("pagebundle_page_keywords_final"));
             $em = $this->getDoctrine()->getManager();
+            $page->setAuteur($user->getUsername());
+            $em->persist($page);
+            $em->flush();
+            
+        
+            foreach($keyWords as $k=>$v):
+                if(trim($v)!=""):
+                    $k = new \PageBundle\Entity\keyWordsPage();
+                    $k->setValue($v);
+                    $k->setAssociationType("page");
+                    $k->setAssociationId($page);
+                    $page->addKeyword($k);
+                    $em->persist($k);
+                endif;
+            endforeach;
+
             if($page->getIsHomepage()):
                 $pages = $em->getRepository('PageBundle:Page')->findAll();
                 foreach($pages as $p):
@@ -53,8 +70,10 @@ class PageController extends Controller
             
             $em->persist($page);
             $em->flush();
+            
             $this->addFlash('success', 'Votre page a bien été créé, vous pouvez a présent la personnaliser');
             return $this->redirectToRoute('page_edit', array('id' => $page->getId()));
+            
         }
 
         return $this->render('PageBundle:page:new.html.twig', array(
@@ -87,17 +106,34 @@ class PageController extends Controller
      */
     public function editAction(Request $request, Page $page)
     {
-//        $deleteForm = $this->createDeleteForm($page);
         $editForm = $this->createForm('PageBundle\Form\PageType', $page);
         $editForm->handleRequest($request);
         
         $row = new Row();
         $rowForm = $this->createForm('PageBundle\Form\RowType', $row);
         
-        
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            foreach($page->getKeywords() as $actualKW):
+                $page->removeKeyword($actualKW);
+                $em->remove($actualKW);
+            endforeach;
+            $em->persist($page);
+            
+            $keyWords = explode(";",$request->get("pagebundle_page_keywords_final"));
+            foreach($keyWords as $k=>$v):
+                if(trim($v)!=""):
+                    $k = new \PageBundle\Entity\keyWordsPage();
+                    $k->setValue($v);
+                    $k->setAssociationType("page");
+                    $k->setAssociationId($page);
+                    $page->addKeyword($k);
+                    $em->persist($k);
+                endif;
+            endforeach;
+            
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Votre page a bien été modifié');
+            $this->addFlash('success', 'Votre page a bien été modifiée');
             return $this->redirectToRoute('page_edit', array('id' => $page->getId()));
         }
 

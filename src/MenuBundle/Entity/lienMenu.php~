@@ -1,0 +1,89 @@
+<?php
+
+namespace MenuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * lienMenu
+ *
+ * @ORM\Table(name="lien_menu")
+ * @ORM\Entity(repositoryClass="MenuBundle\Repository\lienMenuRepository")
+ */
+class lienMenu
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="idLink", type="integer", nullable=true)
+     */
+    private $idLink;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="targetType", type="string", length=255, nullable=true)
+     */
+    private $targetType;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="TemplateBundle\Entity\Template", cascade={"persist"})
+     */
+    private $template;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titleAttribute", type="string", length=255, nullable=true)
+     */
+    private $titleAttribute;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cssClass", type="string", length=255, nullable=true)
+     */
+    private $cssClass;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgLink", type="string", length=255, nullable=true)
+     */
+    private $imgLink;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgTypeLink", type="string", length=255, nullable=true)
+     */
+    private $imgTypeLink;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="etat", type="boolean")
+     */
+    private $etat;
+
+
+}
+

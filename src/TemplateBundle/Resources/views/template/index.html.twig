@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Templates list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Folderbasepathname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for template in templates %}
+            <tr>
+                <td><a href="{{ path('template_show', { 'id': template.id }) }}">{{ template.id }}</a></td>
+                <td>{{ template.nom }}</td>
+                <td>{{ template.description }}</td>
+                <td>{{ template.folderBasePathName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('template_show', { 'id': template.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('template_edit', { 'id': template.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('template_new') }}">Create a new template</a>
+        </li>
+    </ul>
+{% endblock %}

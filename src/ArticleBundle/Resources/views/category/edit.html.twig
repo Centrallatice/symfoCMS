@@ -1,21 +1,21 @@
-{% extends '::admin.html.twig' %}
-
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block breadcrumb %} <a href="{{ path('admin_article_index') }}">Catégorie</a> /  Modification d'une catégorie{% endblock %}
 {% block body %}
-    <h1>Category edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_category_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-xs-12">
+            <a role="button" class="btn btn-primary pull-right" href="{{ path('admin_category_index') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
+        </div>
+    </div>
+    {% include "::formback.html.twig" with {"form":edit_form} %}
+     <div class="row">
+        <div class="col-xs-12">    
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input class='btn btn-success pull-right' type="submit" value="Enregister" />
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
 {% endblock %}

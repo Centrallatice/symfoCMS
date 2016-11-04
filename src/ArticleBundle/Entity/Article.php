@@ -68,7 +68,11 @@ class Article
     */
     private $category;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="PageBundle\Entity\keyWordsArticle",mappedBy="associationId", cascade={"remove"})
+    */
+    
+    private $keywords;
     /**
      * Get id
      *
@@ -251,5 +255,39 @@ class Article
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add keyword
+     *
+     * @param \PageBundle\Entity\keyWordsArticle $keyword
+     *
+     * @return Article
+     */
+    public function addKeyword(\PageBundle\Entity\keyWordsArticle $keyword)
+    {
+        $this->keywords[] = $keyword;
+
+        return $this;
+    }
+
+    /**
+     * Remove keyword
+     *
+     * @param \PageBundle\Entity\keyWordsArticle $keyword
+     */
+    public function removeKeyword(\PageBundle\Entity\keyWordsArticle $keyword)
+    {
+        $this->keywords->removeElement($keyword);
+    }
+
+    /**
+     * Get keywords
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
     }
 }

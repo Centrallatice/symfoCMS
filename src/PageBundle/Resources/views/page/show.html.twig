@@ -24,7 +24,15 @@
                     </tr>
                     <tr>
                         <th>Mots-clés</th>
-                        <td>{{ page.keywords }}</td>
+                        <td>
+                            {% if page.getKeywords()|length >0 %}
+                                <ul>
+                                    {% for k in page.getKeywords() %}
+                                        <li>{{k.value}}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </td>
                     </tr>
                     <tr>
                         <th>Auteur</th>

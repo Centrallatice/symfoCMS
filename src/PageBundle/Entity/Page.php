@@ -37,10 +37,9 @@ class Page
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="keywords", type="string", length=255)
-     */
+     * @ORM\OneToMany(targetEntity="PageBundle\Entity\keyWordsPage",mappedBy="associationId", cascade={"remove"})
+    */
+    
     private $keywords;
 
     /**
@@ -78,8 +77,11 @@ class Page
     public function __construct() {
         $this->setCreationDate(new \DateTime());
         $this->rows = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->keywords = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    
 
     /**
      * Get id
@@ -137,30 +139,6 @@ class Page
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set keywords
-     *
-     * @param string $keywords
-     *
-     * @return Page
-     */
-    public function setKeywords($keywords)
-    {
-        $this->keywords = $keywords;
-
-        return $this;
-    }
-
-    /**
-     * Get keywords
-     *
-     * @return string
-     */
-    public function getKeywords()
-    {
-        return $this->keywords;
     }
 
     /**
@@ -233,6 +211,40 @@ class Page
     public function getCreationDate()
     {
         return $this->creationDate;
+    }
+
+    /**
+     * Add keyword
+     *
+     * @param \PageBundle\Entity\keyWordsPage $keyword
+     *
+     * @return Page
+     */
+    public function addKeyword(\PageBundle\Entity\keyWordsPage $keyword)
+    {
+        $this->keywords[] = $keyword;
+
+        return $this;
+    }
+
+    /**
+     * Remove keyword
+     *
+     * @param \PageBundle\Entity\keyWordsPage $keyword
+     */
+    public function removeKeyword(\PageBundle\Entity\keyWordsPage $keyword)
+    {
+        $this->keywords->removeElement($keyword);
+    }
+
+    /**
+     * Get keywords
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
     }
 
     /**

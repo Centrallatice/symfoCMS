@@ -8,13 +8,26 @@
     {{ form_errors(form.description) }}
     {{ form_widget(form.description) }}
     
-    {{ form_label(form.keywords) }}
-    {{ form_errors(form.keywords) }}
+    <label class="control-label required" for="pagebundle_page_titre">Mots-clés</label>  
     <div class="tagify-container">
-        {{ form_widget(form.keywords) }}
+        {% if page.getKeywords()|length >0 %}
+            {% for k in page.getKeywords() %}
+                <div role="alert" class="kw alert alert-dismissible fade in">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">×</span></button>{{k.value}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <input type="text" id="pagebundle_page_keywords_fake" class="form-control">
     </div>
+    
+    <input 
+        type="hidden" 
+        name="pagebundle_page_keywords_final" 
+        id="pagebundle_page_keywords_final"
+        {% if page.getKeywords()|length >0 %}value="{% for k in page.getKeywords() %}{{k.value~';'}}{% endfor %}"{% endif %}>
+    
     {{ form_label(form.isHomepage) }}
     {{ form_errors(form.isHomepage) }}
     {{ form_widget(form.isHomepage) }}
-    <input type="submit" class="btn btn-success" value="Enregistrer" />
+    <input type="submit" class="btn btn-success  pull-right" value="Enregistrer" />
 {{ form_end(form) }}

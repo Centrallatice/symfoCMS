@@ -13,6 +13,7 @@ class __TwigTemplate_247aec69a38cdac761ab4bd7592459352b06ca70d4a5df6eae8f330bab1
             'stylesheets' => array($this, 'block_stylesheets'),
             'breadcrumb' => array($this, 'block_breadcrumb'),
             'body' => array($this, 'block_body'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -23,20 +24,20 @@ class __TwigTemplate_247aec69a38cdac761ab4bd7592459352b06ca70d4a5df6eae8f330bab1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_349186025165f96b95dcf62de9262cdfc2ba980d8de38dc9e3ffca47ab5acfcf = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_349186025165f96b95dcf62de9262cdfc2ba980d8de38dc9e3ffca47ab5acfcf->enter($__internal_349186025165f96b95dcf62de9262cdfc2ba980d8de38dc9e3ffca47ab5acfcf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@PageViews/page\\index.html.twig"));
+        $__internal_9fa71cead3f7915730bef3cb798707becd38ebb68969bec24ed8efc84fa705b8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_9fa71cead3f7915730bef3cb798707becd38ebb68969bec24ed8efc84fa705b8->enter($__internal_9fa71cead3f7915730bef3cb798707becd38ebb68969bec24ed8efc84fa705b8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@PageViews/page\\index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_349186025165f96b95dcf62de9262cdfc2ba980d8de38dc9e3ffca47ab5acfcf->leave($__internal_349186025165f96b95dcf62de9262cdfc2ba980d8de38dc9e3ffca47ab5acfcf_prof);
+        $__internal_9fa71cead3f7915730bef3cb798707becd38ebb68969bec24ed8efc84fa705b8->leave($__internal_9fa71cead3f7915730bef3cb798707becd38ebb68969bec24ed8efc84fa705b8_prof);
 
     }
 
     // line 2
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_5fc6dac3227b26417d1c3ec2305ec7a0bd310d9350925a940b5482f2b3a30bd4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5fc6dac3227b26417d1c3ec2305ec7a0bd310d9350925a940b5482f2b3a30bd4->enter($__internal_5fc6dac3227b26417d1c3ec2305ec7a0bd310d9350925a940b5482f2b3a30bd4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\index.html.twig"));
+        $__internal_7bc735333cbb139baccb097a053ca4b3830e56ca0a8adf0901c34c3bbe1db59f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7bc735333cbb139baccb097a053ca4b3830e56ca0a8adf0901c34c3bbe1db59f->enter($__internal_7bc735333cbb139baccb097a053ca4b3830e56ca0a8adf0901c34c3bbe1db59f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\index.html.twig"));
 
         // line 3
         echo "    ";
@@ -52,29 +53,29 @@ class __TwigTemplate_247aec69a38cdac761ab4bd7592459352b06ca70d4a5df6eae8f330bab1
         echo "\">
 ";
         
-        $__internal_5fc6dac3227b26417d1c3ec2305ec7a0bd310d9350925a940b5482f2b3a30bd4->leave($__internal_5fc6dac3227b26417d1c3ec2305ec7a0bd310d9350925a940b5482f2b3a30bd4_prof);
+        $__internal_7bc735333cbb139baccb097a053ca4b3830e56ca0a8adf0901c34c3bbe1db59f->leave($__internal_7bc735333cbb139baccb097a053ca4b3830e56ca0a8adf0901c34c3bbe1db59f_prof);
 
     }
 
     // line 7
     public function block_breadcrumb($context, array $blocks = array())
     {
-        $__internal_2b9b42930972ec0f78cdc92a6cfb4bb55f98106a5e9e2b62bcb30a67a6a0b128 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_2b9b42930972ec0f78cdc92a6cfb4bb55f98106a5e9e2b62bcb30a67a6a0b128->enter($__internal_2b9b42930972ec0f78cdc92a6cfb4bb55f98106a5e9e2b62bcb30a67a6a0b128_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\index.html.twig"));
+        $__internal_b7ce7121527281b6281abd3c9e1decbdf32532b2fd70a2b825882ef2db86c631 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b7ce7121527281b6281abd3c9e1decbdf32532b2fd70a2b825882ef2db86c631->enter($__internal_b7ce7121527281b6281abd3c9e1decbdf32532b2fd70a2b825882ef2db86c631_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\index.html.twig"));
 
         echo " <a href=\"";
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_list");
         echo "\">Pages</a> /  Mes pages";
         
-        $__internal_2b9b42930972ec0f78cdc92a6cfb4bb55f98106a5e9e2b62bcb30a67a6a0b128->leave($__internal_2b9b42930972ec0f78cdc92a6cfb4bb55f98106a5e9e2b62bcb30a67a6a0b128_prof);
+        $__internal_b7ce7121527281b6281abd3c9e1decbdf32532b2fd70a2b825882ef2db86c631->leave($__internal_b7ce7121527281b6281abd3c9e1decbdf32532b2fd70a2b825882ef2db86c631_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_e7eafe6d78c6ce49272d2813870519cadd0cd9a575d39fd8c578a6509f38bf54 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e7eafe6d78c6ce49272d2813870519cadd0cd9a575d39fd8c578a6509f38bf54->enter($__internal_e7eafe6d78c6ce49272d2813870519cadd0cd9a575d39fd8c578a6509f38bf54_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\index.html.twig"));
+        $__internal_1b3ddab2b085a465e43a0030d192db184274e108a0cfb28f74c57a7ce702fa01 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1b3ddab2b085a465e43a0030d192db184274e108a0cfb28f74c57a7ce702fa01->enter($__internal_1b3ddab2b085a465e43a0030d192db184274e108a0cfb28f74c57a7ce702fa01_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\index.html.twig"));
 
         // line 9
         echo "    <div class=\"row\">
@@ -88,53 +89,76 @@ class __TwigTemplate_247aec69a38cdac761ab4bd7592459352b06ca70d4a5df6eae8f330bab1
     <hr />
     <div class=\"row\">
         <div class=\"col-xs-12\">
-            <table class=\"table table-responsive table-striped table-bordered\">
-                <thead>
+            <table class=\"table table-striped table-bordered table-sm\">
+                <thead class=\"thead-inverse\">
                     <tr>
                         <th>Id</th>
                         <th>Titre</th>
                         <th>Description</th>
                         <th>Créé le</th>
-                        <th>Actions</th>
+                        <th>Page d'accueil</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     ";
-        // line 28
+        // line 29
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["pages"]) ? $context["pages"] : $this->getContext($context, "pages")));
         foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-            // line 29
-            echo "                        <tr>
-                            <td><a href=\"";
             // line 30
+            echo "                        <tr id=\"page-";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "id", array()), "html", null, true);
+            echo "\">
+                            <td><a href=\"";
+            // line 31
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_show", array("id" => $this->getAttribute($context["page"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "id", array()), "html", null, true);
             echo "</a></td>
                             <td>";
-            // line 31
+            // line 32
             echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "titre", array()), "html", null, true);
             echo "</td>
                             <td>";
-            // line 32
+            // line 33
             echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "description", array()), "html", null, true);
             echo "</td>
-                            <td>";
-            // line 33
+                            <td class=\"text-right\">";
+            // line 34
             if ($this->getAttribute($context["page"], "creationDate", array())) {
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["page"], "creationDate", array()), "d-m-Y H:i"), "html", null, true);
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["page"], "creationDate", array()), "d/m/Y H:i"), "html", null, true);
             }
             echo "</td>
-                            <td>
-                                <a role=\"button\" class=\"btn btn-danger\" href=\"";
+                            <td>";
             // line 35
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_delete", array("id" => $this->getAttribute($context["page"], "id", array()))), "html", null, true);
-            echo "\"><i class=\"fa fa-remove\"></i> Supprimer</a>
-                                <a role=\"button\" class=\"btn btn-primary\" href=\"";
-            // line 36
+            if ($this->getAttribute($context["page"], "isHomePage", array())) {
+                echo "<center><i class=\"fa-2x fa fa-home\"></i></center>";
+            }
+            echo "</td>
+                            <td class=\"text-right\">
+                               <div class=\"input-group-btn\">
+                                    <button type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                          Actions
+                                    </button>
+                                    <div class=\"dropdown-menu\">
+                                        <a class=\"dropdown-item\" href=\"";
+            // line 42
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_show", array("id" => $this->getAttribute($context["page"], "id", array()))), "html", null, true);
+            echo "\"><i class=\"fa fa-search\"></i> Voir</a>
+                                        <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteAjaxPage(";
+            // line 43
+            echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "id", array()), "html", null, true);
+            echo ",'";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_ajax_delete", array("id" => $this->getAttribute($context["page"], "id", array()))), "html", null, true);
+            echo "')\"><i class=\"fa fa-remove\"></i> Supprimer</a>
+                                        <a class=\"dropdown-item\" href=\"";
+            // line 44
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_edit", array("id" => $this->getAttribute($context["page"], "id", array()))), "html", null, true);
-            echo "\"><i class=\"fa fa-cog\"></i> Modifier</a>    
+            echo "\"><i class=\"fa fa-cog\"></i> Modifier</a>
+                                        
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     ";
@@ -142,14 +166,38 @@ class __TwigTemplate_247aec69a38cdac761ab4bd7592459352b06ca70d4a5df6eae8f330bab1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
+        // line 51
         echo "                </tbody>
             </table>
         </div>       
     </div>
 ";
         
-        $__internal_e7eafe6d78c6ce49272d2813870519cadd0cd9a575d39fd8c578a6509f38bf54->leave($__internal_e7eafe6d78c6ce49272d2813870519cadd0cd9a575d39fd8c578a6509f38bf54_prof);
+        $__internal_1b3ddab2b085a465e43a0030d192db184274e108a0cfb28f74c57a7ce702fa01->leave($__internal_1b3ddab2b085a465e43a0030d192db184274e108a0cfb28f74c57a7ce702fa01_prof);
+
+    }
+
+    // line 56
+    public function block_javascripts($context, array $blocks = array())
+    {
+        $__internal_b5e5671f817b1b82d38c0dda32c425cd7a977491ef99b64488a6247816b6f3b2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b5e5671f817b1b82d38c0dda32c425cd7a977491ef99b64488a6247816b6f3b2->enter($__internal_b5e5671f817b1b82d38c0dda32c425cd7a977491ef99b64488a6247816b6f3b2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\index.html.twig"));
+
+        // line 57
+        echo "    ";
+        $this->displayParentBlock("javascripts", $context, $blocks);
+        echo "
+    <script type='text/javascript' src='";
+        // line 58
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/vendor/bootbox/bootbox.min.js"), "html", null, true);
+        echo "'>
+    </script><script type='text/javascript' src='";
+        // line 59
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/admin/page/generator.js"), "html", null, true);
+        echo "'></script>
+";
+        
+        $__internal_b5e5671f817b1b82d38c0dda32c425cd7a977491ef99b64488a6247816b6f3b2->leave($__internal_b5e5671f817b1b82d38c0dda32c425cd7a977491ef99b64488a6247816b6f3b2_prof);
 
     }
 
@@ -165,7 +213,7 @@ class __TwigTemplate_247aec69a38cdac761ab4bd7592459352b06ca70d4a5df6eae8f330bab1
 
     public function getDebugInfo()
     {
-        return array (  146 => 40,  136 => 36,  132 => 35,  125 => 33,  121 => 32,  117 => 31,  111 => 30,  108 => 29,  104 => 28,  84 => 11,  80 => 9,  74 => 8,  60 => 7,  51 => 5,  47 => 4,  42 => 3,  36 => 2,  11 => 1,);
+        return array (  196 => 59,  192 => 58,  187 => 57,  181 => 56,  170 => 51,  157 => 44,  151 => 43,  147 => 42,  135 => 35,  129 => 34,  125 => 33,  121 => 32,  115 => 31,  110 => 30,  106 => 29,  85 => 11,  81 => 9,  75 => 8,  61 => 7,  52 => 5,  48 => 4,  43 => 3,  37 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -194,26 +242,37 @@ class __TwigTemplate_247aec69a38cdac761ab4bd7592459352b06ca70d4a5df6eae8f330bab1
     <hr />
     <div class=\"row\">
         <div class=\"col-xs-12\">
-            <table class=\"table table-responsive table-striped table-bordered\">
-                <thead>
+            <table class=\"table table-striped table-bordered table-sm\">
+                <thead class=\"thead-inverse\">
                     <tr>
                         <th>Id</th>
                         <th>Titre</th>
                         <th>Description</th>
                         <th>Créé le</th>
-                        <th>Actions</th>
+                        <th>Page d'accueil</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for page in pages %}
-                        <tr>
+                        <tr id=\"page-{{page.id}}\">
                             <td><a href=\"{{ path('page_show', { 'id': page.id }) }}\">{{ page.id }}</a></td>
                             <td>{{ page.titre }}</td>
                             <td>{{ page.description }}</td>
-                            <td>{% if page.creationDate %}{{ page.creationDate|date('d-m-Y H:i') }}{% endif %}</td>
-                            <td>
-                                <a role=\"button\" class=\"btn btn-danger\" href=\"{{ path('page_delete', { 'id': page.id }) }}\"><i class=\"fa fa-remove\"></i> Supprimer</a>
-                                <a role=\"button\" class=\"btn btn-primary\" href=\"{{ path('page_edit', { 'id': page.id }) }}\"><i class=\"fa fa-cog\"></i> Modifier</a>    
+                            <td class=\"text-right\">{% if page.creationDate %}{{ page.creationDate|date('d/m/Y H:i') }}{% endif %}</td>
+                            <td>{% if page.isHomePage %}<center><i class=\"fa-2x fa fa-home\"></i></center>{% endif %}</td>
+                            <td class=\"text-right\">
+                               <div class=\"input-group-btn\">
+                                    <button type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                          Actions
+                                    </button>
+                                    <div class=\"dropdown-menu\">
+                                        <a class=\"dropdown-item\" href=\"{{ path('page_show', { 'id': page.id }) }}\"><i class=\"fa fa-search\"></i> Voir</a>
+                                        <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteAjaxPage({{page.id}},'{{ path('page_ajax_delete', { 'id': page.id }) }}')\"><i class=\"fa fa-remove\"></i> Supprimer</a>
+                                        <a class=\"dropdown-item\" href=\"{{ path('page_edit', { 'id': page.id }) }}\"><i class=\"fa fa-cog\"></i> Modifier</a>
+                                        
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     {% endfor %}
@@ -221,6 +280,11 @@ class __TwigTemplate_247aec69a38cdac761ab4bd7592459352b06ca70d4a5df6eae8f330bab1
             </table>
         </div>       
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'>
+    </script><script type='text/javascript' src='{{asset('js/admin/page/generator.js')}}'></script>
 {% endblock %}
 ", "@PageViews/page\\index.html.twig", "C:\\Users\\sylvain.dupont\\Desktop\\Projets Web\\symfoCMS\\src\\PageBundle\\Resources\\views\\page\\index.html.twig");
     }

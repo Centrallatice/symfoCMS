@@ -26,7 +26,7 @@ class ArticleType extends AbstractType
                 ->add('category',EntityType::class,array(
                     "label"=>"Catégorie",
                     'required'    => false,
-                    'placeholder' => '-- Non catégoriser --',
+                    'placeholder' => '-- Aucune catégorie --',
                     'empty_data'  => null,
                     'empty_value'  => "",
                     "class" => "ArticleBundle:Category",

@@ -40,9 +40,20 @@
                         <td>{{ article.contenu|raw}}</td>
                     </tr>
                     <tr>
+                        <th>Mots-clés</th>
+                        <td>
+                            {% if article.getKeywords()|length >0 %}
+                                <ul>
+                                    {% for k in article.getKeywords() %}
+                                        <li>{{k.value}}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Etat</th>
                         <td>{% if article.etat %}<span class="tag tag-success">Publié</span>{% else %}<span class="tag tag-danger">Dépublié</span>{% endif %}</td>
-                        
                     </tr>
                 </tbody>
             </table>

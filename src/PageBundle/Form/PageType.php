@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class PageType extends AbstractType
 {
     /**
@@ -17,7 +17,6 @@ class PageType extends AbstractType
     {
         $builder->add('titre')
                 ->add('description')
-                ->add('keywords',TextType::class,array("label"=>"Mots-clés (séparés par des ';')"))
                 ->add('isHomepage',CheckboxType::class,array("required"=>false,"label"=>"Cette page est la page d'accueil du site"));
     }
     

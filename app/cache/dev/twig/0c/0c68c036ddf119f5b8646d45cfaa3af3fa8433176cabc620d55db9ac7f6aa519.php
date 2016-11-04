@@ -10,6 +10,8 @@ class __TwigTemplate_dea17a3f96a0152d739a59595fd475f5f559603c1d11c15b0a72e015c92
         // line 1
         $this->parent = $this->loadTemplate("::admin.html.twig", "@PageViews/page\\show.html.twig", 1);
         $this->blocks = array(
+            'stylesheets' => array($this, 'block_stylesheets'),
+            'breadcrumb' => array($this, 'block_breadcrumb'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -21,101 +23,159 @@ class __TwigTemplate_dea17a3f96a0152d739a59595fd475f5f559603c1d11c15b0a72e015c92
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9e1502687d1fff29df5d228676cc166db8f3f6d72f67ba5a22d18b4d85255eba = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9e1502687d1fff29df5d228676cc166db8f3f6d72f67ba5a22d18b4d85255eba->enter($__internal_9e1502687d1fff29df5d228676cc166db8f3f6d72f67ba5a22d18b4d85255eba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@PageViews/page\\show.html.twig"));
+        $__internal_e8677aba3b32ea9a7f2ee28f6dc01d78f69f947ac20234541defa7adb9311be3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e8677aba3b32ea9a7f2ee28f6dc01d78f69f947ac20234541defa7adb9311be3->enter($__internal_e8677aba3b32ea9a7f2ee28f6dc01d78f69f947ac20234541defa7adb9311be3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@PageViews/page\\show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9e1502687d1fff29df5d228676cc166db8f3f6d72f67ba5a22d18b4d85255eba->leave($__internal_9e1502687d1fff29df5d228676cc166db8f3f6d72f67ba5a22d18b4d85255eba_prof);
+        $__internal_e8677aba3b32ea9a7f2ee28f6dc01d78f69f947ac20234541defa7adb9311be3->leave($__internal_e8677aba3b32ea9a7f2ee28f6dc01d78f69f947ac20234541defa7adb9311be3_prof);
 
     }
 
-    // line 3
+    // line 2
+    public function block_stylesheets($context, array $blocks = array())
+    {
+        $__internal_2aba3bbbdfe0291b70f8b7d364800b491dffec7f6177ee4d5a41993ac23a3e80 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_2aba3bbbdfe0291b70f8b7d364800b491dffec7f6177ee4d5a41993ac23a3e80->enter($__internal_2aba3bbbdfe0291b70f8b7d364800b491dffec7f6177ee4d5a41993ac23a3e80_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\show.html.twig"));
+
+        // line 3
+        echo "    ";
+        $this->displayParentBlock("stylesheets", $context, $blocks);
+        echo "
+    <link rel=\"stylesheet\" href=\"";
+        // line 4
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/themes/admin/generator.css"), "html", null, true);
+        echo "\">
+    <link rel=\"stylesheet\" href=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/vendor/froala/froala.min.css"), "html", null, true);
+        echo "\">
+    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css\">
+";
+        
+        $__internal_2aba3bbbdfe0291b70f8b7d364800b491dffec7f6177ee4d5a41993ac23a3e80->leave($__internal_2aba3bbbdfe0291b70f8b7d364800b491dffec7f6177ee4d5a41993ac23a3e80_prof);
+
+    }
+
+    // line 8
+    public function block_breadcrumb($context, array $blocks = array())
+    {
+        $__internal_516ade76fb4995088e585bb16331bb85954b4d53deeebaa1f6b5654829b02d4b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_516ade76fb4995088e585bb16331bb85954b4d53deeebaa1f6b5654829b02d4b->enter($__internal_516ade76fb4995088e585bb16331bb85954b4d53deeebaa1f6b5654829b02d4b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\show.html.twig"));
+
+        echo " <a href=\"";
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_list");
+        echo "\">Pages</a> /  Détail de la page \" <strong>";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "titre", array()), "html", null, true);
+        echo "</strong>\"";
+        
+        $__internal_516ade76fb4995088e585bb16331bb85954b4d53deeebaa1f6b5654829b02d4b->leave($__internal_516ade76fb4995088e585bb16331bb85954b4d53deeebaa1f6b5654829b02d4b_prof);
+
+    }
+
+    // line 9
     public function block_body($context, array $blocks = array())
     {
-        $__internal_265b2d7ce8787409eff1d2cda04bf9e8fef311547140dbd8eca5595a9f6cb422 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_265b2d7ce8787409eff1d2cda04bf9e8fef311547140dbd8eca5595a9f6cb422->enter($__internal_265b2d7ce8787409eff1d2cda04bf9e8fef311547140dbd8eca5595a9f6cb422_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\show.html.twig"));
+        $__internal_f04aa333cfef7c4f35cd48ab91a68dafab7810fe28398b21151aad0758e0dd4b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_f04aa333cfef7c4f35cd48ab91a68dafab7810fe28398b21151aad0758e0dd4b->enter($__internal_f04aa333cfef7c4f35cd48ab91a68dafab7810fe28398b21151aad0758e0dd4b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@PageViews/page\\show.html.twig"));
 
-        // line 4
-        echo "    <h1>Page</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>";
         // line 10
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "id", array()), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>";
-        // line 14
+        echo "    <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <a role=\"button\" class=\"btn btn-primary pull-right\" href=\"";
+        // line 12
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_list");
+        echo "\"><i class=\"fa fa-arrow-left\"></i> Revenir à la liste</a>
+        </div>
+    </div>
+     <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <h1>";
+        // line 17
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "titre", array()), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>";
-        // line 18
+        echo "</h1>
+
+            <table class=\"table table-active\">
+                <tbody>
+                    <tr>
+                        <th>Description</th>
+                        <td>";
+        // line 23
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "description", array()), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Keywords</th>
-                <td>";
-        // line 22
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "keywords", array()), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
-                <th>Auteur</th>
-                <td>";
-        // line 26
+                    </tr>
+                    <tr>
+                        <th>Mots-clés</th>
+                        <td>
+                            ";
+        // line 28
+        if ((twig_length_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "getKeywords", array(), "method")) > 0)) {
+            // line 29
+            echo "                                <ul>
+                                    ";
+            // line 30
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "getKeywords", array(), "method"));
+            foreach ($context['_seq'] as $context["_key"] => $context["k"]) {
+                // line 31
+                echo "                                        <li>";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["k"], "value", array()), "html", null, true);
+                echo "</li>
+                                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['k'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 33
+            echo "                                </ul>
+                            ";
+        }
+        // line 35
+        echo "                        </td>
+                    </tr>
+                    <tr>
+                        <th>Auteur</th>
+                        <td>";
+        // line 39
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "auteur", array()), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Creationdate</th>
-                <td>";
-        // line 30
+                    </tr>
+                    <tr>
+                        <th>Créée le</th>
+                        <td>";
+        // line 43
         if ($this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "creationDate", array())) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "creationDate", array()), "Y-m-d H:i:s"), "html", null, true);
         }
         echo "</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href=\"";
-        // line 37
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_list");
-        echo "\">Back to the list</a>
-        </li>
-        <li>
-            <a href=\"";
-        // line 40
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_edit", array("id" => $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "id", array()))), "html", null, true);
-        echo "\">Edit</a>
-        </li>
-        <li>
-            ";
-        // line 43
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+     <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <center>
+                <div class=\"form-inline\">
+                    ";
+        // line 53
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_start');
         echo "
-                <input type=\"submit\" value=\"Delete\">
-            ";
-        // line 45
+                        <input type=\"submit\" class=\"btn btn-danger\" value=\"Supprimer cette page\">
+                    ";
+        // line 55
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_end');
         echo "
-        </li>
-    </ul>
+                </div><a href=\"";
+        // line 56
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("page_edit", array("id" => $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "id", array()))), "html", null, true);
+        echo "\" class=\"btn btn-primary\"><i class=\"fa fa-cog\"></i> Modifier</a>
+            </center>
+    </div>
+    </div>
 ";
         
-        $__internal_265b2d7ce8787409eff1d2cda04bf9e8fef311547140dbd8eca5595a9f6cb422->leave($__internal_265b2d7ce8787409eff1d2cda04bf9e8fef311547140dbd8eca5595a9f6cb422_prof);
+        $__internal_f04aa333cfef7c4f35cd48ab91a68dafab7810fe28398b21151aad0758e0dd4b->leave($__internal_f04aa333cfef7c4f35cd48ab91a68dafab7810fe28398b21151aad0758e0dd4b_prof);
 
     }
 
@@ -131,7 +191,7 @@ class __TwigTemplate_dea17a3f96a0152d739a59595fd475f5f559603c1d11c15b0a72e015c92
 
     public function getDebugInfo()
     {
-        return array (  112 => 45,  107 => 43,  101 => 40,  95 => 37,  83 => 30,  76 => 26,  69 => 22,  62 => 18,  55 => 14,  48 => 10,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  171 => 56,  167 => 55,  162 => 53,  147 => 43,  140 => 39,  134 => 35,  130 => 33,  121 => 31,  117 => 30,  114 => 29,  112 => 28,  104 => 23,  95 => 17,  87 => 12,  83 => 10,  77 => 9,  61 => 8,  51 => 5,  47 => 4,  42 => 3,  36 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -145,52 +205,64 @@ class __TwigTemplate_dea17a3f96a0152d739a59595fd475f5f559603c1d11c15b0a72e015c92
     public function getSourceContext()
     {
         return new Twig_Source("{% extends \"::admin.html.twig\" %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel=\"stylesheet\" href=\"{{ asset('css/themes/admin/generator.css') }}\">
+    <link rel=\"stylesheet\" href=\"{{ asset('css/vendor/froala/froala.min.css') }}\">
+    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css\">
+{% endblock %}
+{% block breadcrumb %} <a href=\"{{ path('page_list') }}\">Pages</a> /  Détail de la page \" <strong>{{ page.titre }}</strong>\"{% endblock %}
 {% block body %}
-    <h1>Page</h1>
+    <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <a role=\"button\" class=\"btn btn-primary pull-right\" href=\"{{ path('page_list') }}\"><i class=\"fa fa-arrow-left\"></i> Revenir à la liste</a>
+        </div>
+    </div>
+     <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <h1>{{ page.titre }}</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ page.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ page.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ page.description }}</td>
-            </tr>
-            <tr>
-                <th>Keywords</th>
-                <td>{{ page.keywords }}</td>
-            </tr>
-            <tr>
-                <th>Auteur</th>
-                <td>{{ page.auteur }}</td>
-            </tr>
-            <tr>
-                <th>Creationdate</th>
-                <td>{% if page.creationDate %}{{ page.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href=\"{{ path('page_list') }}\">Back to the list</a>
-        </li>
-        <li>
-            <a href=\"{{ path('page_edit', { 'id': page.id }) }}\">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type=\"submit\" value=\"Delete\">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <table class=\"table table-active\">
+                <tbody>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ page.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mots-clés</th>
+                        <td>
+                            {% if page.getKeywords()|length >0 %}
+                                <ul>
+                                    {% for k in page.getKeywords() %}
+                                        <li>{{k.value}}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Auteur</th>
+                        <td>{{ page.auteur }}</td>
+                    </tr>
+                    <tr>
+                        <th>Créée le</th>
+                        <td>{% if page.creationDate %}{{ page.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+     <div class=\"row\">
+        <div class=\"col-xs-12\">
+            <center>
+                <div class=\"form-inline\">
+                    {{ form_start(delete_form) }}
+                        <input type=\"submit\" class=\"btn btn-danger\" value=\"Supprimer cette page\">
+                    {{ form_end(delete_form) }}
+                </div><a href=\"{{ path('page_edit', { 'id': page.id }) }}\" class=\"btn btn-primary\"><i class=\"fa fa-cog\"></i> Modifier</a>
+            </center>
+    </div>
+    </div>
 {% endblock %}
 ", "@PageViews/page\\show.html.twig", "C:\\Users\\sylvain.dupont\\Desktop\\Projets Web\\symfoCMS\\src\\PageBundle\\Resources\\views\\page\\show.html.twig");
     }

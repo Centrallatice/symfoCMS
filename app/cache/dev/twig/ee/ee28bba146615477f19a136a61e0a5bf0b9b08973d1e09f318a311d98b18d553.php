@@ -15,8 +15,8 @@ class __TwigTemplate_83380dd8be98c6a061ed8506a881fd24a97dade05f746b051c441924031
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c840174fcf9e6adfb53d115774bce1c11593a648f97e1e583112566e1d3c9387 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c840174fcf9e6adfb53d115774bce1c11593a648f97e1e583112566e1d3c9387->enter($__internal_c840174fcf9e6adfb53d115774bce1c11593a648f97e1e583112566e1d3c9387_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":menus:admin.html.twig"));
+        $__internal_cad1ecb8028f91d14dd7c05db2bc1b245b53e8a887d03a283de968ac48705201 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_cad1ecb8028f91d14dd7c05db2bc1b245b53e8a887d03a283de968ac48705201->enter($__internal_cad1ecb8028f91d14dd7c05db2bc1b245b53e8a887d03a283de968ac48705201_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":menus:admin.html.twig"));
 
         // line 1
         echo " <nav class=\"navbar navbar-dark bg-inverse navbar-fixed-top\">
@@ -202,7 +202,7 @@ class __TwigTemplate_83380dd8be98c6a061ed8506a881fd24a97dade05f746b051c441924031
         <!-- /.navbar-collapse -->
     </nav>";
         
-        $__internal_c840174fcf9e6adfb53d115774bce1c11593a648f97e1e583112566e1d3c9387->leave($__internal_c840174fcf9e6adfb53d115774bce1c11593a648f97e1e583112566e1d3c9387_prof);
+        $__internal_cad1ecb8028f91d14dd7c05db2bc1b245b53e8a887d03a283de968ac48705201->leave($__internal_cad1ecb8028f91d14dd7c05db2bc1b245b53e8a887d03a283de968ac48705201_prof);
 
     }
 

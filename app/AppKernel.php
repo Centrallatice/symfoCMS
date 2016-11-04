@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new KMS\FroalaEditorBundle\KMSFroalaEditorBundle(),
             new ArticleBundle\ArticleBundle(),
             new ModuleBundle\ModuleBundle(),
+            new MenuBundle\MenuBundle(),
+            new TemplateBundle\TemplateBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

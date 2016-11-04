@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lienmenu</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lienMenu.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ lienMenu.type }}</td>
+            </tr>
+            <tr>
+                <th>Idlink</th>
+                <td>{{ lienMenu.idLink }}</td>
+            </tr>
+            <tr>
+                <th>Targettype</th>
+                <td>{{ lienMenu.targetType }}</td>
+            </tr>
+            <tr>
+                <th>Titleattribute</th>
+                <td>{{ lienMenu.titleAttribute }}</td>
+            </tr>
+            <tr>
+                <th>Cssclass</th>
+                <td>{{ lienMenu.cssClass }}</td>
+            </tr>
+            <tr>
+                <th>Imglink</th>
+                <td>{{ lienMenu.imgLink }}</td>
+            </tr>
+            <tr>
+                <th>Imgtypelink</th>
+                <td>{{ lienMenu.imgTypeLink }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{% if lienMenu.etat %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lienmenu_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('lienmenu_edit', { 'id': lienMenu.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

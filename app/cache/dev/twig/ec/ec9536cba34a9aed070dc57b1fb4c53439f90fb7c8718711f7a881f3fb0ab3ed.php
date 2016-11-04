@@ -23,20 +23,20 @@ class __TwigTemplate_25d44cd093cfd288342de41c981565d94b08ba1736c0e0bd4efd44a4c19
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fd4cbeb5a2baf55f67c373a77cebe3e8b94b252c18e8a53d3ed008e6ddbad729 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_fd4cbeb5a2baf55f67c373a77cebe3e8b94b252c18e8a53d3ed008e6ddbad729->enter($__internal_fd4cbeb5a2baf55f67c373a77cebe3e8b94b252c18e8a53d3ed008e6ddbad729_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Article/category/new.html.twig"));
+        $__internal_a9b6b9e04c4c8b60387d04f6d8370fa4aa62ada2fe2e3cbd9a7a258d20167e58 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a9b6b9e04c4c8b60387d04f6d8370fa4aa62ada2fe2e3cbd9a7a258d20167e58->enter($__internal_a9b6b9e04c4c8b60387d04f6d8370fa4aa62ada2fe2e3cbd9a7a258d20167e58_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Article/category/new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_fd4cbeb5a2baf55f67c373a77cebe3e8b94b252c18e8a53d3ed008e6ddbad729->leave($__internal_fd4cbeb5a2baf55f67c373a77cebe3e8b94b252c18e8a53d3ed008e6ddbad729_prof);
+        $__internal_a9b6b9e04c4c8b60387d04f6d8370fa4aa62ada2fe2e3cbd9a7a258d20167e58->leave($__internal_a9b6b9e04c4c8b60387d04f6d8370fa4aa62ada2fe2e3cbd9a7a258d20167e58_prof);
 
     }
 
     // line 2
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_d6a764a38d20b16e5ccb0bfabdc474366b48c7873643cc4885fcbc542acd5dc3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d6a764a38d20b16e5ccb0bfabdc474366b48c7873643cc4885fcbc542acd5dc3->enter($__internal_d6a764a38d20b16e5ccb0bfabdc474366b48c7873643cc4885fcbc542acd5dc3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/new.html.twig"));
+        $__internal_23befb2e419032f111c3695a893b86c64ae7618a076c9a1cb19afdc856f06675 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_23befb2e419032f111c3695a893b86c64ae7618a076c9a1cb19afdc856f06675->enter($__internal_23befb2e419032f111c3695a893b86c64ae7618a076c9a1cb19afdc856f06675_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/new.html.twig"));
 
         // line 3
         echo "    ";
@@ -49,29 +49,29 @@ class __TwigTemplate_25d44cd093cfd288342de41c981565d94b08ba1736c0e0bd4efd44a4c19
     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css\">
 ";
         
-        $__internal_d6a764a38d20b16e5ccb0bfabdc474366b48c7873643cc4885fcbc542acd5dc3->leave($__internal_d6a764a38d20b16e5ccb0bfabdc474366b48c7873643cc4885fcbc542acd5dc3_prof);
+        $__internal_23befb2e419032f111c3695a893b86c64ae7618a076c9a1cb19afdc856f06675->leave($__internal_23befb2e419032f111c3695a893b86c64ae7618a076c9a1cb19afdc856f06675_prof);
 
     }
 
     // line 7
     public function block_breadcrumb($context, array $blocks = array())
     {
-        $__internal_698843ede19f833d723722e7bd62a3ce7723ee5fbff62f626d9945b5468187c8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_698843ede19f833d723722e7bd62a3ce7723ee5fbff62f626d9945b5468187c8->enter($__internal_698843ede19f833d723722e7bd62a3ce7723ee5fbff62f626d9945b5468187c8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/new.html.twig"));
+        $__internal_681f583f933f6fc4dc0bb5acdc198fcbe70ea09f3c4c9996ff5e7f30949b49fe = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_681f583f933f6fc4dc0bb5acdc198fcbe70ea09f3c4c9996ff5e7f30949b49fe->enter($__internal_681f583f933f6fc4dc0bb5acdc198fcbe70ea09f3c4c9996ff5e7f30949b49fe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/new.html.twig"));
 
         echo " <a href=\"";
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin_category_index");
         echo "\">Catégorie </a> /  Créer une catégorie";
         
-        $__internal_698843ede19f833d723722e7bd62a3ce7723ee5fbff62f626d9945b5468187c8->leave($__internal_698843ede19f833d723722e7bd62a3ce7723ee5fbff62f626d9945b5468187c8_prof);
+        $__internal_681f583f933f6fc4dc0bb5acdc198fcbe70ea09f3c4c9996ff5e7f30949b49fe->leave($__internal_681f583f933f6fc4dc0bb5acdc198fcbe70ea09f3c4c9996ff5e7f30949b49fe_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_18fe2fe801c76e6bbc0c7e82f08fdde13a62fe5ef8cdf6243e928cdb09f26d5c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_18fe2fe801c76e6bbc0c7e82f08fdde13a62fe5ef8cdf6243e928cdb09f26d5c->enter($__internal_18fe2fe801c76e6bbc0c7e82f08fdde13a62fe5ef8cdf6243e928cdb09f26d5c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/new.html.twig"));
+        $__internal_aa839dbea386be30026068031b5d534ae986108e88376e66a450d9626fdfec93 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_aa839dbea386be30026068031b5d534ae986108e88376e66a450d9626fdfec93->enter($__internal_aa839dbea386be30026068031b5d534ae986108e88376e66a450d9626fdfec93_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "@Article/category/new.html.twig"));
 
         // line 9
         echo "    <div class=\"row\">
@@ -82,19 +82,20 @@ class __TwigTemplate_25d44cd093cfd288342de41c981565d94b08ba1736c0e0bd4efd44a4c19
         echo "\"><i class=\"fa fa-arrow-left\"></i> Revenir à la liste</a>
        </div>
     </div> 
-       
+    
     ";
         // line 15
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashBag", array()), "get", array(0 => "success"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flash_message"]) {
             // line 16
-            echo "        <div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">
+            echo "        <hr />
+        <div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">
             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                 <span aria-hidden=\"true\">&times;</span>
             </button>
            ";
-            // line 20
+            // line 21
             echo twig_escape_filter($this->env, $context["flash_message"], "html", null, true);
             echo "
         </div>
@@ -103,21 +104,21 @@ class __TwigTemplate_25d44cd093cfd288342de41c981565d94b08ba1736c0e0bd4efd44a4c19
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flash_message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 23
-        echo "
+        // line 24
+        echo "    <hr />
     <div class=\"row\">
         <div class=\"col-xs-12\">
             ";
-        // line 26
+        // line 27
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
         echo "
                 ";
-        // line 27
+        // line 28
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
         echo "
-                <input type=\"submit\" class=\"btn btn-success\" value=\"Créer cette catégorie\" />
+                <input type=\"submit\" class=\"btn btn-success\" value=\"Enregistrer\" />
             ";
-        // line 29
+        // line 30
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
         </div>
@@ -125,7 +126,7 @@ class __TwigTemplate_25d44cd093cfd288342de41c981565d94b08ba1736c0e0bd4efd44a4c19
     
 ";
         
-        $__internal_18fe2fe801c76e6bbc0c7e82f08fdde13a62fe5ef8cdf6243e928cdb09f26d5c->leave($__internal_18fe2fe801c76e6bbc0c7e82f08fdde13a62fe5ef8cdf6243e928cdb09f26d5c_prof);
+        $__internal_aa839dbea386be30026068031b5d534ae986108e88376e66a450d9626fdfec93->leave($__internal_aa839dbea386be30026068031b5d534ae986108e88376e66a450d9626fdfec93_prof);
 
     }
 
@@ -141,7 +142,7 @@ class __TwigTemplate_25d44cd093cfd288342de41c981565d94b08ba1736c0e0bd4efd44a4c19
 
     public function getDebugInfo()
     {
-        return array (  121 => 29,  116 => 27,  112 => 26,  107 => 23,  98 => 20,  92 => 16,  88 => 15,  81 => 11,  77 => 9,  71 => 8,  57 => 7,  47 => 4,  42 => 3,  36 => 2,  11 => 1,);
+        return array (  122 => 30,  117 => 28,  113 => 27,  108 => 24,  99 => 21,  92 => 16,  88 => 15,  81 => 11,  77 => 9,  71 => 8,  57 => 7,  47 => 4,  42 => 3,  36 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -167,8 +168,9 @@ class __TwigTemplate_25d44cd093cfd288342de41c981565d94b08ba1736c0e0bd4efd44a4c19
             <a role=\"button\" class=\"btn btn-primary pull-right\" href=\"{{ path('admin_category_index') }}\"><i class=\"fa fa-arrow-left\"></i> Revenir à la liste</a>
        </div>
     </div> 
-       
+    
     {% for flash_message in app.session.flashBag.get('success') %}
+        <hr />
         <div class=\"alert alert-success alert-dismissible fade in\" role=\"alert\">
             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                 <span aria-hidden=\"true\">&times;</span>
@@ -176,12 +178,12 @@ class __TwigTemplate_25d44cd093cfd288342de41c981565d94b08ba1736c0e0bd4efd44a4c19
            {{ flash_message }}
         </div>
     {% endfor %}
-
+    <hr />
     <div class=\"row\">
         <div class=\"col-xs-12\">
             {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <input type=\"submit\" class=\"btn btn-success\" value=\"Créer cette catégorie\" />
+                <input type=\"submit\" class=\"btn btn-success\" value=\"Enregistrer\" />
             {{ form_end(form) }}
         </div>
     </div>        

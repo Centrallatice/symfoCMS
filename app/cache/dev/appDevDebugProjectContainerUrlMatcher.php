@@ -105,6 +105,210 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // template_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'template_default_index');
+            }
+
+            return array (  '_controller' => 'TemplateBundle\\Controller\\DefaultController::indexAction',  '_route' => 'template_default_index',);
+        }
+
+        if (0 === strpos($pathinfo, '/template')) {
+            // template_index
+            if (rtrim($pathinfo, '/') === '/template') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_template_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'template_index');
+                }
+
+                return array (  '_controller' => 'TemplateBundle\\Controller\\TemplateController::indexAction',  '_route' => 'template_index',);
+            }
+            not_template_index:
+
+            // template_new
+            if ($pathinfo === '/template/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_template_new;
+                }
+
+                return array (  '_controller' => 'TemplateBundle\\Controller\\TemplateController::newAction',  '_route' => 'template_new',);
+            }
+            not_template_new:
+
+            // template_show
+            if (preg_match('#^/template/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_template_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'template_show')), array (  '_controller' => 'TemplateBundle\\Controller\\TemplateController::showAction',));
+            }
+            not_template_show:
+
+            // template_edit
+            if (preg_match('#^/template/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_template_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'template_edit')), array (  '_controller' => 'TemplateBundle\\Controller\\TemplateController::editAction',));
+            }
+            not_template_edit:
+
+            // template_delete
+            if (preg_match('#^/template/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_template_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'template_delete')), array (  '_controller' => 'TemplateBundle\\Controller\\TemplateController::deleteAction',));
+            }
+            not_template_delete:
+
+        }
+
+        // menu_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'menu_default_index');
+            }
+
+            return array (  '_controller' => 'MenuBundle\\Controller\\DefaultController::indexAction',  '_route' => 'menu_default_index',);
+        }
+
+        if (0 === strpos($pathinfo, '/menu')) {
+            // menu_index
+            if (rtrim($pathinfo, '/') === '/menu') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_menu_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'menu_index');
+                }
+
+                return array (  '_controller' => 'MenuBundle\\Controller\\MenuController::indexAction',  '_route' => 'menu_index',);
+            }
+            not_menu_index:
+
+            // menu_new
+            if ($pathinfo === '/menu/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_menu_new;
+                }
+
+                return array (  '_controller' => 'MenuBundle\\Controller\\MenuController::newAction',  '_route' => 'menu_new',);
+            }
+            not_menu_new:
+
+            // menu_show
+            if (preg_match('#^/menu/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_menu_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'menu_show')), array (  '_controller' => 'MenuBundle\\Controller\\MenuController::showAction',));
+            }
+            not_menu_show:
+
+            // menu_edit
+            if (preg_match('#^/menu/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_menu_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'menu_edit')), array (  '_controller' => 'MenuBundle\\Controller\\MenuController::editAction',));
+            }
+            not_menu_edit:
+
+            // menu_delete
+            if (preg_match('#^/menu/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_menu_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'menu_delete')), array (  '_controller' => 'MenuBundle\\Controller\\MenuController::deleteAction',));
+            }
+            not_menu_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/lienmenu')) {
+            // lienmenu_index
+            if (rtrim($pathinfo, '/') === '/lienmenu') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_lienmenu_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'lienmenu_index');
+                }
+
+                return array (  '_controller' => 'MenuBundle\\Controller\\lienMenuController::indexAction',  '_route' => 'lienmenu_index',);
+            }
+            not_lienmenu_index:
+
+            // lienmenu_new
+            if ($pathinfo === '/lienmenu/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_lienmenu_new;
+                }
+
+                return array (  '_controller' => 'MenuBundle\\Controller\\lienMenuController::newAction',  '_route' => 'lienmenu_new',);
+            }
+            not_lienmenu_new:
+
+            // lienmenu_show
+            if (preg_match('#^/lienmenu/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_lienmenu_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lienmenu_show')), array (  '_controller' => 'MenuBundle\\Controller\\lienMenuController::showAction',));
+            }
+            not_lienmenu_show:
+
+            // lienmenu_edit
+            if (preg_match('#^/lienmenu/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_lienmenu_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lienmenu_edit')), array (  '_controller' => 'MenuBundle\\Controller\\lienMenuController::editAction',));
+            }
+            not_lienmenu_edit:
+
+            // lienmenu_delete
+            if (preg_match('#^/lienmenu/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_lienmenu_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lienmenu_delete')), array (  '_controller' => 'MenuBundle\\Controller\\lienMenuController::deleteAction',));
+            }
+            not_lienmenu_delete:
+
+        }
+
         // module_default_index
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {

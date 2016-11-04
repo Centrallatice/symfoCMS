@@ -82,6 +82,20 @@ class ArticleController extends Controller
             $article->setAuteur($u->getUsername());
             $em->persist($article);
             $em->flush($article);
+            
+            $keyWords = explode(";",$request->get("articlebundle_page_final"));
+            foreach($keyWords as $k=>$v):
+                if(trim($v)!=""):
+                    $k = new \PageBundle\Entity\keyWordsArticle();
+                    $k->setValue($v);
+                    $k->setAssociationType("article");
+                    $k->setAssociationId($article);
+                    $article->addKeyword($k);
+                    $em->persist($k);
+                endif;
+            endforeach;
+            $em->persist($article);
+            $em->flush();
             $this->addFlash('success', 'Votre article a bien été créé');
             return $this->redirectToRoute('admin_article_index', array('id' => $article->getId()));
         }
@@ -121,8 +135,27 @@ class ArticleController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            foreach($article->getKeywords() as $actualKW):
+                $article->removeKeyword($actualKW);
+                $em->remove($actualKW);
+            endforeach;
+            $em->persist($article);
+            
+            $keyWords = explode(";",$request->get("articlebundle_page_final"));
+            foreach($keyWords as $k=>$v):
+                if(trim($v)!=""):
+                    $k = new \PageBundle\Entity\keyWordsArticle();
+                    $k->setValue($v);
+                    $k->setAssociationType("article");
+                    $k->setAssociationId($article);
+                    $article->addKeyword($k);
+                    $em->persist($k);
+                endif;
+            endforeach;
+            
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Votre article a bien été modifié');
             return $this->redirectToRoute('admin_article_edit', array('id' => $article->getId()));
         }
 

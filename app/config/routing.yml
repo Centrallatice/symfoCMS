@@ -1,3 +1,25 @@
+template_template:
+    resource: "@TemplateBundle/Controller/TemplateController.php"
+    type:     annotation
+
+menu_lien_menu:
+    resource: "@MenuBundle/Controller/lienMenuController.php"
+    type:     annotation
+
+menu_menu:
+    resource: "@MenuBundle/Controller/MenuController.php"
+    type:     annotation
+
+template:
+    resource: "@TemplateBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+menu:
+    resource: "@MenuBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 article_article:
     resource: "@ArticleBundle/Controller/ArticleController.php"
     type:     annotation

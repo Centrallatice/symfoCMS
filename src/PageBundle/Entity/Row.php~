@@ -282,4 +282,28 @@ class Row
     {
         return $this->titreClient;
     }
+
+    /**
+     * Set enteteType
+     *
+     * @param string $enteteType
+     *
+     * @return Row
+     */
+    public function setEnteteType($enteteType)
+    {
+        $this->enteteType = $enteteType;
+
+        return $this;
+    }
+
+    /**
+     * Get enteteType
+     *
+     * @return string
+     */
+    public function getEnteteType()
+    {
+        return $this->enteteType;
+    }
 }

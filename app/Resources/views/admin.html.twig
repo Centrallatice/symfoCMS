@@ -11,12 +11,10 @@
             <link type="text/css" rel="stylesheet" href="{{ asset('css/vendor/materialize.min.css') }}"  media="screen,projection"/>
             <link type="text/css" rel="stylesheet" href="{{ asset('css/vendor/ghpages-materialize.min.css') }}"  media="screen,projection"/>
             <link rel="stylesheet" href="{{ asset('css/vendor/font-awesome.min.css') }}">
-            {#<link rel="stylesheet" href="{{ asset('css/vendor/bootstrap/bootstrap.min.css') }}">#}
             <link rel="stylesheet" href="{{ asset('css/themes/admin/base.css') }}">
             <link rel="stylesheet" href="{{ asset('css/vendor/animate.css') }}">
             <link rel="stylesheet" href="{{ asset('css/themes/admin/sb-admin.css') }}">
             <link rel="stylesheet" href="{{ asset('css/themes/admin/plugins/morris.css') }}">
-{#            <link rel="stylesheet" href="{{ asset('css/themes/admin/bootstrhack.css') }}">#}
             <link rel="stylesheet" href="{{ asset('css/themes/admin/materialize-hack.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -24,7 +22,7 @@
     <body>
         {% if is_granted("ROLE_ADMIN") %}
             <header>
-{#                {% include "::menus/navbar.html.twig" %}#}
+                {% include "::menus/navbar.html.twig" %}
                 {% include "::menus/left.html.twig" %}
             </header>
         {% endif %}
@@ -59,8 +57,8 @@
             <script src="{{ asset('js/admin/actions.js') }}"></script>
 {#            <script src="{{ asset('js/vendor/bootstrap/bootstrap.js') }}"></script>#}
             <!-- Morris Charts JavaScript -->
-            <script src="{{ asset('js/themes/admin/morris/raphael.min.js') }}"></script>
-            <script src="{{ asset('js/themes/admin/morris/morris.min.js') }}"></script>
+{#            <script src="{{ asset('js/themes/admin/morris/raphael.min.js') }}"></script>#}
+{#            <script src="{{ asset('js/themes/admin/morris/morris.min.js') }}"></script>#}
         {% endblock %}
     </body>
 </html>

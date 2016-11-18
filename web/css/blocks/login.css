@@ -28,8 +28,8 @@
 }
 .actionName.reversed {
     left: auto;
-    right: -20px;
-    top: 14%;
+    margin-left:-56px;
+    top: 22%;
 }
 .actionName:after {
     content: "";

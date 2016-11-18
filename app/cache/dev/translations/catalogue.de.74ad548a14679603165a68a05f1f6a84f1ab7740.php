@@ -157,7 +157,11 @@ Mit besten Grüßen,
 das Team.
 ',
     'resetting.password_already_requested' => 'Für diesen Benutzer wurde in den vergangenen 24 Stunden bereits ein neues Passwort beantragt.',
-    'resetting.check_email' => 'Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Sie anklicken müssen, um Ihr Passwort zurückzusetzen.',
+    'resetting.check_email' => 'Eine E-Mail wurde verschickt. Sie beinhaltet einen Link zum Zurücksetzen des Passwortes.
+Hinweis: Ein neues Passwort kann nur alle %tokenLifetime% Stunden beantragt werden.
+
+Eventuell wurde diese E-Mail als Spam markiert, wenn sie nicht angekommen ist.
+',
     'resetting.request.username' => 'Benutzername oder E-Mail-Adresse',
     'resetting.request.submit' => 'Passwort zurücksetzen',
     'resetting.reset.submit' => 'Passwort ändern',

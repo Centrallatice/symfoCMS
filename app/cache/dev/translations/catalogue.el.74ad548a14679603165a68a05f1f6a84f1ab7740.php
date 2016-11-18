@@ -91,10 +91,11 @@ $catalogue = new MessageCatalogue('el', array (
     'fos_user.password.mismatch' => 'Οι κωδικοί πρόσβασης δεν ταιριάζουν',
     'fos_user.new_password.blank' => 'Παρακαλώ εισάγετε ένα νέο κωδικό πρόσβασης',
     'fos_user.new_password.short' => 'Ο νέος κωδικός πρόσβασης είναι πολύ μικρός',
-    'fos_user.current_password.invalid' => 'Ο κωδικός που δώσατε δεν είναι έγκυρος',
+    'fos_user.current_password.invalid' => 'Ο κωδικός δεν είναι έγκυρος',
     'fos_user.group.blank' => 'Παρακαλώ εισάγετε ένα όνομα',
     'fos_user.group.short' => 'Το όνομα είναι πολύ μικρό',
     'fos_user.group.long' => 'Το όνομα είναι πολύ μεγάλο',
+    'fos_group.name.already_used' => 'Το όνομα χρησιμοποιείται ήδη',
   ),
   'security' => 
   array (
@@ -141,12 +142,16 @@ $catalogue = new MessageCatalogue('el', array (
     'registration.email.subject' => 'Καλώς ήρθες %username%!',
     'registration.email.message' => 'Αγαπητέ %username%!
 
-  Για να ολοκληρώσετε την ενεργοποίηση του λογαριασμού σας - επισκεφθείτε %confirmationUrl%
+Για να ολοκληρώσετε την ενεργοποίηση του λογαριασμού σας - επισκεφθείτε %confirmationUrl%
 
 Ευχαριστούμε πολύ.
 ',
     'resetting.password_already_requested' => 'Ο κωδικός για αυτόν το χρήστη έχει ήδη ζητηθεί μέσα στις τελευταίες 24 ώρες.',
-    'resetting.check_email' => 'Ένα email στάλθηκε στο %email%. Περιέχει ένα σύνδεσμο για να επαναφέρετε τον κωδικό πρόσβασής σας.',
+    'resetting.check_email' => 'Ένα email έχει αποσταλεί. Περιέχει ένα  σύνδεσμο ώστε να μπορέσετε να επαναφέρετε τον κωδικό σας.
+Σημείωση: Μπορείτε να ζητήσε επαναφορά το πολύ μία φορά μέσα σε %tokenLifetime% hours.
+
+Εάν δεν έχετε λάβει κάποιο email παρακαλώ ελένξτε τον φάκελο με την ανεπιθύμητη αλληλογραφία (spam) ή δοκιμάστε ξανά.
+',
     'resetting.request.username' => 'Όνομα χρήστη ή διεύθυνση e-mail',
     'resetting.request.submit' => 'Επαναφορά του κωδικού πρόσβασης',
     'resetting.reset.submit' => 'Αλλαγή κωδικού πρόσβασης',
@@ -154,7 +159,7 @@ $catalogue = new MessageCatalogue('el', array (
     'resetting.email.subject' => 'Επαναφορά του κωδικού πρόσβασης',
     'resetting.email.message' => 'Αγαπητέ %username%!
 
-  Για να επαναφέρετε τον κωδικό πρόσβασής σας - επισκεφθείτε %confirmationUrl%
+Για να επαναφέρετε τον κωδικό πρόσβασής σας - επισκεφθείτε %confirmationUrl%
 
 Ευχαριστούμε πολυ.
 ',

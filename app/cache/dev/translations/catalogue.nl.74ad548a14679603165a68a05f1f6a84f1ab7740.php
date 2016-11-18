@@ -155,7 +155,11 @@ Vriendelijke groeten,
 het Team.
 ',
     'resetting.password_already_requested' => 'Het wachtwoord voor deze gebruiker is al aangevraagd binnen de laatste 24 uur.',
-    'resetting.check_email' => 'Er is een e-mail verstuurd naar %email%, met een link om uw wachtwoord te resetten.',
+    'resetting.check_email' => 'Er werd een email gestuurd. De email bevat een link om je wachtwoord te resetten.
+Opgelet: Je kan pas na %tokenLifetime% uur een nieuw wachtwoord aanvragen.
+
+Indien je geen email ontvangen hebt, controlleer dan zeker je spam folder of probeer opnieuw.
+',
     'resetting.request.username' => 'Gebruikersnaam of e-mailadres',
     'resetting.request.submit' => 'Reset wachtwoord',
     'resetting.reset.submit' => 'Wijzig wachtwoord',

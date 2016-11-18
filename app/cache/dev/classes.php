@@ -6234,35 +6234,6 @@ return $handler;
 }
 }
 }
-namespace Symfony\Bridge\Monolog\Handler
-{
-use Monolog\Logger;
-use Monolog\Handler\TestHandler;
-use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
-class DebugHandler extends TestHandler implements DebugLoggerInterface
-{
-public function getLogs()
-{
-$records = array();
-foreach ($this->records as $record) {
-$records[] = array('timestamp'=> $record['datetime']->getTimestamp(),'message'=> $record['message'],'priority'=> $record['level'],'priorityName'=> $record['level_name'],'context'=> $record['context'],'channel'=> isset($record['channel']) ? $record['channel'] :'',
-);
-}
-return $records;
-}
-public function countErrors()
-{
-$cnt = 0;
-$levels = array(Logger::ERROR, Logger::CRITICAL, Logger::ALERT, Logger::EMERGENCY);
-foreach ($levels as $level) {
-if (isset($this->recordsByLevel[$level])) {
-$cnt += count($this->recordsByLevel[$level]);
-}
-}
-return $cnt;
-}
-}
-}
 namespace Monolog\Handler\FingersCrossed
 {
 interface ActivationStrategyInterface

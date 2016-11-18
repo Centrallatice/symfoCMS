@@ -26,11 +26,11 @@
                 {% include "::menus/left.html.twig" %}
             </header>
         {% endif %}
-        <main>
+        <div class="main{% if is_granted("IS_AUTHENTICATED_REMEMBERED")==false %} nopadding{% endif %}">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <nav class="breadcrumb">
                     <div class="nav-wrapper">
-                        <div class="col s12">
+                        <div class="col s11 offset-s1">
                             {% set breadcrumb = block('breadcrumb') %}
                             <a href="{{ path('admin_default_index') }}" class="breadcrumb"><i class="fa fa-home"></i></a>
                             {{breadcrumb|raw}} 
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
         
         {% block javascripts %}            
             <script type="text/javascript">

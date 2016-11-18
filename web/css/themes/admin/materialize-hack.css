@@ -1,7 +1,9 @@
-header, main, footer {
+header, .main, footer {
     padding-left: 250px;
 }
-
+nav .nav-wrapper{
+	padding-left:25px;
+}
 .side-nav li.logo>a>i{
     float:none;
     margin:0 0 0 -50px;

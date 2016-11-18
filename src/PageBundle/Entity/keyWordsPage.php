@@ -15,7 +15,7 @@ class keyWordsPage extends metaKeyWord
 {
      /**
    * @ORM\ManyToOne(targetEntity="PageBundle\Entity\Page")
-   * @ORM\JoinColumn(nullable=false)
+   * @ORM\JoinColumn(nullable=false,inversedBy="keywords")
    */
     private $associationId;
 

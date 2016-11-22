@@ -3,6 +3,10 @@
     background: #f2f2f2;
     border-radius: 2px;
     padding: 50px 5px 10px 0;
+    position:relative;
+}
+.demoRow .col-remove{
+    position:relative;
 }
 .demoRow span.titleAdminRow{
     position: absolute;
@@ -49,7 +53,6 @@
     width: 100%;
     padding: 0 0 0 30px;
     text-align: left;
-    position: absolute;
     top: -25px;
     right: 15px;
     z-index: 1;

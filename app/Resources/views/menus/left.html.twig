@@ -10,12 +10,12 @@
      </li>
     <li>
         <div class="collapsible-header">
-            <a href="{{path('admin_default_index')}}"><i class="fa fa-fw fa-home"></i> Accueil</a>
+            <a href="{{path('admin_default_index')}}"><i class="material-icons">home</i> Accueil</a>
         </div>
     </li>
     <li>
-        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['page_new','page_list','page_edit'] %}active{% endif %}">
-            <i class="fa fa-fw fa-files-o"></i> Pages
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['page_new','page_list','page_edit','page_show'] %}active{% endif %}">
+            <i class="material-icons">description</i> Pages
         </div>
         <div class="collapsible-body" {% if app.request.get('_route') in ['page_new','page_list','page_edit'] %}style="display:block"{% endif %}>
             <ul>
@@ -29,10 +29,10 @@
         </div>
     </li>
     <li>
-        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['admin_article_new','admin_article_index'] %}active{% endif %}">
-            <i class="fa fa-fw fa-files-o"></i> Articles
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['admin_article_new','admin_article_index','admin_article_show','admin_article_edit'] %}active{% endif %}">
+            <i class="large material-icons">art_track</i> Articles
         </div>
-        <div {% if app.request.get('_route') in ['admin_article_new','admin_article_index'] %}style='display:block'{% endif %} class="collapsible-body">
+        <div {% if app.request.get('_route') in ['admin_article_new','admin_article_index','admin_article_edit','admin_article_show'] %}style='display:block'{% endif %} class="collapsible-body">
             <ul>
                 <li class="{% if app.request.get('_route') == 'admin_article_new' %}active{% endif%}">
                     <a href="{{path('admin_article_new')}}">Créer un article</a>
@@ -44,10 +44,10 @@
         </div>
     </li>
     <li>
-        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['admin_category_new','admin_category_index'] %}active{% endif %}">
-            <i class="fa fa-fw fa-folder-open-o"></i> Catégories
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['admin_category_new','admin_category_index','admin_category_show','admin_category_edit'] %}active{% endif %}">
+            <i class="material-icons">folder</i> Catégories
         </div>
-        <div {% if app.request.get('_route') in ['admin_category_new','admin_category_index'] %}style='display:block'{% endif %} class="collapsible-body">
+        <div {% if app.request.get('_route') in ['admin_category_new','admin_category_index','admin_category_show','admin_category_edit'] %}style='display:block'{% endif %} class="collapsible-body">
             <ul>
                 <li class="{% if app.request.get('_route') == 'admin_category_new' %}active{% endif%}">
                     <a href="{{path('admin_category_new')}}">Créer une catégorie</a>

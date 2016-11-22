@@ -27,6 +27,10 @@ class RowType extends AbstractType
                     "label"=>"Disposition",
                     "class" => "PageBundle:DispositionRow",
                     'choice_label' => 'description'))
+                ->add('page',EntityType::class,array(
+                    "class" => "PageBundle:Page",
+                    "attr" => array("class"=>"hide"),
+                    'choice_label' => 'id'))
                 ->add('enteteType', 'choice', 
                         array('choices' => array(
                             1 => "H1",

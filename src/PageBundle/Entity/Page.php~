@@ -65,11 +65,7 @@ class Page
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Row", cascade={"remove"})
-     * @ORM\JoinTable(name="pages_rows",
-     *      joinColumns={@ORM\JoinColumn(name="page_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="row_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="PageBundle\Entity\Row", cascade={"remove"}, mappedBy="page")
      */
     
     private $rows;
@@ -103,7 +99,7 @@ class Page
     public function setTitre($titre)
     {
         $this->titre = $titre;
-
+    
         return $this;
     }
 
@@ -127,7 +123,7 @@ class Page
     public function setDescription($description)
     {
         $this->description = $description;
-
+    
         return $this;
     }
 
@@ -151,7 +147,7 @@ class Page
     public function setAuteur($auteur)
     {
         $this->auteur = $auteur;
-
+    
         return $this;
     }
 
@@ -175,7 +171,7 @@ class Page
     public function setIsHomepage($isHomepage)
     {
         $this->isHomepage = $isHomepage;
-
+    
         return $this;
     }
 
@@ -199,7 +195,7 @@ class Page
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-
+    
         return $this;
     }
 
@@ -223,7 +219,7 @@ class Page
     public function addKeyword(\PageBundle\Entity\keyWordsPage $keyword)
     {
         $this->keywords[] = $keyword;
-
+    
         return $this;
     }
 
@@ -257,7 +253,7 @@ class Page
     public function addRow(\PageBundle\Entity\Row $row)
     {
         $this->rows[] = $row;
-
+    
         return $this;
     }
 

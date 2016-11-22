@@ -1,4 +1,60 @@
 $(document).ready(function(){
+   $('.modal#modalAddRow').modal({
+       ready:function(modal,trigger){
+           $('#modalAddRow form').on('submit',function (event) {
+                $('#modalAddRow .modal-footer button.btn.green').attr("disabled","disabled").html("<i class='fa fa-spin fa-spinner'></i> Patienter...");
+                event.preventDefault();
+                var s = new FormData(this);
+                $.ajax({
+                    type: "POST",
+                    data: s,
+                    url: $(this).attr("action"),
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if(data.success){
+                            $('#modalAddRow .modal-footer button.btn.green').removeAttr("disabled").html("Enregistrer");
+                            $('.norowcreated').remove();
+                            addNewRowHTML(data.idPage,data.id,data.idCols,s.get("pagebundle_row[titreAdmin]"));
+                            $('#modalAddRow').modal('close');
+                        }
+                    }
+                });
+                return false;
+            });
+       }
+   });
+   $('.modal#modalEditRow,.modal#modalEditCol').modal({
+       ready:function(modal,trigger){
+            var idModal = $(modal).attr("id");
+            var arrayModalEdition=["modalEditCol","modalEditRow"];
+            if(arrayModalEdition.indexOf(idModal)>=0){
+                $('#'+idModal+' form').on('submit',function (event) {
+                    event.preventDefault();
+                    var s = new FormData(this);
+                    $.ajax({
+                        type: "POST",
+                        data: s,
+                        url: $(this).attr("action"),
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            if(data.success){
+                                $('#'+idModal).modal('close');
+                                return false;
+                            }
+                            else{
+                                alert("Une erreur est survenue");
+                                return false;
+                            }
+                        }
+                    });
+
+                });
+            }
+          
+       }
+   });
    $('#pagebundle_page_keywords_fake').keypress(function( event ) {
         if ( event.which == 13 || event.which == 59 ) {
             event.preventDefault();
@@ -36,62 +92,6 @@ function refactorKW(creation){
     });
     $('#pagebundle_page_keywords_final').val(finalValue);
 }
-
-$('#modalAddRow').on('shown.bs.modal', function () {        
-    $('#modalAddRow form').on('submit',function (event) {
-        $('#modalAddRow form .modal-footer button.btn-primary').attr("disabled","disabled").html("<i class='fa fa-spin fa-spinner'></i> Patienter...");
-        event.preventDefault();
-        var s = new FormData(this);
-        $.ajax({
-            type: "POST",
-            data: s,
-            url: $(this).attr("action"),
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                if(data.success){
-                    $('#modalAddRow form .modal-footer button.btn-primary').removeAttr("disabled").html("Enregistrer");
-                    $('.norowcreated').remove();
-                    addNewRowHTML(data.idPage,data.id,data.idCols,s.get("pagebundle_row[titreAdmin]"));
-                    $('#modalAddRow').modal('hide');
-                }
-            }
-        });
-        return false;
-    });
-});
-
-
-$('.modal').on('show.bs.modal', function (e) {
-    var idModal = $(this).attr("id");
-    var arrayModalEdition=["modalEditCol","modalEditRow"];
-    if(arrayModalEdition.indexOf(idModal)>=0){
-        $('#'+idModal+' form').on('submit',function (event) {
-            event.preventDefault();
-            var s = new FormData(this);
-            $.ajax({
-                type: "POST",
-                data: s,
-                url: $(this).attr("action"),
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    if(data.success){
-                        $('#'+idModal).modal('hide');
-                        return false;
-                    }
-                    else{
-                        alert("Une erreur est survenue");
-                        return false;
-                    }
-                }
-            });
-            
-        });
-    }
-});
-
-
 function addNewRowHTML(idPage,idRow,cols,title){
     
     
@@ -100,7 +100,7 @@ function addNewRowHTML(idPage,idRow,cols,title){
     
     
     var myDivRemove = $('<div></div>');
-    myDivRemove.addClass("col s12 m12 l12").addClass("col-remove");
+    myDivRemove.addClass("col s12").addClass("col-remove");
     
     var spanTitle = $("<span></span>");
     $(spanTitle).html(title);
@@ -156,9 +156,11 @@ function getModalEdit(id,url,idModal){
         data:{identifiant:id},
         dataType: "JSON",
         success: function (data) {
-            $('#'+idModal+' .modal-content').html(data.form);
+            $('#'+idModal).html(data.form);
             $('#'+idModal).find("form").attr("novalidate","novalidate");
-            $('#'+idModal).modal('show');
+            $('#'+idModal).modal('open');
+            $('#'+idModal+' label').addClass("active");
+            $('#'+idModal+' select').material_select();
         }
     }); 
 }
@@ -196,10 +198,11 @@ function deleteAjaxPage(idPage,url){
         message : "Êtes-vous sûr de vouloir supprimer cette page ?",
         buttons: {
             cancel: {
-                label: '<i class="fa fa-times"></i> Annuler'
+                label: '<i class="material-icons left">cancel</i> Annuler',
+                class:'btn green'
             },
             confirm: {
-                label: '<i class="fa fa-check"></i> Supprimer la page'
+                label: '<i class="material-icons left">done</i> Supprimer la page'
             }
         },
         callback: function(result){ 

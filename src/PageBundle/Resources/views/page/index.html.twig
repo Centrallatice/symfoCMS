@@ -4,20 +4,23 @@
     <link rel="stylesheet" href="{{ asset('css/themes/admin/generator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
 {% endblock %}
-{% block breadcrumb %} <a class="breadcrumb" href="{{ path('page_list') }}">Pages</a> /  Mes pages{% endblock %}
+{% block breadcrumb %} 
+    <a class="breadcrumb" href="{{ path('page_list') }}">Pages</a>
+    <a class="breadcrumb" href="#!">Mes pages</a>
+{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col s12 m12 l12">
-            <a role="button" class="blue btn pull-right" href="{{ path('page_new') }}"><i class="fa fa-plus"></i> Créer une nouvelle page</a>
+        <div class="cols12">
+            <a role="button" class="btn waves-effect waves-light green pull-right" href="{{ path('page_new') }}"><i class="material-icons left medium">add</i> Créer une page</a>
         </div>
     </div>
     <hr />
     <div class="row">
-        <div class="col s12 m12 l12">
-            <table class="striped bordered">
+        <div class="cols12">
+            <table class="striped bordered table responsive-table">
                 <thead class="thead-inverse">
                     <tr>
-                        <th>Id</th>
+                        <th class="text-right">#</th>
                         <th>Titre</th>
                         <th>Description</th>
                         <th>Créé le</th>
@@ -31,14 +34,14 @@
                             <td><a href="{{ path('page_show', { 'id': page.id }) }}">{{ page.id }}</a></td>
                             <td>{{ page.titre }}</td>
                             <td>{{ page.description }}</td>
-                            <td class="text-right">{% if page.creationDate %}{{ page.creationDate|date('d/m/Y H:i') }}{% endif %}</td>
+                            <td class="text-right">{% if page.creationDate %}{{ page.creationDate|date('d/m/Y') }}{% endif %}</td>
                             <td>{% if page.isHomePage %}<center><i class="fa-2x fa fa-home"></i></center>{% endif %}</td>
                             <td class="text-right">
-                                <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue' href='#' data-activates='dropdown-action-{{page.id}}'>Actions</a>
+                                <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue contraintwidth' href='#' data-activates='dropdown-action-{{page.id}}'>Actions</a>
                                 <ul id='dropdown-action-{{page.id}}' class='dropdown-content'>
-                                    <li><a class="action-blue" href="{{ path('page_show', { 'id': page.id }) }}"><i class="fa fa-search"></i> Voir</a></li>
-                                    <li><a class="action-purple" href="{{ path('page_edit', { 'id': page.id }) }}"><i class="fa fa-cog"></i> Modifier</a></li>
-                                    <li><a class="action-red" href="#" onclick="deleteAjaxPage({{page.id}},'{{ path('page_ajax_delete', { 'id': page.id }) }}')"><i class="fa fa-remove"></i> Supprimer</a></li>
+                                    <li><a href="{{ path('page_show', { 'id': page.id }) }}"><i class="material-icons left">search</i>Afficher</a></li>
+                                    <li><a class="action-blue" href="{{ path('page_edit', { 'id': page.id }) }}"><i class="material-icons left">mode_edit</i>Modifier</a></li>
+                                    <li><a class="action-red" href="#" onclick="deleteAjaxPage({{page.id}},'{{ path('page_ajax_delete', { 'id': page.id }) }}')"><i class="material-icons left">delete</i>Supprimer</a></li>
                                 </ul>
                             </td>
                         </tr>

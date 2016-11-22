@@ -1,28 +1,18 @@
-<div class="modal fade" id="modalAddRow" tabindex="-1" role="dialog" aria-labelledby="modalAddRowLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal bottom-sheet bottom-sheet-big modal-fixed-footer" id="modalAddRow">
+    <form method="post" role="form" action="{{path('row_new')}}">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Ajout d'une nouvelle ligne</h4>
-            </div>
-            <form method="post" role="form" action="{{path('row_new')}}">
-                <div class="modal-body">
-                    <input type="hidden" name="pageID" value="{{page.getId()}}">
-                    {{ form_row(row_form.titreAdmin) }}
-                    {{ form_row(row_form.titreClient) }}
-                    {{ form_row(row_form.enteteType) }}
-                    {{ form_row(row_form.disposition) }}
-                    {{ form_row(row_form.cssClass) }}
-                    {{ form_row(row_form.cssId) }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                </div>
-                {{ form_end(row_form) }}
-            </form>
+            {{ form_widget(row_form.page) }}
+            {{ form_row(row_form.titreAdmin) }}
+            {{ form_row(row_form.titreClient) }}
+            {{ form_row(row_form.enteteType) }}
+            {{ form_row(row_form.disposition) }}
+            {{ form_row(row_form.cssClass) }}
+            {{ form_row(row_form.cssId) }}
         </div>
-    </div>
+        <div class="modal-footer center-align text-center">
+            <button type="button" class="btn modal-action modal-close red waves-effect waves-light" data-dismiss="modal"><i class="material-icons left">close</i>Fermer</button>
+            <button type="submit" class="btn green waves-effect waves-light"><i class="material-icons left">save</i>Enregistrer</button>
+        </div>
+    {{ form_end(row_form) }}
+    </form>
 </div>

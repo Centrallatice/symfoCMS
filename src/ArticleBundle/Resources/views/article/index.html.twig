@@ -4,24 +4,28 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 {% endblock %}
-{% block breadcrumb %} <a class="breadcrumb" href="{{ path('admin_article_index') }}">Articles</a> /  Mes articles{% endblock %}
+{% block breadcrumb %}
+    <a class="breadcrumb" href="{{ path('admin_article_index') }}">Articles</a>
+    <a class="breadcrumb" href="#!">Mes articles</a>
+{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col l8">
+        <div class="col s12">
             {{ form_start(form_category) }}
-                <div class="row valign-wrapper">
-                    <div class="col l7 valign">
+                <div class="row valign-wrapper no-marg-bottom">
+                    <div class="col s8 l6 valign">
                     {{ form_widget(form_category,{ 'attr': {'class': 'form-control form-control-sm'} }) }}
                     </div>
-                    <div class="col l5 valign">
-                        <button class='btn green btn-sm' type="submit"><i class="fa fa-filter"></i></button>
+                    <div class="col s2 l1 valign">
+                        <button class='btn blue waves-effect waves-light contraintwidth' type="submit" title="filter"><i class="material-icons  ">tune</i></button>
+                    </div>
+                    <div class="col s2 l5 valign">
+                        <a role="button" class="btn waves-effect waves-light green pull-right contraintwidth-s contraintwidth-m" href="{{ path('admin_article_new') }}"><i class="material-icons left medium">add</i><span class="hide-on-med-and-down">Créer un article</span></a>
                     </div>
                 </div>
             {{ form_end(form_category) }}
         </div>
-        <div class="col l4">
-            <a role="button" class="btn green flat" href="{{ path('admin_article_new') }}"><i class="icones-materialize"></i></a>
-        </div>
+        
     </div>
     
     {% for flash_message in app.session.flashBag.get('success') %}
@@ -35,8 +39,8 @@
     {% endfor %}    
     <hr />       
     <div class="row">
-        <div class="col s12 m12 l12">
-            <table class="table table-striped table-bordered table-sm">
+        <div class="cols12">
+            <table class="table striped bordered responsive-table">
                 <thead class="thead-inverse">
                     <tr>
                         <th class="text-right">#</th>
@@ -53,17 +57,22 @@
                     <tr id="art-{{article.id}}">
                         <td class="text-right"><a href="{{ path('admin_article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
                         <td>{{ article.titre }}</td>
-                        <td class="text-right">{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        <td class="text-right">{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y') }}{% endif %}</td>
                         <td>{{ article.auteur }}</td>
                         <td>{% if article.category != null %}{{article.category.nom}}{% else %}Non catégorisé{% endif %}</td>
-                        <td class="text-center {% if article.etat %}bg-success{% else %}bg-danger{% endif %}">
-                            {% if article.etat %}Publié{% else %}Non publié{% endif %}</td>
+                        <td class="text-left">
+                                {% if article.etat %}
+                                    <i title="Active" class="material-icons left text-green">done</i>
+                                {% else %}
+                                    <i title="Inactive" class="material-icons left text-red">cancel</i>
+                                {% endif %}
+                            </td>
                         <td class="text-right">
-                            <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue' href='#' data-activates='dropdown-action-{{article.id}}'>Actions</a>
+                            <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue contraintwidth' href='#' data-activates='dropdown-action-{{article.id}}'><i class="material-icons">build</i></a>
                             <ul id='dropdown-action-{{article.id}}' class='dropdown-content'>
-                                <li><a class="action-blue" href="{{ path('admin_article_show', { 'id': article.id }) }}"><i class="fa fa-search"></i> Voir</a></li>
-                                <li><a class="action-purple" href="{{ path('admin_article_edit', { 'id': article.id }) }}"><i class="fa fa-cog"></i> Modifier</a></li>
-                                <li><a class="action-red" href="#" onclick="deleteAjaxArticle({{article.id}},'{{ path('article_ajax_delete', { 'id': article.id }) }}')"><i class="fa fa-remove"></i> Supprimer</a></li>
+                                <li><a href="{{ path('admin_article_show', { 'id': article.id }) }}"><i class="material-icons left">search</i>Afficher</a></li>
+                                <li><a class="action-blue" href="{{ path('admin_article_edit', { 'id': article.id }) }}"><i class="material-icons left">mode_edit</i>Modifier</a></li>
+                                <li><a class="action-red" href="#" onclick="deleteAjaxArticle({{article.id}},'{{ path('article_ajax_delete', { 'id': article.id }) }}')"><i class="material-icons left">delete</i>Supprimer</a></li>
                             </ul>
                         </td>
                     </tr>

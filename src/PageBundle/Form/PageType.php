@@ -17,7 +17,11 @@ class PageType extends AbstractType
     {
         $builder->add('titre')
                 ->add('description')
-                ->add('isHomepage',CheckboxType::class,array("required"=>false,"label"=>"Cette page est la page d'accueil du site"));
+                ->add('isHomepage',CheckboxType::class,
+                        array(
+                            "required"=>false,
+                            "label"=>"Cette page est la page d'accueil du site"
+                     ));
     }
     
     /**

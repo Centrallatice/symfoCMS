@@ -55,10 +55,7 @@ class Row
      *
      * @ORM\Column(name="enteteType", type="string", length=2,nullable=true)
      */
-    private $enteteType;
-    
-    
-
+    private $enteteType; 
     
     /**
      * @ORM\ManyToOne(targetEntity="PageBundle\Entity\DispositionRow")
@@ -67,6 +64,11 @@ class Row
     protected $disposition;
     
     
+    /**
+     * @ORM\ManyToOne(targetEntity="PageBundle\Entity\Page", inversedBy="rows")
+     * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
+     */
+    private $page;
     
     /**
      * @var boolean
@@ -75,13 +77,15 @@ class Row
      */
     protected $etat;
     
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ordre", type="integer")
+     */
+    private $ordre;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Col", cascade={"remove"})
-     * @ORM\JoinTable(name="rows_cols",
-     *      joinColumns={@ORM\JoinColumn(name="row_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="col_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="PageBundle\Entity\Col", cascade={"remove"}, mappedBy="row")
      */
     private $cols;
     
@@ -93,6 +97,8 @@ class Row
         $this->etat=false;
         $this->cols = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    
 
     /**
      * Get id
@@ -114,7 +120,7 @@ class Row
     public function setCssClass($cssClass)
     {
         $this->cssClass = $cssClass;
-
+    
         return $this;
     }
 
@@ -129,113 +135,6 @@ class Row
     }
 
     /**
-     * Set cssId
-     *
-     * @param string $cssId
-     *
-     * @return Row
-     */
-    public function setCssId($cssId)
-    {
-        $this->cssId = $cssId;
-
-        return $this;
-    }
-
-    /**
-     * Get cssId
-     *
-     * @return string
-     */
-    public function getCssId()
-    {
-        return $this->cssId;
-    }
-
-    /**
-     * Set etat
-     *
-     * @param boolean $etat
-     *
-     * @return Row
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return boolean
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
-    /**
-     * Set disposition
-     *
-     * @param \PageBundle\Entity\DispositionRow $disposition
-     *
-     * @return Row
-     */
-    public function setDisposition(\PageBundle\Entity\DispositionRow $disposition)
-    {
-        $this->disposition = $disposition;
-
-        return $this;
-    }
-
-    /**
-     * Get disposition
-     *
-     * @return \PageBundle\Entity\DispositionRow
-     */
-    public function getDisposition()
-    {
-        return $this->disposition;
-    }
-
-    /**
-     * Add col
-     *
-     * @param \PageBundle\Entity\Col $col
-     *
-     * @return Row
-     */
-    public function addCol(\PageBundle\Entity\Col $col)
-    {
-        $this->cols[] = $col;
-
-        return $this;
-    }
-
-    /**
-     * Remove col
-     *
-     * @param \PageBundle\Entity\Col $col
-     */
-    public function removeCol(\PageBundle\Entity\Col $col)
-    {
-        $this->cols->removeElement($col);
-    }
-
-    /**
-     * Get cols
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCols()
-    {
-        return $this->cols;
-    }
-
-
-    /**
      * Set titreAdmin
      *
      * @param string $titreAdmin
@@ -245,7 +144,7 @@ class Row
     public function setTitreAdmin($titreAdmin)
     {
         $this->titreAdmin = $titreAdmin;
-
+    
         return $this;
     }
 
@@ -269,7 +168,7 @@ class Row
     public function setTitreClient($titreClient)
     {
         $this->titreClient = $titreClient;
-
+    
         return $this;
     }
 
@@ -284,6 +183,30 @@ class Row
     }
 
     /**
+     * Set cssId
+     *
+     * @param string $cssId
+     *
+     * @return Row
+     */
+    public function setCssId($cssId)
+    {
+        $this->cssId = $cssId;
+    
+        return $this;
+    }
+
+    /**
+     * Get cssId
+     *
+     * @return string
+     */
+    public function getCssId()
+    {
+        return $this->cssId;
+    }
+
+    /**
      * Set enteteType
      *
      * @param string $enteteType
@@ -293,7 +216,7 @@ class Row
     public function setEnteteType($enteteType)
     {
         $this->enteteType = $enteteType;
-
+    
         return $this;
     }
 
@@ -305,5 +228,111 @@ class Row
     public function getEnteteType()
     {
         return $this->enteteType;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param boolean $etat
+     *
+     * @return Row
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+    
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return boolean
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set disposition
+     *
+     * @param \PageBundle\Entity\DispositionRow $disposition
+     *
+     * @return Row
+     */
+    public function setDisposition(\PageBundle\Entity\DispositionRow $disposition)
+    {
+        $this->disposition = $disposition;
+    
+        return $this;
+    }
+
+    /**
+     * Get disposition
+     *
+     * @return \PageBundle\Entity\DispositionRow
+     */
+    public function getDisposition()
+    {
+        return $this->disposition;
+    }
+
+    /**
+     * Set page
+     *
+     * @param \PageBundle\Entity\Page $page
+     *
+     * @return Row
+     */
+    public function setPage(\PageBundle\Entity\Page $page = null)
+    {
+        $this->page = $page;
+    
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return \PageBundle\Entity\Page
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * Add col
+     *
+     * @param \PageBundle\Entity\Col $col
+     *
+     * @return Row
+     */
+    public function addCol(\PageBundle\Entity\Col $col)
+    {
+        $this->cols[] = $col;
+    
+        return $this;
+    }
+
+    /**
+     * Remove col
+     *
+     * @param \PageBundle\Entity\Col $col
+     */
+    public function removeCol(\PageBundle\Entity\Col $col)
+    {
+        $this->cols->removeElement($col);
+    }
+
+    /**
+     * Get cols
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCols()
+    {
+        return $this->cols;
     }
 }

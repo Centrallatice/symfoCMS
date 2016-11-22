@@ -1,22 +1,23 @@
 {% extends '::admin.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}{% endblock %}
-{% block breadcrumb %} <a class="breadcrumb" href="{{ path('admin_article_index') }}">Article</a> /  Créer un article{% endblock %}
+{% block breadcrumb %}
+    <a class="breadcrumb" href="{{ path('admin_article_index') }}">Article</a>
+    <a class="breadcrumb" href="#!">Détail de l'article " <strong>{{ article.titre }}</strong>"</a>
+{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col s12 m12 l12">
-            <div class="btn-group pull-right" role="group">
-                <a role="button" class="btn btn-info" href="{{ path('admin_article_edit', { 'id': article.id }) }}"><i class="fa fa-edit"></i> Éditer</a>
-                <a role="button" class="btn btn-warning" href="{{ path('admin_article_index') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
-            </div>
+        <div class="cols12">
+            <a role="button" class="btn waves-effect waves-light pull-right" href="{{ path('admin_article_index') }}"><i class="material-icons left">skip_previous</i> Revenir à la liste</a>
         </div>
     </div>
+    <hr />
     <div class="row">
-        <div class="col s12 m12 l12">
+        <div class="cols12">
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Id</th>
+                        <th>N°</th>
                         <td>{{ article.id }}</td>
                     </tr>
                     <tr>
@@ -25,7 +26,7 @@
                     </tr>
                     <tr>
                         <th>Datecreation</th>
-                        <td>{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        <td>{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H\\hi') }}{% endif %}</td>
                     </tr>
                     <tr>
                         <th>Auteur</th>
@@ -53,21 +54,37 @@
                     </tr>
                     <tr>
                         <th>Etat</th>
-                        <td>{% if article.etat %}<span class="tag tag-success">Publié</span>{% else %}<span class="tag tag-danger">Dépublié</span>{% endif %}</td>
+                        <td>{% if article.etat %}
+                                    <i title="Active" class="material-icons left text-green">done</i>
+                                {% else %}
+                                    <i title="Inactive" class="material-icons left text-red">cancel</i>
+                                {% endif %}
+                                </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col s12 m12 l12">
-             <div class="form-inline">
-                                {{ form_start(delete_form) }}
-                                    <input type="submit" class="btn btn-danger" value="Supprimer cet article">
-                                {{ form_end(delete_form) }}
-                            </div><a href="{{ path('admin_article_edit', { 'id': article.id }) }}" class="btn btn-primary"><i class="fa fa-cog"></i> Modifier</a>
-
-                
-         </div>
-    </div>
+    <div class="fixed-action-btn ">
+        <a class="btn-floating btn-large purple">
+            <i class="large material-icons">build</i>
+        </a>
+        <ul>
+          <li>
+              <a class="btn-floating blue tooltipped" 
+                 data-position="left" data-delay="50" data-tooltip="Modifier"
+                 title="Modifier" href="{{ path('admin_article_edit', { 'id': article.id }) }}">
+                  <i class="material-icons">mode_edit</i>
+              </a>
+          </li>
+          <li>
+              {{ form_start(delete_form) }}
+                    <button title="Supprimer" type="submit" class="btn-floating red tooltipped"
+                            data-position="left" data-delay="50" data-tooltip="Supprimer">
+                        <i class="material-icons">delete</i>
+                    </button>
+             {{ form_end(delete_form) }}
+          </li>
+        </ul>
+      </div>   
 {% endblock %}

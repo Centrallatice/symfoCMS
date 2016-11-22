@@ -59,13 +59,14 @@ class PageController extends Controller
                     $em->persist($k);
                 endif;
             endforeach;
-
+           
             if($page->getIsHomepage()):
                 $pages = $em->getRepository('PageBundle:Page')->findAll();
                 foreach($pages as $p):
                     $p->setIsHomepage(false);
                     $em->persist($p);
                 endforeach;
+                $page->setIsHomepage(true);
             endif;
             
             $em->persist($page);

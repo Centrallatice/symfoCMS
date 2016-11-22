@@ -3030,7 +3030,7 @@ $this->matchAttribute($k, $v);
 }
 public function matchScheme($scheme)
 {
-$this->schemes = array_map('strtolower', (array) $scheme);
+$this->schemes = null !== $scheme ? array_map('strtolower', (array) $scheme) : array();
 }
 public function matchHost($regexp)
 {
@@ -3046,11 +3046,11 @@ $this->matchIps($ip);
 }
 public function matchIps($ips)
 {
-$this->ips = (array) $ips;
+$this->ips = null !== $ips ? (array) $ips : array();
 }
 public function matchMethod($method)
 {
-$this->methods = array_map('strtoupper', (array) $method);
+$this->methods = null !== $method ? array_map('strtoupper', (array) $method) : array();
 }
 public function matchAttribute($key, $regexp)
 {
@@ -3058,10 +3058,10 @@ $this->attributes[$key] = $regexp;
 }
 public function matches(Request $request)
 {
-if ($this->schemes && !in_array($request->getScheme(), $this->schemes)) {
+if ($this->schemes && !in_array($request->getScheme(), $this->schemes, true)) {
 return false;
 }
-if ($this->methods && !in_array($request->getMethod(), $this->methods)) {
+if ($this->methods && !in_array($request->getMethod(), $this->methods, true)) {
 return false;
 }
 foreach ($this->attributes as $key => $pattern) {
@@ -3086,7 +3086,12 @@ namespace
 {
 class Twig_Environment
 {
-const VERSION ='1.27.0';
+const VERSION ='1.28.1';
+const VERSION_ID = 12801;
+const MAJOR_VERSION = 1;
+const MINOR_VERSION = 28;
+const RELEASE_VERSION = 1;
+const EXTRA_VERSION ='';
 protected $charset;
 protected $loader;
 protected $debug;
@@ -3248,6 +3253,16 @@ public function display($name, array $context = array())
 {
 $this->loadTemplate($name)->display($context);
 }
+public function load($name)
+{
+if ($name instanceof Twig_TemplateWrapper) {
+return $name;
+}
+if ($name instanceof Twig_Template) {
+return new Twig_TemplateWrapper($this, $name);
+}
+return new Twig_TemplateWrapper($this, $this->loadTemplate($name));
+}
 public function loadTemplate($name, $index = null)
 {
 $cls = $this->getTemplateClass($name, $index);
@@ -3275,8 +3290,11 @@ if ($this->bcWriteCacheFile) {
 $this->writeCacheFile($key, $content);
 } else {
 $this->cache->write($key, $content);
+$this->cache->load($key);
 }
+if (!class_exists($cls, false)) {
 eval('?>'.$content);
+}
 }
 }
 if (!$this->runtimeInitialized) {
@@ -4006,6 +4024,7 @@ new Twig_TokenParser_Spaceless(),
 new Twig_TokenParser_Flush(),
 new Twig_TokenParser_Do(),
 new Twig_TokenParser_Embed(),
+new Twig_TokenParser_With(),
 );
 }
 public function getFilters()
@@ -4436,7 +4455,7 @@ case'js':
 if ('UTF-8'!== $charset) {
 $string = twig_convert_encoding($string,'UTF-8', $charset);
 }
-if (0 == strlen($string) ? false : (1 == preg_match('/^./su', $string) ? false : true)) {
+if (0 == strlen($string) ? false : 1 !== preg_match('/^./su', $string)) {
 throw new Twig_Error_Runtime('The string to escape is not a valid UTF-8 string.');
 }
 $string = preg_replace_callback('#[^a-zA-Z0-9,\._]#Su','_twig_escape_js_callback', $string);
@@ -4448,7 +4467,7 @@ case'css':
 if ('UTF-8'!== $charset) {
 $string = twig_convert_encoding($string,'UTF-8', $charset);
 }
-if (0 == strlen($string) ? false : (1 == preg_match('/^./su', $string) ? false : true)) {
+if (0 == strlen($string) ? false : 1 !== preg_match('/^./su', $string)) {
 throw new Twig_Error_Runtime('The string to escape is not a valid UTF-8 string.');
 }
 $string = preg_replace_callback('#[^a-zA-Z0-9]#Su','_twig_escape_css_callback', $string);
@@ -4460,7 +4479,7 @@ case'html_attr':
 if ('UTF-8'!== $charset) {
 $string = twig_convert_encoding($string,'UTF-8', $charset);
 }
-if (0 == strlen($string) ? false : (1 == preg_match('/^./su', $string) ? false : true)) {
+if (0 == strlen($string) ? false : 1 !== preg_match('/^./su', $string)) {
 throw new Twig_Error_Runtime('The string to escape is not a valid UTF-8 string.');
 }
 $string = preg_replace_callback('#[^a-zA-Z0-9,\.\-_]#Su','_twig_escape_html_attr_callback', $string);
@@ -4674,6 +4693,13 @@ if (null !== $object) {
 $constant = get_class($object).'::'.$constant;
 }
 return constant($constant);
+}
+function twig_constant_is_defined($constant, $object = null)
+{
+if (null !== $object) {
+$constant = get_class($object).'::'.$constant;
+}
+return defined($constant);
 }
 function twig_array_batch($items, $size, $fill = null)
 {
@@ -4932,13 +4958,34 @@ ob_start();
 $this->displayBlock($name, $context, $blocks, $useBlocks);
 return ob_get_clean();
 }
-public function hasBlock($name)
+public function hasBlock($name, array $context = null, array $blocks = array())
 {
+if (null === $context) {
+@trigger_error('The '.__METHOD__.' method is internal and should never be called; calling it directly is deprecated since version 1.28 and won\'t be possible anymore in 2.0.', E_USER_DEPRECATED);
 return isset($this->blocks[(string) $name]);
 }
-public function getBlockNames()
+if (isset($blocks[$name])) {
+return $blocks[$name][0] instanceof self;
+}
+if (isset($this->blocks[$name])) {
+return true;
+}
+if (false !== $parent = $this->getParent($context)) {
+return $parent->hasBlock($name, $context);
+}
+return false;
+}
+public function getBlockNames(array $context = null, array $blocks = array())
 {
+if (null === $context) {
+@trigger_error('The '.__METHOD__.' method is internal and should never be called; calling it directly is deprecated since version 1.28 and won\'t be possible anymore in 2.0.', E_USER_DEPRECATED);
 return array_keys($this->blocks);
+}
+$names = array_merge(array_keys($blocks), array_keys($this->blocks));
+if (false !== $parent = $this->getParent($context)) {
+$names = array_merge($names, $parent->getBlockNames($context));
+}
+return array_unique($names);
 }
 protected function loadTemplate($template, $templateName = null, $line = null, $index = null)
 {
@@ -4947,6 +4994,9 @@ if (is_array($template)) {
 return $this->env->resolveTemplate($template);
 }
 if ($template instanceof self) {
+return $template;
+}
+if ($template instanceof Twig_TemplateWrapper) {
 return $template;
 }
 return $this->env->loadTemplate($template, $index);
@@ -5024,7 +5074,7 @@ protected function getAttribute($object, $item, array $arguments = array(), $typ
 {
 if (self::METHOD_CALL !== $type) {
 $arrayItem = is_bool($item) || is_float($item) ? (int) $item : $item;
-if ((is_array($object) && array_key_exists($arrayItem, $object))
+if ((is_array($object) && (isset($object[$arrayItem]) || array_key_exists($arrayItem, $object)))
 || ($object instanceof ArrayAccess && isset($object[$arrayItem]))
 ) {
 if ($isDefinedTest) {
@@ -5088,31 +5138,47 @@ return $object->$item;
 }
 }
 $class = get_class($object);
-if (!isset(self::$cache[$class]['methods'])) {
+if (!isset(self::$cache[$class])) {
 if ($object instanceof self) {
 $ref = new ReflectionClass($class);
 $methods = array();
 foreach ($ref->getMethods(ReflectionMethod::IS_PUBLIC) as $refMethod) {
-$methodName = strtolower($refMethod->name);
-if ('getenvironment'!== $methodName) {
-$methods[$methodName] = true;
+if ('getenvironment'!== strtolower($refMethod->name)) {
+$methods[] = $refMethod->name;
 }
 }
-self::$cache[$class]['methods'] = $methods;
 } else {
-self::$cache[$class]['methods'] = array_change_key_case(array_flip(get_class_methods($object)));
+$methods = get_class_methods($object);
 }
+$cache = array();
+foreach ($methods as $method) {
+$cache[$method] = $method;
+$cache[$lcName = strtolower($method)] = $method;
+if ('g'=== $lcName[0] && 0 === strpos($lcName,'get')) {
+$name = substr($method, 3);
+$lcName = substr($lcName, 3);
+} elseif ('i'=== $lcName[0] && 0 === strpos($lcName,'is')) {
+$name = substr($method, 2);
+$lcName = substr($lcName, 2);
+} else {
+continue;
+}
+if (!isset($cache[$name])) {
+$cache[$name] = $method;
+}
+if (!isset($cache[$lcName])) {
+$cache[$lcName] = $method;
+}
+}
+self::$cache[$class] = $cache;
 }
 $call = false;
-$lcItem = strtolower($item);
-if (isset(self::$cache[$class]['methods'][$lcItem])) {
-$method = (string) $item;
-} elseif (isset(self::$cache[$class]['methods']['get'.$lcItem])) {
-$method ='get'.$item;
-} elseif (isset(self::$cache[$class]['methods']['is'.$lcItem])) {
-$method ='is'.$item;
-} elseif (isset(self::$cache[$class]['methods']['__call'])) {
-$method = (string) $item;
+if (isset(self::$cache[$class][$item])) {
+$method = self::$cache[$class][$item];
+} elseif (isset(self::$cache[$class][$lcItem = strtolower($item)])) {
+$method = self::$cache[$class][$lcItem];
+} elseif (isset(self::$cache[$class]['__call'])) {
+$method = $item;
 $call = true;
 } else {
 if ($isDefinedTest) {
@@ -5121,7 +5187,7 @@ return false;
 if ($ignoreStrictCheck || !$this->env->isStrictVariables()) {
 return;
 }
-throw new Twig_Error_Runtime(sprintf('Neither the property "%1$s" nor one of the methods "%1$s()", "get%1$s()"/"is%1$s()" or "__call()" exist and have public access in class "%2$s".', $item, get_class($object)), -1, $this->getTemplateName());
+throw new Twig_Error_Runtime(sprintf('Neither the property "%1$s" nor one of the methods "%1$s()", "get%1$s()"/"is%1$s()" or "__call()" exist and have public access in class "%2$s".', $item, $class), -1, $this->getTemplateName());
 }
 if ($isDefinedTest) {
 return true;
@@ -5130,7 +5196,11 @@ if ($this->env->hasExtension('Twig_Extension_Sandbox')) {
 $this->env->getExtension('Twig_Extension_Sandbox')->checkMethodAllowed($object, $method);
 }
 try {
+if (!$arguments) {
+$ret = $object->$method();
+} else {
 $ret = call_user_func_array(array($object, $method), $arguments);
+}
 } catch (BadMethodCallException $e) {
 if ($call && ($ignoreStrictCheck || !$this->env->isStrictVariables())) {
 return;
@@ -5138,6 +5208,7 @@ return;
 throw $e;
 }
 if ($object instanceof Twig_TemplateInterface) {
+@trigger_error('Using the dot notation on an instance of '.__CLASS__.' is deprecated since version 1.28 and won\'t be supported anymore in 2.0.', E_USER_DEPRECATED);
 return $ret ===''?'': new Twig_Markup($ret, $this->env->getCharset());
 }
 return $ret;

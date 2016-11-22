@@ -15,9 +15,9 @@
                           Actions
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ path('admin_category_show', { 'id': category.id }) }}"><i class="fa fa-search"></i> Voir</a>
-                        <a class="dropdown-item" href="#" onclick="deleteAjaxCategory({{category.id}},'{{ path('category_ajax_delete', { 'id': category.id }) }}',true)"><i class="fa fa-remove"></i> Supprimer</a>
-                        <a class="dropdown-item" href="{{ path('admin_category_edit', { 'id': category.id }) }}"><i class="fa fa-cog"></i> Modifier</a>
+                        <a class="dropdown-item" href="{{ path('admin_category_show', { 'id': category.id }) }}"><i class="material-icons left">search</i></a>
+                        <a class="dropdown-item" href="#" onclick="deleteAjaxCategory({{category.id}},'{{ path('category_ajax_delete', { 'id': category.id }) }}',true)"><i class="material-icons left">delete</i> Supprimer</a>
+                        <a class="dropdown-item" href="{{ path('admin_category_edit', { 'id': category.id }) }}"><i class="material-icons">mode_edit</i> Modifier</a>
                     </div>
                 </div>
             </td>

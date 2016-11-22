@@ -5,17 +5,18 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 {% endblock %}
-{% block breadcrumb %} <a class="breadcrumb" href="{{ path('page_list') }}">Pages</a> /  Détail de la page " <strong>{{ page.titre }}</strong>"{% endblock %}
+{% block breadcrumb %}
+    <a class="breadcrumb" href="{{ path('page_list') }}">Pages</a>
+    <a class="breadcrumb" href="#!">Détail de la page " <strong>{{ page.titre }}</strong>"</a>
+{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col s12 m12 l12">
-            <a role="button" class="btn btn-primary pull-right" href="{{ path('page_list') }}"><i class="fa fa-arrow-left"></i> Revenir à la liste</a>
+         <div class="col s12">
+            <a role="button" class="btn waves-effect waves-light pull-right" href="{{ path('page_list') }}"><i class="material-icons left">skip_previous</i> Revenir à la liste</a>
         </div>
     </div>
      <div class="row">
-        <div class="col s12 m12 l12">
-            <h1>{{ page.titre }}</h1>
-
+        <div class="col s12">
             <table class="table table-active">
                 <tbody>
                     <tr>
@@ -46,15 +47,26 @@
             </table>
         </div>
     </div>
-     <div class="row">
-        <div class="col s12 m12 l12">
-            <center>
-                <div class="form-inline">
-                    {{ form_start(delete_form) }}
-                        <input type="submit" class="btn btn-danger" value="Supprimer cette page">
-                    {{ form_end(delete_form) }}
-                </div><a href="{{ path('page_edit', { 'id': page.id }) }}" class="btn btn-primary"><i class="fa fa-cog"></i> Modifier</a>
-            </center>
-    </div>
-    </div>
+    <div class="fixed-action-btn ">
+        <a class="btn-floating btn-large purple">
+            <i class="large material-icons">build</i>
+        </a>
+        <ul>
+          <li>
+              <a class="btn-floating blue tooltipped" 
+                 data-position="left" data-delay="50" data-tooltip="Modifier"
+                 title="Modifier" href="{{ path('page_edit', { 'id': page.id }) }}">
+                  <i class="material-icons">mode_edit</i>
+              </a>
+          </li>
+          <li>
+              {{ form_start(delete_form) }}
+                    <button title="Supprimer" type="submit" class="btn-floating red tooltipped"
+                            data-position="left" data-delay="50" data-tooltip="Supprimer">
+                        <i class="material-icons">delete</i>
+                    </button>
+             {{ form_end(delete_form) }}
+          </li>
+        </ul>
+      </div>
 {% endblock %}

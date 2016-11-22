@@ -32,7 +32,8 @@
                     <div class="nav-wrapper">
                         <div class="col s11 offset-s1">
                             {% set breadcrumb = block('breadcrumb') %}
-                            <a href="{{ path('admin_default_index') }}" class="breadcrumb"><i class="fa fa-home"></i></a>
+                            <a href="{{ path('admin_default_index') }}" class="breadcrumb"><i class="material-icons">home</i></a>
+                            
                             {{breadcrumb|raw}} 
                         </div>
                     </div>

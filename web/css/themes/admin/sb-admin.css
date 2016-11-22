@@ -38,7 +38,15 @@ h1.page-header{
 .border-left-light{
     border-left:1px solid #eceeef;
 }
-
+.main hr{
+    margin: 5px -9px 15px -20px;
+    color: navy;
+    border-style: solid;
+    border-width: 0.5px 0 0 0;
+}
+.checkbox-block{
+    padding: 15px 0;
+}
 
 .tagify-container {
     background-color: #fff;

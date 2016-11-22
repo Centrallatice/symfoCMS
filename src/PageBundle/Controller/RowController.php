@@ -48,21 +48,16 @@ class RowController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $colGenerator = explode("-",$row->getDisposition()->getNom());
             $em = $this->getDoctrine()->getManager();
-            $pageEnCours = $this->getDoctrine()->getManager()->getRepository('PageBundle:Page')->find($request->get("pageID"));
-            if($pageEnCours!==null):
-                $pageEnCours->addRow($row);
-                $em->persist($pageEnCours);
-            else:
-                return new JsonResponse(array("success"=>false,"id"=>null,"disposition"=>null,"message"=>"Page introuvable"));
-            endif;
             
             foreach($colGenerator as $v):
                 $C = new Col();
-                $C->setCssClass("col-xs-".$v);
+                $C->setCssClass("col s".$v);
+                $C->setRow($row);
                 $row->addCol($C);
                 $em->persist($C);
                 unset($C);
             endforeach;
+            
             
             $em->persist($row);
             $em->flush();
@@ -115,6 +110,9 @@ class RowController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            $colGenerator = explode("-",$row->getDisposition()->getNom());
+            
+            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('row_edit', array('id' => $row->getId()));

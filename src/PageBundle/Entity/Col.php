@@ -74,7 +74,31 @@ class Col
      */
     private $enteteType;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="PageBundle\Entity\Row", inversedBy="cols")
+     * @ORM\JoinColumn(name="row_id", referencedColumnName="id")
+     */
+    private $row;
     
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="etat", type="boolean")
+     */
+    private $etat;
+   
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ordre", type="integer")
+     */
+    private $ordre;
+    
+    public function __construct() {
+        $this->modules = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
     /**
      * Get id
      *
@@ -83,82 +107,6 @@ class Col
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set cssClass
-     *
-     * @param string $cssClass
-     *
-     * @return Col
-     */
-    public function setCssClass($cssClass)
-    {
-        $this->cssClass = $cssClass;
-
-        return $this;
-    }
-
-    /**
-     * Get cssClass
-     *
-     * @return string
-     */
-    public function getCssClass()
-    {
-        return $this->cssClass;
-    }
-
-    /**
-     * Set cssId
-     *
-     * @param string $cssId
-     *
-     * @return Col
-     */
-    public function setCssId($cssId)
-    {
-        $this->cssId = $cssId;
-
-        return $this;
-    }
-
-    /**
-     * Get cssId
-     *
-     * @return string
-     */
-    public function getCssId()
-    {
-        return $this->cssId;
-    }
-
-    /**
-     * Set htmlContent
-     *
-     * @param string $htmlContent
-     *
-     * @return Col
-     */
-    public function setHtmlContent($htmlContent)
-    {
-        $this->htmlContent = $htmlContent;
-
-        return $this;
-    }
-
-    /**
-     * Get htmlContent
-     *
-     * @return string
-     */
-    public function getHtmlContent()
-    {
-        return $this->htmlContent;
-    }
-    
-    public function __construct() {
-        $this->modules = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -171,7 +119,7 @@ class Col
     public function setTitreAdmin($titreAdmin)
     {
         $this->titreAdmin = $titreAdmin;
-
+    
         return $this;
     }
 
@@ -195,7 +143,7 @@ class Col
     public function setTitreClient($titreClient)
     {
         $this->titreClient = $titreClient;
-
+    
         return $this;
     }
 
@@ -210,6 +158,102 @@ class Col
     }
 
     /**
+     * Set cssClass
+     *
+     * @param string $cssClass
+     *
+     * @return Col
+     */
+    public function setCssClass($cssClass)
+    {
+        $this->cssClass = $cssClass;
+    
+        return $this;
+    }
+
+    /**
+     * Get cssClass
+     *
+     * @return string
+     */
+    public function getCssClass()
+    {
+        return $this->cssClass;
+    }
+
+    /**
+     * Set cssId
+     *
+     * @param string $cssId
+     *
+     * @return Col
+     */
+    public function setCssId($cssId)
+    {
+        $this->cssId = $cssId;
+    
+        return $this;
+    }
+
+    /**
+     * Get cssId
+     *
+     * @return string
+     */
+    public function getCssId()
+    {
+        return $this->cssId;
+    }
+
+    /**
+     * Set htmlContent
+     *
+     * @param string $htmlContent
+     *
+     * @return Col
+     */
+    public function setHtmlContent($htmlContent)
+    {
+        $this->htmlContent = $htmlContent;
+    
+        return $this;
+    }
+
+    /**
+     * Get htmlContent
+     *
+     * @return string
+     */
+    public function getHtmlContent()
+    {
+        return $this->htmlContent;
+    }
+
+    /**
+     * Set enteteType
+     *
+     * @param string $enteteType
+     *
+     * @return Col
+     */
+    public function setEnteteType($enteteType)
+    {
+        $this->enteteType = $enteteType;
+    
+        return $this;
+    }
+
+    /**
+     * Get enteteType
+     *
+     * @return string
+     */
+    public function getEnteteType()
+    {
+        return $this->enteteType;
+    }
+
+    /**
      * Add module
      *
      * @param \ModuleBundle\Entity\Module $module
@@ -219,7 +263,7 @@ class Col
     public function addModule(\ModuleBundle\Entity\Module $module)
     {
         $this->modules[] = $module;
-
+    
         return $this;
     }
 
@@ -244,26 +288,74 @@ class Col
     }
 
     /**
-     * Set enteteType
+     * Set row
      *
-     * @param string $enteteType
+     * @param \PageBundle\Entity\Row $row
      *
      * @return Col
      */
-    public function setEnteteType($enteteType)
+    public function setRow(\PageBundle\Entity\Row $row = null)
     {
-        $this->enteteType = $enteteType;
-
+        $this->row = $row;
+    
         return $this;
     }
 
     /**
-     * Get enteteType
+     * Get row
      *
-     * @return string
+     * @return \PageBundle\Entity\Row
      */
-    public function getEnteteType()
+    public function getRow()
     {
-        return $this->enteteType;
+        return $this->row;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param boolean $etat
+     *
+     * @return Col
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+    
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return boolean
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set ordre
+     *
+     * @param integer $ordre
+     *
+     * @return Col
+     */
+    public function setOrdre($ordre)
+    {
+        $this->ordre = $ordre;
+    
+        return $this;
+    }
+
+    /**
+     * Get ordre
+     *
+     * @return integer
+     */
+    public function getOrdre()
+    {
+        return $this->ordre;
     }
 }

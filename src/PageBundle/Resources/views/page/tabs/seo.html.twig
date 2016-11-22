@@ -1,11 +1,9 @@
 {{ form_start(form) }}
 
     {{ form_label(form.titre) }}
-    {{ form_errors(form.titre) }}
     {{ form_widget(form.titre) }}
     
     {{ form_label(form.description) }}
-    {{ form_errors(form.description) }}
     {{ form_widget(form.description) }}
     
     <label class="control-label required" for="pagebundle_page_titre">Mots-clés</label>  
@@ -26,8 +24,7 @@
         id="pagebundle_page_keywords_final"
         {% if page.getKeywords()|length >0 %}value="{% for k in page.getKeywords() %}{{k.value~';'}}{% endfor %}"{% endif %}>
     
-    {{ form_label(form.isHomepage) }}
-    {{ form_errors(form.isHomepage) }}
-    {{ form_widget(form.isHomepage) }}
-    <input type="submit" class="btn green  pull-right" value="Enregistrer" />
+        {{ form_label(form.isHomepage) }}
+        {{ form_widget(form.isHomepage) }}
+    <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>
 {{ form_end(form) }}

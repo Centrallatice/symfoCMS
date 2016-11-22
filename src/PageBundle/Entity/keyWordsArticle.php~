@@ -27,7 +27,7 @@ class keyWordsArticle extends metaKeyWord
      *
      * @return keyWordsPage
      */
-    public function setAssociationId(Page $associationId)
+    public function setAssociationId(Article $associationId)
     {
         $this->associationId = $associationId;
 

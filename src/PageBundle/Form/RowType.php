@@ -21,12 +21,15 @@ class RowType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->dispositions = $options['dispositions'];
+       
         $builder->add('titreAdmin',TextType::class,array("label"=>"Titre administrateur","required"=>false))
                 ->add('titreClient',TextType::class,array("label"=>"Titre d'entête","required"=>false))
-                ->add('disposition',EntityType::class,array(
-                    "label"=>"Disposition",
-                    "class" => "PageBundle:DispositionRow",
-                    'choice_label' => 'description'))
+                ->add('disposition', 'choice', 
+                        array('choices' => $this->dispositions,
+                        'label' => 'Disposition',
+                        'multiple' => false,
+                        'expanded' => false))
                 ->add('page',EntityType::class,array(
                     "class" => "PageBundle:Page",
                     "attr" => array("class"=>"hide"),
@@ -53,7 +56,8 @@ class RowType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PageBundle\Entity\Row'
+            'data_class' => 'PageBundle\Entity\Row',
+            'dispositions' => null
         ));
     }
 

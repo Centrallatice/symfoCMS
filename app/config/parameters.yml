@@ -10,6 +10,24 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: 418db2128cb9ba145c86e33666056f08108dfa70
+    dispositions:
+        3-3-3-3 : 4 Colonnes de même largeur
+        4-4-4 : 3 Colonnes de même largeur
+        6-6 : 2 Colonnes de même largeur
+        12 : 1 Colonne complète
+        3-9 : Une colonne d'1/4 + une de 3/4
+        9-3 : Une colonne de 3/4 + une d' 1/4
+        3-6-3 : Une colonne d'1/4 + une de moitié + une d'1/4
+        2-6-4 : Une colonne d'1/6 + une de moitié + une d'un tiers
+    moduleType: 
+        html: 
+            Nom : HTML
+            Description : Ce module vous permet d'insérer du contenu HTML
+        image: 
+            Nom : Image
+            Description : Ce module vous permet d'insérer une image
 twig:
     globals:
         siteName: Démonstration
+        dispositions: "%dispositions%"
+        

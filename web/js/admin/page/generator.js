@@ -24,37 +24,7 @@ $(document).ready(function(){
             });
        }
    });
-   $('.modal#modalEditRow,.modal#modalEditCol').modal({
-       ready:function(modal,trigger){
-            var idModal = $(modal).attr("id");
-            var arrayModalEdition=["modalEditCol","modalEditRow"];
-            if(arrayModalEdition.indexOf(idModal)>=0){
-                $('#'+idModal+' form').on('submit',function (event) {
-                    event.preventDefault();
-                    var s = new FormData(this);
-                    $.ajax({
-                        type: "POST",
-                        data: s,
-                        url: $(this).attr("action"),
-                        processData: false,
-                        contentType: false,
-                        success: function (data) {
-                            if(data.success){
-                                $('#'+idModal).modal('close');
-                                return false;
-                            }
-                            else{
-                                alert("Une erreur est survenue");
-                                return false;
-                            }
-                        }
-                    });
-
-                });
-            }
-          
-       }
-   });
+   
    $('#pagebundle_page_keywords_fake').keypress(function( event ) {
         if ( event.which == 13 || event.which == 59 ) {
             event.preventDefault();
@@ -68,7 +38,6 @@ $(document).ready(function(){
    });
    $('.tagify-container .alert.kw').on('closed.bs.alert', function () {
        refactorKW(false);
-        
    })
 });
 
@@ -103,13 +72,17 @@ function addNewRowHTML(idPage,idRow,cols,title){
     myDivRemove.addClass("col s12").addClass("col-remove");
     
     var spanTitle = $("<span></span>");
+    $(spanTitle).addClass("titleAdminRow");
     $(spanTitle).html(title);
     
     var linkRemove = $("<a></a>");
-    linkRemove.addClass("add-addon").attr("id","deleteRow").html('<i class="fa fa-remove fa-opaciteme"></i>').attr("title","Supprimer");
+    linkRemove.addClass("add-addon").attr("id","deleteRow").html('<i class="fa fa-remove fa-opaciteme"></i>').attr("title","Supprimer cette ligne");
+    
+    var linkActive = $("<a></a>");
+    linkActive.addClass("add-addon").attr("id","setEtatRow").html('<i class="fa fa-eye-slash fa-opaciteme"></i>').attr("title","Activer cette ligne");
     
     var linkEdit = $("<a></a>");
-    linkEdit.addClass("add-addon").attr("id","editRow").html('<i class="fa fa-cog fa-opaciteme"></i>').attr("title","modifier");
+    linkEdit.addClass("add-addon").attr("id","editRow").html('<i class="fa fa-pencil fa-opaciteme"></i>').attr("title","Modifier cette ligne");
                    
     $(linkEdit).on('click',function(){
         getModalEdit(idRow,basePageAdmin+'row/Ajax/'+idRow+'/edit','modalEditRow');
@@ -118,13 +91,21 @@ function addNewRowHTML(idPage,idRow,cols,title){
     $(linkRemove).on('click',function(){
         deleteRow(idPage,idRow,basePageAdmin+'row/Ajax/'+idRow);
     });
+    $(linkActive).on('click',function(){
+        activeDesactive(idPage,idRow,basePageAdmin+'row/Ajax/setEtat/'+idRow);
+    });
     
     spanTitle.appendTo(myDivRemove);
     linkEdit.appendTo(myDivRemove);
+    linkActive.appendTo(myDivRemove);
     linkRemove.appendTo(myDivRemove);
     myDivRemove.appendTo(myDiv);
-    
-    
+
+    myDiv.appendTo(".containerPageCreation");
+    refactorColonnes(cols,idRow);
+}
+
+function refactorColonnes(cols,idRow){
     for(var c in cols){
         var col = $('<div></div>');
         col.attr("id","newCol-"+cols[c]['id']).addClass(cols[c]['cssClass']).addClass("demoCol");
@@ -145,9 +126,8 @@ function addNewRowHTML(idPage,idRow,cols,title){
         
         linkSetting.appendTo(colSetting);
         colSetting.appendTo(col);
-        col.appendTo(myDiv);
+        col.appendTo($('#newRow-'+idRow));
     }
-    myDiv.appendTo(".containerPageCreation");
 }
 function getModalEdit(id,url,idModal){
    $.ajax({
@@ -155,14 +135,64 @@ function getModalEdit(id,url,idModal){
         url: url,
         data:{identifiant:id},
         dataType: "JSON",
+        async:false,
         success: function (data) {
-            $('#'+idModal).html(data.form);
-            $('#'+idModal).find("form").attr("novalidate","novalidate");
+            var myDiv = $('<div></div>');
+            myDiv.attr("id",idModal).addClass("modal modal-lg modal-fixed-footer");
+            myDiv.html(data.form);
+            myDiv.appendTo("body");
+            $('#'+idModal).modal({
+                ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                    modal.find("form").attr("novalidate","novalidate");
+                    modal.find("label").addClass("active");
+                    modal.find('select').material_select();
+                    var idModal = $(modal).attr("id");
+                    var arrayModalEdition=["modalEditCol","modalEditRow"];
+                    if(arrayModalEdition.indexOf(idModal)>=0){
+                        modal.find("form").on('submit',function (event) {
+                            modal.find(".modal-footer button.btn.green").attr("disabled","disabled").html("<i class='fa fa-spin fa-spinner'></i> Patienter...");
+                
+                            event.preventDefault();
+                            var s = new FormData(this);
+                            $.ajax({
+                                type: "POST",
+                                data: s,
+                                url: $(this).attr("action"),
+                                processData: false,
+                                contentType: false,
+                                success: function (data) {
+                                    if(data.success){
+                                        if(idModal=="modalEditRow"){
+                                            Materialize.toast('La ligne a bien été modifiée !', 3000, 'rounded green');
+                                            $('#newRow-'+id).find(".titleAdminRow").html(s.get("pagebundle_row[titreAdmin]"));
+                                            if(data.updatedRow){
+                                                $('#newRow-'+id).find(".demoCol").remove();
+                                                refactorColonnes(data.idCols,id);
+                                            }
+                                        }
+                                        else if(idModal=="modalEditCol"){
+                                            Materialize.toast('La colonne a bien été modifiée !', 3000, 'rounded green');
+                                        }
+                                        $('#'+idModal).modal('close');
+                                    }
+                                    else{
+                                        Materialize.toast('Une erreur est survenue', 3000, 'rounded red');
+                                        modal.find(".modal-footer button.btn.green").removeAttr("disabled").html("Enregistrer");
+                                        return false;
+                                    }
+                                }
+                            });
+
+                        });
+                    }
+                },
+                complete: function() {
+                    $('#'+idModal).remove();
+                } 
+            });
             $('#'+idModal).modal('open');
-            $('#'+idModal+' label').addClass("active");
-            $('#'+idModal+' select').material_select();
         }
-    }); 
+   }); 
 }
 
 function deleteRow(idPage,idRow,url){
@@ -185,10 +215,35 @@ function deleteRow(idPage,idRow,url){
                     data: {idRow:idRow,idPage:idPage},
                     dataType: "JSON",
                     success: function (data) {
-                        if(data.success) $('#newRow-'+idRow).remove();
+                        if(data.success){
+                            Materialize.toast('La ligne a bien été supprimée !', 3000, 'rounded green');
+                            $('#newRow-'+idRow).remove();
+                        }
+                        else Materialize.toast('Une erreur est survenue', 3000, 'rounded red');
                     }
                 });
             }
+        }
+    });
+}
+function activeDesactive(idPage,idRow,url){   
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {idRow:idRow,idPage:idPage},
+        dataType: "JSON",
+        success: function (data) {
+            if(data.success){
+                if($('#newRow-'+idRow).find("i.fa-eye-slash").length!=0){
+                    $('#newRow-'+idRow).find("i.fa-eye-slash").removeClass("fa-eye-slash").addClass("fa-eye").attr("title","Activer cette ligne");
+                    Materialize.toast('La ligne a bien été désactivée!', 3000, 'rounded green');
+                }
+                else{
+                    $('#newRow-'+idRow).find("i.fa-eye").removeClass("fa-eye").addClass("fa-eye-slash").attr("title","Désactiver cette ligne");
+                    Materialize.toast('La ligne a bien été activée!', 3000, 'rounded green');
+                }
+            }
+            else Materialize.toast('Une erreur est survenue', 3000, 'rounded red');
         }
     });
 }
@@ -213,7 +268,11 @@ function deleteAjaxPage(idPage,url){
                     data: {idPage:idPage},
                     dataType: "JSON",
                     success: function (data) {
-                        if(data.success) $('tr#page-'+idPage).remove();
+                        if(data.success){
+                            Materialize.toast('La page a bien été supprimée !', 3000, 'rounded green');
+                            $('tr#page-'+idPage).remove();
+                        }
+                        else Materialize.toast('Une erreur est survenue', 3000, 'rounded red');
                     }
                 });
             }

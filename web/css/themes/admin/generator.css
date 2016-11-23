@@ -1,42 +1,83 @@
+.innerTab{
+    padding: 30px 2rem 0 0!important;
+}
 .demoRow{
-    margin: 10px 0;
+    margin: 10px 0 45px 0;
     background: #f2f2f2;
     border-radius: 2px;
-    padding: 50px 5px 10px 0;
+    padding: 20px 5px 10px 0;
     position:relative;
+    border: 1px solid #d2d0d0;
 }
+
 .demoRow .col-remove{
     position:relative;
 }
 .demoRow span.titleAdminRow{
     position: absolute;
-    left: 15px;
-    top: -45px;
-    font-size: 12px;
+    left: 5px;
+    top: -43px;
+    background: #f2f2f2;
+    padding: 2px 10px 0 10px;
+    border-radius: 6px 6px 0 0;
+    border: 1px solid #d2d0d0;
+    font-size: 13px;
+    font-weight: 500;
 }
 .demoRow .column.ui-sortable span.titleAdminCell{
     font-size: 12px;
     font-style: italic;
     
 }
-.col-remove a#deleteRow{
-    right: 0px;
-    top: -50px;
-    position: absolute;
-}
 .col-remove a#editRow{
-    right: 15px;
-    top: -50px;
+    right: -38px;
+    top: -15px;
+    background: #f2f2f2;
+    border-radius: 0 10px 0 0;
+    border-right: 1px solid #d2d0d0;
+    border-top: 1px solid #d2d0d0;
     position: absolute;
+    text-align: center;
 }
-.col-remove .fa-cog{
-    color:navy;
+.col-remove a#deleteRow{
+    right: -38px;
+    background: #f2f2f2;
+    border-radius: 0 0 6px 0;
+    top: 50px;
+    position: absolute;
+    text-align: center;
+    border-right: 1px solid #d2d0d0;
+    border-bottom: 1px solid #d2d0d0;
+}
+
+.col-remove a#setEtatRow{
+    right: -38px;
+    top: 20px;
+    background: #f2f2f2;
+    border-radius: 0 0 0 0;
+    position: absolute;
+    text-align: center;
+}
+.col-remove .fa-pencil{
+    color:rgba(0,0,0,0.87);
+    font-size: 24px;
     cursor: pointer;
+    padding: 5px;
 }
 .col-remove .fa-remove{
     color:red;
+    font-size: 24px;
     cursor: pointer;
+    padding: 6px;
 }
+.col-remove .fa-eye,.col-remove .fa-eye-slash{
+    color:#5656cc;
+    font-size: 19px;
+    cursor: pointer;
+    border-right: 1px solid #d2d0d0;
+    padding: 6px;
+}
+
 .demoRow .demoCol{
     min-height: 40px;
     text-align: center;
@@ -72,4 +113,48 @@
 .demoRow .demoCol .column:hover{
     border:1px solid #04c6f7;
     cursor:pointer;
+}
+@media screen and (max-width: 600px){
+    .col-remove a#deleteRow{
+        right: -29px;
+        background: #f2f2f2;
+        border-radius: 0 0 6px 0;
+        top: 50px;
+        position: absolute;
+        text-align: center;
+    }
+    .col-remove a#editRow{
+        right: -30px;
+        top: 0;
+        background: #f2f2f2;
+        border-radius: 0 6px 0 0;
+        position: absolute;
+        text-align: center;
+    }
+    .col-remove a#setEtatRow{
+        right: -30px;
+        top: 25px;
+        background: #f2f2f2;
+        border-radius: 0 0 0 0;
+        position: absolute;
+        text-align: center;
+    }
+    .col-remove .fa-cog{
+        color:rgba(0,0,0,0.87);
+        font-size: 18px;
+        cursor: pointer;
+        padding: 5px;
+    }
+    .col-remove .fa-remove{
+        color:red;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 5px;
+    }
+    .col-remove .fa-eye,.col-remove .fa-eye-slash{
+        color:blue;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 5px;
+    }
 }

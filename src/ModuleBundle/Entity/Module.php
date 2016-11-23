@@ -5,11 +5,16 @@ namespace ModuleBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Module
- *
- * @ORM\Table(name="module")
- * @ORM\Entity(repositoryClass="ModuleBundle\Repository\ModuleRepository")
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *      "module"="Module",
+ *      "Image"="ImageModule",
+ *      "HTML" = "HTMLModule"
+ * })
  */
+
 class Module
 {
     /**
@@ -27,22 +32,13 @@ class Module
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-
+    
     /**
-     * @var string
+     * @var string type
      *
-     * @ORM\Column(name="renderType", type="string", length=255)
      */
-    private $renderType;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="renderDisposition", type="string", length=255)
-     */
-    private $renderDisposition;
-
-
+    protected $type;
+    
     /**
      * Get id
      *
@@ -77,52 +73,27 @@ class Module
         return $this->nom;
     }
 
-    /**
-     * Set renderType
+   /**
+     * Set type
      *
-     * @param string $renderType
-     *
-     * @return Module
+     * @param string $type
      */
-    public function setRenderType($renderType)
+    public function setType($type)
     {
-        $this->renderType = $renderType;
-
-        return $this;
+        $this->type = $type;
     }
-
+ 
     /**
-     * Get renderType
+     * Get type
      *
      * @return string
      */
-    public function getRenderType()
+    public function getType()
     {
-        return $this->renderType;
+        return $this->type;
     }
-
-    /**
-     * Set renderDisposition
-     *
-     * @param string $renderDisposition
-     *
-     * @return Module
-     */
-    public function setRenderDisposition($renderDisposition)
-    {
-        $this->renderDisposition = $renderDisposition;
-
-        return $this;
-    }
-
-    /**
-     * Get renderDisposition
-     *
-     * @return string
-     */
-    public function getRenderDisposition()
-    {
-        return $this->renderDisposition;
+    
+    public function __toString() {
+        return $this->nom;
     }
 }
-

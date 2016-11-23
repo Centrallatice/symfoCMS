@@ -1,4 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block breadcrumb %}
+    <a class="breadcrumb" href="{{ path('admin_module_index') }}">Module</a>
+    <a class="breadcrumb" href="#!">Création d'un module</a>
+{% endblock %}
 
 {% block body %}
     <h1>Module creation</h1>

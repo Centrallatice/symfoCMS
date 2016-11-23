@@ -8,24 +8,24 @@
 {% block breadcrumb %} <a class="breadcrumb" href="{{ path('page_list') }}">Pages</a>  
     <a class="breadcrumb" href="#!">Modifier une page</a>{% endblock %}
 {% block body %}
-    <div class="row">
+    {#<div class="row">
         <div class="col s12">
             <a role="button" class="btn waves-effect waves-light pull-right" href="{{ path('page_list') }}"><i class="material-icons left">skip_previous</i>Revenir à la liste</a>
         </div>
-    </div>
+    </div>#}
     {% include "::formback.html.twig" with {"form":form} %}
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s3">
-                  <a class="active" href="#seo">Titre / Description</a>
+                    <a class="active" href="#ihm">Mise en page</a>
                 </li>
                 <li class="tab col s3">
-                  <a href="#ihm">Mise en page</a>
+                    <a href="#seo">Titre / Description</a>
                 </li>
             </ul>
-            <div class="col s12" style="padding-top: 20px" id="seo">{% include "@PageViews/page/tabs/seo.html.twig" %}</div>
-            <div class="col s12" style="padding-top: 20px" id="ihm">{% include "@PageViews/page/tabs/ihm.html.twig" %}</div>
+            <div class="col s12 innerTab" id="ihm">{% include "@PageViews/page/tabs/ihm.html.twig" %}</div>
+            <div class="col s12 innerTab" id="seo">{% include "@PageViews/page/tabs/seo.html.twig" %}</div>
         </div>
     </div>
 {% endblock %}

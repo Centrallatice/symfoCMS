@@ -8,7 +8,7 @@
 {% block body %}
     
         <div class="col s8 m6 offset-s2 offset-m3 animated fadeIn logocontainer">
-            <div class="login-title cols12">
+            <div class="login-title col s12">
                 Administration du site : {{siteName}}
             </div>
             
@@ -17,10 +17,10 @@
             {% else %}
                 <span class="actionName reversed animated bounceInDown">Connexion</span>
                 <!-- /.login-logo -->
-                <div class="col s12nopadding">
+                <div class="col s12 nopadding">
                   <form action="{{ path("fos_user_security_check") }}" method="post">
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                        <div class="col s12login-box-body">
+                        <div class="col s12 login-box-body">
                             <div class="form-group has-feedback">
                                 <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control input-medium" required="required" placeholder="{{ 'security.login.username'|trans }}"/>
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -30,7 +30,7 @@
                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                             </div>
                         </div>
-                        <div class="cols12">        
+                        <div class="col s12">        
                             {% if error %}
                                 <div class="row animated rubberBand">
                                     <div class="cols12">

@@ -41,6 +41,13 @@ class Col
      * @ORM\Column(name="cssClass", type="string", length=255)
      */
     private $cssClass;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cssClassPerso", type="string", length=255)
+     */
+    private $cssClassPerso;
 
     /**
      * @var string
@@ -55,6 +62,13 @@ class Col
      * @ORM\Column(name="htmlContent", type="text",nullable=true)
      */
     private $htmlContent;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgContent", type="text",nullable=true)
+     */
+    private $image;
 
 
     /**
@@ -309,5 +323,77 @@ class Col
     public function getRow()
     {
         return $this->row;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param boolean $etat
+     *
+     * @return Col
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+    
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return boolean
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set ordre
+     *
+     * @param integer $ordre
+     *
+     * @return Col
+     */
+    public function setOrdre($ordre)
+    {
+        $this->ordre = $ordre;
+    
+        return $this;
+    }
+
+    /**
+     * Get ordre
+     *
+     * @return integer
+     */
+    public function getOrdre()
+    {
+        return $this->ordre;
+    }
+
+    /**
+     * Set cssClassPerso
+     *
+     * @param string $cssClassPerso
+     *
+     * @return Col
+     */
+    public function setCssClassPerso($cssClassPerso)
+    {
+        $this->cssClassPerso = $cssClassPerso;
+    
+        return $this;
+    }
+
+    /**
+     * Get cssClassPerso
+     *
+     * @return string
+     */
+    public function getCssClassPerso()
+    {
+        return $this->cssClassPerso;
     }
 }

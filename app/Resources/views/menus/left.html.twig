@@ -58,5 +58,20 @@
             </ul>
         </div>
     </li>
+    <li>
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route')|slice(0,12) == 'admin_module' %}active{% endif %}">
+            <i class="material-icons">extension</i> Modules
+        </div>
+        <div {% if app.request.get('_route')|slice(0,12) == 'admin_module' %}style='display:block'{% endif %} class="collapsible-body">
+            <ul>
+                <li class="{% if app.request.get('_route') == 'admin_module_new' %}active{% endif%}">
+                    <a href="{{path('admin_module_new')}}">Créer un Module</a>
+                </li>
+                <li class="{% if app.request.get('_route') == 'admin_module_index' %}active{% endif%}">
+                    <a href="{{path('admin_module_index')}}">Gérer les modules</a>
+                </li>
+            </ul>
+        </div>
+    </li>
     
 </ul>

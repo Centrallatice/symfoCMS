@@ -5,7 +5,8 @@ namespace ModuleBundle\Controller;
 use ModuleBundle\Entity\Module;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Module controller.
@@ -26,7 +27,7 @@ class ModuleController extends Controller
 
         $modules = $em->getRepository('ModuleBundle:Module')->findAll();
 
-        return $this->render('module/index.html.twig', array(
+        return $this->render('ModuleBundle:module:index.html.twig', array(
             'modules' => $modules,
         ));
     }
@@ -40,18 +41,18 @@ class ModuleController extends Controller
     public function newAction(Request $request)
     {
         $module = new Module();
-        $form = $this->createForm('ModuleBundle\Form\ModuleType', $module);
+        $form = $this->createForm('ModuleBundle\Form\ModuleType', $module,  array('moduleType'=>$this->getParameter('moduleType')));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($module);
             $em->flush($module);
-
-            return $this->redirectToRoute('admin_module_show', array('id' => $module->getId()));
+            $this->addFlash('success', 'Votre module a bien été créé, vous pouvez a présent le paramètrer');
+            return $this->redirectToRoute('admin_module_'.strtolower($module->getType()).'_new');
         }
 
-        return $this->render('module/new.html.twig', array(
+        return $this->render('ModuleBundle:module:new.html.twig', array(
             'module' => $module,
             'form' => $form->createView(),
         ));
@@ -67,7 +68,7 @@ class ModuleController extends Controller
     {
         $deleteForm = $this->createDeleteForm($module);
 
-        return $this->render('module/show.html.twig', array(
+        return $this->render('ModuleBundle:module:show.html.twig', array(
             'module' => $module,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -82,7 +83,7 @@ class ModuleController extends Controller
     public function editAction(Request $request, Module $module)
     {
         $deleteForm = $this->createDeleteForm($module);
-        $editForm = $this->createForm('ModuleBundle\Form\ModuleType', $module);
+        $editForm = $this->createForm('ModuleBundle\Form\ModuleType', $module,  array('moduleType'=>$this->getParameter('moduleType')));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -91,7 +92,7 @@ class ModuleController extends Controller
             return $this->redirectToRoute('admin_module_edit', array('id' => $module->getId()));
         }
 
-        return $this->render('module/edit.html.twig', array(
+        return $this->render('ModuleBundle:module:edit.html.twig', array(
             'module' => $module,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

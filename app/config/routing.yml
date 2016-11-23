@@ -1,3 +1,12 @@
+module_image_module:
+    resource: "@ModuleBundle/Controller/ImageModuleController.php"
+    type:     annotation
+
+module_html_module:
+    resource: "@ModuleBundle/Controller/HTMLModuleController.php"
+    type:     annotation
+    prefix:   /admin/htmlmodule/
+
 template_template:
     resource: "@TemplateBundle/Controller/TemplateController.php"
     type:     annotation

@@ -111,7 +111,7 @@ class PageController extends Controller
         $editForm->handleRequest($request);
         
         $row = new Row();
-        $rowForm = $this->createForm('PageBundle\Form\RowType', $row);
+        $rowForm = $this->createForm('PageBundle\Form\RowType', $row,array('dispositions'=>$this->getParameter("dispositions")));
         
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();

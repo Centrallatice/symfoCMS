@@ -42,20 +42,25 @@ class RowController extends Controller
     {
         $row = new Row();
         $row->setEtat(false);
-        $form = $this->createForm('PageBundle\Form\RowType', $row);
-        $form->handleRequest($request);
         
+        $form = $this->createForm('PageBundle\Form\RowType', $row,array('dispositions'=>$this->getParameter("dispositions")));
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $colGenerator = explode("-",$row->getDisposition()->getNom());
+            $colGenerator = explode("-",$row->getDisposition());
             $em = $this->getDoctrine()->getManager();
-            
+            $rows = $em->getRepository('PageBundle:Row')->findAll();
+            $row->setOrdre(count($rows)+1);
+            $i=1;
             foreach($colGenerator as $v):
                 $C = new Col();
                 $C->setCssClass("col s".$v);
                 $C->setRow($row);
+                $C->setOrdre($i);
+                $C->setEtat(false);
                 $row->addCol($C);
                 $em->persist($C);
                 unset($C);
+                $i++;
             endforeach;
             
             
@@ -96,34 +101,7 @@ class RowController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
-    /**
-     * Displays a form to edit an existing row entity.
-     *
-     * @Route("/{id}/edit", name="row_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, Row $row)
-    {
-        $deleteForm = $this->createDeleteForm($row);
-        $editForm = $this->createForm('PageBundle\Form\RowType', $row);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-//            $colGenerator = explode("-",$row->getDisposition()->getNom());
-            
-            
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('row_edit', array('id' => $row->getId()));
-        }
-
-        return $this->render('row/edit.html.twig', array(
-            'row' => $row,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+    
     /**
      * Displays a form to edit an existing row entity.
      *
@@ -132,20 +110,50 @@ class RowController extends Controller
      */
     public function editAjaxAction(Request $request, Row $row)
     {
-//        $deleteForm = $this->createDeleteForm($row);
-        $editForm = $this->createForm('PageBundle\Form\RowType', $row);
+        $dispo = $row->getDisposition();
+        $editForm = $this->createForm('PageBundle\Form\RowType', $row,array('dispositions'=>$this->getParameter("dispositions")));
         $editForm->handleRequest($request);
+        $updatedRow = false ;
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            return new JsonResponse(array("success"=>true));
+            $colGenerator = explode("-",$row->getDisposition());
+            $em = $this->getDoctrine()->getManager();
+            if($row->getDisposition()!=$dispo):
+                $updatedRow = true ;
+                $cols = $em->getRepository('PageBundle:Col')->findBy(array("row"=>$row));
+                foreach($cols as $c):
+                    $em->remove($c);
+                endforeach;
+                
+                $i=1;
+                foreach($colGenerator as $v):
+                    $C = new Col();
+                    $C->setCssClass("col s".$v);
+                    $C->setRow($row);
+                    $C->setOrdre($i);
+                    $C->setEtat(false);
+                    $row->addCol($C);
+                    $em->persist($C);
+                    unset($C);
+                    $i++;
+                endforeach;
+            endif;
+            
+            $em->persist($row);
+            $em->flush();
+            
+            $idCols = array();
+            foreach($row->getCols() as $v):
+                array_push($idCols,array("id"=>$v->getId(),"cssClass"=>$v->getCssClass()));
+            endforeach;
+            return new JsonResponse(array("success"=>true,"idCols"=>$idCols,"updatedRow"=>$updatedRow));
         }
         else return new JsonResponse(
                 array(
                     "form"=>$this->renderView('PageBundle:row:edit.html.twig', 
-                            array(
-                                'row' => $row,
-                                'edit_form' => $editForm->createView()
-                            ))
+                    array(
+                        'row' => $row,
+                        'edit_form' => $editForm->createView()
+                    ))
         ));
         
     }
@@ -194,6 +202,26 @@ class RowController extends Controller
             endforeach;
             
             $em->remove($row);
+            $em->flush($row);
+            return new JsonResponse(array("success"=>true));
+        }
+
+        return new JsonResponse(array("success"=>false));
+    }
+    /**
+     * Deletes a row entity by Ajax.
+     *
+     * @Route("/Ajax/setEtat/{id}", name="row_ajax_setetat")
+     * @Method("POST")
+     */
+    public function setEtatAjaxAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $row = $em->getRepository('PageBundle:Row')->find($request->get("idRow"));
+        
+        if ($row!==null) {
+            $row->setEtat(!$row->getEtat());
+            $em->persist($row);
             $em->flush($row);
             return new JsonResponse(array("success"=>true));
         }

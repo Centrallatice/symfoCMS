@@ -15,6 +15,7 @@ class ColType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->moduleType = $options['moduleType'];
         $builder->add('titreAdmin',TextType::class,array("label"=>"Titre administrateur","required"=>false))
                 ->add('titreClient',TextType::class,array("label"=>"Titre d'entête","required"=>false))
                 ->add('enteteType', 'choice', 
@@ -29,9 +30,22 @@ class ColType extends AbstractType
                         'label' => 'Balise du titre',
                         'multiple' => false,
                         'expanded' => false))
-                ->add('cssClass',TextType::class,array("label"=>"Balise HTML 'class'","required"=>false))
+                ->add('cssClassPerso',TextType::class,array("label"=>"Balise HTML 'class'","required"=>false))
                 ->add('cssId',TextType::class,array("label"=>"Balise HTML 'id'","required"=>false))
-                ->add('htmlContent','froala',array("height"=>350));
+//                ->add('htmlContent','froala',array("height"=>350));
+                ->add('typemodule', 'choice', 
+                        array(
+                            'choices' => $this->moduleType,
+                            'label' => 'Type du module',
+                            'multiple' => false,
+                            'mapped' => false,
+                            'expanded' => false
+                       ))
+                ->add('modules',EntityType::class,
+                        array(
+                            "label"=>"Quel module souhaitez vous accrocher",
+                            "class"=>"ModuleBundle\Entity\Module"
+                 ));
     }
     
     /**
@@ -40,7 +54,8 @@ class ColType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PageBundle\Entity\Col'
+            'data_class' => 'PageBundle\Entity\Col',
+            "moduleType"=>null
         ));
     }
 

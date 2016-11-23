@@ -5,7 +5,7 @@
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev</parameter>
+    <parameter key="kernel.cache_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev</parameter>
     <parameter key="kernel.logs_dir">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
@@ -42,6 +42,26 @@
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
     <parameter key="secret">418db2128cb9ba145c86e33666056f08108dfa70</parameter>
+    <parameter key="dispositions" type="collection">
+      <parameter key="3-3-3-3">4 Colonnes de même largeur</parameter>
+      <parameter key="4-4-4">3 Colonnes de même largeur</parameter>
+      <parameter key="6-6">2 Colonnes de même largeur</parameter>
+      <parameter key="12">1 Colonne complète</parameter>
+      <parameter key="3-9">Une colonne d'1/4 + une de 3/4</parameter>
+      <parameter key="9-3">Une colonne de 3/4 + une d' 1/4</parameter>
+      <parameter key="3-6-3">Une colonne d'1/4 + une de moitié + une d'1/4</parameter>
+      <parameter key="2-6-4">Une colonne d'1/6 + une de moitié + une d'un tiers</parameter>
+    </parameter>
+    <parameter key="moduletype" type="collection">
+      <parameter key="html" type="collection">
+        <parameter key="Nom">HTML</parameter>
+        <parameter key="Description">Ce module vous permet d'insérer du contenu HTML</parameter>
+      </parameter>
+      <parameter key="image" type="collection">
+        <parameter key="Nom">Image</parameter>
+        <parameter key="Description">Ce module vous permet d'insérer une image</parameter>
+      </parameter>
+    </parameter>
     <parameter key="locale">fr</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
@@ -111,7 +131,7 @@
       <parameter key="cookie_httponly">true</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/sessions</parameter>
+    <parameter key="session.save_path">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="security.secure_random.class">Symfony\Component\Security\Core\Util\SecureRandom</parameter>
     <parameter key="form.resolved_type_factory.class">Symfony\Component\Form\ResolvedFormTypeFactory</parameter>
@@ -169,7 +189,7 @@
     <parameter key="data_collector.form.extractor.class">Symfony\Component\Form\Extension\DataCollector\FormDataExtractor</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/profiler</parameter>
     <parameter key="profiler.storage.username"></parameter>
     <parameter key="profiler.storage.password"></parameter>
     <parameter key="profiler.storage.lifetime">86400</parameter>
@@ -204,7 +224,7 @@
     <parameter key="debug.stopwatch.class">Symfony\Component\Stopwatch\Stopwatch</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
     <parameter key="debug.event_dispatcher.class">Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher</parameter>
-    <parameter key="debug.container.dump">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="debug.controller_resolver.class">Symfony\Component\HttpKernel\Controller\TraceableControllerResolver</parameter>
     <parameter key="security.context.class">Symfony\Component\Security\Core\SecurityContext</parameter>
     <parameter key="security.user_checker.class">Symfony\Component\Security\Core\User\UserChecker</parameter>
@@ -397,7 +417,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -515,7 +535,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -541,7 +561,7 @@
     <parameter key="assetic.worker.cache_busting.class">Assetic\Factory\Worker\CacheBustingWorker</parameter>
     <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
     <parameter key="assetic.node.paths" type="collection"/>
-    <parameter key="assetic.cache_dir">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/assetic</parameter>
+    <parameter key="assetic.cache_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/assetic</parameter>
     <parameter key="assetic.bundles" type="collection"/>
     <parameter key="assetic.twig_extension.class">Symfony\Bundle\AsseticBundle\Twig\AsseticExtension</parameter>
     <parameter key="assetic.twig_formula_loader.class">Assetic\Extension\Twig\TwigFormulaLoader</parameter>
@@ -984,7 +1004,7 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/translations</argument>
+        <argument key="cache_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/translations</argument>
         <argument key="debug">true</argument>
         <argument key="resource_files" type="collection">
           <argument key="af" type="collection">
@@ -1819,7 +1839,7 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev</argument>
+      <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev</argument>
     </service>
     <service id="templating.helper.assets" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper">
       <tag name="templating.helper" alias="assets"/>
@@ -1901,7 +1921,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-          <argument>file:C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/profiler</argument>
+          <argument>file:C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/profiler</argument>
           <argument></argument>
           <argument></argument>
           <argument>86400</argument>
@@ -2324,7 +2344,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5834170e36c897.00699791</argument>
+            <argument>5835bc89535ca9.05510567</argument>
           </service>
         </argument>
       </argument>
@@ -2613,7 +2633,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5834170e36c897.00699791</argument>
+            <argument>5835bc89535ca9.05510567</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2721,7 +2741,7 @@
           <argument>materialize_layout.html.twig</argument>
         </argument>
         <argument key="autoescape">name</argument>
-        <argument key="cache">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/twig</argument>
+        <argument key="cache">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="date" type="collection">
           <argument key="format">F j, Y H:i</argument>
@@ -2945,6 +2965,19 @@
         <argument>siteName</argument>
         <argument>Démonstration</argument>
       </call>
+      <call method="addGlobal">
+        <argument>dispositions</argument>
+        <argument type="collection">
+          <argument key="3_3_3_3">4 Colonnes de même largeur</argument>
+          <argument key="4_4_4">3 Colonnes de même largeur</argument>
+          <argument key="6_6">2 Colonnes de même largeur</argument>
+          <argument key="12">1 Colonne complète</argument>
+          <argument key="3_9">Une colonne d'1/4 + une de 3/4</argument>
+          <argument key="9_3">Une colonne de 3/4 + une d' 1/4</argument>
+          <argument key="3_6_3">Une colonne d'1/4 + une de moitié + une d'1/4</argument>
+          <argument key="2_6_4">Une colonne d'1/6 + une de moitié + une d'un tiers</argument>
+        </argument>
+      </call>
       <configurator method="configure">
         <service class="Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator" public="false">
           <argument>F j, Y H:i</argument>
@@ -3075,7 +3108,9 @@
           </call>
         </service>
       </argument>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="enum">string</argument>
+      </argument>
       <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
     </service>
     <service id="form.type_guesser.doctrine" class="Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser">
@@ -3258,7 +3293,7 @@
             </argument>
           </call>
           <call method="setProxyDir">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/doctrine/orm/Proxies</argument>
+            <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/doctrine/orm/Proxies</argument>
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -3380,7 +3415,7 @@
             </argument>
             <argument type="service">
               <service class="Assetic\Cache\ConfigCache" public="false">
-                <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/assetic/config</argument>
+                <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/assetic/config</argument>
               </service>
             </argument>
             <argument>true</argument>
@@ -3942,7 +3977,7 @@
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/sessions</argument>
+      <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
@@ -3968,7 +4003,7 @@
       <argument type="service" id="service_container"/>
       <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/config/routing_dev.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev</argument>
+        <argument key="cache_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -3992,7 +4027,7 @@
       </argument>
       <argument type="service">
         <service class="Doctrine\Common\Cache\FilesystemCache" public="false">
-          <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\cache\dev/annotations</argument>
+          <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/annotations</argument>
         </service>
       </argument>
       <argument>true</argument>

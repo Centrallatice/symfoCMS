@@ -1,11 +1,11 @@
-<div class="modal bottom-sheet bottom-sheet-big modal-fixed-footer" id="modalAddRow">
+<div class="modal modal-lg modal-fixed-footer" id="modalAddRow">
     <form method="post" role="form" action="{{path('row_new')}}">
         <div class="modal-content">
             {{ form_widget(row_form.page) }}
             {{ form_row(row_form.titreAdmin) }}
             {{ form_row(row_form.titreClient) }}
-            {{ form_row(row_form.enteteType) }}
             {{ form_row(row_form.disposition) }}
+            {{ form_row(row_form.enteteType) }}
             {{ form_row(row_form.cssClass) }}
             {{ form_row(row_form.cssId) }}
         </div>

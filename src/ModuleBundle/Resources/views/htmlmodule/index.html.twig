@@ -1,0 +1,39 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+    <h1>Htmlmodules list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hTMLModule in hTMLModules %}
+            <tr>
+                <td><a href="{{ path('htmlmodule_show', { 'id': hTMLModule.id }) }}">{{ hTMLModule.id }}</a></td>
+                <td>{{ hTMLModule.content }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('htmlmodule_show', { 'id': hTMLModule.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('htmlmodule_edit', { 'id': hTMLModule.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('htmlmodule_new') }}">Create a new hTMLModule</a>
+        </li>
+    </ul>
+{% endblock %}

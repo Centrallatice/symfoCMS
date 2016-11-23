@@ -41,6 +41,13 @@ class Col
      * @ORM\Column(name="cssClass", type="string", length=255)
      */
     private $cssClass;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cssClassPerso", type="string", length=255)
+     */
+    private $cssClassPerso;
 
     /**
      * @var string
@@ -50,20 +57,12 @@ class Col
     private $cssId;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="htmlContent", type="text",nullable=true)
-     */
-    private $htmlContent;
-
-
-    /**
      * @ORM\ManyToMany(targetEntity="ModuleBundle\Entity\Module")
      * @ORM\JoinTable(name="cols_modules",
      *      joinColumns={@ORM\JoinColumn(name="col_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="module_id", referencedColumnName="id", unique=true)}
      *      )
-     */
+    */
     
     private $modules;
     
@@ -357,5 +356,53 @@ class Col
     public function getOrdre()
     {
         return $this->ordre;
+    }
+
+    /**
+     * Set cssClassPerso
+     *
+     * @param string $cssClassPerso
+     *
+     * @return Col
+     */
+    public function setCssClassPerso($cssClassPerso)
+    {
+        $this->cssClassPerso = $cssClassPerso;
+    
+        return $this;
+    }
+
+    /**
+     * Get cssClassPerso
+     *
+     * @return string
+     */
+    public function getCssClassPerso()
+    {
+        return $this->cssClassPerso;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Col
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -58,9 +58,10 @@ class Row
     private $enteteType; 
     
     /**
-     * @ORM\ManyToOne(targetEntity="PageBundle\Entity\DispositionRow")
-     * @ORM\JoinColumn(name="disposition", referencedColumnName="id",nullable=false)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="disposition", type="string", length=10,nullable=false)
+     */
     protected $disposition;
     
     
@@ -254,30 +255,7 @@ class Row
         return $this->etat;
     }
 
-    /**
-     * Set disposition
-     *
-     * @param \PageBundle\Entity\DispositionRow $disposition
-     *
-     * @return Row
-     */
-    public function setDisposition(\PageBundle\Entity\DispositionRow $disposition)
-    {
-        $this->disposition = $disposition;
     
-        return $this;
-    }
-
-    /**
-     * Get disposition
-     *
-     * @return \PageBundle\Entity\DispositionRow
-     */
-    public function getDisposition()
-    {
-        return $this->disposition;
-    }
-
     /**
      * Set page
      *
@@ -358,5 +336,29 @@ class Row
     public function getOrdre()
     {
         return $this->ordre;
+    }
+
+    /**
+     * Set disposition
+     *
+     * @param string $disposition
+     *
+     * @return Row
+     */
+    public function setDisposition($disposition)
+    {
+        $this->disposition = $disposition;
+    
+        return $this;
+    }
+
+    /**
+     * Get disposition
+     *
+     * @return string
+     */
+    public function getDisposition()
+    {
+        return $this->disposition;
     }
 }

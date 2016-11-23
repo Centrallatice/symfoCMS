@@ -1,0 +1,26 @@
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href='{{asset('css/vendor/froala/froala.min.css')}}' rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block breadcrumb %}
+    <a class="breadcrumb" href="{{ path('admin_module_index') }}">Module</a>
+    <a class="breadcrumb" href="#!">Création d'un module HTML</a>
+{% endblock %}
+
+{% block body %}
+    {% include "::formback.html.twig" with {"form":form} %}
+    <div class="row">
+        <div class="col s12">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src='{{asset('js/vendor/froala/froala.min.js')}}'></script>
+    <script type='text/javascript' src='{{asset('js/admin/module/main.js')}}'></script>
+{% endblock %}

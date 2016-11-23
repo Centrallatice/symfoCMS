@@ -40,7 +40,7 @@ class ColController extends Controller
     public function newAction(Request $request)
     {
         $col = new Col();
-        $form = $this->createForm('PageBundle\Form\ColType', $col);
+        $form = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleType'=>$this->getParameter('moduleType')));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,7 +82,7 @@ class ColController extends Controller
     public function editAction(Request $request, Col $col)
     {
         
-        $editForm = $this->createForm('PageBundle\Form\ColType', $col);
+        $editForm = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleType'=>$this->getParameter('moduleType')));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -103,7 +103,7 @@ class ColController extends Controller
         $em = $this->getDoctrine()->getManager();
         $col = $em->getRepository('PageBundle:Col')->find($id);
         
-        $editForm = $this->createForm('PageBundle\Form\ColType', $col);
+        $editForm = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleType'=>$this->getParameter('moduleType')));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '::admin.html.twig' %}
 
 {% block body %}
     <h1>Modules list</h1>
@@ -8,18 +8,17 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>Rendertype</th>
-                <th>Renderdisposition</th>
+                <th>Type</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+           
         {% for module in modules %}
             <tr>
                 <td><a href="{{ path('admin_module_show', { 'id': module.id }) }}">{{ module.id }}</a></td>
                 <td>{{ module.nom }}</td>
-                <td>{{ module.renderType }}</td>
-                <td>{{ module.renderDisposition }}</td>
+                <td>{{ module.getType() }}</td>
                 <td>
                     <ul>
                         <li>

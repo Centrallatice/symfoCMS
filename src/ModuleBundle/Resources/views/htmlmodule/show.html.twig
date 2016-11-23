@@ -1,0 +1,32 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+    <h1>Htmlmodule</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hTMLModule.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ hTMLModule.content }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('htmlmodule_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('htmlmodule_edit', { 'id': hTMLModule.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

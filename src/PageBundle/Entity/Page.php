@@ -36,11 +36,7 @@ class Page
      */
     private $description;
 
-    /**
-     * @ORM\OneToMany(targetEntity="PageBundle\Entity\keyWordsPage",mappedBy="associationId", cascade={"remove"})
-    */
-    
-    private $keywords;
+   
 
     /**
      * @var string
@@ -63,7 +59,12 @@ class Page
      */
     private $creationDate;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="CategoryBundle\Entity\Category")
+     * @ORM\JoinColumn(name="category", referencedColumnName="id",nullable=true)
+    */
+    private $category;
+    
     /**
      * @ORM\OneToMany(targetEntity="PageBundle\Entity\Row", cascade={"remove"}, mappedBy="page")
      */
@@ -76,8 +77,6 @@ class Page
         $this->keywords = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
-    
 
     /**
      * Get id
@@ -212,11 +211,11 @@ class Page
     /**
      * Add keyword
      *
-     * @param \PageBundle\Entity\keyWordsPage $keyword
+     * @param \PageBundle\Entity\keyWords $keyword
      *
      * @return Page
      */
-    public function addKeyword(\PageBundle\Entity\keyWordsPage $keyword)
+    public function addKeyword(\PageBundle\Entity\keyWords $keyword)
     {
         $this->keywords[] = $keyword;
     
@@ -226,9 +225,9 @@ class Page
     /**
      * Remove keyword
      *
-     * @param \PageBundle\Entity\keyWordsPage $keyword
+     * @param \PageBundle\Entity\keyWords $keyword
      */
-    public function removeKeyword(\PageBundle\Entity\keyWordsPage $keyword)
+    public function removeKeyword(\PageBundle\Entity\keyWords $keyword)
     {
         $this->keywords->removeElement($keyword);
     }
@@ -241,6 +240,30 @@ class Page
     public function getKeywords()
     {
         return $this->keywords;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \CategoryBundle\Entity\Category $category
+     *
+     * @return Page
+     */
+    public function setCategory(\CategoryBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \CategoryBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**

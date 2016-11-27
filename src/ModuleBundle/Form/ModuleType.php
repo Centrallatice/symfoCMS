@@ -19,18 +19,18 @@ class ModuleType extends AbstractType
         foreach($this->moduleType as $k=>$v):
             $choice[$k]=$this->moduleType[$k]['Nom'];
         endforeach;
-        $builder->add('nom')->add('type', 'choice', 
+        $builder->add('type', 'choice', 
             array(
                 'choices' => $choice,
                 'choice_attr' => function($value, $key, $index) use($options) {
                     return ['data-desc' => $options['moduleType'][$index]['Description']];
                 },
                 'choice_label' => function ($value, $key, $index)  use($options){
-                    return $options['moduleType'][$index]['Nom'];
+                    return $options['moduleType'][$index]['Nom']." - ".$options['moduleType'][$index]['Description'];
                 },
-                'label' => 'Type du module',
+                'label' => false,
                 'multiple' => false,
-                'expanded' => false
+                'expanded' => true
             ));
         }
     

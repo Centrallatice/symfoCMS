@@ -10,10 +10,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="HTML_module")
  * @ORM\Entity(repositoryClass="ModuleBundle\Repository\HTMLModuleRepository")
  */
-class HTMLModule extends Module
+class HTMLModule extends ModuleType
 {
-    
-
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
     /**
      * @var string
      *
@@ -45,7 +51,4 @@ class HTMLModule extends Module
         return $this->content;
     }
     
-    public function getType(){
-        return 'HTML';
-    }
 }

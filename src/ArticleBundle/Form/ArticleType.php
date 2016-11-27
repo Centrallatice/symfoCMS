@@ -29,7 +29,7 @@ class ArticleType extends AbstractType
                     'placeholder' => '-- Aucune catégorie --',
                     'empty_data'  => null,
                     'empty_value'  => "",
-                    "class" => "ArticleBundle:Category",
+                    "class" => "CategoryBundle:Category",
                     'choice_label' => 'nom'
                  ))
                 ->add('resume',TextareaType::class,array(

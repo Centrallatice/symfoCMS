@@ -25,7 +25,7 @@ class ArticleController extends Controller
         $data = array();
         $em = $this->getDoctrine()->getManager();
         
-        $categories = $em->getRepository('ArticleBundle:Category')->findAll();
+        $categories = $em->getRepository('CategoryBundle:Category')->findBy(array("type"=>"article"));
         $catArray = array();
         foreach($categories as $c):
             $catArray[$c->getID()]=$c->getNom();
@@ -45,7 +45,7 @@ class ArticleController extends Controller
             $form->handleRequest($request);
             $data = $form->getData();
             if(!is_null($data['category'])):
-                $catChoisie = $em->getRepository('ArticleBundle:Category')->find($data['category']);
+                $catChoisie = $em->getRepository('CategoryBundle:Category')->find($data['category']);
                 if($catChoisie!=null):
                     $articles = $em->getRepository('ArticleBundle:Article')->findBy(array("category"=>$catChoisie));
                 endif;
@@ -86,16 +86,15 @@ class ArticleController extends Controller
             $keyWords = explode(";",$request->get("articlebundle_page_final"));
             foreach($keyWords as $k=>$v):
                 if(trim($v)!=""):
-                    $k = new \PageBundle\Entity\keyWordsArticle();
+                    $k = new \PageBundle\Entity\keyWords();
                     $k->setValue($v);
-                    $k->setAssociationType("article");
-                    $k->setAssociationId($article);
-                    $article->addKeyword($k);
+                    $k->setEntityId($article->getId());
+                    $k->setType("article");                    
                     $em->persist($k);
+                    $em->flush();
                 endif;
             endforeach;
-            $em->persist($article);
-            $em->flush();
+            
             $this->addFlash('success', 'Votre article a bien été créé');
             return $this->redirectToRoute('admin_article_index', array('id' => $article->getId()));
         }
@@ -136,20 +135,19 @@ class ArticleController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            foreach($article->getKeywords() as $actualKW):
-                $article->removeKeyword($actualKW);
-                $em->remove($actualKW);
+            $keywords = $em->getRepository('PageBundle:keyWords')->findBy(array("entityId"=>$article->getId(),"type"=>"article"));
+            foreach($keywords as $k=>$v):
+                $em->remove($v);
+                $em->flush();
             endforeach;
-            $em->persist($article);
             
             $keyWords = explode(";",$request->get("articlebundle_page_final"));
             foreach($keyWords as $k=>$v):
                 if(trim($v)!=""):
-                    $k = new \PageBundle\Entity\keyWordsArticle();
+                    $k = new \PageBundle\Entity\keyWords();
                     $k->setValue($v);
-                    $k->setAssociationType("article");
-                    $k->setAssociationId($article);
-                    $article->addKeyword($k);
+                    $k->setType("article");
+                    $k->setEntityId($article->getId());
                     $em->persist($k);
                 endif;
             endforeach;
@@ -166,6 +164,32 @@ class ArticleController extends Controller
         ));
     }
 
+    
+    /**
+     * Deletes a page entity.
+     *
+     * @Route("/Ajax/{id}", name="article_ajax_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAjaxAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('ArticleBundle:Article')->find($id);
+        if ($article!==null) {
+            $keywords = $em->getRepository('PageBundle:keyWords')->findBy(array("entityId"=>$article->getId(),"type"=>"article"));
+            foreach($keywords as $k=>$v):
+                $em->remove($v);
+                $em->flush();
+            endforeach;
+            $em->remove($article);
+            $em->flush();
+            return new JsonResponse(array("success"=>true));
+        }
+
+        return new JsonResponse(array("success"=>false));
+    }
+    
     /**
      * Deletes a article entity.
      *
@@ -185,26 +209,6 @@ class ArticleController extends Controller
 
         return $this->redirectToRoute('admin_article_index');
     }
-    
-    /**
-     * Deletes a page entity.
-     *
-     * @Route("/Ajax/{id}", name="article_ajax_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAjaxAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository('ArticleBundle:Article')->find($request->get("idArticle"));
-        if ($article!==null) {
-            $em->remove($article);
-            $em->flush();
-            return new JsonResponse(array("success"=>true));
-        }
-
-        return new JsonResponse(array("success"=>false));
-    }
-    
     /**
      * Creates a form to delete a article entity.
      *

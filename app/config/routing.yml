@@ -1,3 +1,8 @@
+category:
+    resource: "@CategoryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 module_image_module:
     resource: "@ModuleBundle/Controller/ImageModuleController.php"
     type:     annotation

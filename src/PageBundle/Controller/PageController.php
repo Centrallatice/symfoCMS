@@ -51,9 +51,9 @@ class PageController extends Controller
         
             foreach($keyWords as $k=>$v):
                 if(trim($v)!=""):
-                    $k = new \PageBundle\Entity\keyWordsPage();
+                    $k = new \PageBundle\Entity\keyWords();
                     $k->setValue($v);
-                    $k->setAssociationType("page");
+                    $k->setType("page");
                     $k->setAssociationId($page);
                     $page->addKeyword($k);
                     $em->persist($k);

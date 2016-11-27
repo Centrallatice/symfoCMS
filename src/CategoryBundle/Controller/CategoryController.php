@@ -1,8 +1,8 @@
 <?php
 
-namespace ArticleBundle\Controller;
+namespace CategoryBundle\Controller;
 
-use ArticleBundle\Entity\Category;
+use CategoryBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -17,34 +17,37 @@ class CategoryController extends Controller
     /**
      * Lists all category entities.
      *
-     * @Route("/", name="admin_category_index")
+     * @Route("/{type}", name="admin_category_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($type)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('ArticleBundle:Category')->findAllOrdered("depth","ASC"); 
+        $categories = $em->getRepository('CategoryBundle:Category')->findAllOrdered($type,"depth","ASC"); 
         
-        return $this->render('ArticleBundle:category:index.html.twig', array(
+        return $this->render('CategoryBundle:category:index.html.twig', array(
             'categories' => $categories,
+            'type' => $type
         ));
     }
 
     /**
      * Creates a new category entity.
      *
-     * @Route("/new", name="admin_category_new")
+     * @Route("/new/{type}", name="admin_category_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request,$type)
     {
         $category = new Category();
-        $form = $this->createForm('ArticleBundle\Form\CategoryType', $category);
+        $category->setType($type);
+        $form = $this->createForm('CategoryBundle\Form\CategoryType', $category , array("type"=>$type));
         $form->handleRequest($request);
         $user = $this->getUser();
         
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $category->setAuteur($user->getUsername());
             $em = $this->getDoctrine()->getManager();
             
@@ -62,12 +65,14 @@ class CategoryController extends Controller
             $this->addFlash('success', 'Votre catégorie a bien été créé');
             
             return $this->redirectToRoute('admin_category_new', array(
-                'id' => $category->getId()
+                'id' => $category->getId(),
+                'type' => $type
             ));
         }
         
-        return $this->render('ArticleBundle:category:new.html.twig', array(
+        return $this->render('CategoryBundle:category:new.html.twig', array(
             'category' => $category,
+            'type' => $type,
             'form' => $form->createView()
         ));
     }
@@ -82,7 +87,7 @@ class CategoryController extends Controller
     {
         $deleteForm = $this->createDeleteForm($category);
 
-        return $this->render('ArticleBundle:category:show.html.twig', array(
+        return $this->render('CategoryBundle:category:show.html.twig', array(
             'category' => $category,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -97,7 +102,7 @@ class CategoryController extends Controller
     public function editAction(Request $request, Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
-        $editForm = $this->createForm('ArticleBundle\Form\CategoryType', $category);
+        $editForm = $this->createForm('CategoryBundle\Form\CategoryType', $category, array("type"=>$category->getType(),"notId"=>$category->getId()));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -106,34 +111,14 @@ class CategoryController extends Controller
             return $this->redirectToRoute('admin_category_edit', array('id' => $category->getId()));
         }
 
-        return $this->render('ArticleBundle:category:edit.html.twig', array(
+        return $this->render('CategoryBundle:category:edit.html.twig', array(
             'category' => $category,
+            'type' => $category->getType(),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Deletes a category entity.
-     *
-     * @Route("/{id}", name="admin_category_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Category $category)
-    {
-        $form = $this->createDeleteForm($category);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            
-            $em->remove($category);
-            $em->flush($category);
-        }
-
-        return $this->redirectToRoute('admin_category_index');
-    }
-    
     
     /**
      * Deletes a category entity.
@@ -144,31 +129,57 @@ class CategoryController extends Controller
     public function deleteAjaxAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $c = $em->getRepository('ArticleBundle:Category')->find($request->get("idCategory"));
+        $c = $em->getRepository('CategoryBundle:Category')->find($request->get("idCategory"));
         if ($c!==null) {
-            $articleDirects =  $em->getRepository('ArticleBundle:Article')->findBy(array("category"=>$c));
-            foreach($articleDirects as $a):
-                $a->setCategory(null);
-                $a->setEtat(false);
-                $em->persist($a);
-                $em->flush($a);
-            endforeach;
+            $isParent =  $em->getRepository('CategoryBundle:Category')->findBy(array("categoryParente"=>$c));
             
-            $isParent =  $em->getRepository('ArticleBundle:Category')->findBy(array("categoryParente"=>$c));
-            if($isParent != null):
-                foreach($isParent as $cFils):
-                    $articleEnfants =  $em->getRepository('ArticleBundle:Article')->findBy(array("category"=>$cFils));
-                    foreach($articleEnfants as $a):
-                        $a->setCategory(null);
-                        $em->persist($a);
-                        $em->flush($a);
-                    endforeach;
-            
-                    $em->remove($cFils);
-                    $em->flush($cFils);
+            if($c->getType()=="article"):
+                $articleDirects =  $em->getRepository('ArticleBundle:Article')->findBy(array("category"=>$c));
+                foreach($articleDirects as $a):
+                    $a->setCategory(null);
+                    $em->persist($a);
+                    $em->flush($a);
                 endforeach;
+
+                
+                if($isParent != null):
+                    foreach($isParent as $cFils):
+                        $articleEnfants =  $em->getRepository('ArticleBundle:Article')->findBy(array("category"=>$cFils));
+                        foreach($articleEnfants as $a):
+                            $a->setCategory(null);
+                            $em->persist($a);
+                            $em->flush($a);
+                        endforeach;
+
+                        $em->remove($cFils);
+                        $em->flush($cFils);
+                    endforeach;
+                endif;
             endif;
-             
+            if($c->getType()=="page"):
+                $pageDirects =  $em->getRepository('PageBundle:Page')->findBy(array("category"=>$c));
+                foreach($pageDirects as $p):
+                    $p->setCategory(null);
+                    $em->persist($p);
+                    $em->flush($p);
+                endforeach;
+
+                
+                if($isParent != null):
+                    foreach($isParent as $cFils):
+                        $pageeEnfants =  $em->getRepository('PageBundle:Page')->findBy(array("category"=>$cFils));
+                        foreach($pageeEnfants as $p):
+                            $p->setCategory(null);
+                            $em->persist($p);
+                            $em->flush($p);
+                        endforeach;
+
+                        $em->remove($cFils);
+                        $em->flush($cFils);
+                    endforeach;
+                endif;
+            endif;
+            
             $em->remove($c);
             $em->flush();
             return new JsonResponse(array("success"=>true));
@@ -187,7 +198,7 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $idCategories = $request->get("idCategories");
         foreach($idCategories as $v):
-            $c = $em->getRepository('ArticleBundle:Category')->find($v);
+            $c = $em->getRepository('CategoryBundle:Category')->find($v);
             $c->setIsActive(($request->get("etat")==1) ? true : false);
             $em->persist($c);
             $em->flush($c);

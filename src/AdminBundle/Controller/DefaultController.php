@@ -12,6 +12,10 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AdminBundle:Default:index.html.twig');
+	$em = $this->getDoctrine()->getManager();
+        $pages = $em->getRepository('PageBundle:Page')->findAll();
+        $articles = $em->getRepository('ArticleBundle:Article')->findAll();
+        $modules = $em->getRepository('ModuleBundle:Module')->findAll();
+        return $this->render('AdminBundle:Default:index.html.twig',array("pages"=>$pages,"articles"=>$articles,"modules"=>$modules));
     }
 }

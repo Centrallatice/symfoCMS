@@ -1,6 +1,6 @@
 <?php
 
-namespace ArticleBundle\Entity;
+namespace CategoryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="ArticleBundle\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="CategoryBundle\Repository\CategoryRepository")
  */
 class Category
 {
@@ -29,13 +29,13 @@ class Category
     private $nom;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ArticleBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="CategoryBundle\Entity\Category")
      * @ORM\JoinColumn(name="categoryParente", referencedColumnName="id",nullable=true)
     */
     protected $categoryParente;
     
     /**
-     * @ORM\ManyToMany(targetEntity="ArticleBundle\Entity\Category", cascade={"remove"})
+     * @ORM\ManyToMany(targetEntity="CategoryBundle\Entity\Category", cascade={"remove"})
      * @ORM\JoinTable(name="category_categories",
      *      joinColumns={@ORM\JoinColumn(name="parent_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="child_id", referencedColumnName="id", unique=true)}
@@ -50,6 +50,13 @@ class Category
      */
     private $auteur;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", columnDefinition="enum('article', 'page')")
+     */
+    private $type;
+    
     /**
      * @var datetime
      *
@@ -186,11 +193,11 @@ class Category
     /**
      * Set categoryParente
      *
-     * @param \ArticleBundle\Entity\Category $categoryParente
+     * @param \CategoryBundle\Entity\Category $categoryParente
      *
      * @return Category
      */
-    public function setCategoryParente(\ArticleBundle\Entity\Category $categoryParente = null)
+    public function setCategoryParente(\CategoryBundle\Entity\Category $categoryParente = null)
     {
         $this->categoryParente = $categoryParente;
 
@@ -200,7 +207,7 @@ class Category
     /**
      * Get categoryParente
      *
-     * @return \ArticleBundle\Entity\Category
+     * @return \CategoryBundle\Entity\Category
      */
     public function getCategoryParente()
     {
@@ -234,11 +241,11 @@ class Category
     /**
      * Add categoryEnfant
      *
-     * @param \ArticleBundle\Entity\Category $categoryEnfant
+     * @param \CategoryBundle\Entity\Category $categoryEnfant
      *
      * @return Category
      */
-    public function addCategoryEnfant(\ArticleBundle\Entity\Category $categoryEnfant)
+    public function addCategoryEnfant(\CategoryBundle\Entity\Category $categoryEnfant)
     {
         $this->categoryEnfants[] = $categoryEnfant;
 
@@ -248,9 +255,9 @@ class Category
     /**
      * Remove categoryEnfant
      *
-     * @param \ArticleBundle\Entity\Category $categoryEnfant
+     * @param \CategoryBundle\Entity\Category $categoryEnfant
      */
-    public function removeCategoryEnfant(\ArticleBundle\Entity\Category $categoryEnfant)
+    public function removeCategoryEnfant(\CategoryBundle\Entity\Category $categoryEnfant)
     {
         $this->categoryEnfants->removeElement($categoryEnfant);
     }
@@ -264,4 +271,7 @@ class Category
     {
         return $this->categoryEnfants;
     }
+
+    
+  
 }

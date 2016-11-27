@@ -5,18 +5,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 {% endblock %}
 {% block breadcrumb %}
-    <a class="breadcrumb" href="{{ path('admin_category_index') }}">Catégorie </a>
+    <a class="breadcrumb" href="{{ path('admin_category_index',{'type':type}) }}">Catégorie </a>
     <a class="breadcrumb" href="#!">Créer une catégorie</a>
 {% endblock %}
 {% block body %}
     <div class="row">
-        <div class="cols12">
-            <a role="button" class="btn waves-effect waves-light pull-right" href="{{ path('admin_category_index') }}"><i class="material-icons left">skip_previous</i> Revenir à la liste</a>
+        <div class=" col s12 ">
+            <a role="button" class="btn waves-effect waves-light pull-right" href="{{ path('admin_category_index',{'type':type}) }}"><i class="material-icons left">skip_previous</i> Revenir à la liste</a>
        </div>
     </div> 
     {% include "::formback.html.twig" with {"form":form} %}
     <div class="row">
-        <div class="cols12">
+        <div class=" col s12 ">
             {{ form_start(form) }}
                 {{ form_widget(form) }}
                 <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>

@@ -25,7 +25,7 @@ class appDevDebugProjectContainer extends Container
     public function __construct()
     {
         $dir = __DIR__;
-        for ($i = 1; $i <= 5; ++$i) {
+        for ($i = 1; $i <= 4; ++$i) {
             $this->targetDirs[$i] = $dir = dirname($dir);
         }
         $this->parameters = $this->getDefaultParameters();
@@ -366,7 +366,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_Filter_CssembedService()
     {
-        $this->services['assetic.filter.cssembed'] = $instance = new \Assetic\Filter\CssEmbedFilter(($this->targetDirs[2].'/Resources/java/cssembed.jar'), 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
+        $this->services['assetic.filter.cssembed'] = $instance = new \Assetic\Filter\CssEmbedFilter(($this->targetDirs[2].'/Resources/java/cssembed.jar'), 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
 
         $instance->setTimeout(NULL);
         $instance->setCharset('UTF-8');
@@ -425,7 +425,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_Filter_YuiCssService()
     {
-        $this->services['assetic.filter.yui_css'] = $instance = new \Assetic\Filter\Yui\CssCompressorFilter(($this->targetDirs[2].'/Resources/java/yuicompressor.jar'), 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
+        $this->services['assetic.filter.yui_css'] = $instance = new \Assetic\Filter\Yui\CssCompressorFilter(($this->targetDirs[2].'/Resources/java/yuicompressor.jar'), 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
 
         $instance->setCharset('UTF-8');
         $instance->setTimeout(NULL);
@@ -445,7 +445,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_Filter_YuiJsService()
     {
-        $this->services['assetic.filter.yui_js'] = $instance = new \Assetic\Filter\Yui\JsCompressorFilter(($this->targetDirs[2].'/Resources/java/yuicompressor.jar'), 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
+        $this->services['assetic.filter.yui_js'] = $instance = new \Assetic\Filter\Yui\JsCompressorFilter(($this->targetDirs[2].'/Resources/java/yuicompressor.jar'), 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
 
         $instance->setCharset('UTF-8');
         $instance->setTimeout(NULL);
@@ -793,7 +793,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('annotation_reader');
 
-        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\AdminBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\PageBundle\\Entity'), 2 => ($this->targetDirs[3].'\\src\\ArticleBundle\\Entity'), 3 => ($this->targetDirs[3].'\\src\\ModuleBundle\\Entity'), 4 => ($this->targetDirs[3].'\\src\\MenuBundle\\Entity'), 5 => ($this->targetDirs[3].'\\src\\TemplateBundle\\Entity')));
+        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\AdminBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\PageBundle\\Entity'), 2 => ($this->targetDirs[3].'\\src\\ArticleBundle\\Entity'), 3 => ($this->targetDirs[3].'\\src\\ModuleBundle\\Entity'), 4 => ($this->targetDirs[3].'\\src\\MenuBundle\\Entity'), 5 => ($this->targetDirs[3].'\\src\\TemplateBundle\\Entity'), 6 => ($this->targetDirs[3].'\\src\\CategoryBundle\\Entity')));
 
         $c = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
         $c->addDriver($b, 'AdminBundle\\Entity');
@@ -802,10 +802,11 @@ class appDevDebugProjectContainer extends Container
         $c->addDriver($b, 'ModuleBundle\\Entity');
         $c->addDriver($b, 'MenuBundle\\Entity');
         $c->addDriver($b, 'TemplateBundle\\Entity');
+        $c->addDriver($b, 'CategoryBundle\\Entity');
         $c->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array(($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle\\Resources\\config\\doctrine-mapping') => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
 
         $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array('AdminBundle' => 'AdminBundle\\Entity', 'PageBundle' => 'PageBundle\\Entity', 'ArticleBundle' => 'ArticleBundle\\Entity', 'ModuleBundle' => 'ModuleBundle\\Entity', 'MenuBundle' => 'MenuBundle\\Entity', 'TemplateBundle' => 'TemplateBundle\\Entity'));
+        $d->setEntityNamespaces(array('AdminBundle' => 'AdminBundle\\Entity', 'PageBundle' => 'PageBundle\\Entity', 'ArticleBundle' => 'ArticleBundle\\Entity', 'ModuleBundle' => 'ModuleBundle\\Entity', 'MenuBundle' => 'MenuBundle\\Entity', 'TemplateBundle' => 'TemplateBundle\\Entity', 'CategoryBundle' => 'CategoryBundle\\Entity'));
         $d->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
         $d->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
         $d->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
@@ -903,7 +904,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_f4465ebf183948e029182e9e05b7321eae7ccf539d3cb4470daed3778a83ece1');
+        $instance->setNamespace('sf2orm_default_a625cef4bb17087925582aac2229bd7ae78c00854dfe5921c686724aac0219dc');
 
         return $instance;
     }
@@ -920,7 +921,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_f4465ebf183948e029182e9e05b7321eae7ccf539d3cb4470daed3778a83ece1');
+        $instance->setNamespace('sf2orm_default_a625cef4bb17087925582aac2229bd7ae78c00854dfe5921c686724aac0219dc');
 
         return $instance;
     }
@@ -937,7 +938,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_f4465ebf183948e029182e9e05b7321eae7ccf539d3cb4470daed3778a83ece1');
+        $instance->setNamespace('sf2orm_default_a625cef4bb17087925582aac2229bd7ae78c00854dfe5921c686724aac0219dc');
 
         return $instance;
     }
@@ -2573,13 +2574,13 @@ class appDevDebugProjectContainer extends Container
         $m->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
 
         $n = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($l, array());
-        $n->setOptions(array('login_path' => 'fos_user_security_login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
+        $n->setOptions(array('login_path' => 'fos_user_security_login', 'always_use_default_target_path' => true, 'default_target_path' => '/admin/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
         $n->setProviderKey('main');
 
         $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $l, array(), $a);
         $o->setOptions(array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('require_previous_session' => false, 'check_path' => 'fos_user_security_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5835bc89535ca9.05510567', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, 'fos_user_security_login', false), NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('require_previous_session' => false, 'check_path' => 'fos_user_security_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '58398db6a4a8a9.45606997', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, 'fos_user_security_login', false), NULL, NULL, $a, false));
     }
 
     /**
@@ -3646,6 +3647,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\src\\ModuleBundle/Resources/views'), 'Module');
         $instance->addPath(($this->targetDirs[3].'\\src\\MenuBundle/Resources/views'), 'Menu');
         $instance->addPath(($this->targetDirs[3].'\\src\\TemplateBundle/Resources/views'), 'Template');
+        $instance->addPath(($this->targetDirs[3].'\\src\\CategoryBundle/Resources/views'), 'Category');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views'), 'WebProfiler');
         $instance->addPath(($this->targetDirs[2].'/Resources/views'));
@@ -4049,7 +4051,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5835bc89535ca9.05510567')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('58398db6a4a8a9.45606997')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -4255,6 +4257,7 @@ class appDevDebugProjectContainer extends Container
                 'ModuleBundle' => 'ModuleBundle\\ModuleBundle',
                 'MenuBundle' => 'MenuBundle\\MenuBundle',
                 'TemplateBundle' => 'TemplateBundle\\TemplateBundle',
+                'CategoryBundle' => 'CategoryBundle\\CategoryBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -4818,14 +4821,14 @@ class appDevDebugProjectContainer extends Container
             'assetic.variables' => array(
 
             ),
-            'assetic.java.bin' => 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
-            'assetic.node.bin' => 'c:\\Program Files\\nodejs\\\\node.EXE',
+            'assetic.java.bin' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
+            'assetic.node.bin' => '/usr/bin/node',
             'assetic.ruby.bin' => '/usr/bin/ruby',
             'assetic.sass.bin' => '/usr/bin/sass',
             'assetic.reactjsx.bin' => '/usr/bin/jsx',
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',
             'assetic.filter.cssembed.class' => 'Assetic\\Filter\\CssEmbedFilter',
-            'assetic.filter.cssembed.java' => 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
+            'assetic.filter.cssembed.java' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
             'assetic.filter.cssembed.jar' => ($this->targetDirs[2].'/Resources/java/cssembed.jar'),
             'assetic.filter.cssembed.timeout' => NULL,
             'assetic.filter.cssembed.charset' => 'UTF-8',
@@ -4836,7 +4839,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.filter.cssembed.max_uri_length' => NULL,
             'assetic.filter.cssembed.max_image_size' => NULL,
             'assetic.filter.yui_js.class' => 'Assetic\\Filter\\Yui\\JsCompressorFilter',
-            'assetic.filter.yui_js.java' => 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
+            'assetic.filter.yui_js.java' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
             'assetic.filter.yui_js.jar' => ($this->targetDirs[2].'/Resources/java/yuicompressor.jar'),
             'assetic.filter.yui_js.charset' => 'UTF-8',
             'assetic.filter.yui_js.stacksize' => NULL,
@@ -4846,7 +4849,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.filter.yui_js.disable_optimizations' => NULL,
             'assetic.filter.yui_js.linebreak' => NULL,
             'assetic.filter.yui_css.class' => 'Assetic\\Filter\\Yui\\CssCompressorFilter',
-            'assetic.filter.yui_css.java' => 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
+            'assetic.filter.yui_css.java' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
             'assetic.filter.yui_css.jar' => ($this->targetDirs[2].'/Resources/java/yuicompressor.jar'),
             'assetic.filter.yui_css.charset' => 'UTF-8',
             'assetic.filter.yui_css.stacksize' => NULL,

@@ -1,42 +1,52 @@
-{% extends '::admin.html.twig' %}
-
+{% extends "::admin.html.twig" %}
+{% block breadcrumb %} 
+    <a class="breadcrumb" href="{{ path('admin_module_index') }}">Modules</a>
+    <a class="breadcrumb" href="#!">Mes modules</a>
+{% endblock %}
 {% block body %}
-    <h1>Modules list</h1>
+    <div class="row">
+        <div class=" col s12 ">
+            <table class="striped bordered table responsive-table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Type</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-        {% for module in modules %}
-            <tr>
-                <td><a href="{{ path('admin_module_show', { 'id': module.id }) }}">{{ module.id }}</a></td>
-                <td>{{ module.nom }}</td>
-                <td>{{ module.getType() }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_module_show', { 'id': module.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_module_edit', { 'id': module.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_module_new') }}">Create a new module</a>
-        </li>
-    </ul>
+                {% for module in modules %}
+                    <tr id="module-{{module.id}}">
+                        <td><a href="{{ path('admin_module_show', { 'id': module.id }) }}">{{ module.id }}</a></td>
+                        <td>{{ module.nom }}</td>
+                        <td>{{ module.getType() }}</td>
+                        <td class="text-right">
+                            <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue contraintwidth' href='#' data-activates='dropdown-action-{{module.id}}'>Actions</a>
+                            <ul id='dropdown-action-{{module.id}}' class='dropdown-content'>
+                                <li><a href="{{ path('admin_module_show', { 'id': module.id }) }}"><i class="material-icons left">search</i>Afficher</a></li>
+                                <li><a class="action-blue" href="{{ path('admin_module_edit', { 'id': module.id }) }}"><i class="material-icons left">mode_edit</i>Modifier</a></li>
+                                <li><a class="action-red" href="#" onclick="deleteAjaxModule({{module.id}},'{{ path('admin_module_ajax_delete', { 'id': module.id }) }}')"><i class="material-icons left">delete</i>Supprimer</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>       
+    </div>
+    <div class="fixed-action-btn ">
+        <a class="btn-floating btn-large green tooltipped" 
+           data-position="left" data-delay="50" data-tooltip="Créer un module"
+           title="Créer un module" href="{{ path('admin_module_new') }}">
+            <i class="large material-icons">add</i>
+        </a>
+        
+      </div>            
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'></script>
+    <script type='text/javascript' src='{{asset('js/admin/module/main.js')}}'></script>
 {% endblock %}

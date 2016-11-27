@@ -1,69 +1,77 @@
 <div class="row">
-        <div class="col-xl-4 col-lg-6">
-            <div class="card card-primary card-inverse">
-                <div class="card-header card-primary">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-comments fa-3x"></i>
-                        </div>
-                        <div class="col-xs-9 text-xs-right">
-                            <div class="huge">26</div>
-                            <div>New Comments!</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer card-default">
-                    <a href="javascript:;">
-                        <span class="pull-xs-left">View Details</span>
-                        <span class="pull-xs-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-            <div class="card card-green card-inverse">
-                <div class="card-header card-green">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-3x"></i>
-                        </div>
-                        <div class="col-xs-9 text-xs-right">
-                            <div class="huge">12</div>
-                            <div>New Tasks!</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer card-green">
-                    <a href="javascript:;">
-                        <span class="pull-xs-left">View Details</span>
-                        <span class="pull-xs-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-            <div class="card card-yellow card-inverse">
-                <div class="card-header card-yellow">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-3x"></i>
-                        </div>
-                        <div class="col-xs-9 text-xs-right">
-                            <div class="huge">124</div>
-                            <div>New Orders!</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer card-yellow">
-                    <a href="javascript:;">
-                        <span class="pull-xs-left">View Details</span>
-                        <span class="pull-xs-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.row -->
+	<div class="col s6 m4">
+		<div class="card horizontal">
+			<div class="card-image">
+                            <img class="responsive-img" src="{{asset('/images/admin/pages.png')}}" alt="Pages publiées"/>
+			</div>
+			<div class="card-stacked">
+				<div class="card-content">
+                                    <p>
+                                        <span class="huge">{{pages|length}}</span>
+                                        <small>Page(s)</small>
+                                        <ul>
+                                            {% for p in pages %}
+                                                {% if  loop.index <4 %}
+                                                    <li><a href="{{path('page_show',{id:p.id})}}">{{p.titre}}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </p>
+				</div>
+				<div class="card-action">
+					<a href="{{path('page_list')}}">Tout afficher</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col s6 m4">
+		<div class="card horizontal">
+			<div class="card-image">
+                            <img class="responsive-img" src="{{asset('/images/admin/newspaper.png')}}" alt="Articles publiés"/>
+			</div>
+			<div class="card-stacked">
+                            <div class="card-content">
+                                <p>
+                                    <span class="huge">{{articles|length}}</span>
+                                    <small>Article(s)</small>
+                                    <ul>
+                                        {% for a in articles %}
+                                            {% if  loop.index <4 %}
+                                                    <li><a href="{{path('admin_article_show',{id:a.id})}}">{{a.titre}}</a></li>
+                                                {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{path('admin_article_index')}}">Tout afficher</a>
+                            </div>
+			</div>
+		</div>
+	</div>
+	<div class="col s6 m4">
+		<div class="card horizontal">
+			<div class="card-image">
+                            <img class="responsive-img" src="{{asset('/images/admin/engine.png')}}" alt="Articles publiés"/>
+			</div>
+			<div class="card-stacked">
+                            <div class="card-content">
+                                <p>
+                                    <span class="huge">{{modules|length}}</span>
+                                    <small>Module(s)</small>
+                                    <ul>
+                                        {% for m in modules %}
+                                            {% if  loop.index <4 %}
+                                                    <li><a href="{{path('admin_module_show',{id:m.id})}}">{{m.nom}}</a></li>
+                                                {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{path('admin_module_index')}}">Tout afficher</a>
+                            </div>
+			</div>
+		</div>
+	</div>
+</div>

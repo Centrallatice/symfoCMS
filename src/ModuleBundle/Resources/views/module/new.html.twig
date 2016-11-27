@@ -8,16 +8,14 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Module creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_module_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    {% include "::formback.html.twig" with {"form":form} %}
+    <div class="row">
+        <div class="col s12">
+            <h5>Sélectionnez un type de module :</h5>
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Valider</button></center>
+            {{ form_end(form) }}
+         </div>
+    </div>
 {% endblock %}

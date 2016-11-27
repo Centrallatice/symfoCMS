@@ -58,7 +58,7 @@ class HTMLModuleController extends Controller
             $em->persist($hTMLModule);
             $em->flush($hTMLModule);
             $this->addFlash('success', 'Votre module a bien été créé');
-            return $this->redirectToRoute('admin_htmlmodule_new');
+            return $this->redirectToRoute('admin_module_html_new');
         }
 
         return $this->render('ModuleBundle:htmlmodule:new.html.twig', array(

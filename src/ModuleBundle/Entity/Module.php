@@ -5,14 +5,8 @@ namespace ModuleBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({
- *      "module"="Module",
- *      "Image"="ImageModule",
- *      "HTML" = "HTMLModule"
- * })
+ * @ORM\Table(name="Module")
+ * @ORM\Entity(repositoryClass="ModuleBundle\Repository\ModuleRepository")
  */
 
 class Module
@@ -29,15 +23,16 @@ class Module
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
     
     /**
      * @var string type
-     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
-    protected $type;
+    protected $description;
+    
     
     /**
      * Get id

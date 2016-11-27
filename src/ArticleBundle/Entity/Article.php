@@ -63,20 +63,20 @@ class Article
     private $etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ArticleBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="CategoryBundle\Entity\Category")
      * @ORM\JoinColumn(name="category", referencedColumnName="id",nullable=true)
     */
     private $category;
 
-    /**
-     * @ORM\OneToMany(targetEntity="PageBundle\Entity\keyWordsArticle",mappedBy="associationId", cascade={"remove"})
-    */
     
-    private $keywords;
+    public function __construct() {
+        $this->setDateCreation(new \DateTime());
+    }
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -93,7 +93,7 @@ class Article
     public function setTitre($titre)
     {
         $this->titre = $titre;
-
+    
         return $this;
     }
 
@@ -117,7 +117,7 @@ class Article
     public function setDateCreation($dateCreation)
     {
         $this->dateCreation = $dateCreation;
-
+    
         return $this;
     }
 
@@ -141,7 +141,7 @@ class Article
     public function setAuteur($auteur)
     {
         $this->auteur = $auteur;
-
+    
         return $this;
     }
 
@@ -156,32 +156,6 @@ class Article
     }
 
     /**
-     * Set etat
-     *
-     * @param boolean $etat
-     *
-     * @return Article
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return bool
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
-   
-
-    /**
      * Set contenu
      *
      * @param string $contenu
@@ -191,7 +165,7 @@ class Article
     public function setContenu($contenu)
     {
         $this->contenu = $contenu;
-
+    
         return $this;
     }
 
@@ -204,10 +178,6 @@ class Article
     {
         return $this->contenu;
     }
-    
-    public function __construct() {
-        $this->setDateCreation(new \DateTime());
-    }
 
     /**
      * Set resume
@@ -219,7 +189,7 @@ class Article
     public function setResume($resume)
     {
         $this->resume = $resume;
-
+    
         return $this;
     }
 
@@ -234,23 +204,47 @@ class Article
     }
 
     /**
-     * Set category
+     * Set etat
      *
-     * @param \ArticleBundle\Entity\Category $category
+     * @param boolean $etat
      *
      * @return Article
      */
-    public function setCategory(\ArticleBundle\Entity\Category $category = null)
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+    
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return boolean
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \CategoryBundle\Entity\Category $category
+     *
+     * @return Article
+     */
+    public function setCategory(\CategoryBundle\Entity\Category $category = null)
     {
         $this->category = $category;
-
+    
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return \ArticleBundle\Entity\Category
+     * @return \CategoryBundle\Entity\Category
      */
     public function getCategory()
     {
@@ -260,23 +254,23 @@ class Article
     /**
      * Add keyword
      *
-     * @param \PageBundle\Entity\keyWordsArticle $keyword
+     * @param \PageBundle\Entity\keyWords $keyword
      *
      * @return Article
      */
-    public function addKeyword(\PageBundle\Entity\keyWordsArticle $keyword)
+    public function addKeyword(\PageBundle\Entity\keyWords $keyword)
     {
         $this->keywords[] = $keyword;
-
+    
         return $this;
     }
 
     /**
      * Remove keyword
      *
-     * @param \PageBundle\Entity\keyWordsArticle $keyword
+     * @param \PageBundle\Entity\keyWords $keyword
      */
-    public function removeKeyword(\PageBundle\Entity\keyWordsArticle $keyword)
+    public function removeKeyword(\PageBundle\Entity\keyWords $keyword)
     {
         $this->keywords->removeElement($keyword);
     }

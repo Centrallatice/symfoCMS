@@ -14,10 +14,10 @@
         </div>
     </li>
     <li>
-        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['page_new','page_list','page_edit','page_show'] %}active{% endif %}">
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if ((app.request.get('_route_params')['type'] is defined and app.request.get('_route_params')['type']=='page') or app.request.get('_route') in ['page_new','page_list','page_edit','page_show']) %}active{% endif %}">
             <i class="material-icons">description</i> Pages
         </div>
-        <div class="collapsible-body" {% if app.request.get('_route') in ['page_new','page_list','page_edit'] %}style="display:block"{% endif %}>
+        <div class="collapsible-body" {% if ((app.request.get('_route_params')['type'] is defined and app.request.get('_route_params')['type']=='page') or app.request.get('_route') in ['page_new','page_list','page_edit']) %}style="display:block"{% endif %}>
             <ul>
                 <li class="{% if app.request.get('_route') == 'page_new' %}active{% endif%}">
                 <a href="{{path('page_new')}}">Créer une page </a>
@@ -25,14 +25,20 @@
                 <li class="{% if app.request.get('_route') == 'page_list' %}active{% endif%}">
                     <a href="{{path('page_list')}}">Gérer les pages</a>
                 </li>
+                <li class="{% if (app.request.get('_route') == 'admin_category_new' and app.request.get('_route_params')['type'] is defined and app.request.get('_route_params')['type']=='page')%}active{% endif%}">
+                    <a href="{{path('admin_category_new',{'type':'page'})}}">Créer une catégorie</a>
+                </li>
+                <li class="{% if (app.request.get('_route') == 'admin_category_index' and app.request.get('_route_params')['type'] is defined and app.request.get('_route_params')['type']=='page') %}active{% endif%}">
+                    <a href="{{path('admin_category_index',{'type':'page'})}}">Gérer les catégories</a>
+                </li>
             </ul>
         </div>
     </li>
     <li>
-        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['admin_article_new','admin_article_index','admin_article_show','admin_article_edit'] %}active{% endif %}">
+        <div class="collapsible-header collapsible waves-effect waves-teal {% if ((app.request.get('_route_params')['type'] is defined and app.request.get('_route_params')['type']=='article') or  app.request.get('_route') in ['admin_article_new','admin_article_index','admin_article_edit','admin_article_show']) %}active{% endif %}">
             <i class="large material-icons">art_track</i> Articles
         </div>
-        <div {% if app.request.get('_route') in ['admin_article_new','admin_article_index','admin_article_edit','admin_article_show'] %}style='display:block'{% endif %} class="collapsible-body">
+        <div {% if ((app.request.get('_route_params')['type'] is defined and app.request.get('_route_params')['type']=='article') or  app.request.get('_route') in ['admin_article_new','admin_article_index','admin_article_edit','admin_article_show']) %}style='display:block'{% endif %} class="collapsible-body">
             <ul>
                 <li class="{% if app.request.get('_route') == 'admin_article_new' %}active{% endif%}">
                     <a href="{{path('admin_article_new')}}">Créer un article</a>
@@ -40,24 +46,16 @@
                 <li class="{% if app.request.get('_route') == 'admin_article_index' %}active{% endif%}">
                     <a href="{{path('admin_article_index')}}">Gérer les articles</a>
                 </li>
-            </ul>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route') in ['admin_category_new','admin_category_index','admin_category_show','admin_category_edit'] %}active{% endif %}">
-            <i class="material-icons">folder</i> Catégories
-        </div>
-        <div {% if app.request.get('_route') in ['admin_category_new','admin_category_index','admin_category_show','admin_category_edit'] %}style='display:block'{% endif %} class="collapsible-body">
-            <ul>
-                <li class="{% if app.request.get('_route') == 'admin_category_new' %}active{% endif%}">
-                    <a href="{{path('admin_category_new')}}">Créer une catégorie</a>
+                <li class="{% if (app.request.get('_route') == 'admin_category_new'  and app.request.get('_route_params')['type'] is defined and app.request.get('_route_params')['type']=='article') %}active{% endif%}">
+                    <a href="{{path('admin_category_new',{'type':'article'})}}">Créer une catégorie</a>
                 </li>
-                <li class="{% if app.request.get('_route') == 'admin_category_index' %}active{% endif%}">
-                    <a href="{{path('admin_category_index')}}">Gérer les catégories</a>
+                <li class="{% if (app.request.get('_route') == 'admin_category_index' and app.request.get('_route_params')['type'] is defined and app.request.get('_route_params')['type']=='article') %}active{% endif%}">
+                    <a href="{{path('admin_category_index',{'type':'article'})}}">Gérer les catégories</a>
                 </li>
             </ul>
         </div>
     </li>
+    
     <li>
         <div class="collapsible-header collapsible waves-effect waves-teal {% if app.request.get('_route')|slice(0,12) == 'admin_module' %}active{% endif %}">
             <i class="material-icons">extension</i> Modules

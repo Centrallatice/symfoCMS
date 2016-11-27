@@ -6,17 +6,12 @@
 {% endblock %}
 {% block breadcrumb %}
     <a class="breadcrumb" href="{{ path('admin_article_index') }}">Article</a>
-    <a class="breadcrumb" href="#!">Modification d'un article</a>  
+    <a class="breadcrumb" href="#!">Modification de l'article "{{article.titre}}"</a>  
 {% endblock %}
 {% block body %}
-    <div class="row">
-        <div class="cols12">
-            <a role="button" class="btn waves-light waves-effect pull-right" href="{{ path('admin_article_index') }}"><i class="material-icons left">skip_previous</i> Revenir à la liste</a>
-        </div>
-    </div>
     {% include "::formback.html.twig" with {"form":edit_form} %}
     <div class="row">
-        <div class="cols12">    
+        <div class=" col s12 ">    
             {{ form_start(edit_form) }}
                 {{ form_widget(edit_form) }}
                 <label class="control-label required" for="pagebundle_page_titre">Mots-clés</label>  

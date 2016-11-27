@@ -1,3 +1,15 @@
+body.login-page:before{
+    content:"";
+    background:url('http://lorempixel.com/1900/1300/city/') center center no-repeat;
+    background-size:cover;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:.50;
+    z-index:-1;
+    width: 100%;
+    height: 100%;
+}
 body.nopadding{
     background:#ebebeb;
 }
@@ -18,4 +30,23 @@ ul.side-nav{
 }
 .fr-box.fr-basic{
     margin-top: 15px;
+}
+.huge{
+    font-size: 3em;
+}
+@media only screen and (min-width: 993px) and (max-width:1280px){
+    body.login-page:before{
+        background:url('http://lorempixel.com/1300/900/city/')  center center no-repeat;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px){
+    body.login-page:before{
+        background:url('http://lorempixel.com/900/600/city/')  center center no-repeat;
+    }
+}
+@media only screen and (max-width: 600px){
+    body.login-page:before{
+        background:url('http://lorempixel.com/600/800/city/')  center center no-repeat;
+    }
 }

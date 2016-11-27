@@ -21,7 +21,16 @@ class PageType extends AbstractType
                         array(
                             "required"=>false,
                             "label"=>"Cette page est la page d'accueil du site"
-                     ));
+                     ))
+                ->add('category',EntityType::class,array(
+                    "label"=>"Catégorie",
+                    'required'    => false,
+                    'placeholder' => '-- Aucune catégorie --',
+                    'empty_data'  => null,
+                    'empty_value'  => "",
+                    "class" => "CategoryBundle:Category",
+                    'choice_label' => 'nom'
+                 ));
     }
     
     /**

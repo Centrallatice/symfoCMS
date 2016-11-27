@@ -1,4 +1,8 @@
 $( document ).ready( function () { 
+    $('.tagify-container').on("click",function(e){
+        console.log(e.targetType);
+        $(this).find("input[type=text]").focus();
+    });
     $( "#articlebundle_article_contenu" ).froalaEditor({
         toolbarInline : false,
         language : "fr",

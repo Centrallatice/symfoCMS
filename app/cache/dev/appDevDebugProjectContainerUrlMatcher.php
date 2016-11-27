@@ -105,6 +105,78 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        if (0 === strpos($pathinfo, '/admin/category')) {
+            // admin_category_index
+            if (preg_match('#^/admin/category/(?P<type>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_admin_category_index;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_category_index')), array (  '_controller' => 'CategoryBundle\\Controller\\CategoryController::indexAction',));
+            }
+            not_admin_category_index:
+
+            // admin_category_new
+            if (0 === strpos($pathinfo, '/admin/category/new') && preg_match('#^/admin/category/new/(?P<type>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_admin_category_new;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_category_new')), array (  '_controller' => 'CategoryBundle\\Controller\\CategoryController::newAction',));
+            }
+            not_admin_category_new:
+
+            // admin_category_show
+            if (preg_match('#^/admin/category/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_admin_category_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_category_show')), array (  '_controller' => 'CategoryBundle\\Controller\\CategoryController::showAction',));
+            }
+            not_admin_category_show:
+
+            // admin_category_edit
+            if (preg_match('#^/admin/category/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_admin_category_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_category_edit')), array (  '_controller' => 'CategoryBundle\\Controller\\CategoryController::editAction',));
+            }
+            not_admin_category_edit:
+
+            if (0 === strpos($pathinfo, '/admin/category/Ajax')) {
+                // category_ajax_delete
+                if (preg_match('#^/admin/category/Ajax/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_category_ajax_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'category_ajax_delete')), array (  '_controller' => 'CategoryBundle\\Controller\\CategoryController::deleteAjaxAction',));
+                }
+                not_category_ajax_delete:
+
+                // category_ajax_change_state
+                if ($pathinfo === '/admin/category/Ajax/ChangeState') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_category_ajax_change_state;
+                    }
+
+                    return array (  '_controller' => 'CategoryBundle\\Controller\\CategoryController::changeStateAjaxAction',  '_route' => 'category_ajax_change_state',);
+                }
+                not_category_ajax_change_state:
+
+            }
+
+        }
+
         // template_default_index
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
@@ -501,6 +573,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 }
                 not_admin_module_delete:
 
+                // admin_module_ajax_delete
+                if (0 === strpos($pathinfo, '/admin/module/Ajax') && preg_match('#^/admin/module/Ajax/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_admin_module_ajax_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_ajax_delete')), array (  '_controller' => 'ModuleBundle\\Controller\\ModuleController::deleteAjaxAction',));
+                }
+                not_admin_module_ajax_delete:
+
             }
 
             if (0 === strpos($pathinfo, '/admin/article')) {
@@ -552,17 +635,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 }
                 not_admin_article_edit:
 
-                // admin_article_delete
-                if (preg_match('#^/admin/article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_admin_article_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_article_delete')), array (  '_controller' => 'ArticleBundle\\Controller\\ArticleController::deleteAction',));
-                }
-                not_admin_article_delete:
-
                 // article_ajax_delete
                 if (0 === strpos($pathinfo, '/admin/article/Ajax') && preg_match('#^/admin/article/Ajax/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     if ($this->context->getMethod() != 'DELETE') {
@@ -573,93 +645,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'article_ajax_delete')), array (  '_controller' => 'ArticleBundle\\Controller\\ArticleController::deleteAjaxAction',));
                 }
                 not_article_ajax_delete:
-
-            }
-
-            if (0 === strpos($pathinfo, '/admin/category')) {
-                // admin_category_index
-                if (rtrim($pathinfo, '/') === '/admin/category') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_admin_category_index;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_category_index');
-                    }
-
-                    return array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::indexAction',  '_route' => 'admin_category_index',);
-                }
-                not_admin_category_index:
-
-                // admin_category_new
-                if ($pathinfo === '/admin/category/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_admin_category_new;
-                    }
-
-                    return array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::newAction',  '_route' => 'admin_category_new',);
-                }
-                not_admin_category_new:
-
-                // admin_category_show
-                if (preg_match('#^/admin/category/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_admin_category_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_category_show')), array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::showAction',));
-                }
-                not_admin_category_show:
-
-                // admin_category_edit
-                if (preg_match('#^/admin/category/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_admin_category_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_category_edit')), array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::editAction',));
-                }
-                not_admin_category_edit:
-
-                // admin_category_delete
-                if (preg_match('#^/admin/category/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_admin_category_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_category_delete')), array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::deleteAction',));
-                }
-                not_admin_category_delete:
-
-                if (0 === strpos($pathinfo, '/admin/category/Ajax')) {
-                    // category_ajax_delete
-                    if (preg_match('#^/admin/category/Ajax/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        if ($this->context->getMethod() != 'DELETE') {
-                            $allow[] = 'DELETE';
-                            goto not_category_ajax_delete;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'category_ajax_delete')), array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::deleteAjaxAction',));
-                    }
-                    not_category_ajax_delete:
-
-                    // category_ajax_change_state
-                    if ($pathinfo === '/admin/category/Ajax/ChangeState') {
-                        if ($this->context->getMethod() != 'POST') {
-                            $allow[] = 'POST';
-                            goto not_category_ajax_change_state;
-                        }
-
-                        return array (  '_controller' => 'ArticleBundle\\Controller\\CategoryController::changeStateAjaxAction',  '_route' => 'category_ajax_change_state',);
-                    }
-                    not_category_ajax_change_state:
-
-                }
 
             }
 

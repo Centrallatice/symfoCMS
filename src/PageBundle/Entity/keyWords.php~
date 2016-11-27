@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * keyWords
  *
- * @ORM\Table(name="key_words")
+ * @ORM\Table(name="keyWords")
  * @ORM\Entity(repositoryClass="PageBundle\Repository\keyWordsRepository")
  */
-class keyWords
-{
+class keyWords {
+    
     /**
      * @var int
      *
@@ -28,22 +28,21 @@ class keyWords
      */
     private $value;
 
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="associationType", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255)
      */
-    private $associationType;
+    private $type;
     
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="associationId", type="integer")
+     * @ORM\Column(name="entity_id", type="integer", nullable=false)
      */
-    private $associationId;
-
-    
-
+    private $entityId;
+            
     /**
      * Get id
      *
@@ -64,7 +63,7 @@ class keyWords
     public function setValue($value)
     {
         $this->value = $value;
-
+    
         return $this;
     }
 
@@ -79,50 +78,26 @@ class keyWords
     }
 
     /**
-     * Set associationType
+     * Set type
      *
-     * @param string $associationType
+     * @param string $type
      *
      * @return keyWords
      */
-    public function setAssociationType($associationType)
+    public function setType($type)
     {
-        $this->associationType = $associationType;
-
+        $this->type = $type;
+    
         return $this;
     }
 
     /**
-     * Get associationType
+     * Get type
      *
      * @return string
      */
-    public function getAssociationType()
+    public function getType()
     {
-        return $this->associationType;
-    }
-
-    /**
-     * Set associationId
-     *
-     * @param integer $associationId
-     *
-     * @return keyWords
-     */
-    public function setAssociationId($associationId)
-    {
-        $this->associationId = $associationId;
-
-        return $this;
-    }
-
-    /**
-     * Get associationId
-     *
-     * @return integer
-     */
-    public function getAssociationId()
-    {
-        return $this->associationId;
+        return $this->type;
     }
 }

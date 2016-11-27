@@ -340,7 +340,7 @@ class appProdProjectContainer extends Container
      */
     protected function getAssetic_Filter_CssembedService()
     {
-        $this->services['assetic.filter.cssembed'] = $instance = new \Assetic\Filter\CssEmbedFilter(($this->targetDirs[2].'/Resources/java/cssembed.jar'), 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
+        $this->services['assetic.filter.cssembed'] = $instance = new \Assetic\Filter\CssEmbedFilter(($this->targetDirs[2].'/Resources/java/cssembed.jar'), 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
 
         $instance->setTimeout(NULL);
         $instance->setCharset('UTF-8');
@@ -399,7 +399,7 @@ class appProdProjectContainer extends Container
      */
     protected function getAssetic_Filter_YuiCssService()
     {
-        $this->services['assetic.filter.yui_css'] = $instance = new \Assetic\Filter\Yui\CssCompressorFilter(($this->targetDirs[2].'/Resources/java/yuicompressor.jar'), 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
+        $this->services['assetic.filter.yui_css'] = $instance = new \Assetic\Filter\Yui\CssCompressorFilter(($this->targetDirs[2].'/Resources/java/yuicompressor.jar'), 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
 
         $instance->setCharset('UTF-8');
         $instance->setTimeout(NULL);
@@ -419,7 +419,7 @@ class appProdProjectContainer extends Container
      */
     protected function getAssetic_Filter_YuiJsService()
     {
-        $this->services['assetic.filter.yui_js'] = $instance = new \Assetic\Filter\Yui\JsCompressorFilter(($this->targetDirs[2].'/Resources/java/yuicompressor.jar'), 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
+        $this->services['assetic.filter.yui_js'] = $instance = new \Assetic\Filter\Yui\JsCompressorFilter(($this->targetDirs[2].'/Resources/java/yuicompressor.jar'), 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE');
 
         $instance->setCharset('UTF-8');
         $instance->setTimeout(NULL);
@@ -2327,13 +2327,13 @@ class appProdProjectContainer extends Container
         $m->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
 
         $n = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($l, array());
-        $n->setOptions(array('login_path' => 'fos_user_security_login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
+        $n->setOptions(array('login_path' => 'fos_user_security_login', 'always_use_default_target_path' => true, 'default_target_path' => '/admin/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
         $n->setProviderKey('main');
 
         $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $l, array(), $a);
         $o->setOptions(array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('require_previous_session' => false, 'check_path' => 'fos_user_security_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5835bc5da7fd51.70917124', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, 'fos_user_security_login', false), NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('require_previous_session' => false, 'check_path' => 'fos_user_security_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5836ade9de54e3.61282277', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, 'fos_user_security_login', false), NULL, NULL, $a, false));
     }
 
     /*
@@ -3640,7 +3640,7 @@ class appProdProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5835bc5da7fd51.70917124')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5836ade9de54e3.61282277')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -4374,14 +4374,14 @@ class appProdProjectContainer extends Container
             'assetic.variables' => array(
 
             ),
-            'assetic.java.bin' => 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
-            'assetic.node.bin' => 'c:\\Program Files\\nodejs\\\\node.EXE',
+            'assetic.java.bin' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
+            'assetic.node.bin' => 'C:\\Program Files\\nodejs\\\\node.EXE',
             'assetic.ruby.bin' => '/usr/bin/ruby',
             'assetic.sass.bin' => '/usr/bin/sass',
             'assetic.reactjsx.bin' => '/usr/bin/jsx',
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',
             'assetic.filter.cssembed.class' => 'Assetic\\Filter\\CssEmbedFilter',
-            'assetic.filter.cssembed.java' => 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
+            'assetic.filter.cssembed.java' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
             'assetic.filter.cssembed.jar' => ($this->targetDirs[2].'/Resources/java/cssembed.jar'),
             'assetic.filter.cssembed.timeout' => NULL,
             'assetic.filter.cssembed.charset' => 'UTF-8',
@@ -4392,7 +4392,7 @@ class appProdProjectContainer extends Container
             'assetic.filter.cssembed.max_uri_length' => NULL,
             'assetic.filter.cssembed.max_image_size' => NULL,
             'assetic.filter.yui_js.class' => 'Assetic\\Filter\\Yui\\JsCompressorFilter',
-            'assetic.filter.yui_js.java' => 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
+            'assetic.filter.yui_js.java' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
             'assetic.filter.yui_js.jar' => ($this->targetDirs[2].'/Resources/java/yuicompressor.jar'),
             'assetic.filter.yui_js.charset' => 'UTF-8',
             'assetic.filter.yui_js.stacksize' => NULL,
@@ -4402,7 +4402,7 @@ class appProdProjectContainer extends Container
             'assetic.filter.yui_js.disable_optimizations' => NULL,
             'assetic.filter.yui_js.linebreak' => NULL,
             'assetic.filter.yui_css.class' => 'Assetic\\Filter\\Yui\\CssCompressorFilter',
-            'assetic.filter.yui_css.java' => 'c:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
+            'assetic.filter.yui_css.java' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
             'assetic.filter.yui_css.jar' => ($this->targetDirs[2].'/Resources/java/yuicompressor.jar'),
             'assetic.filter.yui_css.charset' => 'UTF-8',
             'assetic.filter.yui_css.stacksize' => NULL,

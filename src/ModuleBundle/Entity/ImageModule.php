@@ -10,9 +10,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Image_module")
  * @ORM\Entity(repositoryClass="ModuleBundle\Repository\ImageModuleRepository")
  */
-class ImageModule extends Module
+class ImageModule extends ModuleType
 {
-    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
     /**
      * @var string
      *
@@ -43,9 +50,5 @@ class ImageModule extends Module
     public function getUrl()
     {
         return $this->url;
-    }
-    
-    public function getType(){
-        return 'Image';
     }
 }

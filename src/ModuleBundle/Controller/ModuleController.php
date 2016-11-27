@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Module controller.
@@ -24,9 +25,16 @@ class ModuleController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+        /*
+         * on nettoie les vides 
+         */
+        $modulesToDelete = $em->getRepository('ModuleBundle:Module')->findBy(array("nom"=>null));
+        foreach($modulesToDelete as $m):
+            $em->remove($m);
+            $em->flush($m);
+        endforeach;
         $modules = $em->getRepository('ModuleBundle:Module')->findAll();
-
+        
         return $this->render('ModuleBundle:module:index.html.twig', array(
             'modules' => $modules,
         ));
@@ -48,7 +56,6 @@ class ModuleController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($module);
             $em->flush($module);
-            $this->addFlash('success', 'Votre module a bien été créé, vous pouvez a présent le paramètrer');
             return $this->redirectToRoute('admin_module_'.strtolower($module->getType()).'_new');
         }
 
@@ -117,6 +124,25 @@ class ModuleController extends Controller
         }
 
         return $this->redirectToRoute('admin_module_index');
+    }
+    /**
+     * Deletes a module entity.
+     *
+     * @Route("/Ajax/{id}", name="admin_module_ajax_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAjaxAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $module = $em->getRepository('ModuleBundle:Module')->find($request->get("id"));
+        
+        if ($module!==null) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($module);
+            $em->flush($module);
+            return new JsonResponse(array("success"=>true));
+        }
+        else return new JsonResponse(array("success"=>false));
     }
 
     /**

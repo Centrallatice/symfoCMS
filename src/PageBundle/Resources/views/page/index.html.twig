@@ -9,14 +9,8 @@
     <a class="breadcrumb" href="#!">Mes pages</a>
 {% endblock %}
 {% block body %}
-    {#<div class="row">
-        <div class="cols12">
-            <a role="button" class="btn waves-effect waves-light green pull-right" href="{{ path('page_new') }}"><i class="material-icons left medium">add</i> Créer une page</a>
-        </div>
-    </div>
-    <hr />#}
     <div class="row">
-        <div class="cols12">
+        <div class=" col s12 ">
             <table class="striped bordered table responsive-table">
                 <thead class="thead-inverse">
                     <tr>
@@ -50,9 +44,16 @@
             </table>
         </div>       
     </div>
+    <div class="fixed-action-btn ">
+        <a class="btn-floating btn-large green tooltipped" 
+           data-position="left" data-delay="50" data-tooltip="Créer une page"
+           title="Créer une page" href="{{ path('page_new') }}">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>  
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'>
-    </script><script type='text/javascript' src='{{asset('js/admin/page/generator.js')}}'></script>
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'></script>
+    <script type='text/javascript' src='{{asset('js/admin/page/generator.js')}}'></script>
 {% endblock %}

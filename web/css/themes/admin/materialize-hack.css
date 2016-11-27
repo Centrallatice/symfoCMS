@@ -1,8 +1,16 @@
 .fixed-action-btn {
     bottom: 46px;
 }
+.modal .modal-footer .btn:first-child, .modal .modal-footer .btn-large:first-child, .modal .modal-footer .btn-flat:first-child {
+    float: right;
+    margin-right: 10px;
+}
 ul.tabs{
         border-bottom: 2px solid #f9d0d2;
+}
+.section {
+    padding-top: 1rem;
+    padding-bottom: 5rem;
 }
 .dropdown-content li>span.option-description {
     display: inline;
@@ -103,7 +111,7 @@ ul.side-nav.fixed li a{
     border-left: 0 dotted;
     border-bottom: 8px solid transparent;
     float:right;
-    margin-top:14px;
+    margin-top:11px;
     vertical-align: middle;
     margin-left: 2px;
     content:'';
@@ -273,6 +281,23 @@ ul.side-nav.fixed li {
 ul.side-nav.fixed li a {
     padding: 0;
 }
+/* card */
+.card .card-content{
+    /*padding-top:5px*/
+    padding:5px 10px;
+}        
+.card-content p small{
+    font-size: 0.9em;
+}
+.card-content ul{
+    margin:0 0 0 15px;
+    max-height: 55px;
+    overflow: hidden;
+}
+.card-content ul li{
+    font-size:13px;
+}
+
 @media only screen and (min-width: 993px){
     header, .main:not(.nopadding), footer {
         padding-left: 250px;

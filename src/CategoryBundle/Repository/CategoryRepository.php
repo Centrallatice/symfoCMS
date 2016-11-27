@@ -1,6 +1,6 @@
 <?php
 
-namespace ArticleBundle\Repository;
+namespace CategoryBundle\Repository;
 
 /**
  * CategoryRepository
@@ -10,8 +10,8 @@ namespace ArticleBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findAllOrdered($col,$sens)
+    public function findAllOrdered($type,$col,$sens)
     {
-        return $this->findBy(array(), array($col => $sens));
+        return $this->findBy(array("type"=>$type), array($col => $sens));
     }
 }

@@ -102,13 +102,11 @@ class ColController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $col = $em->getRepository('PageBundle:Col')->find($id);
-        
         $editForm = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleType'=>$this->getParameter('moduleType')));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('col_edit', array('id' => $col->getId()));
         }
 

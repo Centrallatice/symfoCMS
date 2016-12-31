@@ -7,6 +7,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ColType extends AbstractType
 {
@@ -16,6 +18,10 @@ class ColType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->moduleType = $options['moduleType'];
+        $choices = array();
+        foreach($this->moduleType as $k=>$v):
+            $choices[$k]=$this->moduleType[$k]['Nom'];
+        endforeach;
         $builder->add('titreAdmin',TextType::class,array("label"=>"Titre administrateur","required"=>false))
                 ->add('titreClient',TextType::class,array("label"=>"Titre d'entête","required"=>false))
                 ->add('enteteType', 'choice', 
@@ -32,19 +38,27 @@ class ColType extends AbstractType
                         'expanded' => false))
                 ->add('cssClassPerso',TextType::class,array("label"=>"Balise HTML 'class'","required"=>false))
                 ->add('cssId',TextType::class,array("label"=>"Balise HTML 'id'","required"=>false))
-//                ->add('htmlContent','froala',array("height"=>350));
-                ->add('typemodule', 'choice', 
+                ->add('typemodule', ChoiceType::class,
                         array(
-                            'choices' => $this->moduleType,
+                            'choices' => $choices,
                             'label' => 'Type du module',
+                            'choice_attr' => function($value, $key, $index) use($options) {
+                                return ['data-desc' => $options['moduleType'][$index]['Description']];
+                            },
+                            'choice_label' => function ($value, $key, $index)  use($options){
+                                return $options['moduleType'][$index]['Nom'];
+                            },
                             'multiple' => false,
                             'mapped' => false,
                             'expanded' => false
                        ))
-                ->add('modules',EntityType::class,
+                ->add('modules',ChoiceType::class,
                         array(
                             "label"=>"Quel module souhaitez vous accrocher",
-                            "class"=>"ModuleBundle\Entity\Module"
+                            "choices"=>array(),
+                            'multiple' => false,
+                            'mapped' => false,
+                            'expanded' => false
                  ));
     }
     

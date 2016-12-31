@@ -57,7 +57,7 @@ class Col
     private $cssId;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ModuleBundle\Entity\Module")
+     * @ORM\ManyToMany(targetEntity="ModuleBundle\CustomModules\HtmlModule\Entity\Module")
      * @ORM\JoinTable(name="cols_modules",
      *      joinColumns={@ORM\JoinColumn(name="col_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="module_id", referencedColumnName="id", unique=true)}
@@ -255,11 +255,11 @@ class Col
     /**
      * Add module
      *
-     * @param \ModuleBundle\Entity\Module $module
+     * @param \ModuleBundle\CustomModules\HtmlModule\Entity\Module $module
      *
      * @return Col
      */
-    public function addModule(\ModuleBundle\Entity\Module $module)
+    public function addModule(\ModuleBundle\CustomModules\HtmlModule\Entity\Module $module)
     {
         $this->modules[] = $module;
     
@@ -269,9 +269,9 @@ class Col
     /**
      * Remove module
      *
-     * @param \ModuleBundle\Entity\Module $module
+     * @param \ModuleBundle\CustomModules\HtmlModule\Entity\Module $module
      */
-    public function removeModule(\ModuleBundle\Entity\Module $module)
+    public function removeModule(\ModuleBundle\CustomModules\HtmlModule\Entity\Module $module)
     {
         $this->modules->removeElement($module);
     }

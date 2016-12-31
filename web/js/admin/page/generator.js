@@ -142,16 +142,24 @@ function getModalEdit(id,url,idModal){
             myDiv.html(data.form);
             myDiv.appendTo("body");
             $('#'+idModal).modal({
-                ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                ready: function(modal, trigger) {
                     modal.find("form").attr("novalidate","novalidate");
                     modal.find("label").addClass("active");
                     modal.find('select').material_select();
+                    if(modal.attr("id")=="modalEditCol"){
+                        if( $(modal).find("select#pagebundle_col_typemodule option").length>0 ){
+                            $(modal).find("select#pagebundle_col_typemodule").on("change",function(){
+                                getModulesByType(modal);
+                            });
+                            getModulesByType(modal);
+                        }
+                    }
+                    
                     var idModal = $(modal).attr("id");
                     var arrayModalEdition=["modalEditCol","modalEditRow"];
                     if(arrayModalEdition.indexOf(idModal)>=0){
                         modal.find("form").on('submit',function (event) {
                             modal.find(".modal-footer button.btn.green").attr("disabled","disabled").html("<i class='fa fa-spin fa-spinner'></i> Patienter...");
-                
                             event.preventDefault();
                             var s = new FormData(this);
                             $.ajax({
@@ -193,6 +201,21 @@ function getModalEdit(id,url,idModal){
             $('#'+idModal).modal('open');
         }
    }); 
+}
+
+function getModulesByType(modal){
+    $.ajax({
+        type: "GET",
+        url: baseModuleAdmin+'Ajax/'+$(modal).find("select#pagebundle_col_typemodule option:first-child").val(),
+        success: function (data) {
+            if(data.success){
+
+            }
+            else{
+
+            }
+        }
+    });
 }
 
 function deleteRow(idPage,idRow,url){

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app</parameter>
+    <parameter key="kernel.root_dir">C:\wamp64\www\symfoCMS\app</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev</parameter>
-    <parameter key="kernel.logs_dir">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\logs</parameter>
+    <parameter key="kernel.cache_dir">C:\wamp64\www\symfoCMS\app\cache\dev</parameter>
+    <parameter key="kernel.logs_dir">C:\wamp64\www\symfoCMS\app\logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
@@ -29,6 +29,8 @@
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
+      <parameter key="HtmlBundle">ModuleBundle\CustomModules\HtmlModule\HtmlBundle</parameter>
+      <parameter key="ImageBundle">ModuleBundle\CustomModules\ImageModule\ImageBundle</parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
@@ -131,7 +133,7 @@
       <parameter key="cookie_httponly">true</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/sessions</parameter>
+    <parameter key="session.save_path">C:\wamp64\www\symfoCMS\app\cache\dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="security.secure_random.class">Symfony\Component\Security\Core\Util\SecureRandom</parameter>
     <parameter key="form.resolved_type_factory.class">Symfony\Component\Form\ResolvedFormTypeFactory</parameter>
@@ -189,7 +191,7 @@
     <parameter key="data_collector.form.extractor.class">Symfony\Component\Form\Extension\DataCollector\FormDataExtractor</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:C:\wamp64\www\symfoCMS\app\cache\dev/profiler</parameter>
     <parameter key="profiler.storage.username"></parameter>
     <parameter key="profiler.storage.password"></parameter>
     <parameter key="profiler.storage.lifetime">86400</parameter>
@@ -213,7 +215,7 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/config/routing_dev.yml</parameter>
+    <parameter key="router.resource">C:\wamp64\www\symfoCMS\app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDevDebugProjectContainer</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
@@ -224,7 +226,7 @@
     <parameter key="debug.stopwatch.class">Symfony\Component\Stopwatch\Stopwatch</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
     <parameter key="debug.event_dispatcher.class">Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher</parameter>
-    <parameter key="debug.container.dump">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">C:\wamp64\www\symfoCMS\app\cache\dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="debug.controller_resolver.class">Symfony\Component\HttpKernel\Controller\TraceableControllerResolver</parameter>
     <parameter key="security.context.class">Symfony\Component\Security\Core\SecurityContext</parameter>
     <parameter key="security.user_checker.class">Symfony\Component\Security\Core\User\UserChecker</parameter>
@@ -417,7 +419,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">C:\wamp64\www\symfoCMS\app\cache\dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -535,7 +537,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">C:\wamp64\www\symfoCMS\app\cache\dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -561,7 +563,7 @@
     <parameter key="assetic.worker.cache_busting.class">Assetic\Factory\Worker\CacheBustingWorker</parameter>
     <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
     <parameter key="assetic.node.paths" type="collection"/>
-    <parameter key="assetic.cache_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/assetic</parameter>
+    <parameter key="assetic.cache_dir">C:\wamp64\www\symfoCMS\app\cache\dev/assetic</parameter>
     <parameter key="assetic.bundles" type="collection"/>
     <parameter key="assetic.twig_extension.class">Symfony\Bundle\AsseticBundle\Twig\AsseticExtension</parameter>
     <parameter key="assetic.twig_formula_loader.class">Assetic\Extension\Twig\TwigFormulaLoader</parameter>
@@ -571,18 +573,18 @@
     <parameter key="assetic.debug">true</parameter>
     <parameter key="assetic.use_controller">false</parameter>
     <parameter key="assetic.enable_profiler">false</parameter>
-    <parameter key="assetic.read_from">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../web</parameter>
-    <parameter key="assetic.write_to">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../web</parameter>
+    <parameter key="assetic.read_from">C:\wamp64\www\symfoCMS\app/../web</parameter>
+    <parameter key="assetic.write_to">C:\wamp64\www\symfoCMS\app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
-    <parameter key="assetic.java.bin">c:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
-    <parameter key="assetic.node.bin">c:\Program Files\nodejs\\node.EXE</parameter>
+    <parameter key="assetic.java.bin">C:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
+    <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
     <parameter key="assetic.reactjsx.bin">/usr/bin/jsx</parameter>
     <parameter key="assetic.filter.cssrewrite.class">Assetic\Filter\CssRewriteFilter</parameter>
     <parameter key="assetic.filter.cssembed.class">Assetic\Filter\CssEmbedFilter</parameter>
-    <parameter key="assetic.filter.cssembed.java">c:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
-    <parameter key="assetic.filter.cssembed.jar">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/java/cssembed.jar</parameter>
+    <parameter key="assetic.filter.cssembed.java">C:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
+    <parameter key="assetic.filter.cssembed.jar">C:\wamp64\www\symfoCMS\app/Resources/java/cssembed.jar</parameter>
     <parameter key="assetic.filter.cssembed.timeout">null</parameter>
     <parameter key="assetic.filter.cssembed.charset">UTF-8</parameter>
     <parameter key="assetic.filter.cssembed.mhtml">false</parameter>
@@ -592,8 +594,8 @@
     <parameter key="assetic.filter.cssembed.max_uri_length">null</parameter>
     <parameter key="assetic.filter.cssembed.max_image_size">null</parameter>
     <parameter key="assetic.filter.yui_js.class">Assetic\Filter\Yui\JsCompressorFilter</parameter>
-    <parameter key="assetic.filter.yui_js.java">c:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
-    <parameter key="assetic.filter.yui_js.jar">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/java/yuicompressor.jar</parameter>
+    <parameter key="assetic.filter.yui_js.java">C:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
+    <parameter key="assetic.filter.yui_js.jar">C:\wamp64\www\symfoCMS\app/Resources/java/yuicompressor.jar</parameter>
     <parameter key="assetic.filter.yui_js.charset">UTF-8</parameter>
     <parameter key="assetic.filter.yui_js.stacksize">null</parameter>
     <parameter key="assetic.filter.yui_js.timeout">null</parameter>
@@ -602,8 +604,8 @@
     <parameter key="assetic.filter.yui_js.disable_optimizations">null</parameter>
     <parameter key="assetic.filter.yui_js.linebreak">null</parameter>
     <parameter key="assetic.filter.yui_css.class">Assetic\Filter\Yui\CssCompressorFilter</parameter>
-    <parameter key="assetic.filter.yui_css.java">c:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
-    <parameter key="assetic.filter.yui_css.jar">C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/java/yuicompressor.jar</parameter>
+    <parameter key="assetic.filter.yui_css.java">C:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
+    <parameter key="assetic.filter.yui_css.jar">C:\wamp64\www\symfoCMS\app/Resources/java/yuicompressor.jar</parameter>
     <parameter key="assetic.filter.yui_css.charset">UTF-8</parameter>
     <parameter key="assetic.filter.yui_css.stacksize">null</parameter>
     <parameter key="assetic.filter.yui_css.timeout">null</parameter>
@@ -757,6 +759,7 @@
     </parameter>
   </parameters>
   <services>
+    <service id="module_service" class="ModuleBundle\Services\ModuleService"/>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -799,7 +802,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources</argument>
+                <argument>C:\wamp64\www\symfoCMS\app/Resources</argument>
               </service>
             </argument>
             <argument type="service" id="templating.locator"/>
@@ -832,12 +835,12 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources</argument>
+                <argument>C:\wamp64\www\symfoCMS\app/Resources</argument>
               </service>
             </argument>
             <argument type="collection">
-              <argument key="C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../src/AdminBundle/Resources/views">AdminViews</argument>
-              <argument key="C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../src/PageBundle/Resources/views">PageViews</argument>
+              <argument key="C:\wamp64\www\symfoCMS\app/../src/AdminBundle/Resources/views">AdminViews</argument>
+              <argument key="C:\wamp64\www\symfoCMS\app/../src/PageBundle/Resources/views">PageViews</argument>
             </argument>
           </service>
         </argument>
@@ -848,10 +851,10 @@
             <argument type="service">
               <service class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
                 <argument type="service" id="kernel"/>
-                <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app</argument>
+                <argument>C:\wamp64\www\symfoCMS\app</argument>
                 <argument type="collection">
-                  <argument key="C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../src/AdminBundle/Resources/views">AdminViews</argument>
-                  <argument key="C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../src/PageBundle/Resources/views">PageViews</argument>
+                  <argument key="C:\wamp64\www\symfoCMS\app/../src/AdminBundle/Resources/views">AdminViews</argument>
+                  <argument key="C:\wamp64\www\symfoCMS\app/../src/PageBundle/Resources/views">PageViews</argument>
                 </argument>
               </service>
             </argument>
@@ -882,7 +885,7 @@
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
       <argument type="service" id="kernel"/>
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources</argument>
+      <argument>C:\wamp64\www\symfoCMS\app/Resources</argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
       <argument>418db2128cb9ba145c86e33666056f08108dfa70</argument>
@@ -1004,323 +1007,323 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/translations</argument>
+        <argument key="cache_dir">C:\wamp64\www\symfoCMS\app\cache\dev/translations</argument>
         <argument key="debug">true</argument>
         <argument key="resource_files" type="collection">
           <argument key="af" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.af.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.af.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.af.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.af.yml</argument>
           </argument>
           <argument key="ar" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ar.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ar.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ar.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ar.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ar.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ar.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ar.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ar.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ar.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ar.yml</argument>
           </argument>
           <argument key="az" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.az.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.az.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.az.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.az.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.az.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.az.xlf</argument>
           </argument>
           <argument key="bg" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.bg.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.bg.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.bg.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.bg.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.bg.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.bg.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.bg.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.bg.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.bg.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.bg.yml</argument>
           </argument>
           <argument key="ca" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ca.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ca.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ca.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ca.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ca.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ca.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ca.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ca.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ca.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ca.yml</argument>
           </argument>
           <argument key="cs" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.cs.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.cs.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.cs.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.cs.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.cs.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.cs.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.cs.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.cs.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.cs.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.cs.yml</argument>
           </argument>
           <argument key="cy" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.cy.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.cy.xlf</argument>
           </argument>
           <argument key="da" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.da.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.da.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.da.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.da.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.da.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.da.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.da.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.da.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.da.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.da.yml</argument>
           </argument>
           <argument key="de" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.de.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.de.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.de.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.de.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.de.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.de.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.de.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.de.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.de.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.de.yml</argument>
           </argument>
           <argument key="el" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.el.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.el.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.el.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.el.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.el.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.el.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.el.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.el.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.el.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.el.yml</argument>
           </argument>
           <argument key="en" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.en.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.en.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.en.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.en.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.en.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.en.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.en.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.en.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.en.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.en.yml</argument>
           </argument>
           <argument key="es" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.es.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.es.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.es.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.es.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.es.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.es.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.es.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.es.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.es.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.es.yml</argument>
           </argument>
           <argument key="et" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.et.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.et.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.et.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.et.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.et.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.et.yml</argument>
           </argument>
           <argument key="eu" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.eu.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.eu.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.eu.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.eu.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.eu.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.eu.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.eu.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.eu.yml</argument>
           </argument>
           <argument key="fa" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fa.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fa.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.fa.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fa.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fa.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fa.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fa.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.fa.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fa.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fa.yml</argument>
           </argument>
           <argument key="fi" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fi.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fi.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fi.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fi.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fi.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fi.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fi.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fi.yml</argument>
           </argument>
           <argument key="fr" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fr.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fr.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.fr.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fr.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fr.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\kms\froala-editor-bundle/Resources/translations\messages.fr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.fr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fr.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fr.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\kms\froala-editor-bundle/Resources/translations\messages.fr.xlf</argument>
           </argument>
           <argument key="gl" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.gl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.gl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.gl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.gl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.gl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.gl.xlf</argument>
           </argument>
           <argument key="he" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.he.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.he.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.he.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.he.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.he.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.he.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.he.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.he.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.he.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.he.yml</argument>
           </argument>
           <argument key="hr" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hr.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hr.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.hr.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.hr.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.hr.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.hr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.hr.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.hr.yml</argument>
           </argument>
           <argument key="hu" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hu.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hu.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.hu.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.hu.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.hu.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hu.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hu.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.hu.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.hu.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.hu.yml</argument>
           </argument>
           <argument key="hy" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hy.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hy.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hy.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hy.xlf</argument>
           </argument>
           <argument key="id" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.id.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.id.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.id.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.id.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.id.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.id.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.id.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.id.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.id.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.id.yml</argument>
           </argument>
           <argument key="it" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.it.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.it.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.it.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.it.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.it.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.it.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.it.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.it.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.it.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.it.yml</argument>
           </argument>
           <argument key="ja" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ja.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ja.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ja.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ja.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ja.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ja.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ja.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ja.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ja.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ja.yml</argument>
           </argument>
           <argument key="lb" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lb.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lb.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lb.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lb.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lb.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lb.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lb.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lb.yml</argument>
           </argument>
           <argument key="lt" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lt.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lt.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lt.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lt.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.lt.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lt.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lt.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lt.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lt.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.lt.yml</argument>
           </argument>
           <argument key="lv" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lv.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lv.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lv.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lv.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.lv.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lv.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lv.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.lv.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.lv.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.lv.yml</argument>
           </argument>
           <argument key="mn" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.mn.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.mn.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.mn.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.mn.xlf</argument>
           </argument>
           <argument key="nl" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.nl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.nl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.nl.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.nl.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.nl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.nl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.nl.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.nl.yml</argument>
           </argument>
           <argument key="nn" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nn.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nn.xlf</argument>
           </argument>
           <argument key="no" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.no.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.no.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.no.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.no.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.no.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.no.xlf</argument>
           </argument>
           <argument key="pl" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pl.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pl.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pl.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pl.yml</argument>
           </argument>
           <argument key="pt" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pt.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pt.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pt.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pt.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pt.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pt.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pt.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pt.yml</argument>
           </argument>
           <argument key="pt_BR" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pt_BR.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pt_BR.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pt_BR.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pt_BR.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pt_BR.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pt_BR.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pt_BR.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pt_BR.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.pt_BR.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.pt_BR.yml</argument>
           </argument>
           <argument key="ro" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ro.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ro.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ro.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ro.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ro.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ro.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ro.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ro.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ro.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ro.yml</argument>
           </argument>
           <argument key="ru" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ru.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ru.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ru.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ru.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ru.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ru.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ru.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ru.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ru.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ru.yml</argument>
           </argument>
           <argument key="sk" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sk.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sk.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sk.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sk.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sk.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sk.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sk.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sk.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sk.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sk.yml</argument>
           </argument>
           <argument key="sl" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sl.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sl.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sl.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sl.yml</argument>
           </argument>
           <argument key="sq" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sq.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sq.xlf</argument>
           </argument>
           <argument key="sr_Cyrl" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sr_Cyrl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sr_Cyrl.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sr_Cyrl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sr_Cyrl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sr_Cyrl.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sr_Cyrl.xlf</argument>
           </argument>
           <argument key="sr_Latn" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sr_Latn.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sr_Latn.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sr_Latn.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sr_Latn.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sr_Latn.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sr_Latn.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sr_Latn.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sr_Latn.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sr_Latn.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sr_Latn.yml</argument>
           </argument>
           <argument key="sv" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sv.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sv.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sv.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sv.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sv.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sv.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sv.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.sv.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.sv.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.sv.yml</argument>
           </argument>
           <argument key="th" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.th.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.th.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.th.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.th.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.th.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.th.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.th.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.th.yml</argument>
           </argument>
           <argument key="tr" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.tr.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.tr.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.tr.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.tr.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.tr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.tr.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.tr.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.tr.yml</argument>
           </argument>
           <argument key="uk" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.uk.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.uk.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.uk.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.uk.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.uk.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.uk.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.uk.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.uk.yml</argument>
           </argument>
           <argument key="vi" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.vi.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.vi.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.vi.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.vi.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.vi.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.vi.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.vi.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.vi.yml</argument>
           </argument>
           <argument key="zh_CN" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.zh_CN.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.zh_CN.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.zh_CN.xlf</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.zh_CN.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.zh_CN.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.zh_CN.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.zh_CN.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.zh_CN.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.zh_CN.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.zh_CN.yml</argument>
           </argument>
           <argument key="zh_TW" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.zh_TW.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.zh_TW.xlf</argument>
           </argument>
           <argument key="pt_PT" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pt_PT.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.pt_PT.xlf</argument>
           </argument>
           <argument key="ua" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ua.xlf</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Security\Core/Resources/translations\security.ua.xlf</argument>
           </argument>
           <argument key="ky" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ky.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ky.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.ky.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.ky.yml</argument>
           </argument>
           <argument key="nb" type="collection">
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.nb.yml</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.nb.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.nb.yml</argument>
+            <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.nb.yml</argument>
           </argument>
         </argument>
       </argument>
@@ -1839,7 +1842,7 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev</argument>
+      <argument>C:\wamp64\www\symfoCMS\app\cache\dev</argument>
     </service>
     <service id="templating.helper.assets" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper">
       <tag name="templating.helper" alias="assets"/>
@@ -1878,8 +1881,8 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
-          <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/config/validation.xml</argument>
+          <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
+          <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1900,7 +1903,7 @@
         </argument>
       </call>
       <call method="addXmlMapping">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle\DependencyInjection\Compiler/../../Resources/config/storage-validation/orm.xml</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle\DependencyInjection\Compiler/../../Resources/config/storage-validation/orm.xml</argument>
       </call>
       <factory class="Symfony\Component\Validator\Validation" method="createValidatorBuilder"/>
     </service>
@@ -1921,7 +1924,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-          <argument>file:C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/profiler</argument>
+          <argument>file:C:\wamp64\www\symfoCMS\app\cache\dev/profiler</argument>
           <argument></argument>
           <argument></argument>
           <argument>86400</argument>
@@ -2344,7 +2347,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5835bc89535ca9.05510567</argument>
+            <argument>58678e21286403.28595800</argument>
           </service>
         </argument>
       </argument>
@@ -2583,8 +2586,8 @@
                 <call method="setOptions">
                   <argument type="collection">
                     <argument key="login_path">fos_user_security_login</argument>
-                    <argument key="always_use_default_target_path">false</argument>
-                    <argument key="default_target_path">/</argument>
+                    <argument key="always_use_default_target_path">true</argument>
+                    <argument key="default_target_path">/admin/</argument>
                     <argument key="target_path_parameter">_target_path</argument>
                     <argument key="use_referer">false</argument>
                   </argument>
@@ -2633,7 +2636,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5835bc89535ca9.05510567</argument>
+            <argument>58678e21286403.28595800</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2732,8 +2735,8 @@
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
         <argument key="paths" type="collection">
-          <argument key="C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../src/AdminBundle/Resources/views">AdminViews</argument>
-          <argument key="C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../src/PageBundle/Resources/views">PageViews</argument>
+          <argument key="C:\wamp64\www\symfoCMS\app/../src/AdminBundle/Resources/views">AdminViews</argument>
+          <argument key="C:\wamp64\www\symfoCMS\app/../src/PageBundle/Resources/views">PageViews</argument>
         </argument>
         <argument key="exception_controller">twig.controller.exception:showAction</argument>
         <argument key="form_themes" type="collection">
@@ -2741,7 +2744,7 @@
           <argument>materialize_layout.html.twig</argument>
         </argument>
         <argument key="autoescape">name</argument>
-        <argument key="cache">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/twig</argument>
+        <argument key="cache">C:\wamp64\www\symfoCMS\app\cache\dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="date" type="collection">
           <argument key="format">F j, Y H:i</argument>
@@ -2815,7 +2818,7 @@
           <service class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
             <tag name="twig.extension"/>
             <argument>null</argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app</argument>
+            <argument>C:\wamp64\www\symfoCMS\app</argument>
             <argument>UTF-8</argument>
           </service>
         </argument>
@@ -3010,7 +3013,7 @@
     </service>
     <service id="monolog.processor.psr_log_message" class="Monolog\Processor\PsrLogMessageProcessor" public="false"/>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app\logs/dev.log</argument>
+      <argument>C:\wamp64\www\symfoCMS\app\logs/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -3131,17 +3134,17 @@
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_f4465ebf183948e029182e9e05b7321eae7ccf539d3cb4470daed3778a83ece1</argument>
+        <argument>sf2orm_default_cc932a1e7ed2b48475342c610c8e7e8bd6a9d1484a3282952e4170880677affe</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_result_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_f4465ebf183948e029182e9e05b7321eae7ccf539d3cb4470daed3778a83ece1</argument>
+        <argument>sf2orm_default_cc932a1e7ed2b48475342c610c8e7e8bd6a9d1484a3282952e4170880677affe</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_query_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_f4465ebf183948e029182e9e05b7321eae7ccf539d3cb4470daed3778a83ece1</argument>
+        <argument>sf2orm_default_cc932a1e7ed2b48475342c610c8e7e8bd6a9d1484a3282952e4170880677affe</argument>
       </call>
     </service>
     <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
@@ -3164,6 +3167,8 @@
               <argument key="ModuleBundle">ModuleBundle\Entity</argument>
               <argument key="MenuBundle">MenuBundle\Entity</argument>
               <argument key="TemplateBundle">TemplateBundle\Entity</argument>
+              <argument key="HtmlBundle">ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+              <argument key="ImageBundle">ModuleBundle\CustomModules\ImageModule\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -3183,12 +3188,14 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\AdminBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\PageBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ArticleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ModuleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\MenuBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\PageBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\ImageModule\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3199,12 +3206,14 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\AdminBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\PageBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ArticleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ModuleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\MenuBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\PageBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\ImageModule\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3215,12 +3224,14 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\AdminBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\PageBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ArticleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ModuleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\MenuBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\PageBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\ImageModule\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3231,12 +3242,14 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\AdminBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\PageBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ArticleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ModuleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\MenuBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\PageBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\ImageModule\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3247,12 +3260,14 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\AdminBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\PageBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ArticleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ModuleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\MenuBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\PageBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\ImageModule\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3263,12 +3278,14 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\AdminBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\PageBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ArticleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ModuleBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\MenuBundle\Entity</argument>
-                        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\PageBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\ImageModule\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3276,11 +3293,47 @@
                 </call>
                 <call method="addDriver">
                   <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\PageBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\ImageModule\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\PageBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\HtmlModule\Entity</argument>
+                        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle\CustomModules\ImageModule\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>ModuleBundle\CustomModules\ImageModule\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
                     <service class="Doctrine\ORM\Mapping\Driver\XmlDriver">
                       <argument type="service">
                         <service class="Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator">
                           <argument type="collection">
-                            <argument key="C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle\Resources\config\doctrine-mapping">FOS\UserBundle\Model</argument>
+                            <argument key="C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle\Resources\config\doctrine-mapping">FOS\UserBundle\Model</argument>
                           </argument>
                           <argument>.orm.xml</argument>
                         </service>
@@ -3293,7 +3346,7 @@
             </argument>
           </call>
           <call method="setProxyDir">
-            <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/doctrine/orm/Proxies</argument>
+            <argument>C:\wamp64\www\symfoCMS\app\cache\dev/doctrine/orm/Proxies</argument>
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -3415,7 +3468,7 @@
             </argument>
             <argument type="service">
               <service class="Assetic\Cache\ConfigCache" public="false">
-                <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/assetic/config</argument>
+                <argument>C:\wamp64\www\symfoCMS\app\cache\dev/assetic/config</argument>
               </service>
             </argument>
             <argument>true</argument>
@@ -3429,7 +3482,7 @@
             <argument type="collection">
               <argument key="jquery_js" type="collection">
                 <argument type="collection">
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/components/jquery/jquery.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/components/jquery/jquery.min.js</argument>
                 </argument>
                 <argument type="collection">
                   <argument>?yui_js</argument>
@@ -3440,7 +3493,7 @@
               </argument>
               <argument key="bootstrap_css" type="collection">
                 <argument type="collection">
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css</argument>
                 </argument>
                 <argument type="collection"/>
                 <argument type="collection">
@@ -3449,20 +3502,20 @@
               </argument>
               <argument key="froala_css" type="collection">
                 <argument type="collection">
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/froala_style.min.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/froala_editor.min.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/char_counter.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/code_view.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/colors.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/emoticons.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/file.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/fullscreen.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/image.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/image_manager.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/line_breaker.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/quick_insert.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/table.css</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/video.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/froala_style.min.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/froala_editor.min.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/char_counter.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/code_view.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/colors.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/emoticons.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/file.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/fullscreen.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/image.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/image_manager.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/line_breaker.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/quick_insert.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/table.css</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/video.css</argument>
                 </argument>
                 <argument type="collection"/>
                 <argument type="collection">
@@ -3471,17 +3524,17 @@
               </argument>
               <argument key="bootstrap_js" type="collection">
                 <argument type="collection">
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/util.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/alert.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/button.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/carousel.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/collapse.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/dropdown.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/modal.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/tooltip.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/popover.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/scrollspy.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/tab.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/util.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/alert.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/button.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/carousel.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/collapse.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/dropdown.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/modal.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/tooltip.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/popover.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/scrollspy.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/twbs/bootstrap/js/dist/tab.js</argument>
                 </argument>
                 <argument type="collection"/>
                 <argument type="collection">
@@ -3490,33 +3543,33 @@
               </argument>
               <argument key="froala_js" type="collection">
                 <argument type="collection">
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/froala_editor.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/align.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/char_counter.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/code_beautifier.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/code_view.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/colors.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/emoticons.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/entities.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/file.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/font_family.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/font_size.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/fullscreen.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/image.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/image_manager.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/inline_style.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/line_breaker.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/link.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/lists.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/paragraph_format.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/paragraph_style.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/quick_insert.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/quote.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/table.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/save.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/url.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/video.min.js</argument>
-                  <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/languages/fr.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/froala_editor.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/align.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/char_counter.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/code_beautifier.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/code_view.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/colors.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/emoticons.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/entities.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/file.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/font_family.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/font_size.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/fullscreen.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/image.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/image_manager.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/inline_style.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/line_breaker.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/link.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/lists.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/paragraph_format.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/paragraph_style.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/quick_insert.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/quote.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/table.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/save.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/url.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/video.min.js</argument>
+                  <argument>C:\wamp64\www\symfoCMS\app/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/languages/fr.js</argument>
                 </argument>
                 <argument type="collection"/>
                 <argument type="collection">
@@ -3535,7 +3588,7 @@
             <tag name="assetic.formula_resource" loader="twig"/>
             <argument type="service" id="templating.loader"/>
             <argument></argument>
-            <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/views</argument>
+            <argument>C:\wamp64\www\symfoCMS\app/Resources/views</argument>
             <argument>/\.[^.]+\.twig$/</argument>
           </service>
         </argument>
@@ -3550,7 +3603,7 @@
           <factory service="service_container" method="getParameterBag"/>
         </service>
       </argument>
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../web</argument>
+      <argument>C:\wamp64\www\symfoCMS\app/../web</argument>
       <argument>true</argument>
       <call method="addWorker">
         <argument type="service">
@@ -3567,8 +3620,8 @@
     </service>
     <service id="assetic.filter.cssembed" class="Assetic\Filter\CssEmbedFilter">
       <tag name="assetic.filter" alias="cssembed"/>
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/java/cssembed.jar</argument>
-      <argument>c:\ProgramData\Oracle\Java\javapath\java.EXE</argument>
+      <argument>C:\wamp64\www\symfoCMS\app/Resources/java/cssembed.jar</argument>
+      <argument>C:\ProgramData\Oracle\Java\javapath\java.EXE</argument>
       <call method="setTimeout">
         <argument>null</argument>
       </call>
@@ -3596,8 +3649,8 @@
     </service>
     <service id="assetic.filter.yui_js" class="Assetic\Filter\Yui\JsCompressorFilter">
       <tag name="assetic.filter" alias="yui_js"/>
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/java/yuicompressor.jar</argument>
-      <argument>c:\ProgramData\Oracle\Java\javapath\java.EXE</argument>
+      <argument>C:\wamp64\www\symfoCMS\app/Resources/java/yuicompressor.jar</argument>
+      <argument>C:\ProgramData\Oracle\Java\javapath\java.EXE</argument>
       <call method="setCharset">
         <argument>UTF-8</argument>
       </call>
@@ -3622,8 +3675,8 @@
     </service>
     <service id="assetic.filter.yui_css" class="Assetic\Filter\Yui\CssCompressorFilter">
       <tag name="assetic.filter" alias="yui_css"/>
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/java/yuicompressor.jar</argument>
-      <argument>c:\ProgramData\Oracle\Java\javapath\java.EXE</argument>
+      <argument>C:\wamp64\www\symfoCMS\app/Resources/java/yuicompressor.jar</argument>
+      <argument>C:\ProgramData\Oracle\Java\javapath\java.EXE</argument>
       <call method="setCharset">
         <argument>UTF-8</argument>
       </call>
@@ -3639,7 +3692,7 @@
     </service>
     <service id="assetic.filter.lessphp" class="Assetic\Filter\LessphpFilter">
       <tag name="assetic.filter" alias="lessphp"/>
-      <file>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../vendor/oyejorge/less.php/lessc.inc.php</file>
+      <file>C:\wamp64\www\symfoCMS\app/../vendor/oyejorge/less.php/lessc.inc.php</file>
       <call method="setPresets">
         <argument type="collection"/>
       </call>
@@ -3899,6 +3952,9 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.translation" class="Symfony\Bridge\Monolog\Logger">
       <argument>translation</argument>
@@ -3907,6 +3963,9 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.templating" class="Symfony\Bridge\Monolog\Logger">
@@ -3917,6 +3976,9 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.profiler" class="Symfony\Bridge\Monolog\Logger">
       <argument>profiler</argument>
@@ -3925,6 +3987,9 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.router" class="Symfony\Bridge\Monolog\Logger">
@@ -3935,6 +4000,9 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.php" class="Symfony\Bridge\Monolog\Logger">
       <argument>php</argument>
@@ -3944,11 +4012,14 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.event" class="Symfony\Bridge\Monolog\Logger">
       <argument>event</argument>
       <call method="pushHandler">
-        <argument type="service" id="monolog.handler.null_internal"/>
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.security" class="Symfony\Bridge\Monolog\Logger">
@@ -3959,11 +4030,17 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.doctrine" class="Symfony\Bridge\Monolog\Logger">
       <argument>doctrine</argument>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.assetic" class="Symfony\Bridge\Monolog\Logger">
@@ -3974,10 +4051,17 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
+    </service>
+    <service id="monolog.handler.debug" class="Symfony\Bridge\Monolog\Handler\DebugHandler">
+      <argument>100</argument>
+      <argument>true</argument>
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
-      <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/sessions</argument>
+      <argument>C:\wamp64\www\symfoCMS\app\cache\dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
@@ -4001,9 +4085,9 @@
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/config/routing_dev.yml</argument>
+      <argument>C:\wamp64\www\symfoCMS\app/config/routing_dev.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev</argument>
+        <argument key="cache_dir">C:\wamp64\www\symfoCMS\app\cache\dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -4027,7 +4111,7 @@
       </argument>
       <argument type="service">
         <service class="Doctrine\Common\Cache\FilesystemCache" public="false">
-          <argument>C:/Users/sylvain.dupont/Desktop/Projets Web/symfoCMS/app/cache/dev/annotations</argument>
+          <argument>C:\wamp64\www\symfoCMS\app\cache\dev/annotations</argument>
         </service>
       </argument>
       <argument>true</argument>
@@ -4051,86 +4135,86 @@
       <argument type="service" id="templating.locator"/>
       <argument type="service" id="templating.name_parser"/>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../src/AdminBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\app/../src/AdminBundle/Resources/views</argument>
         <argument>AdminViews</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/../src/PageBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\app/../src/PageBundle/Resources/views</argument>
         <argument>PageViews</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/FOSUserBundle/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\app/Resources/FOSUserBundle/views</argument>
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\AdminBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\src\AdminBundle/Resources/views</argument>
         <argument>Admin</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\HomeBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\src\HomeBundle/Resources/views</argument>
         <argument>Home</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\PageBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\src\PageBundle/Resources/views</argument>
         <argument>Page</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\kms\froala-editor-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\kms\froala-editor-bundle/Resources/views</argument>
         <argument>KMSFroalaEditor</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ArticleBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\src\ArticleBundle/Resources/views</argument>
         <argument>Article</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\ModuleBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\src\ModuleBundle/Resources/views</argument>
         <argument>Module</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\MenuBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\src\MenuBundle/Resources/views</argument>
         <argument>Menu</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\src\TemplateBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\src\TemplateBundle/Resources/views</argument>
         <argument>Template</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\app/Resources/views</argument>
+        <argument>C:\wamp64\www\symfoCMS\app/Resources/views</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\sylvain.dupont\Desktop\Projets Web\symfoCMS\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
+        <argument>C:\wamp64\www\symfoCMS\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
@@ -4143,6 +4227,9 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
       <autowiring-type>Psr\Log\LoggerInterface</autowiring-type>
     </service>

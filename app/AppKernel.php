@@ -2,7 +2,7 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
-
+use Symfony\Component\Finder\Finder;
 class AppKernel extends Kernel
 {
     public function registerBundles()
@@ -24,7 +24,7 @@ class AppKernel extends Kernel
             new ArticleBundle\ArticleBundle(),
             new ModuleBundle\ModuleBundle(),
             new MenuBundle\MenuBundle(),
-            new TemplateBundle\TemplateBundle(),
+            new TemplateBundle\TemplateBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
@@ -33,7 +33,21 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
-
+        
+        
+        $searchPath = __DIR__.'/../src/ModuleBundle/CustomModules/';
+        $finder     = new Finder();
+        $finder->files()->in($searchPath)->name('*Bundle.php');
+        
+        foreach ($finder as $file) {
+            $path       = substr($file->getRealpath(), strlen($searchPath) -7,-4);
+            $parts      = explode('\\', $path);
+            $class      = array_pop($parts);
+            $namespace  = implode('\\', $parts);
+            $class      = "ModuleBundle\CustomModules\\".$namespace.'\\'.$class;
+            $bundles[]  = new $class();
+        }
+        
         return $bundles;
     }
 

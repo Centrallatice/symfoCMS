@@ -1,42 +1,58 @@
-{% extends '::admin.html.twig' %}
-
+{% extends "::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/vendor/froala/froala.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+{% endblock %}
+{% block breadcrumb %}
+    <a class="breadcrumb" href="{{ path('admin_module_index') }}">Modules</a>
+    <a class="breadcrumb" href="#!">Mes modules</a>
+{% endblock %}
 {% block body %}
-    <h1>Modules list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Type</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-        {% for module in modules %}
-            <tr>
-                <td><a href="{{ path('admin_module_show', { 'id': module.id }) }}">{{ module.id }}</a></td>
-                <td>{{ module.nom }}</td>
-                <td>{{ module.getType() }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_module_show', { 'id': module.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_module_edit', { 'id': module.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_module_new') }}">Create a new module</a>
-        </li>
-    </ul>
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <hr />
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+           {{ flash_message }}
+       </div>
+    {% endfor %}    
+    <hr />       
+    <div class="row">
+        <div class="cols12">
+            <table class="table striped bordered responsive-table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for module in modules %}
+                        <tr id="mod-{{module.id}}">
+                            <td><a href="{{ path('admin_module_show', { 'id': module.id }) }}">{{ module.id }}</a></td>
+                            <td>{{ module.nom }}</td>
+                            <td>{{ module.getType() }}</td>
+                            <td class="text-right">
+                                <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue contraintwidth' href='#' data-activates='dropdown-action-{{module.id}}'><i class="material-icons">build</i></a>
+                                <ul id='dropdown-action-{{module.id}}' class='dropdown-content'>
+                                    <li><a href="{{ path('admin_module_show', { 'id': module.id }) }}"><i class="material-icons left">search</i>Afficher</a></li>
+                                    <li><a class="action-blue" href="{{ path('admin_module_edit', { 'id': module.id }) }}"><i class="material-icons left">mode_edit</i>Modifier</a></li>
+                                    <li><a class="action-red" href="#" onclick="deleteAjaxModule({{module.id}},'{{ path('module_ajax_delete', { 'id': module.id }) }}')"><i class="material-icons left">delete</i>Supprimer</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type='text/javascript' src='{{asset('js/vendor/bootbox/bootbox.min.js')}}'>
+    </script><script type='text/javascript' src='{{asset('js/admin/module/generator.js')}}'></script>
 {% endblock %}

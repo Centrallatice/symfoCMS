@@ -1,21 +1,21 @@
-{% extends '::admin.html.twig' %}
-
+{% extends "::admin.html.twig" %}
+{% block breadcrumb %}
+    <a class="breadcrumb" href="{{ path('admin_module_index') }}">Module</a>
+    <a class="breadcrumb" href="#!">Modification d'un module</a>  
+{% endblock %}
 {% block body %}
-    <h1>Module edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_module_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="row">
+        <div class="cols12">
+            <a role="button" class="btn waves-light waves-effect pull-right" href="{{ path('admin_module_index') }}"><i class="material-icons left">skip_previous</i> Revenir à la liste</a>
+        </div>
+    </div>
+    {% include "::formback.html.twig" with {"form":edit_form} %}
+    <div class="row">
+        <div class="cols12">   
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>    
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
 {% endblock %}

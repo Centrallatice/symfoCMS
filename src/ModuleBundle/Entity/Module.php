@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *      "module"="Module",
  *      "Image"="ImageModule",
- *      "HTML" = "HTMLModule"
+ *      "HTML" = "HtmlModule"
  * })
  */
 

@@ -309,139 +309,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // module_default_index
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'module_default_index');
-            }
-
-            return array (  '_controller' => 'ModuleBundle\\Controller\\DefaultController::indexAction',  '_route' => 'module_default_index',);
-        }
-
-        if (0 === strpos($pathinfo, '/module/html')) {
-            // admin_module_html_index
-            if ($pathinfo === '/module/html') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_admin_module_html_index;
-                }
-
-                return array (  '_controller' => 'ModuleBundle\\Controller\\HTMLModuleController::indexAction',  '_route' => 'admin_module_html_index',);
-            }
-            not_admin_module_html_index:
-
-            // module_html_show
-            if (preg_match('#^/module/html/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_module_html_show;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_html_show')), array (  '_controller' => 'ModuleBundle\\Controller\\HTMLModuleController::showAction',));
-            }
-            not_module_html_show:
-
-        }
-
-        if (0 === strpos($pathinfo, '/admin/module/html')) {
-            // admin_module_html_new
-            if ($pathinfo === '/admin/module/html/new') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_admin_module_html_new;
-                }
-
-                return array (  '_controller' => 'ModuleBundle\\Controller\\HTMLModuleController::newAction',  '_route' => 'admin_module_html_new',);
-            }
-            not_admin_module_html_new:
-
-            // admin_module_html_edit
-            if (preg_match('#^/admin/module/html/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_admin_module_html_edit;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_html_edit')), array (  '_controller' => 'ModuleBundle\\Controller\\HTMLModuleController::editAction',));
-            }
-            not_admin_module_html_edit:
-
-            // admin_module_html_delete
-            if (preg_match('#^/admin/module/html/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
-                    goto not_admin_module_html_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_html_delete')), array (  '_controller' => 'ModuleBundle\\Controller\\HTMLModuleController::deleteAction',));
-            }
-            not_admin_module_html_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/module/image')) {
-            // admin_module_image_index
-            if ($pathinfo === '/module/image') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_admin_module_image_index;
-                }
-
-                return array (  '_controller' => 'ModuleBundle\\Controller\\ImageModuleController::indexAction',  '_route' => 'admin_module_image_index',);
-            }
-            not_admin_module_image_index:
-
-            // admin_module_image_show
-            if (preg_match('#^/module/image/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_admin_module_image_show;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_image_show')), array (  '_controller' => 'ModuleBundle\\Controller\\ImageModuleController::showAction',));
-            }
-            not_admin_module_image_show:
-
-        }
-
         if (0 === strpos($pathinfo, '/admin')) {
             if (0 === strpos($pathinfo, '/admin/module')) {
-                if (0 === strpos($pathinfo, '/admin/module/image')) {
-                    // admin_module_image_new
-                    if ($pathinfo === '/admin/module/image/new') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_admin_module_image_new;
-                        }
-
-                        return array (  '_controller' => 'ModuleBundle\\Controller\\ImageModuleController::newAction',  '_route' => 'admin_module_image_new',);
-                    }
-                    not_admin_module_image_new:
-
-                    // admin_module_image_edit
-                    if (preg_match('#^/admin/module/image/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_admin_module_image_edit;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_image_edit')), array (  '_controller' => 'ModuleBundle\\Controller\\ImageModuleController::editAction',));
-                    }
-                    not_admin_module_image_edit:
-
-                    // admin_module_image_delete
-                    if (preg_match('#^/admin/module/image/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        if ($this->context->getMethod() != 'DELETE') {
-                            $allow[] = 'DELETE';
-                            goto not_admin_module_image_delete;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_image_delete')), array (  '_controller' => 'ModuleBundle\\Controller\\ImageModuleController::deleteAction',));
-                    }
-                    not_admin_module_image_delete:
-
-                }
-
                 // admin_module_index
                 if (rtrim($pathinfo, '/') === '/admin/module') {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
@@ -453,7 +322,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($pathinfo.'/', 'admin_module_index');
                     }
 
-                    return array (  '_controller' => 'ModuleBundle\\Controller\\ModuleController::indexAction',  '_route' => 'admin_module_index',);
+                    return array (  '_controller' => 'ModuleBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_module_index',);
                 }
                 not_admin_module_index:
 
@@ -464,7 +333,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         goto not_admin_module_new;
                     }
 
-                    return array (  '_controller' => 'ModuleBundle\\Controller\\ModuleController::newAction',  '_route' => 'admin_module_new',);
+                    return array (  '_controller' => 'ModuleBundle\\Controller\\DefaultController::newAction',  '_route' => 'admin_module_new',);
                 }
                 not_admin_module_new:
 
@@ -475,7 +344,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         goto not_admin_module_show;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_show')), array (  '_controller' => 'ModuleBundle\\Controller\\ModuleController::showAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_show')), array (  '_controller' => 'ModuleBundle\\Controller\\DefaultController::showAction',));
                 }
                 not_admin_module_show:
 
@@ -486,7 +355,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         goto not_admin_module_edit;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_edit')), array (  '_controller' => 'ModuleBundle\\Controller\\ModuleController::editAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_edit')), array (  '_controller' => 'ModuleBundle\\Controller\\DefaultController::editAction',));
                 }
                 not_admin_module_edit:
 
@@ -497,9 +366,34 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         goto not_admin_module_delete;
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_delete')), array (  '_controller' => 'ModuleBundle\\Controller\\ModuleController::deleteAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_module_delete')), array (  '_controller' => 'ModuleBundle\\Controller\\DefaultController::deleteAction',));
                 }
                 not_admin_module_delete:
+
+                if (0 === strpos($pathinfo, '/admin/module/Ajax')) {
+                    // module_ajax_delete
+                    if (preg_match('#^/admin/module/Ajax/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_module_ajax_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_ajax_delete')), array (  '_controller' => 'ModuleBundle\\Controller\\DefaultController::deleteAjaxAction',));
+                    }
+                    not_module_ajax_delete:
+
+                    // module_ajax_get_by_type
+                    if (preg_match('#^/admin/module/Ajax/(?P<type>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_module_ajax_get_by_type;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'module_ajax_get_by_type')), array (  '_controller' => 'ModuleBundle\\Controller\\DefaultController::getByTypeAction',));
+                    }
+                    not_module_ajax_get_by_type:
+
+                }
 
             }
 

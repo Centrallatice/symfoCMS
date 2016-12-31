@@ -20,7 +20,10 @@ function deleteAjaxArticle(idArticle,url){
                     data: {idArticle:idArticle},
                     dataType: "JSON",
                     success: function (data) {
-                        if(data.success) $('tr#art-'+idArticle).remove();
+                        if(data.success){
+                            $('tr#art-'+idArticle).remove();
+                            Materialize.toast('L\'article a bien été supprimé !', 3000, 'rounded green');
+                        }
                     }
                 });
             }

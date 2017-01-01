@@ -1,0 +1,4 @@
+image:
+    resource: "@ImageBundle/Controller/"
+    type:     annotation
+    prefix:   /

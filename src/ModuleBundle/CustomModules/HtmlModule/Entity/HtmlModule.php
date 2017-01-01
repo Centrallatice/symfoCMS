@@ -8,11 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * HtmlModule
  *
  * @ORM\Table(name="HTML_module")
- * @ORM\Entity(repositoryClass="ModuleBundle\CustomModules\HtmlModuleRepository\HtmlModuleRepository")
+ * @ORM\Entity(repositoryClass="ModuleBundle\CustomModules\HtmlModule\Repository\HtmlModuleRepository")
  */
-class HtmlModule extends Module
+class HtmlModule
 {
-    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
     /**
      * @var string

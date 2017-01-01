@@ -13,15 +13,15 @@
         <tbody>
         {% for imageModule in imageModules %}
             <tr>
-                <td><a href="{{ path('admin_module_image_show', { 'id': imageModule.id }) }}">{{ imageModule.id }}</a></td>
+                <td><a href="{{ path('custom_module_image_show', { 'id': imageModule.id }) }}">{{ imageModule.id }}</a></td>
                 <td>{{ imageModule.url }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('admin_module_image_show', { 'id': imageModule.id }) }}">show</a>
+                            <a href="{{ path('custom_module_image_show', { 'id': imageModule.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('admin_module_image_edit', { 'id': imageModule.id }) }}">edit</a>
+                            <a href="{{ path('custom_module_image_edit', { 'id': imageModule.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -32,7 +32,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_module_image_new') }}">Create a new imageModule</a>
+            <a href="{{ path('custom_module_image_new') }}">Create a new imageModule</a>
         </li>
     </ul>
 {% endblock %}

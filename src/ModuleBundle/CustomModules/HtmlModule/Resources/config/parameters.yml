@@ -1,4 +1,4 @@
-parameters: 
-    Nom : HTML
-    Description : Ce module vous permet d'insérer du contenu HTML
+id : html
+Nom : HTML
+Description : Ce module vous permet d'insérer du contenu HTML
         

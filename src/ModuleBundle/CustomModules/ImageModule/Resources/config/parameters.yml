@@ -1,4 +1,4 @@
-parameters: 
-    Nom : Image
-    Description : Ce module vous permet d'insérer une image
+id: image
+Nom : Image
+Description : Ce module vous permet d'insérer une image
         

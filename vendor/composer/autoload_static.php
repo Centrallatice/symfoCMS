@@ -9,8 +9,8 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        'e40631d46120a9c38ea139981f8dab26' => __DIR__ . '/..' . '/ircmaxell/password-compat/lib/password.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        'e40631d46120a9c38ea139981f8dab26' => __DIR__ . '/..' . '/ircmaxell/password-compat/lib/password.php',
         '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
@@ -24,14 +24,18 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'Symplify\\ModularRouting\\' => 24,
             'Symfony\\Polyfill\\Util\\' => 22,
             'Symfony\\Polyfill\\Php70\\' => 23,
             'Symfony\\Polyfill\\Php56\\' => 23,
             'Symfony\\Polyfill\\Php55\\' => 23,
             'Symfony\\Polyfill\\Php54\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Security\\Acl\\' => 31,
             'Symfony\\Component\\' => 18,
+            'Symfony\\Cmf\\Component\\Routing\\' => 30,
+            'Symfony\\Cmf\\Bundle\\RoutingBundle\\' => 33,
             'Symfony\\Bundle\\SwiftmailerBundle\\' => 33,
             'Symfony\\Bundle\\MonologBundle\\' => 29,
             'Symfony\\Bundle\\AsseticBundle\\' => 29,
@@ -78,6 +82,10 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symplify\\ModularRouting\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symplify/modular-routing/src',
+        ),
         'Symfony\\Polyfill\\Util\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-util',
@@ -102,6 +110,10 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
+        'Symfony\\Component\\Yaml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
         'Symfony\\Component\\Security\\Acl\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-acl',
@@ -109,6 +121,14 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
         'Symfony\\Component\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component',
+        ),
+        'Symfony\\Cmf\\Component\\Routing\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony-cmf/routing',
+        ),
+        'Symfony\\Cmf\\Bundle\\RoutingBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony-cmf/routing-bundle',
         ),
         'Symfony\\Bundle\\SwiftmailerBundle\\' => 
         array (
@@ -267,8 +287,8 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
     );
 
     public static $classMap = array (
-        'AppCache' => __DIR__ . '/../..' . '/../../../Wamp64/www/symfoCMS/app/AppCache.php',
-        'AppKernel' => __DIR__ . '/../..' . '/../../../Wamp64/www/symfoCMS/app/AppKernel.php',
+        'AppCache' => __DIR__ . '/../..' . '/app/AppCache.php',
+        'AppKernel' => __DIR__ . '/../..' . '/app/AppKernel.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'CallbackFilterIterator' => __DIR__ . '/..' . '/symfony/polyfill-php54/Resources/stubs/CallbackFilterIterator.php',

@@ -1,0 +1,4 @@
+html:
+    resource: "@HtmlBundle/Controller/"
+    type:     annotation
+    prefix:   /

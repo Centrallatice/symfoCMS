@@ -24,7 +24,8 @@ class AppKernel extends Kernel
             new ArticleBundle\ArticleBundle(),
             new ModuleBundle\ModuleBundle(),
             new MenuBundle\MenuBundle(),
-            new TemplateBundle\TemplateBundle()
+            new TemplateBundle\TemplateBundle(),
+            new Symplify\ModularRouting\SymplifyModularRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

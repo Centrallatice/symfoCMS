@@ -14,15 +14,15 @@
         <tbody>
         {% for hTMLModule in hTMLModules %}
             <tr>
-                <td><a href="{{ path('htmlmodule_show', { 'id': hTMLModule.id }) }}">{{ hTMLModule.id }}</a></td>
+                <td><a href="{{ path('custom_module_html_show', { 'id': hTMLModule.id }) }}">{{ hTMLModule.id }}</a></td>
                 <td>{{ hTMLModule.content }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('htmlmodule_show', { 'id': hTMLModule.id }) }}">show</a>
+                            <a href="{{ path('custom_module_html_show', { 'id': hTMLModule.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('htmlmodule_edit', { 'id': hTMLModule.id }) }}">edit</a>
+                            <a href="{{ path('custom_module_html_edit', { 'id': hTMLModule.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('htmlmodule_new') }}">Create a new hTMLModule</a>
+            <a href="{{ path('custom_module_html_new') }}">Create a new hTMLModule</a>
         </li>
     </ul>
 {% endblock %}

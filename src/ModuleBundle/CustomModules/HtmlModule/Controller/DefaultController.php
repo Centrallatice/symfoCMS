@@ -13,7 +13,7 @@ class DefaultController extends Controller
     /**
      * Lists all hTMLModule entities.
      *
-     * @Route("/module/html", name="admin_module_html_index")
+     * @Route("/module/html", name="custom_module_html_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -22,21 +22,21 @@ class DefaultController extends Controller
 
         $hTMLModules = $em->getRepository('ModuleBundle:HtmlModule')->findAll();
 
-        return $this->render('ModuleBundle:htmlmodule:index.html.twig', array(
+        return $this->render('HtmlBundle::index.html.twig', array(
             'hTMLModules' => $hTMLModules,
         ));
     }
     /**
      * Finds and displays a hTMLModule entity.
      *
-     * @Route("/module/html/{id}", name="module_html_show")
+     * @Route("/module/html/{id}", name="custom_module_html_show")
      * @Method("GET")
      */
     public function showAction(HtmlModule $hTMLModule)
     {
         $deleteForm = $this->createDeleteForm($hTMLModule);
 
-        return $this->render('ModuleBundle:htmlmodule:show.html.twig', array(
+        return $this->render('HtmlBundle::show.html.twig', array(
             'hTMLModule' => $hTMLModule,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -45,7 +45,7 @@ class DefaultController extends Controller
     /**
      * Creates a new hTMLModule entity.
      *
-     * @Route("/admin/module/html/new", name="admin_module_html_new")
+     * @Route("/admin/module/html/new", name="custom_module_html_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -58,10 +58,10 @@ class DefaultController extends Controller
             $em->persist($hTMLModule);
             $em->flush($hTMLModule);
             $this->addFlash('success', 'Votre module a bien été créé');
-            return $this->redirectToRoute('admin_htmlmodule_new');
+            return $this->redirectToRoute('custom_module_html_new');
         }
 
-        return $this->render('ModuleBundle:htmlmodule:new.html.twig', array(
+        return $this->render('HtmlBundle::new.html.twig', array(
             'hTMLModule' => $hTMLModule,
             'form' => $form->createView(),
         ));
@@ -72,7 +72,7 @@ class DefaultController extends Controller
     /**
      * Displays a form to edit an existing hTMLModule entity.
      *
-     * @Route("/admin/module/html/{id}/edit", name="admin_module_html_edit")
+     * @Route("/admin/module/html/{id}/edit", name="custom_module_html_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, HtmlModule $hTMLModule)
@@ -84,10 +84,10 @@ class DefaultController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('htmlmodule_edit', array('id' => $hTMLModule->getId()));
+            return $this->redirectToRoute('custom_module_html_edit', array('id' => $hTMLModule->getId()));
         }
 
-        return $this->render('ModuleBundle:htmlmodule:edit.html.twig', array(
+        return $this->render('HtmlBundle::edit.html.twig', array(
             'hTMLModule' => $hTMLModule,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -97,7 +97,7 @@ class DefaultController extends Controller
     /**
      * Deletes a hTMLModule entity.
      *
-     * @Route("/admin/module/html/{id}", name="admin_module_html_delete")
+     * @Route("/admin/module/html/{id}", name="custom_module_html_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, HtmlModule $hTMLModule)
@@ -111,7 +111,7 @@ class DefaultController extends Controller
             $em->flush($hTMLModule);
         }
 
-        return $this->redirectToRoute('htmlmodule_index');
+        return $this->redirectToRoute('custom_module_html_index');
     }
 
     /**
@@ -124,7 +124,7 @@ class DefaultController extends Controller
     private function createDeleteForm(HtmlModule $hTMLModule)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('htmlmodule_delete', array('id' => $hTMLModule->getId())))
+            ->setAction($this->generateUrl('custom_module_html_delete', array('id' => $hTMLModule->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

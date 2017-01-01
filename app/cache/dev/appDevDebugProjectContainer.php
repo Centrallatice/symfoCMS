@@ -162,9 +162,9 @@ class appDevDebugProjectContainer extends Container
             'kms_froala_editor.plugin_provider' => 'getKmsFroalaEditor_PluginProviderService',
             'locale_listener' => 'getLocaleListenerService',
             'logger' => 'getLoggerService',
+            'module.routing_loader' => 'getModule_RoutingLoaderService',
             'module_service' => 'getModuleServiceService',
             'monolog.handler.console' => 'getMonolog_Handler_ConsoleService',
-            'monolog.handler.debug' => 'getMonolog_Handler_DebugService',
             'monolog.handler.main' => 'getMonolog_Handler_MainService',
             'monolog.handler.null_internal' => 'getMonolog_Handler_NullInternalService',
             'monolog.logger.assetic' => 'getMonolog_Logger_AsseticService',
@@ -235,6 +235,7 @@ class appDevDebugProjectContainer extends Container
             'swiftmailer.mailer.default.transport' => 'getSwiftmailer_Mailer_Default_TransportService',
             'swiftmailer.mailer.default.transport.eventdispatcher' => 'getSwiftmailer_Mailer_Default_Transport_EventdispatcherService',
             'swiftmailer.mailer.default.transport.real' => 'getSwiftmailer_Mailer_Default_Transport_RealService',
+            'symplify.modular_routing.modular_router' => 'getSymplify_ModularRouting_ModularRouterService',
             'templating' => 'getTemplatingService',
             'templating.filename_parser' => 'getTemplating_FilenameParserService',
             'templating.helper.assets' => 'getTemplating_Helper_AssetsService',
@@ -352,7 +353,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('config' => new \Symfony\Bundle\AsseticBundle\Factory\Loader\ConfigurationLoader(), 'twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig'), $this->get('monolog.logger.assetic', ContainerInterface::NULL_ON_INVALID_REFERENCE)), new \Assetic\Cache\ConfigCache((__DIR__.'/assetic/config')), true)));
 
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\ConfigurationResource(array('jquery_js' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/components/jquery/jquery.min.js')), 1 => array(0 => '?yui_js'), 2 => array('output' => 'js/vendor/jquery.min.js')), 'bootstrap_css' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css')), 1 => array(), 2 => array('output' => 'css/vendor/bootstrap/bootstrap.min.css')), 'froala_css' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/froala_style.min.css'), 1 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/froala_editor.min.css'), 2 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/char_counter.css'), 3 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/code_view.css'), 4 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/colors.css'), 5 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/emoticons.css'), 6 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/file.css'), 7 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/fullscreen.css'), 8 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/image.css'), 9 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/image_manager.css'), 10 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/line_breaker.css'), 11 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/quick_insert.css'), 12 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/table.css'), 13 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/video.css')), 1 => array(), 2 => array('output' => 'css/vendor/froala/froala.min.css')), 'bootstrap_js' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/util.js'), 1 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/alert.js'), 2 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/button.js'), 3 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/carousel.js'), 4 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/collapse.js'), 5 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/dropdown.js'), 6 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/modal.js'), 7 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/tooltip.js'), 8 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/popover.js'), 9 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/scrollspy.js'), 10 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/tab.js')), 1 => array(), 2 => array('output' => 'js/vendor/bootstrap/bootstrap.js')), 'froala_js' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/froala_editor.min.js'), 1 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/align.min.js'), 2 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/char_counter.min.js'), 3 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/code_beautifier.min.js'), 4 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/code_view.min.js'), 5 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/colors.min.js'), 6 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/emoticons.min.js'), 7 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/entities.min.js'), 8 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/file.min.js'), 9 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/font_family.min.js'), 10 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/font_size.min.js'), 11 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/fullscreen.min.js'), 12 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/image.min.js'), 13 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/image_manager.min.js'), 14 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/inline_style.min.js'), 15 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/line_breaker.min.js'), 16 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/link.min.js'), 17 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/lists.min.js'), 18 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/paragraph_format.min.js'), 19 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/paragraph_style.min.js'), 20 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/quick_insert.min.js'), 21 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/quote.min.js'), 22 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/table.min.js'), 23 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/save.min.js'), 24 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/url.min.js'), 25 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/video.min.js'), 26 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/languages/fr.js')), 1 => array(), 2 => array('output' => 'js/vendor/froala/froala.min.js')))), 'config');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\ConfigurationResource(array('jquery_js' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/components/jquery/jquery.min.js')), 1 => array(0 => '?yui_js'), 2 => array('output' => 'js/vendor/jquery.min.js')), 'bootstrap_css' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css')), 1 => array(), 2 => array('output' => 'css/vendor/bootstrap/bootstrap.min.css')), 'froala_css' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/froala_style.min.css'), 1 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/froala_editor.min.css'), 2 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/char_counter.css'), 3 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/code_view.css'), 4 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/colors.css'), 5 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/emoticons.css'), 6 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/file.css'), 7 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/fullscreen.css'), 8 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/image.css'), 9 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/image_manager.css'), 10 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/line_breaker.css'), 11 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/quick_insert.css'), 12 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/table.css'), 13 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/video.css')), 1 => array(), 2 => array('output' => 'css/vendor/froala/froala.min.css')), 'bootstrap_js' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/util.js'), 1 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/alert.js'), 2 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/button.js'), 3 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/carousel.js'), 4 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/collapse.js'), 5 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/dropdown.js'), 6 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/modal.js'), 7 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/tooltip.js'), 8 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/popover.js'), 9 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/scrollspy.js'), 10 => ($this->targetDirs[2].'/../vendor/twbs/bootstrap/js/dist/tab.js')), 1 => array(), 2 => array('output' => 'js/vendor/bootstrap/bootstrap.js')), 'froala_js' => array(0 => array(0 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/froala_editor.min.js'), 1 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/align.min.js'), 2 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/char_counter.min.js'), 3 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/code_beautifier.min.js'), 4 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/code_view.min.js'), 5 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/colors.min.js'), 6 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/emoticons.min.js'), 7 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/entities.min.js'), 8 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/file.min.js'), 9 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/font_family.min.js'), 10 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/font_size.min.js'), 11 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/fullscreen.min.js'), 12 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/image.min.js'), 13 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/image_manager.min.js'), 14 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/inline_style.min.js'), 15 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/line_breaker.min.js'), 16 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/link.min.js'), 17 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/lists.min.js'), 18 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/paragraph_format.min.js'), 19 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/paragraph_style.min.js'), 20 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/quick_insert.min.js'), 21 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/quote.min.js'), 22 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/table.min.js'), 23 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/save.min.js'), 24 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/url.min.js'), 25 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/video.min.js'), 26 => ($this->targetDirs[2].'/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/languages/fr.js')), 1 => array(), 2 => array('output' => 'js/vendor/froala/froala.min.js')))), 'config');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($this->get('templating.loader'), '', ($this->targetDirs[2].'/Resources/views'), '/\\.[^.]+\\.twig$/'), 'twig');
 
         return $instance;
@@ -795,13 +796,12 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('annotation_reader');
 
-        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\AdminBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\PageBundle\\Entity'), 2 => ($this->targetDirs[3].'\\src\\ArticleBundle\\Entity'), 3 => ($this->targetDirs[3].'\\src\\ModuleBundle\\Entity'), 4 => ($this->targetDirs[3].'\\src\\MenuBundle\\Entity'), 5 => ($this->targetDirs[3].'\\src\\TemplateBundle\\Entity'), 6 => ($this->targetDirs[3].'\\src\\ModuleBundle\\CustomModules\\HtmlModule\\Entity'), 7 => ($this->targetDirs[3].'\\src\\ModuleBundle\\CustomModules\\ImageModule\\Entity')));
+        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\AdminBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\PageBundle\\Entity'), 2 => ($this->targetDirs[3].'\\src\\ArticleBundle\\Entity'), 3 => ($this->targetDirs[3].'\\src\\MenuBundle\\Entity'), 4 => ($this->targetDirs[3].'\\src\\TemplateBundle\\Entity'), 5 => ($this->targetDirs[3].'\\src\\ModuleBundle\\CustomModules\\HtmlModule\\Entity'), 6 => ($this->targetDirs[3].'\\src\\ModuleBundle\\CustomModules\\ImageModule\\Entity')));
 
         $c = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
         $c->addDriver($b, 'AdminBundle\\Entity');
         $c->addDriver($b, 'PageBundle\\Entity');
         $c->addDriver($b, 'ArticleBundle\\Entity');
-        $c->addDriver($b, 'ModuleBundle\\Entity');
         $c->addDriver($b, 'MenuBundle\\Entity');
         $c->addDriver($b, 'TemplateBundle\\Entity');
         $c->addDriver($b, 'ModuleBundle\\CustomModules\\HtmlModule\\Entity');
@@ -809,7 +809,7 @@ class appDevDebugProjectContainer extends Container
         $c->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array(($this->targetDirs[3].'\\vendor\\friendsofsymfony\\user-bundle\\Resources\\config\\doctrine-mapping') => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
 
         $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array('AdminBundle' => 'AdminBundle\\Entity', 'PageBundle' => 'PageBundle\\Entity', 'ArticleBundle' => 'ArticleBundle\\Entity', 'ModuleBundle' => 'ModuleBundle\\Entity', 'MenuBundle' => 'MenuBundle\\Entity', 'TemplateBundle' => 'TemplateBundle\\Entity', 'HtmlBundle' => 'ModuleBundle\\CustomModules\\HtmlModule\\Entity', 'ImageBundle' => 'ModuleBundle\\CustomModules\\ImageModule\\Entity'));
+        $d->setEntityNamespaces(array('AdminBundle' => 'AdminBundle\\Entity', 'PageBundle' => 'PageBundle\\Entity', 'ArticleBundle' => 'ArticleBundle\\Entity', 'MenuBundle' => 'MenuBundle\\Entity', 'TemplateBundle' => 'TemplateBundle\\Entity', 'HtmlBundle' => 'ModuleBundle\\CustomModules\\HtmlModule\\Entity', 'ImageBundle' => 'ModuleBundle\\CustomModules\\ImageModule\\Entity'));
         $d->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
         $d->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
         $d->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
@@ -1636,7 +1636,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_MailerService()
     {
-        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer($this->get('swiftmailer.mailer.default'), $this->get('router'), $this->get('templating'), array('confirmation.template' => 'FOSUserBundle:Registration:email.txt.twig', 'resetting.template' => 'FOSUserBundle:Resetting:email.txt.twig', 'from_email' => array('confirmation' => array('webmaster@example.com' => 'webmaster'), 'resetting' => array('webmaster@example.com' => 'webmaster'))));
+        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer($this->get('swiftmailer.mailer.default'), $this->get('router'), $this->get('templating'), array('confirmation.template' => '@FOSUser/Registration/email.txt.twig', 'resetting.template' => '@FOSUser/Resetting/email.txt.twig', 'from_email' => array('confirmation' => array('webmaster@example.com' => 'webmaster'), 'resetting' => array('webmaster@example.com' => 'webmaster'))));
     }
 
     /**
@@ -1794,7 +1794,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_Util_TokenGeneratorService()
     {
-        return $this->services['fos_user.util.token_generator'] = new \FOS\UserBundle\Util\TokenGenerator($this->get('logger', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['fos_user.util.token_generator'] = new \FOS\UserBundle\Util\TokenGenerator();
     }
 
     /**
@@ -2044,9 +2044,21 @@ class appDevDebugProjectContainer extends Container
         $instance->useMicrosecondTimestamps(true);
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'module.routing_loader' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \ModuleBundle\Routing\AdvancedLoader A ModuleBundle\Routing\AdvancedLoader instance
+     */
+    protected function getModule_RoutingLoaderService()
+    {
+        return $this->services['module.routing_loader'] = new \ModuleBundle\Routing\AdvancedLoader();
     }
 
     /**
@@ -2077,19 +2089,6 @@ class appDevDebugProjectContainer extends Container
         $instance->pushProcessor($this->get('monolog.processor.psr_log_message'));
 
         return $instance;
-    }
-
-    /**
-     * Gets the 'monolog.handler.debug' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return \Symfony\Bridge\Monolog\Handler\DebugHandler A Symfony\Bridge\Monolog\Handler\DebugHandler instance
-     */
-    protected function getMonolog_Handler_DebugService()
-    {
-        return $this->services['monolog.handler.debug'] = new \Symfony\Bridge\Monolog\Handler\DebugHandler(100, true);
     }
 
     /**
@@ -2136,7 +2135,6 @@ class appDevDebugProjectContainer extends Container
 
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2154,7 +2152,6 @@ class appDevDebugProjectContainer extends Container
         $this->services['monolog.logger.doctrine'] = $instance = new \Symfony\Bridge\Monolog\Logger('doctrine');
 
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2171,7 +2168,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['monolog.logger.event'] = $instance = new \Symfony\Bridge\Monolog\Logger('event');
 
-        $instance->pushHandler($this->get('monolog.handler.debug'));
+        $instance->pushHandler($this->get('monolog.handler.null_internal'));
 
         return $instance;
     }
@@ -2190,7 +2187,6 @@ class appDevDebugProjectContainer extends Container
 
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2209,7 +2205,6 @@ class appDevDebugProjectContainer extends Container
 
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2228,7 +2223,6 @@ class appDevDebugProjectContainer extends Container
 
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2247,7 +2241,6 @@ class appDevDebugProjectContainer extends Container
 
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2266,7 +2259,6 @@ class appDevDebugProjectContainer extends Container
 
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2285,7 +2277,6 @@ class appDevDebugProjectContainer extends Container
 
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2304,7 +2295,6 @@ class appDevDebugProjectContainer extends Container
 
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
-        $instance->pushHandler($this->get('monolog.handler.debug'));
 
         return $instance;
     }
@@ -2469,6 +2459,7 @@ class appDevDebugProjectContainer extends Container
         $c = new \Sensio\Bundle\FrameworkExtraBundle\Routing\AnnotatedRouteControllerLoader($b);
 
         $d = new \Symfony\Component\Config\Loader\LoaderResolver();
+        $d->addLoader($this->get('module.routing_loader'));
         $d->addLoader(new \Symfony\Component\Routing\Loader\XmlFileLoader($a));
         $d->addLoader(new \Symfony\Component\Routing\Loader\YamlFileLoader($a));
         $d->addLoader(new \Symfony\Component\Routing\Loader\PhpFileLoader($a));
@@ -2619,7 +2610,7 @@ class appDevDebugProjectContainer extends Container
         $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $l, array(), $a);
         $o->setOptions(array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('require_previous_session' => false, 'check_path' => 'fos_user_security_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '58678e21286403.28595800', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, 'fos_user_security_login', false), NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('require_previous_session' => false, 'check_path' => 'fos_user_security_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '586953e9f2c003.62945034', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, 'fos_user_security_login', false), NULL, NULL, $a, false));
     }
 
     /**
@@ -3050,6 +3041,19 @@ class appDevDebugProjectContainer extends Container
         call_user_func(array(new \Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SmtpTransportConfigurator(NULL, $this->get('router.request_context', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 'configure'), $instance);
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'symplify.modular_routing.modular_router' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Symplify\ModularRouting\Routing\ModularRouter A Symplify\ModularRouting\Routing\ModularRouter instance
+     */
+    protected function getSymplify_ModularRouting_ModularRouterService()
+    {
+        return $this->services['symplify.modular_routing.modular_router'] = new \Symplify\ModularRouting\Routing\ModularRouter();
     }
 
     /**
@@ -3688,6 +3692,8 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\src\\TemplateBundle/Resources/views'), 'Template');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views'), 'WebProfiler');
+        $instance->addPath(($this->targetDirs[3].'\\src\\ModuleBundle\\CustomModules\\HtmlModule/Resources/views'), 'Html');
+        $instance->addPath(($this->targetDirs[3].'\\src\\ModuleBundle\\CustomModules\\ImageModule/Resources/views'), 'Image');
         $instance->addPath(($this->targetDirs[2].'/Resources/views'));
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bridge\\Twig/Resources/views/Form'));
 
@@ -4089,7 +4095,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('58678e21286403.28595800')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('586953e9f2c003.62945034')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -4295,6 +4301,7 @@ class appDevDebugProjectContainer extends Container
                 'ModuleBundle' => 'ModuleBundle\\ModuleBundle',
                 'MenuBundle' => 'MenuBundle\\MenuBundle',
                 'TemplateBundle' => 'TemplateBundle\\TemplateBundle',
+                'SymplifyModularRoutingBundle' => 'Symplify\\ModularRouting\\SymplifyModularRoutingBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -4314,6 +4321,7 @@ class appDevDebugProjectContainer extends Container
             'mailer_user' => NULL,
             'mailer_password' => NULL,
             'secret' => '418db2128cb9ba145c86e33666056f08108dfa70',
+            'locale' => 'fr',
             'dispositions' => array(
                 '3-3-3-3' => '4 Colonnes de même largeur',
                 '4-4-4' => '3 Colonnes de même largeur',
@@ -4324,17 +4332,6 @@ class appDevDebugProjectContainer extends Container
                 '3-6-3' => 'Une colonne d\'1/4 + une de moitié + une d\'1/4',
                 '2-6-4' => 'Une colonne d\'1/6 + une de moitié + une d\'un tiers',
             ),
-            'moduletype' => array(
-                'html' => array(
-                    'Nom' => 'HTML',
-                    'Description' => 'Ce module vous permet d\'insérer du contenu HTML',
-                ),
-                'image' => array(
-                    'Nom' => 'Image',
-                    'Description' => 'Ce module vous permet d\'insérer une image',
-                ),
-            ),
-            'locale' => 'fr',
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
             'controller_name_converter.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerNameParser',
             'response_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener',
@@ -4909,8 +4906,8 @@ class appDevDebugProjectContainer extends Container
             'fos_user.backend_type_orm' => true,
             'fos_user.security.interactive_login_listener.class' => 'FOS\\UserBundle\\EventListener\\LastLoginListener',
             'fos_user.security.login_manager.class' => 'FOS\\UserBundle\\Security\\LoginManager',
-            'fos_user.resetting.email.template' => 'FOSUserBundle:Resetting:email.txt.twig',
-            'fos_user.registration.confirmation.template' => 'FOSUserBundle:Registration:email.txt.twig',
+            'fos_user.resetting.email.template' => '@FOSUser/Resetting/email.txt.twig',
+            'fos_user.registration.confirmation.template' => '@FOSUser/Registration/email.txt.twig',
             'fos_user.storage' => 'orm',
             'fos_user.firewall_name' => 'main',
             'fos_user.model_manager_name' => NULL,
@@ -4962,7 +4959,7 @@ class appDevDebugProjectContainer extends Container
             'kms_froala_editor.includejquery' => false,
             'kms_froala_editor.includefontawesome' => false,
             'kms_froala_editor.includecodemirror' => false,
-            'kms_froala_editor.basepath' => '/bundles/kmsfroalaeditor/froala_editor_2.3.5',
+            'kms_froala_editor.basepath' => '/bundles/kmsfroalaeditor/froala_editor_2.4.0',
             'kms_froala_editor.imageuploadfolder' => '/upload',
             'kms_froala_editor.fileuploadfolder' => '/upload',
             'kms_froala_editor.pluginsdisabled' => array(

@@ -8,7 +8,7 @@
 
 namespace ModuleBundle\Services;
 use Symfony\Component\Finder\Finder;
-
+use Symfony\Component\Yaml\Yaml;
 /**
  * Description of ModuleService
  *
@@ -20,14 +20,11 @@ class ModuleService {
         $searchPath = __DIR__.'/../CustomModules/';
         $finder     = new Finder();
         $finder->files()->in($searchPath)->name('*parameters.yml');
-        
+        $data = array();
         foreach ($finder as $file) {
-            $yaml = file_get_contents($file->getPathName());
-            var_dump($yaml);
-            $parsed = yaml_parse($yaml);
-            var_dump($parsed);
-
-            var_dump($file->getPathName());
+            $value = Yaml::parse(file_get_contents($file->getPathName()));
+            $data[$value['id']]=$value;
         }
+        return $data;
     }
 }

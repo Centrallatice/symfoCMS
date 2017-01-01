@@ -15,7 +15,10 @@ class ImageModuleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('Nom', TextType::class)->add('url', FileType::class);
+        $builder
+                ->add('alt', TextType::class)
+                ->add('title', TextType::class)
+                ->add('url', FileType::class);
     }
     
     /**

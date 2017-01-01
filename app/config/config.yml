@@ -6,7 +6,6 @@ imports:
     - { resource: "@HomeBundle/Resources/config/services.yml" }
     - { resource: "@PageBundle/Resources/config/services.yml" }
     - { resource: "@ArticleBundle/Resources/config/services.yml" }
-    - { resource: "@ModuleBundle/Resources/config/services.yml" }
     - { resource: "@MenuBundle/Resources/config/services.yml" }
     - { resource: "@TemplateBundle/Resources/config/services.yml" }
 
@@ -14,7 +13,16 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    
+    dispositions:
+        3-3-3-3 : 4 Colonnes de même largeur
+        4-4-4 : 3 Colonnes de même largeur
+        6-6 : 2 Colonnes de même largeur
+        12 : 1 Colonne complète
+        3-9 : Une colonne d'1/4 + une de 3/4
+        9-3 : Une colonne de 3/4 + une d' 1/4
+        3-6-3 : Une colonne d'1/4 + une de moitié + une d'1/4
+        2-6-4 : Une colonne d'1/6 + une de moitié + une d'un tiers
+        
 fos_user:
     db_driver: orm
     firewall_name: main
@@ -132,20 +140,20 @@ assetic:
             output: css/vendor/bootstrap/bootstrap.min.css
         froala_css:
             inputs:
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/froala_style.min.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/froala_editor.min.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/char_counter.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/code_view.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/colors.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/emoticons.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/file.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/fullscreen.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/image.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/image_manager.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/line_breaker.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/quick_insert.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/table.css
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/css/plugins/video.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/froala_style.min.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/froala_editor.min.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/char_counter.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/code_view.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/colors.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/emoticons.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/file.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/fullscreen.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/image.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/image_manager.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/line_breaker.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/quick_insert.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/table.css
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/css/plugins/video.css
             output: css/vendor/froala/froala.min.css
         bootstrap_js:
             inputs:
@@ -166,31 +174,31 @@ assetic:
         froala_js:
             inputs:
 #                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/affix.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/froala_editor.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/align.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/char_counter.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/code_beautifier.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/code_view.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/colors.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/emoticons.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/entities.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/file.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/font_family.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/font_size.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/fullscreen.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/image.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/image_manager.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/inline_style.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/line_breaker.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/link.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/lists.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/paragraph_format.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/paragraph_style.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/quick_insert.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/quote.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/table.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/save.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/url.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/plugins/video.min.js
-                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.3.4/js/languages/fr.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/froala_editor.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/align.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/char_counter.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/code_beautifier.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/code_view.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/colors.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/emoticons.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/entities.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/file.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/font_family.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/font_size.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/fullscreen.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/image.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/image_manager.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/inline_style.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/line_breaker.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/link.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/lists.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/paragraph_format.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/paragraph_style.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/quick_insert.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/quote.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/table.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/save.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/url.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/plugins/video.min.js
+                - %kernel.root_dir%/../vendor/kms/froala-editor-bundle/Resources/public/froala_editor_2.4.0/js/languages/fr.js
             output: js/vendor/froala/froala.min.js

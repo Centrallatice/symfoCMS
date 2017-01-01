@@ -1,0 +1,4 @@
+module:
+    resource: "@ModuleBundle/Controller/"
+    type:     annotation
+    prefix:   /

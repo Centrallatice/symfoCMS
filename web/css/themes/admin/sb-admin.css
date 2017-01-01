@@ -86,6 +86,9 @@ h1.page-header{
     margin: 0;
     display: inline;
 }
+.input-field.col > label {
+    top:-20px
+}
 /* Side Navigation 
 .side-nav li.bordered-bottom{
     border-bottom: 2px solid #282b30;

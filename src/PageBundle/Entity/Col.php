@@ -56,15 +56,7 @@ class Col
      */
     private $cssId;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="ModuleBundle\CustomModules\HtmlModule\Entity\Module")
-     * @ORM\JoinTable(name="cols_modules",
-     *      joinColumns={@ORM\JoinColumn(name="col_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="module_id", referencedColumnName="id", unique=true)}
-     *      )
-    */
     
-    private $modules;
     
     /**
      * @var string
@@ -252,39 +244,7 @@ class Col
         return $this->enteteType;
     }
 
-    /**
-     * Add module
-     *
-     * @param \ModuleBundle\CustomModules\HtmlModule\Entity\Module $module
-     *
-     * @return Col
-     */
-    public function addModule(\ModuleBundle\CustomModules\HtmlModule\Entity\Module $module)
-    {
-        $this->modules[] = $module;
     
-        return $this;
-    }
-
-    /**
-     * Remove module
-     *
-     * @param \ModuleBundle\CustomModules\HtmlModule\Entity\Module $module
-     */
-    public function removeModule(\ModuleBundle\CustomModules\HtmlModule\Entity\Module $module)
-    {
-        $this->modules->removeElement($module);
-    }
-
-    /**
-     * Get modules
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getModules()
-    {
-        return $this->modules;
-    }
 
     /**
      * Set row

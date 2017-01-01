@@ -14,16 +14,16 @@ class DefaultController extends Controller
     /**
      * Lists all image entities.
      *
-     * @Route("/module/image", name="admin_module_image_index")
+     * @Route("/module/image", name="custom_module_image_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $imageModules = $em->getRepository('ModuleBundle:ImageModule')->findAll();
+        $imageModules = $em->getRepository('ImageBundle:ImageModule')->findAll();
 
-        return $this->render('ModuleBundle:imagemodule:index.html.twig', array(
+        return $this->render('ImageBundle::index.html.twig', array(
             'imageModules' => $imageModules,
         ));
     }
@@ -31,14 +31,14 @@ class DefaultController extends Controller
     /**
      * Finds and displays a imageModule entity.
      *
-     * @Route("/module/image/{id}", name="admin_module_image_show")
+     * @Route("/module/image/{id}", name="custom_module_image_show")
      * @Method("GET")
      */
     public function showAction(ImageModule $imageModule)
     {
         $deleteForm = $this->createDeleteForm($imageModule);
 
-        return $this->render('ModuleBundle:imagemodule:show.html.twig', array(
+        return $this->render('ImageBundle:imagemodule:show.html.twig', array(
             'imageModule' => $imageModule,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -47,7 +47,7 @@ class DefaultController extends Controller
     /**
      * Creates a new imageModule entity.
      *
-     * @Route("/admin/module/image/new", name="admin_module_image_new")
+     * @Route("/admin/module/image/new", name="custom_module_image_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -61,10 +61,10 @@ class DefaultController extends Controller
             $em->persist($imageModule);
             $em->flush($imageModule);
 
-            return $this->redirectToRoute('admin_module_image_show', array('id' => $imageModule->getId()));
+            return $this->redirectToRoute('custom_module_image_show', array('id' => $imageModule->getId()));
         }
 
-        return $this->render('ModuleBundle:imagemodule:new.html.twig', array(
+        return $this->render('ImageBundle::new.html.twig', array(
             'imageModule' => $imageModule,
             'form' => $form->createView(),
         ));
@@ -75,7 +75,7 @@ class DefaultController extends Controller
     /**
      * Displays a form to edit an existing imageModule entity.
      *
-     * @Route("/admin/module/image/{id}/edit", name="admin_module_image_edit")
+     * @Route("/admin/module/image/{id}/edit", name="custom_module_image_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, ImageModule $imageModule)
@@ -87,10 +87,10 @@ class DefaultController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_module_image_edit', array('id' => $imageModule->getId()));
+            return $this->redirectToRoute('custom_module_image_edit', array('id' => $imageModule->getId()));
         }
 
-        return $this->render('ModuleBundle:imagemodule:edit.html.twig', array(
+        return $this->render('ImageBundle::edit.html.twig', array(
             'imageModule' => $imageModule,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -100,7 +100,7 @@ class DefaultController extends Controller
     /**
      * Deletes a imageModule entity.
      *
-     * @Route("/admin/module/image/{id}", name="admin_module_image_delete")
+     * @Route("/admin/module/image/{id}", name="custom_module_image_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, ImageModule $imageModule)
@@ -114,7 +114,7 @@ class DefaultController extends Controller
             $em->flush($imageModule);
         }
 
-        return $this->redirectToRoute('admin_module_image_index');
+        return $this->redirectToRoute('custom_module_image_index');
     }
 
     /**
@@ -127,7 +127,7 @@ class DefaultController extends Controller
     private function createDeleteForm(ImageModule $imageModule)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_module_image_delete', array('id' => $imageModule->getId())))
+            ->setAction($this->generateUrl('custom_module_image_delete', array('id' => $imageModule->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

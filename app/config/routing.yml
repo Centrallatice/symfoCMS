@@ -1,3 +1,10 @@
+app:
+    resource: "@ModuleBundle/Resources/config/routing.yml"
+    
+module_advanced:
+    resource: .
+    type: advanced_extra
+    
 template_template:
     resource: "@TemplateBundle/Controller/TemplateController.php"
     type:     annotation
@@ -23,11 +30,6 @@ menu:
 article_article:
     resource: "@ArticleBundle/Controller/ArticleController.php"
     type:     annotation
-
-module:
-    resource: "@ModuleBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
 article:
     resource: "@ArticleBundle/Controller/"

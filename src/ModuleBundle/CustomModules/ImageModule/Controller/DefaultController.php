@@ -27,7 +27,7 @@ class DefaultController extends Controller
             'imageModules' => $imageModules,
         ));
     }
-    
+   
     /**
      * Finds and displays a imageModule entity.
      *

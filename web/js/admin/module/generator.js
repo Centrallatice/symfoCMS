@@ -29,5 +29,3 @@ function deleteAjaxModule(id,url){
         }
     });
 }
-
-

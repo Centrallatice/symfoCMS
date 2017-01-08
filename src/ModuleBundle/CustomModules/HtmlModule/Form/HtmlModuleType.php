@@ -16,8 +16,8 @@ class HtmlModuleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                
-                ->add('content',TextareaType::class,array("attr"=>array("height"=>550))) ;
+            ->add('description',TextType::class,array("label"=>"Description"))
+            ->add('content',TextareaType::class,array("attr"=>array("height"=>550),"label"=>false)) ;
     }
     
     /**

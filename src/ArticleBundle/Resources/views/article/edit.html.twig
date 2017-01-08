@@ -17,28 +17,36 @@
     {% include "::formback.html.twig" with {"form":edit_form} %}
     <div class="row">
         <div class="cols12">    
-            {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <label class="control-label required" for="pagebundle_page_titre">Mots-clés</label>  
-                <div class="tagify-container">
-                    {% if article.getKeywords()|length >0 %}
-                        {% for k in article.getKeywords() %}
-                            <div role="alert" class="kw alert alert-dismissible fade in">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">×</span></button>{{k.value}}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    <input type="text" id="articlebundle_page_kw_fake" class="form-control">
+            <div class="panel panel-pink">
+                <div class="panel-heading">
+                    <i class="material-icons">art_track</i>
+                    <span class="sub-panel-title">Modification de l'article "{{article.titre}}"</span>
                 </div>
-                <input 
-                    type="hidden" 
-                    name="articlebundle_page_final" 
-                    id="articlebundle_page_final"
-                    {% if article.getKeywords()|length >0 %}value="{% for k in article.getKeywords() %}{{k.value~';'}}{% endfor %}"{% endif %}>
-                <br />
-                <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>
-                
-            {{ form_end(edit_form) }}
+                <div class="panel-body panel-form">
+                    {{ form_start(edit_form) }}
+                        {{ form_widget(edit_form) }}
+                        <label class="control-label required" for="pagebundle_page_titre">Mots-clés</label>  
+                        <div class="tagify-container">
+                            {% if article.getKeywords()|length >0 %}
+                                {% for k in article.getKeywords() %}
+                                    <div role="alert" class="kw alert alert-dismissible fade in">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">×</span></button>{{k.value}}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <input type="text" id="articlebundle_page_kw_fake" class="form-control">
+                        </div>
+                        <input 
+                            type="hidden" 
+                            name="articlebundle_page_final" 
+                            id="articlebundle_page_final"
+                            {% if article.getKeywords()|length >0 %}value="{% for k in article.getKeywords() %}{{k.value~';'}}{% endfor %}"{% endif %}>
+                </div>
+                <div class="panel-footer">  
+                        <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

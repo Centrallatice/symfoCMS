@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new MenuBundle\MenuBundle(),
             new TemplateBundle\TemplateBundle(),
             new Symplify\ModularRouting\SymplifyModularRoutingBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
@@ -46,7 +47,10 @@ class AppKernel extends Kernel
             $class      = array_pop($parts);
             $namespace  = implode('\\', $parts);
             $class      = "ModuleBundle\CustomModules\\".$namespace.'\\'.$class;
-            $bundles[]  = new $class();
+            
+            if(!in_array($class, $bundles)):
+                $bundles[]  = new $class();
+            endif;
         }
         
         return $bundles;

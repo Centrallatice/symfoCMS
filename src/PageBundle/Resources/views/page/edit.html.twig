@@ -25,7 +25,7 @@
                 </li>
             </ul>
             <div class="col s12 innerTab" id="ihm">{% include "@PageViews/page/tabs/ihm.html.twig" %}</div>
-            <div class="col s12 innerTab" id="seo">{% include "@PageViews/page/tabs/seo.html.twig" %}</div>
+            <div class="col s12 innerTab" id="seo">{% include "@PageViews/page/tabs/seo.html.twig" with{"title":"Modification de la page "~page.titre} %}</div>
         </div>
     </div>
 {% endblock %}

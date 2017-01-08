@@ -7001,27 +7001,27 @@ parent::__construct('ORM', $connections, $entityManagers, $defaultConnection, $d
 }
 public function getDefaultEntityManagerName()
 {
-trigger_error('getDefaultEntityManagerName is deprecated since Symfony 2.1. Use getDefaultManagerName instead', E_USER_DEPRECATED);
+@trigger_error('getDefaultEntityManagerName is deprecated since Symfony 2.1. Use getDefaultManagerName instead', E_USER_DEPRECATED);
 return $this->getDefaultManagerName();
 }
 public function getEntityManager($name = null)
 {
-trigger_error('getEntityManager is deprecated since Symfony 2.1. Use getManager instead', E_USER_DEPRECATED);
+@trigger_error('getEntityManager is deprecated since Symfony 2.1. Use getManager instead', E_USER_DEPRECATED);
 return $this->getManager($name);
 }
 public function getEntityManagers()
 {
-trigger_error('getEntityManagers is deprecated since Symfony 2.1. Use getManagers instead', E_USER_DEPRECATED);
+@trigger_error('getEntityManagers is deprecated since Symfony 2.1. Use getManagers instead', E_USER_DEPRECATED);
 return $this->getManagers();
 }
 public function resetEntityManager($name = null)
 {
-trigger_error('resetEntityManager is deprecated since Symfony 2.1. Use resetManager instead', E_USER_DEPRECATED);
+@trigger_error('resetEntityManager is deprecated since Symfony 2.1. Use resetManager instead', E_USER_DEPRECATED);
 $this->resetManager($name);
 }
 public function getEntityNamespace($alias)
 {
-trigger_error('getEntityNamespace is deprecated since Symfony 2.1. Use getAliasNamespace instead', E_USER_DEPRECATED);
+@trigger_error('getEntityNamespace is deprecated since Symfony 2.1. Use getAliasNamespace instead', E_USER_DEPRECATED);
 return $this->getAliasNamespace($alias);
 }
 public function getAliasNamespace($alias)
@@ -7036,12 +7036,12 @@ throw ORMException::unknownEntityNamespace($alias);
 }
 public function getEntityManagerNames()
 {
-trigger_error('getEntityManagerNames is deprecated since Symfony 2.1. Use getManagerNames instead', E_USER_DEPRECATED);
+@trigger_error('getEntityManagerNames is deprecated since Symfony 2.1. Use getManagerNames instead', E_USER_DEPRECATED);
 return $this->getManagerNames();
 }
 public function getEntityManagerForClass($class)
 {
-trigger_error('getEntityManagerForClass is deprecated since Symfony 2.1. Use getManagerForClass instead', E_USER_DEPRECATED);
+@trigger_error('getEntityManagerForClass is deprecated since Symfony 2.1. Use getManagerForClass instead', E_USER_DEPRECATED);
 return $this->getManagerForClass($class);
 }
 }

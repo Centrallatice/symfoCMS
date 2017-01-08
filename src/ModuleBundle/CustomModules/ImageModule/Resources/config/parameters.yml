@@ -1,4 +1,5 @@
 id: image
 Nom : Image
+EntityPrefixe : Image
 Description : Ce module vous permet d'insérer une image
         

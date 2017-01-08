@@ -28,7 +28,8 @@
         "kms/froala-editor-bundle": "dev-master",
         "oyejorge/less.php": "v1.7.0.10",
         "symfony/yaml":"dev-master",
-        "symplify/modular-routing": "^0.4.1"
+        "symplify/modular-routing": "^0.4.1",
+        "jms/serializer-bundle": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

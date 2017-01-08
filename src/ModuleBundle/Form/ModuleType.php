@@ -31,7 +31,7 @@ class ModuleType extends AbstractType
                     $datas = $options['moduleService']->getModulesType();
                     return $datas[$index]['Nom'];
                 },
-                'label' => 'Type du module',
+                'label' => false,
                 'multiple' => false,
                 'expanded' => true
             ));

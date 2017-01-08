@@ -18,25 +18,47 @@
            {{ flash_message }}
        </div>
     {% endfor %}    
-    <hr />       
     <div class="row">
         <div class="col s12">
-            <table class="table striped bordered responsive-table">
-                <thead class="thead-inverse">
-                    <tr>
-                        <th>Nom</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for module in modules %}
-                        <tr id="mod-{{module.id}}">
-                            <td>{{ module.Nom }}</td>
-                            <td>{{ module.Description }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="panel panel-pink">
+                <div class="panel-heading">
+                    <i class="material-icons">extension</i>
+                    <span class="sub-panel-title">Mes modules</span>
+                </div>
+                <div class="panel-body panel-form">
+                    <table class="table bordered responsive-table" id="table-modules">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for module in modules %}
+                                {% if module.details|length>0 %}
+                                    {% for submodule in module.details %}
+                                    <tr>
+                                        <td>{{ module.Nom }}</td>
+                                        <td>
+                                            {{ submodule.Description }}
+                                        </td>
+                                        <td>
+                                            <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue contraintwidth' href='#' data-activates='dropdown-action-{{submodule.id}}'><i class="material-icons">build</i></a>
+                                            <ul id='dropdown-action-{{submodule.id}}' class='dropdown-content'>
+                                                <li><a class="" href="{{ path('custom_module_'~module.id~'_show', { 'id': submodule.id }) }}"><i class="material-icons left">search</i> Afficher</a></li>
+                                                <li><a class="action-blue" href="{{ path('custom_module_'~module.id~'_edit', { 'id': submodule.id }) }}"><i class="material-icons left">mode_edit</i> Modifier</a></li>
+                                                <li><a class="action-red" href="#" onclick="deleteAjaxCategory({{submodule.id}},'{{ path('custom_module_'~module.id~'_delete', { 'id': submodule.id }) }}')"><i class="material-icons left">delete</i> Supprimer</a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

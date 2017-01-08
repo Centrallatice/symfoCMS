@@ -1,4 +1,5 @@
 id : html
 Nom : HTML
+EntityPrefixe : Html
 Description : Ce module vous permet d'insérer du contenu HTML
         

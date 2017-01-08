@@ -40,6 +40,12 @@ class ImageModule
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=255, nullable=true)
+     */
+    private $description;
 
 
     /**
@@ -122,5 +128,29 @@ class ImageModule
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return ImageModule
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

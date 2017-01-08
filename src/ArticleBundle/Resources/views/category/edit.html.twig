@@ -14,11 +14,21 @@
     </div>
     {% include "::formback.html.twig" with {"form":edit_form} %}
      <div class="row">
-        <div class="cols12">    
-            {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>
-            {{ form_end(edit_form) }}
-        </div>
+        <div class="cols12"> 
+            <div class="panel panel-pink">
+                <div class="panel-heading">
+                    <i class="material-icons">folder</i>
+                    <span class="sub-panel-title">Modification de la catégorie "{{category.nom}}"</span>
+                </div>
+                <div class="panel-body panel-form">
+                    {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                </div>
+                <div class="panel-footer">  
+                    <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>
+                {{ form_end(edit_form) }}
+                 </div>
+            </div>
+        </div>    
     </div>
 {% endblock %}

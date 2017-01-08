@@ -11,58 +11,61 @@
             <a role="button" class="btn waves-effect waves-light pull-right" href="{{ path('admin_article_index') }}"><i class="material-icons left">skip_previous</i> Revenir à la liste</a>
         </div>
     </div>
-    <hr />
     <div class="row">
-        <div class="cols12">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>N°</th>
-                        <td>{{ article.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Titre</th>
-                        <td>{{ article.titre }}</td>
-                    </tr>
-                    <tr>
-                        <th>Datecreation</th>
-                        <td>{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H\\hi') }}{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th>Auteur</th>
-                        <td>{{ article.auteur }}</td>
-                    </tr>
-                    <tr>
-                        <th>Résumé</th>
-                        <td>{{ article.resume}}</td>
-                    </tr>
-                    <tr>
-                        <th>Contenu</th>
-                        <td>{{ article.contenu|raw}}</td>
-                    </tr>
-                    <tr>
-                        <th>Mots-clés</th>
-                        <td>
-                            {% if article.getKeywords()|length >0 %}
-                                <ul>
-                                    {% for k in article.getKeywords() %}
-                                        <li>{{k.value}}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Etat</th>
-                        <td>{% if article.etat %}
-                                    <i title="Active" class="material-icons left text-green">done</i>
-                                {% else %}
-                                    <i title="Inactive" class="material-icons left text-red">cancel</i>
-                                {% endif %}
+        <div class="col s12">
+             <div class="panel panel-pink">
+                <div class="panel-heading">
+                    <i class="material-icons">art_track</i>
+                    <span class="sub-panel-title">Détail de l'article " <strong>{{ article.titre }}</strong>"</span>
+                </div>
+                <div class="panel-body panel-form panel-pink">
+                    <table class="table table-show">
+                        <tbody>
+                            <tr>
+                                <th>Titre</th>
+                                <td>{{ article.titre }}</td>
+                            </tr>
+                            <tr>
+                                <th>Créé le</th>
+                                <td>{% if article.dateCreation %}{{ article.dateCreation|date('d-m-Y H\\hi') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Auteur</th>
+                                <td>{{ article.auteur }}</td>
+                            </tr>
+                            <tr>
+                                <th>Résumé</th>
+                                <td>{{ article.resume}}</td>
+                            </tr>
+                            <tr>
+                                <th>Contenu</th>
+                                <td>{{ article.contenu|raw}}</td>
+                            </tr>
+                            <tr>
+                                <th>Mots-clés</th>
+                                <td>
+                                    {% if article.getKeywords()|length >0 %}
+                                        <ul>
+                                            {% for k in article.getKeywords() %}
+                                                <li>{{k.value}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
                                 </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </tr>
+                            <tr>
+                                <th>Etat</th>
+                                <td>{% if article.etat %}
+                                            <i title="Active" class="material-icons left text-green">done</i> Actif
+                                        {% else %}
+                                            <i title="Inactive" class="material-icons left text-red">cancel</i> Inactif
+                                        {% endif %}
+                                        </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <div class="fixed-action-btn ">

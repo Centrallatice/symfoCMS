@@ -1,5 +1,4 @@
 <?php
-
 namespace ModuleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,10 +22,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
+        
         $modules = $this->get('module_service')->getModulesType();
-
+        $em = $this->getDoctrine()->getManager();
+        foreach($modules as $k=>$v):
+            $modules[$k]['details']=$em->getRepository('ModuleBundle\CustomModules\\'.$v['EntityPrefixe'].'Module\Entity\\'.$v['EntityPrefixe'].'Module')->findAll();
+        endforeach;
         return $this->render('ModuleBundle:module:index.html.twig', array(
             'modules' => $modules,
         ));
@@ -46,12 +47,10 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $datas = $form->getData();
-//            $this->addFlash('success', 'Votre module a bien été créé, vous pouvez a présent le paramètrer');
             return $this->redirectToRoute('custom_module_'.strtolower($datas['type']).'_new');
         }
 
         return $this->render('ModuleBundle:module:new.html.twig', array(
-//            'module' => $module,
             'form' => $form->createView(),
         ));
     }
@@ -65,10 +64,12 @@ class DefaultController extends Controller
     public function getByTypeAction($type)
     {
         $em = $this->getDoctrine()->getManager();
+        $serializer = $this->container->get('jms_serializer');
         
-        $modules = $em->getRepository('ModuleBundle:'.ucfirst(strtolower($type)).'Module')->findAll();
+        $modules = $em->getRepository('ModuleBundle\CustomModules\\'.ucfirst(strtolower($type)).'Module\Entity\\'.ucfirst(strtolower($type)).'Module')->findAll();
         if ($modules!==null) {
-            return new JsonResponse(array("success"=>true,"donnees"=>$modules));
+            $datas = $serializer->serialize($modules, "json");
+            return new JsonResponse(array("success"=>true,"donnees"=>$datas));
         }
 
         return new JsonResponse(array("success"=>false,"donnees"=>null));

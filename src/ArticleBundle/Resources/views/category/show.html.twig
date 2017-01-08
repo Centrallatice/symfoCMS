@@ -13,40 +13,48 @@
     </div>
     <hr />
     <div class="row">
-        <div class="cols12">
-            <table class='table'>
-                <tbody>
-                    <tr>
-                        <th>N°</th>
-                        <td>{{ category.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Nom</th>
-                        <td>{{ category.nom }}</td>
-                    </tr>
-                    <tr>
-                        <th>Auteur</th>
-                        <td>{{ category.auteur }}</td>
-                    </tr>
-                    <tr>
-                        <th>Parent</th>
-                        <td>{% if category.getCategoryParente() != null %}{{ category.getCategoryParente().getNom() }}{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th>Créée le</th>
-                        <td>{{ category.dateCreation | date('d/m/Y \à H\\hi') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Etat</th>
-                        <td>{% if category.isActive %}
-                                    <i title="Active" class="material-icons left text-green">done</i>
-                                {% else %}
-                                    <i title="Inactive" class="material-icons left text-red">cancel</i>
-                                {% endif %}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col s12">
+            <div class="panel panel-pink">
+                <div class="panel-heading">
+                    <i class="material-icons">folder</i>
+                    <span class="sub-panel-title">Détail de la categorie " <strong>{{ category.nom }}</strong>"</span>
+                </div>
+                <div class="panel-body panel-form panel-pink">
+                    <table class="table table-show">
+                        <tbody>
+                            <tr>
+                                <th>N°</th>
+                                <td>{{ category.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ category.nom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Auteur</th>
+                                <td>{{ category.auteur }}</td>
+                            </tr>
+                            <tr>
+                                <th>Parent</th>
+                                <td>{% if category.getCategoryParente() != null %}{{ category.getCategoryParente().getNom() }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Créée le</th>
+                                <td>{{ category.dateCreation | date('d/m/Y \à H\\hi') }}</td>
+                            </tr>
+                            <tr>
+                                <th>Etat</th>
+                                <td>{% if category.isActive %}
+                                            <i title="Active" class="material-icons left text-green">done</i>
+                                        {% else %}
+                                            <i title="Inactive" class="material-icons left text-red">cancel</i>
+                                        {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <div class="fixed-action-btn ">

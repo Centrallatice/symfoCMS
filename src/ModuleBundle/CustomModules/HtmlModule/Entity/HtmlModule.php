@@ -27,6 +27,15 @@ class HtmlModule
      * @ORM\Column(name="content", type="text")
      */
     private $content;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=255, nullable=true)
+     */
+    private $Description;
+
+
 
     /**
      * Set content
@@ -54,5 +63,39 @@ class HtmlModule
     
     public function getType(){
         return 'HTML';
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return HtmlModule
+     */
+    public function setDescription($description)
+    {
+        $this->Description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->Description;
     }
 }

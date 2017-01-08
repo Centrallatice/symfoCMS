@@ -26,6 +26,8 @@ class DefaultController extends Controller
             'hTMLModules' => $hTMLModules,
         ));
     }
+    
+   
     /**
      * Finds and displays a hTMLModule entity.
      *

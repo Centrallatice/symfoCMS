@@ -17,11 +17,20 @@
     {% include "::formback.html.twig" with {"form":form} %}
     <div class="row">
         <div class="cols12">
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>
-            {{ form_end(form) }}
+            <div class="panel panel-pink">
+                <div class="panel-heading">
+                    <i class="material-icons">folder</i>
+                    <span class="sub-panel-title">Création d'une nouvelle catégorie</span>
+                </div>
+                <div class="panel-body panel-form">
+                    {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                </div>
+                <div class="panel-footer">  
+                        <center><button class='btn green waves-effect waves-light' type="submit"><i class="material-icons left">save</i>Enregistrer</button></center>
+                    {{ form_end(form) }}
+                </div>
+            </div>
         </div>
-    </div>        
-    
+    </div>     
 {% endblock %}

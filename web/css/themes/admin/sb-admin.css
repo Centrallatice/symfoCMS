@@ -89,6 +89,14 @@ h1.page-header{
 .input-field.col > label {
     top:-20px
 }
+p.label-desc{
+    margin: 5px 0 0 45px;
+    font-style: italic;
+}
+table.table-show tr th{
+    width:150px;
+}
+
 /* Side Navigation 
 .side-nav li.bordered-bottom{
     border-bottom: 2px solid #282b30;

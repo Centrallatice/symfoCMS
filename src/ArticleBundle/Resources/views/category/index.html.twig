@@ -62,16 +62,13 @@
                                 {% endif %}
                             </td>
                             <td class="text-right">
-                                <td class="text-right">
-                                    <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue contraintwidth' href='#' data-activates='dropdown-action-{{category.id}}'><i class="material-icons">build</i></a>
-                                    <ul id='dropdown-action-{{category.id}}' class='dropdown-content'>
-                                        <li><a class="" href="{{ path('admin_category_show', { 'id': category.id }) }}"><i class="material-icons left">search</i> Afficher</a></li>
-                                        <li><a class="action-blue" href="{{ path('admin_category_edit', { 'id': category.id }) }}"><i class="material-icons left">mode_edit</i> Modifier</a></li>
-                                        <li><a class="action-red" href="#" onclick="deleteAjaxCategory({{category.id}},'{{ path('category_ajax_delete', { 'id': category.id }) }}')"><i class="material-icons left">delete</i> Supprimer</a></li>
-                                    </ul>
-                                </td>
-                                
-                            </td>
+                                 <a data-hover="true" data-constrainwidth="false" class='dropdown-button btn blue contraintwidth' href='#' data-activates='dropdown-action-{{category.id}}'><i class="material-icons">build</i></a>
+                                 <ul id='dropdown-action-{{category.id}}' class='dropdown-content'>
+                                     <li><a class="" href="{{ path('admin_category_show', { 'id': category.id }) }}"><i class="material-icons left">search</i> Afficher</a></li>
+                                     <li><a class="action-blue" href="{{ path('admin_category_edit', { 'id': category.id }) }}"><i class="material-icons left">mode_edit</i> Modifier</a></li>
+                                     <li><a class="action-red" href="#" onclick="deleteAjaxCategory({{category.id}},'{{ path('category_ajax_delete', { 'id': category.id }) }}')"><i class="material-icons left">delete</i> Supprimer</a></li>
+                                 </ul>
+                             </td>
                         </tr>
                         {% if category.getCategoryEnfants()|length>0%}
                             {% include 'ArticleBundle:article:subCategory.html.twig' with {'Parent': category,'Depth':1} %}

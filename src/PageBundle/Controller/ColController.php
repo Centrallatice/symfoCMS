@@ -82,9 +82,11 @@ class ColController extends Controller
     public function editAction(Request $request, Col $col)
     {
         
-        $editForm = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleType'=>$this->getParameter('moduleType')));
+        $editForm = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleService'=>$this->get('module_service')));
         $editForm->handleRequest($request);
-
+        var_dump($editForm->isSubmitted());
+        var_dump($editForm->isValid());
+        var_dump($editForm->getErrorsAsString());
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             return new JsonResponse(array("success"=>true));
@@ -102,7 +104,7 @@ class ColController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $col = $em->getRepository('PageBundle:Col')->find($id);
-        $editForm = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleType'=>$this->getParameter('moduleType')));
+        $editForm = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleService'=>$this->get('module_service')));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

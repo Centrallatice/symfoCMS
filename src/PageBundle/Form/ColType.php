@@ -17,10 +17,10 @@ class ColType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $this->moduleType = $options['moduleType'];
+        $this->moduleService = $options['moduleService']->getModulesType();
         $choices = array();
-        foreach($this->moduleType as $k=>$v):
-            $choices[$k]=$this->moduleType[$k]['Nom'];
+        foreach($this->moduleService as $k=>$v):
+            $choices[$this->moduleService[$k]['id']]=$this->moduleService[$k]['Nom'];
         endforeach;
         $builder->add('titreAdmin',TextType::class,array("label"=>"Titre administrateur","required"=>false))
                 ->add('titreClient',TextType::class,array("label"=>"Titre d'entête","required"=>false))
@@ -43,10 +43,12 @@ class ColType extends AbstractType
                             'choices' => $choices,
                             'label' => 'Type du module',
                             'choice_attr' => function($value, $key, $index) use($options) {
-                                return ['data-desc' => $options['moduleType'][$index]['Description']];
+                                $datas = $options['moduleService']->getModulesType();
+                                return ['data-desc' => $datas[$index]['Description']];
                             },
                             'choice_label' => function ($value, $key, $index)  use($options){
-                                return $options['moduleType'][$index]['Nom'];
+                                $datas = $options['moduleService']->getModulesType();
+                                return $datas[$index]['Nom'];
                             },
                             'multiple' => false,
                             'mapped' => false,
@@ -69,7 +71,7 @@ class ColType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'PageBundle\Entity\Col',
-            "moduleType"=>null
+            "moduleService"=>null
         ));
     }
 

@@ -13,10 +13,10 @@ use PageBundle\Entity\Page;
  */
 class keyWordsPage extends metaKeyWord
 {
-     /**
-   * @ORM\ManyToOne(targetEntity="PageBundle\Entity\Page")
-   * @ORM\JoinColumn(nullable=false)
-   */
+    /**
+        * @ORM\ManyToOne(targetEntity="PageBundle\Entity\Page",inversedBy="keywords")
+        * @ORM\JoinColumn(nullable=false)
+    */
     private $associationId;
 
 

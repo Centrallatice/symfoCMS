@@ -31,9 +31,9 @@ class HtmlModule
      /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
-    private $Description;
+    private $description;
 
 
 
@@ -84,7 +84,7 @@ class HtmlModule
      */
     public function setDescription($description)
     {
-        $this->Description = $description;
+        $this->description = $description;
 
         return $this;
     }
@@ -96,6 +96,6 @@ class HtmlModule
      */
     public function getDescription()
     {
-        return $this->Description;
+        return $this->description;
     }
 }

@@ -1,4 +1,5 @@
-function deleteAjaxModule(id,url){
+function deleteCustomModule(id,type,url){
+    
     bootbox.confirm({
         title : "Confirmation de la suppression",
         message : "Êtes-vous sûr de vouloir supprimer ce module ?",
@@ -19,13 +20,24 @@ function deleteAjaxModule(id,url){
                     dataType: "JSON",
                     success: function (data) {
                         if(data.success){
-                            $('tr#mod-'+id).remove();
+                            $('tr#custommodule-'+id).remove();
                             Materialize.toast('Le module a bien été supprimé !', 3000, 'rounded green');
+                            deleteModuleFromColonne(id,type);
                         }
                         
                     }
                 });
             }
         }
+    });
+}
+
+function deleteModuleFromColonne(id,type){
+    $.ajax({
+        type: "DELETE",
+        url: basePageAdmin+'col/Ajax/'+type+'/'+id,
+        data: {idModule:id},
+        dataType: "JSON",
+        success: function (data) {console.log(data)}
     });
 }

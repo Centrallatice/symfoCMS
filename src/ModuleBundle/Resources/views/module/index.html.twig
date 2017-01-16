@@ -38,7 +38,7 @@
                             {% for module in modules %}
                                 {% if module.details|length>0 %}
                                     {% for submodule in module.details %}
-                                    <tr>
+                                    <tr id="custommodule-{{submodule.id}}">
                                         <td>{{ module.Nom }}</td>
                                         <td>
                                             {{ submodule.Description }}
@@ -48,7 +48,7 @@
                                             <ul id='dropdown-action-{{submodule.id}}' class='dropdown-content'>
                                                 <li><a class="" href="{{ path('custom_module_'~module.id~'_show', { 'id': submodule.id }) }}"><i class="material-icons left">search</i> Afficher</a></li>
                                                 <li><a class="action-blue" href="{{ path('custom_module_'~module.id~'_edit', { 'id': submodule.id }) }}"><i class="material-icons left">mode_edit</i> Modifier</a></li>
-                                                <li><a class="action-red" href="#" onclick="deleteAjaxCategory({{submodule.id}},'{{ path('custom_module_'~module.id~'_delete', { 'id': submodule.id }) }}')"><i class="material-icons left">delete</i> Supprimer</a></li>
+                                                <li><a class="action-red" href="#" onclick="deleteCustomModule({{submodule.id}},'{{module.id}}','{{ path('custom_module_'~module.id~'_delete', { 'id': submodule.id }) }}')"><i class="material-icons left">delete</i> Supprimer</a></li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -61,6 +61,13 @@
             </div>
         </div>
     </div>
+    <div class="fixed-action-btn ">
+        <a href="{{ path('admin_module_new') }}"
+           class="btn-floating btn-large green tooltipped" data-position="left" data-delay="50" 
+           data-tooltip="Créer un nouveau module">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>                         
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

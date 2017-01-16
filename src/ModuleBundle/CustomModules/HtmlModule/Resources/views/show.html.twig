@@ -15,22 +15,31 @@
             </tr>
             <tr>
                 <th>Content</th>
-                <td>{{ hTMLModule.content }}</td>
+                <td>{{ hTMLModule.content|raw }}</td>
             </tr>
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('custom_module_html_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('custom_module_html_edit', { 'id': hTMLModule.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            
+    <div class="fixed-action-btn ">
+        <a class="btn-floating btn-large purple">
+            <i class="large material-icons">build</i>
+        </a>
+        <ul>
+          <li>
+              <a class="btn-floating blue tooltipped" 
+                 data-position="left" data-delay="50" data-tooltip="Modifier"
+                 title="Modifier" href="{{ path('custom_module_html_edit', { 'id': hTMLModule.id }) }}">
+                  <i class="material-icons">mode_edit</i>
+              </a>
+          </li>
+          <li>
+              {{ form_start(delete_form) }}
+                    <button title="Supprimer" type="submit" class="btn-floating red tooltipped"
+                            data-position="left" data-delay="50" data-tooltip="Supprimer">
+                        <i class="material-icons">delete</i>
+                    </button>
+             {{ form_end(delete_form) }}
+          </li>
+        </ul>
+      </div> 
 {% endblock %}

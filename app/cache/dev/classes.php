@@ -786,6 +786,7 @@ class TemplateLocator implements FileLocatorInterface
 {
 protected $locator;
 protected $cache;
+private $cacheHits = array();
 public function __construct(FileLocatorInterface $locator, $cacheDir = null)
 {
 if (null !== $cacheDir && is_file($cache = $cacheDir.'/templates.php')) {
@@ -803,11 +804,14 @@ if (!$template instanceof TemplateReferenceInterface) {
 throw new \InvalidArgumentException('The template must be an instance of TemplateReferenceInterface.');
 }
 $key = $this->getCacheKey($template);
+if (isset($this->cacheHits[$key])) {
+return $this->cacheHits[$key];
+}
 if (isset($this->cache[$key])) {
-return $this->cache[$key];
+return $this->cacheHits[$key] = realpath($this->cache[$key]) ?: $this->cache[$key];
 }
 try {
-return $this->cache[$key] = $this->locator->locate($template->getPath(), $currentPath);
+return $this->cacheHits[$key] = $this->locator->locate($template->getPath(), $currentPath);
 } catch (\InvalidArgumentException $e) {
 throw new \InvalidArgumentException(sprintf('Unable to find template "%s" : "%s".', $template, $e->getMessage()), 0, $e);
 }
@@ -3089,10 +3093,10 @@ namespace
 {
 class Twig_Environment
 {
-const VERSION ='1.30.0';
-const VERSION_ID = 13000;
+const VERSION ='1.31.0';
+const VERSION_ID = 13100;
 const MAJOR_VERSION = 1;
-const MINOR_VERSION = 30;
+const MINOR_VERSION = 31;
 const RELEASE_VERSION = 0;
 const EXTRA_VERSION ='';
 protected $charset;
@@ -3268,7 +3272,10 @@ return new Twig_TemplateWrapper($this, $this->loadTemplate($name));
 }
 public function loadTemplate($name, $index = null)
 {
-$cls = $this->getTemplateClass($name, $index);
+$cls = $mainCls = $this->getTemplateClass($name);
+if (null !== $index) {
+$cls .='_'.$index;
+}
 if (isset($this->loadedTemplates[$cls])) {
 return $this->loadedTemplates[$cls];
 }
@@ -3276,7 +3283,7 @@ if (!class_exists($cls, false)) {
 if ($this->bcGetCacheFilename) {
 $key = $this->getCacheFilename($name);
 } else {
-$key = $this->cache->generateKey($name, $cls);
+$key = $this->cache->generateKey($name, $mainCls);
 }
 if (!$this->isAutoReload() || $this->isTemplateFresh($name, $this->cache->getTimestamp($key))) {
 $this->cache->load($key);
@@ -3295,9 +3302,12 @@ $this->writeCacheFile($key, $content);
 $this->cache->write($key, $content);
 $this->cache->load($key);
 }
-if (!class_exists($cls, false)) {
+if (!class_exists($mainCls, false)) {
 eval('?>'.$content);
 }
+}
+if (!class_exists($cls, false)) {
+throw new Twig_Error_Runtime(sprintf('Failed to load Twig template "%s", index "%s": cache is corrupted.', $name, $index), -1, $source);
 }
 }
 if (!$this->runtimeInitialized) {
@@ -3820,7 +3830,6 @@ protected function initExtensions()
 if ($this->extensionInitialized) {
 return;
 }
-$this->extensionInitialized = true;
 $this->parsers = new Twig_TokenParserBroker(array(), array(), false);
 $this->filters = array();
 $this->functions = array();
@@ -3832,6 +3841,7 @@ foreach ($this->extensions as $extension) {
 $this->initExtension($extension);
 }
 $this->initExtension($this->staging);
+$this->extensionInitialized = true;
 }
 protected function initExtension(Twig_ExtensionInterface $extension)
 {
@@ -4302,7 +4312,7 @@ return array_merge($arr1, $arr2);
 function twig_slice(Twig_Environment $env, $item, $start, $length = null, $preserveKeys = false)
 {
 if ($item instanceof Traversable) {
-if ($item instanceof IteratorAggregate) {
+while ($item instanceof IteratorAggregate) {
 $item = $item->getIterator();
 }
 if ($start >= 0 && $length >= 0 && $item instanceof Iterator) {
@@ -4371,7 +4381,23 @@ return $value;
 function twig_get_array_keys_filter($array)
 {
 if ($array instanceof Traversable) {
-return array_keys(iterator_to_array($array));
+while ($array instanceof IteratorAggregate) {
+$array = $array->getIterator();
+}
+if ($array instanceof Iterator) {
+$keys = array();
+$array->rewind();
+while ($array->valid()) {
+$keys[] = $array->key();
+$array->next();
+}
+return $keys;
+}
+$keys = array();
+foreach ($array as $key => $item) {
+$keys[] = $key;
+}
+return $keys;
 }
 if (!is_array($array)) {
 return array();
@@ -4417,7 +4443,20 @@ return in_array($value, $compare, is_object($value) || is_resource($value));
 } elseif (is_string($compare) && (is_string($value) || is_int($value) || is_float($value))) {
 return''=== $value || false !== strpos($compare, (string) $value);
 } elseif ($compare instanceof Traversable) {
-return in_array($value, iterator_to_array($compare, false), is_object($value) || is_resource($value));
+if (is_object($value) || is_resource($value)) {
+foreach ($compare as $item) {
+if ($item === $value) {
+return true;
+}
+}
+} else {
+foreach ($compare as $item) {
+if ($item == $value) {
+return true;
+}
+}
+}
+return false;
 }
 return false;
 }

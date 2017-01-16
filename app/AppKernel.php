@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new TemplateBundle\TemplateBundle(),
             new Symplify\ModularRouting\SymplifyModularRoutingBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

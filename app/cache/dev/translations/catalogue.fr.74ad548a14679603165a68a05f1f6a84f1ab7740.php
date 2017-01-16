@@ -151,7 +151,9 @@ $catalogue = new MessageCatalogue('fr', array (
     'registration.email.subject' => 'Bienvenue %username% !',
     'registration.email.message' => 'Bonjour %username% !
 
-Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%.
+
+Ce lien ne peut être utilisé qu\'une seule fois pour valider votre compte.
 
 Cordialement,
 L\'équipe
@@ -189,6 +191,11 @@ L\'équipe
   'messages' => 
   array (
     'Symfony2 is great' => 'J\'aime Symfony2',
+  ),
+  'VichUploaderBundle' => 
+  array (
+    'download' => 'Télécharger',
+    'form.label.delete' => 'Supprimer ?',
   ),
 ));
 

@@ -5,9 +5,7 @@ namespace PageBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ColType extends AbstractType
@@ -60,7 +58,8 @@ class ColType extends AbstractType
                             "choices"=>array(),
                             'multiple' => false,
                             'mapped' => false,
-                            'expanded' => false
+                            'expanded' => false,
+                            'required' => false
                  ));
     }
     

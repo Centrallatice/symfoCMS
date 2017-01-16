@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use PageBundle\Entity\ColsModules;
 /**
  * Col controller.
  *
@@ -81,17 +82,19 @@ class ColController extends Controller
      */
     public function editAction(Request $request, Col $col)
     {
-        
+       
         $editForm = $this->createForm('PageBundle\Form\ColType', $col,  array('moduleService'=>$this->get('module_service')));
         $editForm->handleRequest($request);
-        var_dump($editForm->isSubmitted());
-        var_dump($editForm->isValid());
-        var_dump($editForm->getErrorsAsString());
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($editForm->isSubmitted()) {
+            $this->getDoctrine()->getManager()->persist($col);
+            $ColModule = new ColsModules();
+            $ColModule->setModuleId($request->request->get('pagebundle_col')["modules"]);
+            $ColModule->setModuleType($request->request->get('pagebundle_col')["typemodule"]);
+            $ColModule->setColId($col);
+            $this->getDoctrine()->getManager()->persist($ColModule);
             $this->getDoctrine()->getManager()->flush();
             return new JsonResponse(array("success"=>true));
         }
-        else return new JsonResponse(array("success"=>false));
     }
     
     /**
@@ -117,7 +120,28 @@ class ColController extends Controller
             'edit_form' => $editForm->createView()
         ))));
     }
-
+    
+    /**
+     * Remove a module entity from colonne.
+     *
+     * @Route("/Ajax/{type}/{id}", name="col_remove_custom")
+     * @Method("DELETE")
+     */
+    public function removeColAction($type,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $colsModules = $em->getRepository('PageBundle\Entity\ColsModules')->findBy(array("moduleType"=>$type,"moduleId"=>$id));
+        if($colsModules!==null):
+            foreach($colsModules as $m):
+                $em->remove($m);
+            endforeach;
+            $em->flush();
+            return new JsonResponse(array("success"=>true));
+        else:
+            return new JsonResponse(array("success"=>false));
+        endif;
+    }
+    
     /**
      * Deletes a col entity.
      *

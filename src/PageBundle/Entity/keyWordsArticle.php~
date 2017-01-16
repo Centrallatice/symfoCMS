@@ -14,7 +14,7 @@ use ArticleBundle\Entity\Article;
 class keyWordsArticle extends metaKeyWord
 {
      /**
-   * @ORM\ManyToOne(targetEntity="ArticleBundle\Entity\Article")
+   * @ORM\ManyToOne(targetEntity="ArticleBundle\Entity\Article",inversedBy="keywords")
    * @ORM\JoinColumn(nullable=false)
    */
     private $associationId;

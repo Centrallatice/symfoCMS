@@ -5,8 +5,8 @@ namespace ModuleBundle\CustomModules\ImageModule\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ImageModuleType extends AbstractType
 {
@@ -17,9 +17,14 @@ class ImageModuleType extends AbstractType
     {
         $builder
                 ->add('description',TextType::class,array("label"=>"Description"))
-                ->add('alt', TextType::class)
-                ->add('title', TextType::class)
-                ->add('url', FileType::class);
+                ->add('alt', TextType::class,array("label"=>"Texte de remplacement"))
+                ->add('title', TextType::class,array("label"=>"Titre"))
+                ->add('imageFile', VichFileType::class, [
+                        'required' => true,
+                        'allow_delete' => true,
+                        'download_link' => true,
+                        "label"=>"Image"
+                ]);
     }
     
     /**

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
@@ -20,7 +21,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $hTMLModules = $em->getRepository('ModuleBundle:HtmlModule')->findAll();
+        $hTMLModules = $em->getRepository('ModuleBundle\CustomModules\HtmlModule\Entity\HtmlModule')->findAll();
 
         return $this->render('HtmlBundle::index.html.twig', array(
             'hTMLModules' => $hTMLModules,
@@ -60,7 +61,7 @@ class DefaultController extends Controller
             $em->persist($hTMLModule);
             $em->flush($hTMLModule);
             $this->addFlash('success', 'Votre module a bien été créé');
-            return $this->redirectToRoute('custom_module_html_new');
+            return $this->redirectToRoute('admin_module_index');
         }
 
         return $this->render('HtmlBundle::new.html.twig', array(
@@ -102,18 +103,17 @@ class DefaultController extends Controller
      * @Route("/admin/module/html/{id}", name="custom_module_html_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, HtmlModule $hTMLModule)
+    public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($hTMLModule);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($hTMLModule);
-            $em->flush($hTMLModule);
-        }
-
-        return $this->redirectToRoute('custom_module_html_index');
+        $em = $this->getDoctrine()->getManager();
+        $hTMLModules = $em->getRepository('ModuleBundle\CustomModules\HtmlModule\Entity\HtmlModule')->find($id);
+        if($hTMLModules!==null):
+            $em->remove($hTMLModules);
+            $em->flush();
+            return new JsonResponse(array("success"=>true));
+        else:
+            return new JsonResponse(array("success"=>false));
+        endif;
     }
 
     /**

@@ -74,4 +74,28 @@ class HtmlModule
     {
         return $this->id;
     }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return HtmlModule
+     */
+    public function setDescription($description)
+    {
+        $this->Description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->Description;
+    }
 }

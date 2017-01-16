@@ -261,7 +261,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     goto not_custom_module_image_delete;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'custom_module_image_delete')), array (  '_controller' => 'ModuleBundle\\CustomModules\\ImageModule\\Controller\\DefaultController::deleteAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'custom_module_image_delete')), array (  '_controller' => 'ModuleBundle\\CustomModules\\ImageModule\\Controller\\DefaultController::deleteAjaxAction',));
             }
             not_custom_module_image_delete:
 
@@ -716,16 +716,30 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 }
                 not_col_edit:
 
-                // col_ajax_edit
-                if (0 === strpos($pathinfo, '/admin/page/col/Ajax') && preg_match('#^/admin/page/col/Ajax/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_col_ajax_edit;
-                    }
+                if (0 === strpos($pathinfo, '/admin/page/col/Ajax')) {
+                    // col_ajax_edit
+                    if (preg_match('#^/admin/page/col/Ajax/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_col_ajax_edit;
+                        }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'col_ajax_edit')), array (  '_controller' => 'PageBundle\\Controller\\ColController::ajaxEditAction',));
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'col_ajax_edit')), array (  '_controller' => 'PageBundle\\Controller\\ColController::ajaxEditAction',));
+                    }
+                    not_col_ajax_edit:
+
+                    // col_remove_custom
+                    if (preg_match('#^/admin/page/col/Ajax/(?P<type>[^/]++)/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_col_remove_custom;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'col_remove_custom')), array (  '_controller' => 'PageBundle\\Controller\\ColController::removeColAction',));
+                    }
+                    not_col_remove_custom:
+
                 }
-                not_col_ajax_edit:
 
                 // col_delete
                 if (preg_match('#^/admin/page/col/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {

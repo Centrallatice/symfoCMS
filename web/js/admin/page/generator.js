@@ -204,16 +204,15 @@ function getModalEdit(id,url,idModal){
 }
 
 function getModulesByType(modal){
-    console.log("edit");
     $.ajax({
         type: "GET",
-        url: baseModuleAdmin+'Ajax/'+$(modal).find("select#pagebundle_col_typemodule option:first-child").val(),
+        url: baseModuleAdmin+'Ajax/'+$(modal).find("select#pagebundle_col_typemodule").val(),
         success: function (data) {
             if(data.success){
                 var datas = JSON.parse(data.donnees);
                 $("select#pagebundle_col_modules option").remove();
                 for(var e in datas){
-                    $('<option value="'+datas[e].id+'">'+datas[e].content+' <small>'+datas[e]._description+'</small></option>').appendTo($(modal).find("select#pagebundle_col_modules"));
+                    $('<option value="'+datas[e].id+'"><small>'+datas[e].description+'</small></option>').appendTo($(modal).find("select#pagebundle_col_modules"));
                 }
                 $("select#pagebundle_col_modules").material_select();
             }

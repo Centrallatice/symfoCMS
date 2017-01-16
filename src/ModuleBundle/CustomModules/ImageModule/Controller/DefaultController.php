@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
@@ -21,7 +21,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $imageModules = $em->getRepository('ImageBundle:ImageModule')->findAll();
+        $imageModules = $em->getRepository('ModuleBundle\CustomModules\ImageModule\Entity\ImageModule')->findAll();
 
         return $this->render('ImageBundle::index.html.twig', array(
             'imageModules' => $imageModules,
@@ -38,7 +38,7 @@ class DefaultController extends Controller
     {
         $deleteForm = $this->createDeleteForm($imageModule);
 
-        return $this->render('ImageBundle:imagemodule:show.html.twig', array(
+        return $this->render('ImageBundle::show.html.twig', array(
             'imageModule' => $imageModule,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -55,13 +55,12 @@ class DefaultController extends Controller
         $imageModule = new Imagemodule();
         $form = $this->createForm('ModuleBundle\CustomModules\ImageModule\Form\ImageModuleType', $imageModule);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($imageModule);
-            $em->flush($imageModule);
+            $em->flush();
 
-            return $this->redirectToRoute('custom_module_image_show', array('id' => $imageModule->getId()));
+            return $this->redirectToRoute('admin_module_index');
         }
 
         return $this->render('ImageBundle::new.html.twig', array(
@@ -86,7 +85,7 @@ class DefaultController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            
             return $this->redirectToRoute('custom_module_image_edit', array('id' => $imageModule->getId()));
         }
 
@@ -98,24 +97,24 @@ class DefaultController extends Controller
     }
 
     /**
-     * Deletes a imageModule entity.
+     * Deletes a imageModule entity Ajax.
      *
      * @Route("/admin/module/image/{id}", name="custom_module_image_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, ImageModule $imageModule)
+    public function deleteAjaxAction($id)
     {
-        $form = $this->createDeleteForm($imageModule);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($imageModule);
-            $em->flush($imageModule);
-        }
-
-        return $this->redirectToRoute('custom_module_image_index');
+        $em = $this->getDoctrine()->getManager();
+        $imageModules = $em->getRepository('ModuleBundle\CustomModules\ImageModule\Entity\ImageModule')->find($id);
+        if($imageModules!==null):
+            $em->remove($imageModules);
+            $em->flush();
+            return new JsonResponse(array("success"=>true));
+        else:
+            return new JsonResponse(array("success"=>false));
+        endif;
     }
+    
 
     /**
      * Creates a form to delete a imageModule entity.

@@ -45,7 +45,7 @@ class Col
     /**
      * @var string
      *
-     * @ORM\Column(name="cssClassPerso", type="string", length=255)
+     * @ORM\Column(name="cssClassPerso", type="string", length=255,nullable=true)
      */
     private $cssClassPerso;
 
@@ -56,30 +56,7 @@ class Col
      */
     private $cssId;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="htmlContent", type="text",nullable=true)
-     */
-    private $htmlContent;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="imgContent", type="text",nullable=true)
-     */
-    private $image;
-
-
-    /**
-     * @ORM\ManyToMany(targetEntity="ModuleBundle\Entity\Module")
-     * @ORM\JoinTable(name="cols_modules",
-     *      joinColumns={@ORM\JoinColumn(name="col_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="module_id", referencedColumnName="id", unique=true)}
-     *      )
-     */
-    
-    private $modules;
     
     /**
      * @var string
@@ -267,39 +244,7 @@ class Col
         return $this->enteteType;
     }
 
-    /**
-     * Add module
-     *
-     * @param \ModuleBundle\Entity\Module $module
-     *
-     * @return Col
-     */
-    public function addModule(\ModuleBundle\Entity\Module $module)
-    {
-        $this->modules[] = $module;
     
-        return $this;
-    }
-
-    /**
-     * Remove module
-     *
-     * @param \ModuleBundle\Entity\Module $module
-     */
-    public function removeModule(\ModuleBundle\Entity\Module $module)
-    {
-        $this->modules->removeElement($module);
-    }
-
-    /**
-     * Get modules
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getModules()
-    {
-        return $this->modules;
-    }
 
     /**
      * Set row
@@ -395,5 +340,29 @@ class Col
     public function getCssClassPerso()
     {
         return $this->cssClassPerso;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Col
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
